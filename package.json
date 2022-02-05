@@ -1,0 +1,19 @@
+{
+  "name": "fec-team-green",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpp33-fec-green/FEC-Team-Green.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpp33-fec-green/FEC-Team-Green/issues"
+  },
+  "homepage": "https://github.com/rpp33-fec-green/FEC-Team-Green#readme"
+}
