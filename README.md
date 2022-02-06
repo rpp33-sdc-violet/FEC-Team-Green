@@ -17,7 +17,7 @@
  ## Description
 
 
-  We have a cohesive, visualy appealing, user friendly website using industry standard practices. Our project includes four main areas of interest, in order of position on the screen
+  We have a cohesive, visualy appealing, user-friendly website using industry standard practices. Our project includes four main areas of interest in the following order:
 
   - <a href='#product-overview'> Product Overview</a> -created by Chloe Meinshausen.
   - <a href='#related-products'> Related Products Carousel</a> -created by Christian Ortiz.
