@@ -7,7 +7,7 @@ class QA extends React.Component {
 
   render() {
     return (
-        <h3>QUESTIONS & ANSWERS</h3>
+      <h3>QUESTIONS & ANSWERS</h3>
     );
   }
 }

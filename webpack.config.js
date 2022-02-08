@@ -9,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(DIST_DIR),
   },
-  module : {
+  module: {
     rules: [
       {
         test: /\.(js|jsx)$/,

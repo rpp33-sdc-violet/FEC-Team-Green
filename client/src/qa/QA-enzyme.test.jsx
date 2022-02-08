@@ -11,5 +11,5 @@ test('QA component renders', () => {
     <QA />
   );
 
-  expect(heading.find("h3").text()).toEqual('QUESTIONS & ANSWERS');
-})
+  expect(heading.find('h3').text()).toEqual('QUESTIONS & ANSWERS');
+});
