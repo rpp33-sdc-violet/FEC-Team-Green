@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --watch",
-    "test": "jest --watch --env=jsdom",
+    "test": "jest",
     "prepare": "husky install"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "@babel/core": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-loader": "^8.2.3",
