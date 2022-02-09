@@ -3,4 +3,4 @@ node_modules
 
 ## API keys ##
 client/src/config/github.js
-compiled/config/github.js
+dist/config/github.js
