@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
- 
-const Goodbye = () => {
-  return <h1>Bye Everyone</h1>;
-};
- 
-test('should print the Goodbye component', () => {
-  render(<Goodbye/>);
-  screen.debug();
+import '@testing-library/jest-dom/extend-expect';
+import QA from './QA';
+
+
+describe('QA', () => {
+  test('should print the QA component heading', () => {
+    render(<QA />);
+  
+    expect(screen.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
+  });
 });

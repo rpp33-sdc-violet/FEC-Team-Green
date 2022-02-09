@@ -5,10 +5,12 @@ import QA from './QA';
 
 configure({ adapter: new Adapter() });
 
-test('QA component renders', () => {
-  const heading = shallow(
-    <QA />
-  );
-
-  expect(heading.find('h3').text()).toEqual('QUESTIONS & ANSWERS');
+describe('QA', () => {
+  test('QA component renders', () => {
+    const heading = shallow(
+      <QA />
+    );
+  
+    expect(heading.find('h3').text()).toEqual('QUESTIONS & ANSWERS');
+  });
 });
