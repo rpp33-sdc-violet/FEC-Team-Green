@@ -11,7 +11,7 @@ class App extends React.Component {
       <div>
         <h1>TeamGreen!</h1>
       </div>
-    )
+    );
   }
 }
 
