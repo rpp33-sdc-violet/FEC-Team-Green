@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --watch",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "server-dev": "npx nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,9 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

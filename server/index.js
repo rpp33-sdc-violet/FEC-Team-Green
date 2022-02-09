@@ -6,7 +6,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static(__dirname + '../client/dist'));
+app.use(express.static(__dirname + '/../client/dist'));
 
 
 
