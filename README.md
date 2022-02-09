@@ -32,12 +32,22 @@
   to run our project
   1. clone the project
   2. run  `npm install` to install all dependcies
-  3. run  `npm run react-dev` to compile our source files
-  4. run  `npm run start`  to start our server and serve our client facing app.
+  3. please generate a Github API key and place it in `/client/src/config/github.js` as
+```
+var GITHUB_API_KEY = 'your key';
+export default GITHUB_API_KEY;
+```
+  5. make sure that your .gitignore file contains:
+```
+client/src/config/github.js
+```
+  5. run  `npm run react-dev` to compile our source files
+  6. run  `npm run start`  to start our server and serve our client facing app.
 
   *  please review our **package.lock** file for the most updated list of dependencies
 
    - How can another developer get your project up and running on their own? What dependencies are required? Are there environmental requirements? Be specific, and outline steps to take in order to get the project running.
+
 ---
   ## Usage
   This is our Front End Capstone project designed to demonstrate our skills and knowledge as software engineers.
