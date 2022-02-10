@@ -1,7 +1,7 @@
 # FEC-Team-Green
   in Project Atelier, we revamp a client-facing retail website. We provide it with its own server and a React based, single page app that is interactive and responsive.
 
-  ## Table of content
+  ## Table of contents
   1. <a href='#description'> Description</a>
 
   2. <a href='#installation'> Installation</a>
@@ -41,8 +41,8 @@ export default GITHUB_API_KEY;
 ```
 client/src/config/github.js
 ```
-  5. run  `npm run react-dev` to compile our source files
-  6. run  `npm run start`  to start our server and serve our client facing app.
+  6. run  `npm run build` to compile our source files
+  7. run  `npm run server-dev`  to start our server and serve our client facing app.
 
   *  please review our **package.lock** file for the most updated list of dependencies
 
