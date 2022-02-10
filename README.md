@@ -1,7 +1,7 @@
 # FEC-Team-Green
   in Project Atelier, we revamp a client-facing retail website. We provide it with its own server and a React based, single page app that is interactive and responsive.
 
-  ## Table of contents
+  ## Table of Contents
   1. <a href='#description'> Description</a>
 
   2. <a href='#installation'> Installation</a>
