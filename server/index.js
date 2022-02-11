@@ -10,7 +10,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 // Jo additions
 const config = require('../client/src/config/github.js');
-
 const axios = require('axios');
 
 app.all('/*', (req, res, next) => {
@@ -35,7 +34,6 @@ app.get('/qa/questions', (req, res) => {
       console.log(response.data.results.length);
       res.send(response.data);
     });
-
 });
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
@@ -46,14 +44,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
       console.log('PUT RESPONSE', response);
       res.send('PUT SUCCESS');
     });
- 
-  
 });
-
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`listening on port http://localhost:${PORT}`);
