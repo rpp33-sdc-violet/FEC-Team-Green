@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --watch",
+    "build": "webpack serve --open",
+    "test": "jest",
+    "prepare": "husky install",
     "server-dev": "npx nodemon server/index.js"
   },
   "repository": {
@@ -21,9 +23,17 @@
     "@babel/core": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-loader": "^8.2.3",
+    "enzyme": "^3.11.0",
+    "eslint": "^8.8.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.0",
     "webpack": "^5.68.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
     "axios": "^0.25.0",
