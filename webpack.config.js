@@ -9,6 +9,10 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(DIST_DIR),
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    static: DIST_DIR
+  },
   module: {
     rules: [
       {
