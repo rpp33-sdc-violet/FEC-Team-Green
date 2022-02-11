@@ -24,9 +24,6 @@
   - <a href='#questions-and-answers'> Questions and Answers feature </a>  -created by Joann Whang
   - <a href='#ratings-and-reviews'> Ratings and Reviews feature</a> -created by Wen Dai
 
-
-   A more detailed outline of the project. What does it do? Is there a high level list of features? If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. See Adding Screen Captures below.
-
 ---
   ## Installation
   to run our project
@@ -37,22 +34,18 @@
 var GITHUB_API_KEY = 'your key';
 export default GITHUB_API_KEY;
 ```
-  5. make sure that your .gitignore file contains:
+  4. make sure that your .gitignore file contains:
 ```
 client/src/config/github.js
 ```
-  6. run  `npm run build` to compile our source files
-  7. run  `npm run server-dev`  to start our server and serve our client facing app.
+  5. run  `npm run build` to compile our source files
+  6. run  `npm run server-dev`  to start our server and serve our client facing app.
 
   *  please review our **package.lock** file for the most updated list of dependencies
 
-   - How can another developer get your project up and running on their own? What dependencies are required? Are there environmental requirements? Be specific, and outline steps to take in order to get the project running.
-
 ---
   ## Usage
-  This is our Front End Capstone project designed to demonstrate our skills and knowledge as software engineers.
-  - Further details on how the project is meant to be used may be helpful. For a library or framework, this section would outline how to use the library within another project (see socket.io  ). For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary (see node-statsD  ).
-
+  This is our Front End Capstone project designed to demonstrate our front end skills and knowledge as software engineers.
 ---
  ## Project Widgets
 ---
