@@ -10,7 +10,7 @@
 
   4. <a href='#project-widgets'> Project Widgets</a>
 
-  3. <a href='#team-members'> Team Members</a>
+  5. <a href='#team-members'> Team Members</a>
 
 
 ---
