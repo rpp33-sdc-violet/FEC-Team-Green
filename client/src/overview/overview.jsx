@@ -1,4 +1,8 @@
 import React, { useState, UseEffect } from 'react';
+import StyleSelectorContainer from './StyleSelectorContainer.jsx';
+import SelectProductContainer from './SelectProductContainer.jsx';
+import ProductDescription from './ProductDescription.jsx';
+import ImageContainer from './ImageContainer.jsx';
 
 const Overview = (props) => {
 
@@ -23,9 +27,22 @@ const Overview = (props) => {
   });
 
   return (
-    <h3>Overview</h3>
+    < div >
+
+      <h3>Overview</h3>
+
+      {/* <ImageContainer></ImageContainer> */}
+      {/* <ProductDescription></ProductDescription> */}
+      {/* <StyleSelectorContainer></StyleSelectorContainer> */}
+      {/* <SelectProductContainer></SelectProductContainer> */}
+    </div >
   );
 
 };
 
 export default Overview;
+
+//  Image container contains all compoents and logic for displaying images
+// Product Description  displays all text describing the product
+// styleSelectorContainer contains all components and logic for selecting style
+//select Produc allows you to select size, quantitiy and add product to bag --it also allows you to add product to outfit
