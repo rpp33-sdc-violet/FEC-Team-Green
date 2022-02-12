@@ -5,14 +5,14 @@ class IndividualReview extends React.Component {
     super(props);
     this.state = {
 
-    }
+    };
   }
   render() {
     return (
       <div>
-      {this.props.review.summary}
+        {this.props.review.summary}
       </div>
-    )
+    );
   }
 
 

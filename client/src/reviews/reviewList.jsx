@@ -1,6 +1,6 @@
 import React from 'react';
 import reviewSample from './exampleData.js';
-import IndividualReview from './individualReview.jsx'
+import IndividualReview from './individualReview.jsx';
 class ReviewList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,16 +13,15 @@ class ReviewList extends React.Component {
     return (
 
       <div>
+        <h2>Review List</h2>
         {this.state.reviews.map((review) => {
-          return(
+          return (
             <IndividualReview review = {review} />
-          )
+          );
         })}
       </div>
-    )
+    );
   }
-
-
 
 
 
