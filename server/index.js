@@ -28,7 +28,7 @@ const options = {
 };
 
 
-
+//mount proxy in web server
 // use proxy middleware and created '/api' endpoint that communicates with our real API
 app.use('/api/*', createProxyMiddleware(options));
 
