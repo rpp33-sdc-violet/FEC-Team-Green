@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack serve --open",
+    "build": "webpack --watch",
+    "web-dev": "webpack serve --open",
     "test": "jest",
     "prepare": "husky install",
-    "server-dev": "npx nodemon server/index.js"
+    "start": "npx nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "body-parser": "^1.19.1",
     "express": "^4.17.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2"
   }
 }
