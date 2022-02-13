@@ -13,7 +13,7 @@ class ReviewList extends React.Component {
     return (
 
       <div>
-        <h2>Review List</h2>
+        <h3>Review List</h3>
         {this.state.reviews.map((review) => {
           return (
             <IndividualReview review = {review} />
