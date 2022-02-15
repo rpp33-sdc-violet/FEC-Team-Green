@@ -11,7 +11,7 @@ const StyleSelectorContainer = (props) => {
 
 
   return (
-    <div className ='style-selector'>
+    <div className ='style-selector panel'>
       StyleSelectorContainer
     </div>
   );

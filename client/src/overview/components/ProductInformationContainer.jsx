@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
 
-// var pInformationStyle = {
-//   'display': 'grid',
-//   'backgroundColor': 'white',
-
-//   'grid-template-columns': '1fr',
-//   'grid-template-rows': 'minmax(100px, auto)',
-// };
 const ProductInformationContainer = (props)=> {
 
   //props
@@ -17,11 +10,12 @@ const ProductInformationContainer = (props)=> {
   // default_price
   // id
 
-  // style={pInformationStyle}>
+
   return (
-    <div>
+    <div className='information panel'>
       {/* button */}
-      <div className='information'>
+      {/* <div className='information'> */}
+      <div>
         ProductInformationContainer
       </div>
       {/* button */}
