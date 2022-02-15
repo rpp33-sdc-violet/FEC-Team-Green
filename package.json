@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack serve --open",
+    "build": "webpack --watch",
+    "web-dev": "webpack serve --open",
     "test": "jest",
     "prepare": "husky install",
-    "server-dev": "npx nodemon server/index.js"
+    "start": "npx nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -38,9 +39,12 @@
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "^1.19.1",
+    "css-loader": "^6.6.0",
     "express": "^4.17.2",
+    "http-proxy-middleware": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "style-loader": "^3.3.1"
   }
 }

@@ -1,0 +1,27 @@
+/* .overview-wrapper {
+  display: grid;
+  background-color: aqua;
+  grid-template-columns: 3;
+  grid-auto-rows: minmax(100px, auto);
+} */
+.overview-wrapper {
+  display: grid;
+  background-color: aqua;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+};
+.interactive-panel {
+  grid-template-rows: 1fr 1fr 1fr;
+};
+.information {
+display: grid;
+background-color: white;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: minmax(100px, auto);
+};
+.feature-list {
+  display: grid;
+  background-color: white;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: minmax(100px, auto);
+};
