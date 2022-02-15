@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import StyleList from './StyleList.jsx';
 
 //this is the container for all parts of the style functionality
-const StyleSelectorContainer= (props) => {
+const StyleSelectorContainer = (props) => {
 
   //props
   //styleList;
