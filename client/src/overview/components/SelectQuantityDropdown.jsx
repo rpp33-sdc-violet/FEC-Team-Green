@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-// import StyleList from './StyleList.jsx';
 
 //this is the container for my quantity selector
 const SelectQuantityDropdown = (props) => {

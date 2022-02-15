@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-// import StyleList from './StyleList.jsx';
+
 
 //this button add's outfits to christians Component
 const SelectOutfitButton = (props) => {

@@ -10,7 +10,7 @@ const ProductInformationContainer = (props)=> {
   // default_price
   // id
 
-  // style={pInformationStyle}>
+
   return (
     <div className='information panel'>
       {/* button */}
