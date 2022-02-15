@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import StyleList from './StyleList.jsx';
 
 //this is the container for all parts of the style functionality
-const StyleSelector = (props) => {
+const StyleSelectorContainer= (props) => {
 
   //props
   //styleList;
@@ -12,12 +12,12 @@ const StyleSelector = (props) => {
 
   return (
     <div className ='style-selector'>
-      StyleSelector
+      StyleSelectorContainer
     </div>
   );
 };
 
-export default StyleSelector;
+export default StyleSelectorContainer;
 
 //displays the selected style
 // a list of styles to select from
