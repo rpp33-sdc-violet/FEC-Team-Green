@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
 
+var pDescriptionStyle = {
+  'display': 'grid',
+  'backgroundColor': 'pink',
+
+  'grid-template-columns': '1fr',
+  'grid-template-rows': 'minmax(100px, auto)',
+};
 const ProductDescription = (props)=> {
 
   //props
@@ -9,11 +16,8 @@ const ProductDescription = (props)=> {
   // local state highlighted url index
   //method to change highlighted url
 
-
-
-
   return (
-    <div>
+    <div style={pDescriptionStyle}>
       {/* button */}
       <div className='slogan'> Product Slogan </div>
 
@@ -21,7 +25,7 @@ const ProductDescription = (props)=> {
         ProductDescription
       </div>
       {/* button */}
-      <div className='feature-list'> FeatureList </div>
+      {/* <div className='feature-list'> FeatureList </div> */}
     </div>
 
   );
