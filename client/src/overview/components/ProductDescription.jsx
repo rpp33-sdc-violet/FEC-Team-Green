@@ -17,7 +17,7 @@ const ProductDescription = (props)=> {
   //method to change highlighted url
 
   return (
-    <div>
+    <div className='description-container'>
       {/* button */}
       <div className='slogan'> Product Slogan </div>
 

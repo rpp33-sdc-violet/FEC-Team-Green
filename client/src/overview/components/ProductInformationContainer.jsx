@@ -12,7 +12,7 @@ const ProductInformationContainer = (props)=> {
 
   // style={pInformationStyle}>
   return (
-    <div className='information'>
+    <div className='information panel'>
       {/* button */}
       {/* <div className='information'> */}
       <div>
