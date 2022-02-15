@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-var ProductDescription = function (props) {
+const ProductDescription = (props)=> {
 
   //props
 
