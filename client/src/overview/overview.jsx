@@ -5,7 +5,7 @@ import ProductDescription from './components/ProductDescription.jsx';
 import ImageContainer from './components/ImageContainer.jsx';
 import ProductFeatureList from './components/ProductFeatureList.jsx';
 import ProductInformationContainer from './components/ProductInformationContainer.jsx';
-import styles from '.styles/style.css';
+import styles from './styles/style.css';
 
 // var oStyle = {
 //   'display': 'grid',
