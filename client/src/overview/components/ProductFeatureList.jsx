@@ -17,7 +17,7 @@ const ProductFeatureList = (props)=> {
 
 
   return (
-    <div  style={pFeatureList}>
+    <div style={pFeatureList}>
 
       <div className='feature-list'> FeatureList </div>
     </div>
