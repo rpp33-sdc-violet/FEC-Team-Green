@@ -10,7 +10,6 @@ const QA = (props) => {
   const [filteredQues, setFilteredQues] = useState([]);
   const [countQ, setCountQ] = useState(2);
   const [moreQButtonVisible, setMoreQButtonVisible] = useState(false);
-  const [query, setQuery] = useState(''); // NOT SURE IF NEEDED
 
   // getAllQuestions  - update allQuestions (and filteredQuestions?) with the same data, invoke isMoreQButtonVisible
   useEffect(() => {
@@ -50,17 +49,30 @@ const QA = (props) => {
     }
   });
 
-  // handleMoreQButtonClick - increments countQ and setState with new countQ (should trigger render with more questions)
+  // handleMoreQButtonClick - setCountQ with countQ + 2 (should trigger render with more questions)
   const handleMoreQButtonClick = () => {
     setCountQ(countQ + 2);
   };
 
-  // userSearch - if query length is less than 3, then setState with query and filteredQuestions with allQuestions; if more - loop over allQuestions (and their answers) to see if query matches -> if yes, push that element into filter container -> when complete, setState with query and filteredQuestions with filter container
+  // userSearch: send as props to Search component 
   const userSearch = (query) => {
+    // query length is 3 or more:
     if (query.length >= 3) {
-      console.log('3+ QUERY', query);
+      let queryLC = query.toLowerCase(); 
+      let matches = [];
+      // loop over allQues to see if query matches
+      for (let i = 0; i < allQues.length; i++) {
+        let questionLC = allQues[i].question_body.toLowerCase();
+        // if yes, add to into matches container
+        if (questionLC.indexOf(queryLC) > -1) {
+          matches = matches.concat(allQues[i]);
+        }
+      }
+      // after loop finished, setFilteredQues with query matches
+      setFilteredQues(matches);
     } else {
-      console.log('< 3 QUERY', query);
+      // query length is less than 3: setFilteredQues with allQues
+      setFilteredQues(allQues);
     }
   };
 
@@ -72,8 +84,6 @@ const QA = (props) => {
       { moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null }
       <AddAQuestionButton />
     </div>
-    // Search - state: userSearch
-    // QuestionsList -  state: filteredQuestions (based on countQ)
   );
 };
 
