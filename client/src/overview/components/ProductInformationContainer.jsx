@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import styles from '../styles/style.css';
-// var pInformationStyle = {
-//   'display': 'grid',
-//   'backgroundColor': 'white',
 
-//   'grid-template-columns': '1fr',
-//   'grid-template-rows': 'minmax(100px, auto)',
-// };
 const ProductInformationContainer = (props)=> {
 
   //props
