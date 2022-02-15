@@ -12,8 +12,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello TeamGreen Test</h1>
-        <Overview></Overview>
-        <QA></QA>
+        <Overview />
+        {/* temporary hard-coding of product_id for QA */}
+        <QA product_id={64624} />
       </div>
     );
   }

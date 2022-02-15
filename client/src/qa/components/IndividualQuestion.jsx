@@ -28,6 +28,9 @@ const IndividualQuestion = (props) => {
   // AddAnswerLink - state: AddAnswerLinkClick
   // AnswersList - state: answers (based on countA)
   // moreAnsButton
+  return (
+    <p>IndividualQuestion</p>
+  );
   
 };
 

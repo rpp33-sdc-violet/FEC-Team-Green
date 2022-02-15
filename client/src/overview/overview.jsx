@@ -1,8 +1,8 @@
 import React, { useState, UseEffect } from 'react';
-import StyleSelectorContainer from './StyleSelectorContainer.jsx';
-import SelectProductContainer from './SelectProductContainer.jsx';
-import ProductDescription from './ProductDescription.jsx';
-import ImageContainer from './ImageContainer.jsx';
+// import StyleSelectorContainer from './StyleSelectorContainer.jsx';
+// import SelectProductContainer from './SelectProductContainer.jsx';
+// import ProductDescription from './ProductDescription.jsx';
+// import ImageContainer from './ImageContainer.jsx';
 
 const Overview = (props) => {
 
@@ -22,9 +22,9 @@ const Overview = (props) => {
   const [selectedQuantity, setSelectedQuantity] = useState('');
 
 
-  useEffect(()=> {
+  // useEffect(()=> {
 
-  });
+  // });
 
   return (
     < div >
