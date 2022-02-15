@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 
 // var pInformationStyle = {
 //   'display': 'grid',
-//   'backgroundColor': 'pink',
+//   'backgroundColor': 'white',
 
 //   'grid-template-columns': '1fr',
 //   'grid-template-rows': 'minmax(100px, auto)',
 // };
-const ProductInformation = (props)=> {
+const ProductInformationContainer = (props)=> {
 
   //props
 
@@ -17,14 +17,12 @@ const ProductInformation = (props)=> {
   // default_price
   // id
 
-
+  // style={pInformationStyle}>
   return (
-    <div style={pInformationStyle}>
+    <div>
       {/* button */}
-      <div className='slogan'> Product Slogan </div>
-
       <div className='information'>
-        ProductInformation
+        ProductInformationContainer
       </div>
       {/* button */}
       {/* <div className='feature-list'> FeatureList </div> */}
@@ -33,7 +31,7 @@ const ProductInformation = (props)=> {
   );
 };
 
-export default ProductInformation;
+export default ProductInformationContainer;
 
 /*
  Test if there are no reviews // read reviews does not appear

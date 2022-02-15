@@ -4,15 +4,19 @@ import SelectProductContainer from './components/SelectProductContainer.jsx';
 import ProductDescription from './components/ProductDescription.jsx';
 import ImageContainer from './components/ImageContainer.jsx';
 import ProductFeatureList from './components/ProductFeatureList.jsx';
-// import oStyle from './style.css';
+import ProductInformationContainer from './components/ProductInformationContainer.jsx';
+import styles from '.styles/style.css';
 
-var oStyle = {
-  'display': 'grid',
-  'backgroundColor': 'aqua',
-  'grid-template-columns': '2fr 1fr',
-  'grid-template-rows': 'minmax(100px, auto)',
-};
-
+// var oStyle = {
+//   'display': 'grid',
+//   'backgroundColor': 'aqua',
+//   // 'grid-template-columns': '2fr 1fr',
+//   // 'grid-template-rows': 'minmax(100px, auto)',
+//   'grid-template-rows': '2fr 1fr',
+// };
+// var interactivePanelStyle = {
+//   'grid-template-rows': '1fr 1fr 1fr',
+// };
 const Overview = (props) => {
 
 
@@ -37,10 +41,11 @@ const Overview = (props) => {
   });
 
   return (
-    < div className='overview-wrapper' style={oStyle} >
+    < div className='overview-wrapper' >
 
       <div> <ImageContainer></ImageContainer> </div>
       <div>
+        <ProductInformationContainer></ProductInformationContainer>
         <StyleSelectorContainer></StyleSelectorContainer>
         <SelectProductContainer></SelectProductContainer>
       </div>

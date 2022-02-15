@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 
-var pFeatureList = {
-  'display': 'grid',
-  'backgroundColor': 'pink',
+// var pFeatureList = {
+//   'display': 'grid',
+//   'backgroundColor': 'pink',
 
-  'grid-template-columns': '1fr',
-  'grid-template-rows': 'minmax(100px, auto)',
-};
+//   'grid-template-columns': '1fr',
+//   // 'grid-template-rows': 'minmax(100px, auto)',
+
+// };
 const ProductFeatureList = (props)=> {
 
   //props
