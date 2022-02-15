@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import styles from '../styles/style.css';
 // var pInformationStyle = {
 //   'display': 'grid',
 //   'backgroundColor': 'white',
@@ -19,9 +19,10 @@ const ProductInformationContainer = (props)=> {
 
   // style={pInformationStyle}>
   return (
-    <div>
+    <div className='information'>
       {/* button */}
-      <div className='information'>
+      {/* <div className='information'> */}
+      <div>
         ProductInformationContainer
       </div>
       {/* button */}
