@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-var pDescriptionStyle = {
-  'display': 'grid',
-  'backgroundColor': 'pink',
+// var pDescriptionStyle = {
+//   'display': 'grid',
+//   'backgroundColor': 'pink',
 
-  'grid-template-columns': '1fr',
-  'grid-template-rows': 'minmax(100px, auto)',
-};
+//   'grid-template-columns': '1fr',
+//   'grid-template-rows': 'minmax(100px, auto)',
+// };
 const ProductDescription = (props)=> {
 
   //props
@@ -17,7 +17,7 @@ const ProductDescription = (props)=> {
   //method to change highlighted url
 
   return (
-    <div style={pDescriptionStyle}>
+    <div>
       {/* button */}
       <div className='slogan'> Product Slogan </div>
 
