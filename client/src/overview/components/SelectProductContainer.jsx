@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import SelectSizeDropdown from './SelectSizeDropdown.jsx';
-import SelectQuantityDropdown from './ SelectQuantityDropdown';
+import SelectQuantityDropdown from './SelectQuantityDropdown.jsx';
 import SelectOutfitButton from './SelectOutfitButton.jsx';
 import AddToBagButton from './AddToBagButton.jsx';
 //this is the container for all parts  add product functionality
