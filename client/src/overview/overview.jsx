@@ -37,7 +37,7 @@ const Overview = (props) => {
     < div className='overview-wrapper' >
       <div> <ImageContainer></ImageContainer> </div>
       <div>
-        <ProductInformationContainer data={props.data}></ProductInformationContainer>
+        <ProductInformationContainer product={props.product}></ProductInformationContainer>
         <StyleSelectorContainer></StyleSelectorContainer>
         <SelectProductContainer></SelectProductContainer>
       </div>
