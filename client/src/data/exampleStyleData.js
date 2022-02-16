@@ -399,4 +399,4 @@ const exampleStyleData = {
     }
   ]
 };
-export default exampleProductData;
+export default exampleStyleData;
