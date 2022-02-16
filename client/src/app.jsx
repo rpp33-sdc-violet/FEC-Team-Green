@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './overview/Overview.jsx';
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Overview></Overview>
         <RelatedProducts data={{productID: '007'}}></RelatedProducts>
         <QA product_id={64624}></QA>
+        <ReviewList product_id={64621}></ReviewList>
       </div>
     );
   }
