@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const ProductInformationContainer = (props)=> {
+const ProductInformationContainer = (props) => {
 
   //props
 
@@ -14,8 +14,12 @@ const ProductInformationContainer = (props)=> {
   return (
     <div className='information panel'>
       {/* button */}
-      {/* <div className='information'> */}
+      <span className='stars'>stars</span>
+      <h4 className='category'>{props.data.category}
+      </h4>
+      <h1 className='name'>{props.data.name}</h1>
       <div>
+        <h4 className='price'>{props.data.default_price}</h4>
         ProductInformationContainer
       </div>
       {/* button */}
