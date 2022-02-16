@@ -15,11 +15,11 @@ const ProductInformationContainer = (props) => {
     <div className='information panel'>
       {/* button */}
       <span className='stars'>stars</span>
-      <h4 className='category'>{props.data.category}
+      <h4 className='category'>{props.product.category}
       </h4>
-      <h1 className='name'>{props.data.name}</h1>
+      <h1 className='name'>{props.product.name}</h1>
       <div>
-        <h4 className='price'>{props.data.default_price}</h4>
+        <h4 className='price'>{props.product.default_price}</h4>
         ProductInformationContainer
       </div>
       {/* button */}

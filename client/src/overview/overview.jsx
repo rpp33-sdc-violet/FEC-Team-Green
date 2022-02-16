@@ -38,7 +38,7 @@ const Overview = (props) => {
       <div> <ImageContainer></ImageContainer> </div>
       <div>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
-        <StyleSelectorContainer></StyleSelectorContainer>
+        <StyleSelectorContainer productStyle={props.productStyle}></StyleSelectorContainer>
         <SelectProductContainer></SelectProductContainer>
       </div>
       <ProductDescription></ProductDescription>

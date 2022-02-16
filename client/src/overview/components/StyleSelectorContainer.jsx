@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import StyleList from './StyleList.jsx';
 
 //this is the container for all parts of the style functionality
@@ -11,8 +11,12 @@ const StyleSelectorContainer = (props) => {
 
 
   return (
-    <div className ='style-selector panel'>
-      StyleSelectorContainer
+    <div className='style-selector panel'>
+      <h5 className='style-tag'> {props.productStyle.results[0].name}</h5>
+
+      <div>
+        StyleSelectorContainer
+      </div>
     </div>
   );
 };
