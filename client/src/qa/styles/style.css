@@ -1,6 +1,6 @@
 .QA-container {
   display: grid;
-  grid-template-rows: 35px 1fr 6fr 1fr;
+  grid-template-rows: 1fr 1fr 6fr 1fr;
   border: 1px solid green;
 }
 
