@@ -3,9 +3,10 @@ import axios from 'axios';
 import AddAQuestionButton from './components/AddAQuestionButton.jsx';
 import QuestionsList from './components/QuestionsList.jsx';
 import Search from './components/Search.jsx';
+import './styles/style.css';
 
 const QA = (props) => {
-  
+
   const [allQues, setAllQues] = useState([]);
   const [filteredQues, setFilteredQues] = useState([]);
   const [countQ, setCountQ] = useState(2);
@@ -15,8 +16,8 @@ const QA = (props) => {
   useEffect(() => {
     console.log('get all questions');
     const count = 20; // start with a high number to avoid too many calls to the API
-    let page = 1; 
-    let questions = []; 
+    let page = 1;
+    let questions = [];
     // inner function that keeps calling until length of data is less than the count
     const getAllQuestions = () => {
       axios.get(`/api/qa/questions?product_id=${props.product_id}&count=${count}&page=${page}`)
@@ -37,7 +38,7 @@ const QA = (props) => {
         });
     };
     // invoke the recursive inner function
-    getAllQuestions(); 
+    getAllQuestions();
   }, []); // the empty array stops the effect from running more than once
 
   // isMoreQButtonVisible - checks countQ with allQues length, if countQ less than length -> true, else, false
@@ -58,7 +59,7 @@ const QA = (props) => {
   const userSearch = (query) => {
     // query length is 3 or more:
     if (query.length >= 3) {
-      let queryLC = query.toLowerCase(); 
+      let queryLC = query.toLowerCase();
       let matches = [];
       // loop over allQues to see if query matches
       for (let i = 0; i < allQues.length; i++) {
@@ -77,12 +78,16 @@ const QA = (props) => {
   };
 
   return (
-    <div>
-      <h3>QUESTIONS & ANSWERS</h3>
-      <Search userSearch={userSearch}/>
-      <QuestionsList questions={filteredQues.slice(0, countQ)}/>
-      { moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null }
-      <AddAQuestionButton />
+    <div className="QA-container">
+      <div className="QA-header">
+        <p>QUESTIONS & ANSWERS</p>
+      </div>
+      <Search userSearch={userSearch} />
+      <QuestionsList questions={filteredQues.slice(0, countQ)} />
+      <div className="buttons">
+        {moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+        <AddAQuestionButton />
+      </div>
     </div>
   );
 };

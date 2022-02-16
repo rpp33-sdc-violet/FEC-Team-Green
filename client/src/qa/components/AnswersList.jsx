@@ -6,7 +6,12 @@ const AnswersList = (props) => {
   
   // render
   // maps to IndividualAnswer
-  
+  return (
+    <div className="answers-list">
+      placeholder: answers list
+      {/* {answers} */}
+    </div>
+  );
 };
 
 export default AnswersList;

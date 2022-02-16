@@ -1,0 +1,30 @@
+.QA-container {
+  display: grid;
+  grid-template-rows: 35px 1fr 6fr 1fr;
+  border: 1px solid green;
+}
+
+.QA-header {
+  border: 1px solid red;
+}
+
+.search {
+  border: 1px solid red;
+}
+
+.questions-list {
+  border: 1px solid red;
+}
+
+.buttons {
+  border: 1px solid red;
+}
+
+.question-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.question-text {
+  font-weight: bold;
+}

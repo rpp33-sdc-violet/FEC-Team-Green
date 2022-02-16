@@ -11,7 +11,7 @@ const Search = (props) => {
   };
 
   return (
-    <form role="search">
+    <form role="search" className="search">
       <div>
         <input type="search" id="question-search" name="q"
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."

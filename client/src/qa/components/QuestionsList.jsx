@@ -11,7 +11,7 @@ const QuestionsList = (props) => {
   
   // render: maps to IndividualQuestion
   return (
-    <div className='questions-list'>
+    <div className="questions-list">
       {questions}
     </div>
   );
