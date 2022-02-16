@@ -12,10 +12,10 @@ const ProductInformationContainer = (props)=> {
 
 
   return (
-    <div className='information panel'>
+    <div className='panel'>
       {/* button */}
-      {/* <div className='information'> */}
-      <div>
+      <div className='information'>
+
         ProductInformationContainer
       </div>
       {/* button */}

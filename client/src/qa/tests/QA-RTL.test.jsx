@@ -7,7 +7,7 @@ import QA from '../QA';
 describe('QA', () => {
   test('should print the QA component heading', () => {
     render(<QA />);
-  
+
     expect(screen.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
   });
 });

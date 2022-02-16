@@ -20,7 +20,7 @@ const ProductFeatureList = (props)=> {
   return (
     <div>
 
-      <div className='feature-list'> FeatureList </div>
+      <div className='feature-list'>FeatureList</div>
     </div>
 
   );

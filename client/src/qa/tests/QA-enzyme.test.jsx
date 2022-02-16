@@ -10,7 +10,7 @@ describe('QA', () => {
     const heading = shallow(
       <QA />
     );
-  
+
     expect(heading.find('h3').text()).toEqual('QUESTIONS & ANSWERS');
   });
 });
