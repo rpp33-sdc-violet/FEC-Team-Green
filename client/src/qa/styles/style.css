@@ -1,6 +1,11 @@
 .QA-container {
   display: grid;
-  grid-template-rows: 1fr 1fr 6fr 1fr;
+  grid-template-rows: 1fr 1fr fit-content(350px) 1fr;
+  grid-template-areas: 
+    "header"
+    "search"
+    "questions"
+    "buttons";
   border: 1px solid green;
 }
 
@@ -13,7 +18,8 @@
 }
 
 .questions-list {
-  border: 1px solid red;
+  border: 2px solid blue;
+  overflow: scroll;
 }
 
 .buttons {
@@ -23,6 +29,8 @@
 .question-row {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  border: 1px solid blue;
+
 }
 
 .question-text {
