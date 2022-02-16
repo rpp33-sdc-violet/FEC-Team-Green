@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddAnswerLink from './AddAnswerLink.jsx';
+import AnswersList from './AnswersList.jsx';
 
 const IndividualQuestion = (props) => {
   // props
@@ -9,8 +10,8 @@ const IndividualQuestion = (props) => {
   const [countA, setCountA] = useState(2);
   const [moreAnsButtonVisible, setMoreAnsButtonVisible] = useState(false);
   // **potentially in QA to trigger render**
-  const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false); 
-  const [helpfulCountQ, setHelpfulCountQ] = useState(0);  
+  const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false);
+  const [helpfulCountQ, setHelpfulCountQ] = useState(0);
 
   // methods
   // getAllAnswers/useEffect - update answers and helpfulCount, invoke setMoreAnsButtonVisible
@@ -26,7 +27,7 @@ const IndividualQuestion = (props) => {
   };
 
   // handle AddAnswerLinkClick
-  
+
   // render
   // Q text
   // Helpful/Yes Link
@@ -34,13 +35,19 @@ const IndividualQuestion = (props) => {
   // *****AnswersList - state: answers (based on countA)
   // moreAnsButton
   return (
-    <div className='question-row'>
-      <p className='question-text'>Q: {props.question.question_body}</p>
-      <p className='helpful-text'>Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({props.question.question_helpfulness}) | <AddAnswerLink /></p>
+    <div className="question">
+      <div className="question-row">
+        <p className="question-text">Q: {props.question.question_body}</p>
+        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({props.question.question_helpfulness}) | <AddAnswerLink /></p>
+      </div>
       {/* CONTINUE HERE WITH AnswersList*/}
+      <AnswersList />
+      <div className="moreAnswers-option">
+        <p>LOAD/SEE MORE ANSWERS</p>
+      </div>
     </div>
   );
-  
+
 };
 
 export default IndividualQuestion;
