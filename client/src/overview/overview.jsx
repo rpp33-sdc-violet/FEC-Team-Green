@@ -1,29 +1,15 @@
-<<<<<<< HEAD
-import React, { useState, UseEffect } from 'react';
-=======
+
 import React, { useState, useEffect } from 'react';
->>>>>>> main
 import StyleSelectorContainer from './components/StyleSelectorContainer.jsx';
 import SelectProductContainer from './components/SelectProductContainer.jsx';
 import ProductDescription from './components/ProductDescription.jsx';
 import ImageContainer from './components/ImageContainer.jsx';
-<<<<<<< HEAD
-=======
 import ProductFeatureList from './components/ProductFeatureList.jsx';
 import ProductInformationContainer from './components/ProductInformationContainer.jsx';
-import styles from './styles/style.css';
->>>>>>> main
+import './styles/style.css';
 
-// var oStyle = {
-//   'display': 'grid',
-//   'backgroundColor': 'aqua',
-//   // 'grid-template-columns': '2fr 1fr',
-//   // 'grid-template-rows': 'minmax(100px, auto)',
-//   'grid-template-rows': '2fr 1fr',
-// };
-// var interactivePanelStyle = {
-//   'grid-template-rows': '1fr 1fr 1fr',
-// };
+
+
 const Overview = (props) => {
 
 
@@ -43,17 +29,13 @@ const Overview = (props) => {
   const [selectedQuantity, setSelectedQuantity] = useState('');
 
 
-<<<<<<< HEAD
-  // useEffect(()=> {
-=======
   useEffect(() => {
->>>>>>> main
+
 
   // });
 
   return (
     < div className='overview-wrapper' >
-
       <div> <ImageContainer></ImageContainer> </div>
       <div>
         <ProductInformationContainer></ProductInformationContainer>
@@ -61,7 +43,6 @@ const Overview = (props) => {
         <SelectProductContainer></SelectProductContainer>
       </div>
       <ProductDescription></ProductDescription>
-
       <ProductFeatureList></ProductFeatureList>
     </div >
   );

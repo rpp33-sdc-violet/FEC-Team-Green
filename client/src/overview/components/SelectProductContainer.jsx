@@ -21,7 +21,7 @@ const SelectProductContainer = (props) => {
 
 
   return (
-    <div className ='select-product'>
+    <div className ='select-product panel'>
       SelectProductContainer
     </div>
   );
