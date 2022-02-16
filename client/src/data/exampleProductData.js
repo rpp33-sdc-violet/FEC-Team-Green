@@ -1,5 +1,6 @@
 const exampleProductData = [
   {
+    // exmaple style data is for this id
     'id': 64620,
     'campus': 'hr-rpp',
     'name': 'Camo Onesie',
@@ -219,6 +220,6 @@ const exampleProductData = [
     'created_at': '2022-01-28T00:20:03.651Z',
     'updated_at': '2022-01-28T00:20:03.651Z'
   }
-];  
+];
 
 export default exampleProductData;
