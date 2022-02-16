@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import StyleSelectorContainer from './components/StyleSelectorContainer.jsx';
 import SelectProductContainer from './components/SelectProductContainer.jsx';
@@ -32,7 +31,7 @@ const Overview = (props) => {
   useEffect(() => {
 
 
-  // });
+  });
 
   return (
     < div className='overview-wrapper' >
