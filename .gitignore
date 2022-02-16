@@ -1,5 +1,7 @@
 node_modules
-node_modules
+
+## Webpack Bundle ##
+client/dist/bundle.js
 
 ## API keys ##
 client/src/config/github.js

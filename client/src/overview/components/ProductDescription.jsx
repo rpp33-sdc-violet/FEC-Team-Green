@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-var ProductDescription = function (props) {
+// var pDescriptionStyle = {
+//   'display': 'grid',
+//   'backgroundColor': 'pink',
+
+//   'grid-template-columns': '1fr',
+//   'grid-template-rows': 'minmax(100px, auto)',
+// };
+const ProductDescription = (props)=> {
 
   //props
 
@@ -8,9 +15,6 @@ var ProductDescription = function (props) {
   // props.urlList = list of urls
   // local state highlighted url index
   //method to change highlighted url
-
-
-
 
   return (
     <div>
@@ -21,7 +25,7 @@ var ProductDescription = function (props) {
         ProductDescription
       </div>
       {/* button */}
-      <div className='feature-list'> FeatureList </div>
+      {/* <div className='feature-list'> FeatureList </div> */}
     </div>
 
   );
