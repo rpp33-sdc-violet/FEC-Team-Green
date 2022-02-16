@@ -8,7 +8,7 @@ const ProductCard = (props) => {
     <div className='productCard'>
       {/* star could be an svg  */}
       {/* <div className='star'></div> */}
-      <div className='productIMG'></div>
+      <div className='productImg'></div>
       {/* Will trial a card info sub-component for now */}
       {/* <h1>ProductCard</h1> */}
       <CardInfo />
