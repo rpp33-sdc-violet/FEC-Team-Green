@@ -28,10 +28,10 @@ const Overview = (props) => {
   const [selectedQuantity, setSelectedQuantity] = useState('');
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-  });
+  // });
 
   return (
     < div className='overview-wrapper' >
