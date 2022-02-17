@@ -14,7 +14,6 @@ const QA = (props) => {
 
   // getAllQuestions  - update allQuestions (and filteredQuestions?) with the same data, invoke isMoreQButtonVisible
   useEffect(() => {
-    console.log('get all questions');
     const count = 20; // start with a high number to avoid too many calls to the API
     let page = 1;
     let questions = [];
@@ -22,7 +21,6 @@ const QA = (props) => {
     const getAllQuestions = () => {
       axios.get(`/api/qa/questions?product_id=${props.product_id}&count=${count}&page=${page}`)
         .then((response) => {
-          console.log('RESPONSE DATA', response.data, response.data.results.length);
           questions = questions.concat(response.data.results);
           if (response.data.results.length === count) { // there are still more questions
             page++; // increment page to get more questions
