@@ -5,7 +5,7 @@ import QuestionsList from '../components/QuestionsList.jsx';
 import exampleQuestionData from '../../data/exampleQuestionData.js';
 
 
-describe.skip('RENDER: QUESTION LIST', () => {
+describe('Displaying Questions', () => {
   test('should print question body in proper format -> Q: <question body>', () => {
     render(<QuestionsList questions={exampleQuestionData.results}/>);
   
