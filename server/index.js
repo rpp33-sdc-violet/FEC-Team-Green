@@ -7,14 +7,14 @@ const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
 // COOKIES - In QA widget, need to persist data whether helpful links have been clicked or not
 app.use(cookieParser());
+// FOR HELPFUL QUESTIONS
 app.all('*', function (req, res, next) {
-  // FOR HELPFUL QUESTIONS
   if (req.url.includes('questions') && req.url.includes('helpful')) {
     let findQuestionID = req.url.split('/');
     let questionID = findQuestionID[4];
@@ -24,16 +24,32 @@ app.all('*', function (req, res, next) {
     if (cookie === undefined) {
       // add helpfulQ cookie with clicked
       res.cookie(helpfulQ, 'clicked');
-      next(); 
+      next();
     } else {
       res.status(500).send('Helpful Question Link Clicked Already');
       // DON'T CALL next() -> we don't want to reach the API and increment helpful count
     }
   } else {
-    next(); 
+    next();
   }
+});
 
-  // FOR HELPFUL ANSWERS -- TODO!!**********
+// FOR HELPFUL ANSWERS
+app.all('*', function (req, res, next) {
+  if (req.url.includes('answers') && req.url.includes('helpful')) {
+    let findAnswerID = req.url.split('/');
+    let answerID = findAnswerID[4];
+    let helpfulA = `helpfulA_${answerID}`;
+    let cookie = req.cookies[helpfulA];
+    if (cookie === undefined) {
+      res.cookie(helpfulA, 'clicked');
+      next();
+    } else {
+      res.status(500).send('Helpful Answer Link Clicked Already');
+    }
+  } else {
+    next();
+  }
 });
 
 const config = require('../client/src/config/github.js');
@@ -58,6 +74,7 @@ app.use('/api/*', createProxyMiddleware(options));
 
 
 app.get('*', (req, res) => {
+  console.log('HERE?', res.url);
   res.send(data);
 });
 

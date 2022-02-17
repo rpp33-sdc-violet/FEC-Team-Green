@@ -71,7 +71,7 @@ const IndividualQuestion = (props) => {
     event.preventDefault();
     if (!isHelpfulClickedQ) {
       axios.put(`/api/qa/questions/${props.question.question_id}/helpful`)
-        .then((resposne) => {
+        .then((response) => {
           setHelpfulCountQ(helpfulCountQ + 1);
           setIsHelpfulClickedQ(true);
         })
