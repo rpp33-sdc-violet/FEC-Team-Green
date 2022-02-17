@@ -13,6 +13,13 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 const config = require('../client/src/config/github.js');
 
+app.all('*', function (req, res, next) {
+  console.log('REQUEST', req.url);
+  if (req.url.includes('questions') && req.url.includes('helpful')) {
+    console.log('HERE');
+  }
+  next(); // pass control to the next handler
+});
 
 // when you send a request to the '/api/**' endpoint, it automatically re-routed to the API server(done by pathRewrite)
 const options = {
