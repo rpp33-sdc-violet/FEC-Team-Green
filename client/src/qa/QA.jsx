@@ -12,7 +12,7 @@ const QA = (props) => {
   const [countQ, setCountQ] = useState(2);
   const [moreQButtonVisible, setMoreQButtonVisible] = useState(false);
 
-  // getAllQuestions  - update allQuestions (and filteredQuestions?) with the same data, invoke isMoreQButtonVisible
+  // getAllQuestions  - update allQuestions and filteredQuestions with the same data
   useEffect(() => {
     const count = 20; // start with a high number to avoid too many calls to the API
     let page = 1;
