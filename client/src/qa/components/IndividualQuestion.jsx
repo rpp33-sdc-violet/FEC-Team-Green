@@ -13,9 +13,8 @@ const IndividualQuestion = (props) => {
   const [moreAnsButtonVisible, setMoreAnsButtonVisible] = useState(false);
   // **potentially in QA to trigger render**
   const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false);
-  const [helpfulCountQ, setHelpfulCountQ] = useState(0);
+  const [helpfulCountQ, setHelpfulCountQ] = useState(props.question.question_helpfulness);
 
-  // methods
   // getAllAnswers/useEffect
   useEffect(() => {
     const count = 20; // start with a high number to avoid too many calls to the API
@@ -54,11 +53,6 @@ const IndividualQuestion = (props) => {
     getAllAnswers();
   }, []); // the empty array stops the effect from running more than once
 
-  // initialize helpfulCount state
-  useEffect(() => {
-    setHelpfulCountQ(props.question.question_helpfulness);
-  });
-
   // isMoreAnsButtonVisible - checks countA with answers length, if countA less than length -> true, else, false
   useEffect(() => {
     if (countA < answers.length) {
@@ -77,23 +71,32 @@ const IndividualQuestion = (props) => {
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     console.log('handleHelpfulClick clicked');
+    if (!isHelpfulClickedQ) {
+      console.log('inside isHelpfulClickedQ === false');
+      axios.put(`/api/qa/questions/${props.question.question_id}/helpful`)
+        .then((resposne) => {
+          console.log('inside HERE');
+          setHelpfulCountQ(helpfulCountQ + 1);
+          setIsHelpfulClickedQ(true);
+        })
+        .catch((error) => {
+          console.log('ERROR IN handleHelpfulClick-Individual Question', error);
+        });
+    } else {
+      alert('Question: Helpful Link Already Clicked');
+    }
   };
 
   // handle AddAnswerLinkClick
 
-  // render
-  // Q text
   // Helpful/Yes Link
   // AddAnswerLink - state: AddAnswerLinkClick
-  // *****AnswersList - state: answers (based on countA)
-  // moreAnsButton
   return (
     <div className="question">
       <div className="question-row">
         <p className="question-text">Q: {props.question.question_body}</p>
-        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({props.question.question_helpfulness}) | <AddAnswerLink /></p>
+        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerLink /></p>
       </div>
-      {/* CONTINUE HERE WITH AnswersList*/}
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">
         {moreAnsButtonVisible ? <p onClick={handleMoreAnsClick}>LOAD/SEE MORE ANSWERS</p> : null}
