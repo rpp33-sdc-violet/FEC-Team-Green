@@ -11,7 +11,6 @@ const IndividualQuestion = (props) => {
   const [answers, setAnswers] = useState([]);
   const [countA, setCountA] = useState(2);
   const [moreAnsButtonVisible, setMoreAnsButtonVisible] = useState(false);
-  // **potentially in QA to trigger render**
   const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false);
   const [helpfulCountQ, setHelpfulCountQ] = useState(props.question.question_helpfulness);
 
@@ -67,7 +66,7 @@ const IndividualQuestion = (props) => {
     setCountA(countA + 2);
   };
 
-  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true - **potentially receive a function as props that bubbles to QA to trigger render**
+  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true 
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     console.log('handleHelpfulClick clicked');
@@ -80,7 +79,7 @@ const IndividualQuestion = (props) => {
           setIsHelpfulClickedQ(true);
         })
         .catch((error) => {
-          console.log('ERROR IN handleHelpfulClick-Individual Question', error);
+          alert('Question: Helpful Link Already Clicked');
         });
     } else {
       alert('Question: Helpful Link Already Clicked');

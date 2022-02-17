@@ -4,22 +4,36 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-
-const config = require('../client/src/config/github.js');
-
+// COOKIES - In QA widget, need to persist data whether helpful links have been clicked or not
+app.use(cookieParser());
 app.all('*', function (req, res, next) {
-  console.log('REQUEST', req.url);
+  // FOR HELPFUL QUESTIONS
   if (req.url.includes('questions') && req.url.includes('helpful')) {
-    console.log('HERE');
+    let findQuestionID = req.url.split('/');
+    let questionID = findQuestionID[4];
+    let helpfulQ = `helpfulQ_${questionID}`; // set cookie name dynamically based on question_id
+    let cookie = req.cookies[helpfulQ];
+    // if there isn't a helpfulQ cookie
+    if (cookie === undefined) {
+      // add helpfulQ cookie with clicked
+      res.cookie(helpfulQ, 'clicked');
+    } else {
+      res.status(500).send('Helpful Question Link Clicked Already');
+    }
   }
+
+  // FOR HELPFUL ANSWERS -- TODO!!**********
   next(); // pass control to the next handler
 });
+
+const config = require('../client/src/config/github.js');
 
 // when you send a request to the '/api/**' endpoint, it automatically re-routed to the API server(done by pathRewrite)
 const options = {
