@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import StyleSelectorContainer from './components/StyleSelectorContainer.jsx';
 import SelectProductContainer from './components/SelectProductContainer.jsx';
@@ -38,7 +37,7 @@ const Overview = (props) => {
     < div className='overview-wrapper' >
       <div> <ImageContainer></ImageContainer> </div>
       <div>
-        <ProductInformationContainer></ProductInformationContainer>
+        <ProductInformationContainer product={props.product}></ProductInformationContainer>
         <StyleSelectorContainer></StyleSelectorContainer>
         <SelectProductContainer></SelectProductContainer>
       </div>
