@@ -24,13 +24,16 @@ app.all('*', function (req, res, next) {
     if (cookie === undefined) {
       // add helpfulQ cookie with clicked
       res.cookie(helpfulQ, 'clicked');
+      next(); 
     } else {
       res.status(500).send('Helpful Question Link Clicked Already');
+      // DON'T CALL next() -> we don't want to reach the API and increment helpful count
     }
+  } else {
+    next(); 
   }
 
   // FOR HELPFUL ANSWERS -- TODO!!**********
-  next(); // pass control to the next handler
 });
 
 const config = require('../client/src/config/github.js');

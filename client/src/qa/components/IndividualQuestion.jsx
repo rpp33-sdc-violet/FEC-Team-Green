@@ -69,12 +69,9 @@ const IndividualQuestion = (props) => {
   // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true 
   const handleHelpfulClick = (event) => {
     event.preventDefault();
-    console.log('handleHelpfulClick clicked');
     if (!isHelpfulClickedQ) {
-      console.log('inside isHelpfulClickedQ === false');
       axios.put(`/api/qa/questions/${props.question.question_id}/helpful`)
         .then((resposne) => {
-          console.log('inside HERE');
           setHelpfulCountQ(helpfulCountQ + 1);
           setIsHelpfulClickedQ(true);
         })
@@ -88,7 +85,6 @@ const IndividualQuestion = (props) => {
 
   // handle AddAnswerLinkClick
 
-  // Helpful/Yes Link
   // AddAnswerLink - state: AddAnswerLinkClick
   return (
     <div className="question">
