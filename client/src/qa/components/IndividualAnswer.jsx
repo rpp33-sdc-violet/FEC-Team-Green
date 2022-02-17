@@ -13,7 +13,6 @@ const IndividualAnswer = (props) => {
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     if (!isHelpfulClickedA) {
-      console.log('HERE INSIDE!!!');
       axios.put(`/api/qa/answers/${props.answer.answer_id}/helpful`)
         .then((response) => {
           setHelpfulCountA(helpfulCountA + 1);
