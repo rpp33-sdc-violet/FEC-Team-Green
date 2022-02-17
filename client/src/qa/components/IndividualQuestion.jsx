@@ -16,7 +16,7 @@ const IndividualQuestion = (props) => {
   const [helpfulCountQ, setHelpfulCountQ] = useState(0);
 
   // methods
-  // getAllAnswers/useEffect - update answers and helpfulCount, invoke setMoreAnsButtonVisible
+  // getAllAnswers/useEffect
   useEffect(() => {
     const count = 20; // start with a high number to avoid too many calls to the API
     let page = 1;
@@ -54,9 +54,24 @@ const IndividualQuestion = (props) => {
     getAllAnswers();
   }, []); // the empty array stops the effect from running more than once
 
-  // isMoreAnsButtonVisible - checks countA with answers length, if countA less than length -> true, else, false
+  // initialize helpfulCount state
+  useEffect(() => {
+    setHelpfulCountQ(props.question.question_helpfulness);
+  });
 
-  // handleMoreAButtonClick - increments countA and setState with new countA (should trigger render with more questions), invoke isMoreAButtonVisible
+  // isMoreAnsButtonVisible - checks countA with answers length, if countA less than length -> true, else, false
+  useEffect(() => {
+    if (countA < answers.length) {
+      setMoreAnsButtonVisible(true);
+    } else {
+      setMoreAnsButtonVisible(false);
+    }
+  });
+
+  // handleMoreAnsClick - increments countA and setState with new countA (should trigger render with more questions), (invoke isMoreAButtonVisible)
+  const handleMoreAnsClick = () => {
+    setCountA(countA + 2);
+  };
 
   // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true - **potentially receive a function as props that bubbles to QA to trigger render**
   const handleHelpfulClick = (event) => {
@@ -79,9 +94,9 @@ const IndividualQuestion = (props) => {
         <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({props.question.question_helpfulness}) | <AddAnswerLink /></p>
       </div>
       {/* CONTINUE HERE WITH AnswersList*/}
-      <AnswersList />
+      <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">
-        <p>LOAD/SEE MORE ANSWERS</p>
+        {moreAnsButtonVisible ? <p onClick={handleMoreAnsClick}>LOAD/SEE MORE ANSWERS</p> : null}
       </div>
     </div>
   );
