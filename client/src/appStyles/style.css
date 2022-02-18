@@ -1,0 +1,47 @@
+/* ** APPLY TO ALL ** */
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+/* ** NAVBAR ** */
+#navbar {
+  display: flex;
+  background-color: black;
+  border-bottom: 2px solid #39FF14;
+}
+
+#navbar .logo {
+  display: inline-block;
+  color: #39FF14;;
+  padding: 9px;
+}
+
+#navbar > form {
+  margin-left: auto;
+  display: inline-block;
+  padding: 9px 3px;
+}
+
+#navbar > form > input {
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid #39FF14;
+}
+
+#navbar > form > input:focus {
+  color: white;
+}
+
+.searchIcon {
+  align-self: center;
+  transform: scale(1.4);
+  color: #787878;
+  margin-right: 9px;
+  padding: 6px 3px;
+}
+
+.searchIcon:hover {
+  color: #39FF14;
+}
