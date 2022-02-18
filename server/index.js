@@ -74,7 +74,6 @@ app.use('/api/*', createProxyMiddleware(options));
 
 
 app.get('*', (req, res) => {
-  console.log('HERE?', res.url);
   res.send(data);
 });
 
