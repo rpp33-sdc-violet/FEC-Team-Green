@@ -27,10 +27,11 @@ const Overview = (props) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState('');
 
-
+  setSelectedStyle(props.productStyles[0]);
   // useEffect(() => {
 
-
+  // setStyleList({styleList: props.productStyles});
+  // setProduct({product: props.product});
   // });
 
   return (
@@ -38,7 +39,7 @@ const Overview = (props) => {
       <div> <ImageContainer></ImageContainer> </div>
       <div>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
-        <StyleSelectorContainer productStyles={props.productStyles}></StyleSelectorContainer>
+        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}></StyleSelectorContainer>
         <SelectProductContainer></SelectProductContainer>
       </div>
       <ProductDescription></ProductDescription>

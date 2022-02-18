@@ -9,13 +9,16 @@ const StyleSelectorContainer = (props) => {
   //setSelectedImageUrl
   //setSelectedThumbnailUrl
 
-  console.log('props', props.productStyles);
-
+  // console.log('props', props.productStyles);
+  // var list = props.productStyles.map(style => {
+  //   return <img src={style.photos[0].thumbnail_url}></img>;
+  // });
+  // console.log('list', {list});
   if (props.productStyle && props.productStyles.length > 1) {
     return (
       <div className='style-selector panel'>
-        <h5 className='style-tag'> {props.productStyles[0].name}</h5>
-
+        <h5 className='style-tag'> {props.selectedStyle[0].name}</h5>
+        {/* {list} */}
         <div>
           StyleSelectorContainer
         </div>
