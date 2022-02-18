@@ -30,7 +30,3 @@ describe('RENDER: INDIVIDUAL QUESTION', () => {
     expect(screen.getByRole('link', { name: /add answer/i })).toBeInTheDocument();
   });
 });
-
-describe('LOAD MORE ANSWERS: VISIBILITY', () => {
-
-});
