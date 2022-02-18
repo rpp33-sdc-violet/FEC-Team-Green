@@ -45,7 +45,7 @@ class App extends React.Component {
         <h1>Hello TeamGreen Test</h1>
         <Overview product={exampleProductData[0]} productStyles={exampleStyleData.results}></Overview>
         <RelatedProducts data={{productID: '007'}}></RelatedProducts>
-        <QA product_id={64624}></QA>
+        <QA product_id={64621}></QA>
       </div>
     );
   }
