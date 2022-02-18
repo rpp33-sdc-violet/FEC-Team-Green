@@ -4,7 +4,7 @@ class IndividualReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      helpfulRating: false
     };
     this.moreReview = this.moreReview.bind(this);
   }
@@ -12,6 +12,15 @@ class IndividualReview extends React.Component {
   moreReview(reviewId, fullReview) {
     //Change the HTML content of a <p> element with id="x":
     document.getElementById(reviewId).innerHTML = fullReview;
+  }
+
+  helpfulRating(event) {
+    if (this.state.helpfulRating === false) {
+      let path = `/reviews/${this.props.review.review_id}/helpful`;
+      axios.put(path).then(() => {
+        this.props.review.helpfulness++;
+      });
+    }
   }
 
   render() {
@@ -36,13 +45,46 @@ class IndividualReview extends React.Component {
       fullReview = <div>{reviewBody}</div>;
     }
 
+    let recommend = null;
+    if (review.recommend) {
+      recommend = <div>I recommend this product</div>;
+    }
+
+    let response = null;
+    if (review.response) {
+      response = <div>
+        <div>Response from seller:</div>
+        <div>{review.response}</div>
+      </div>;
+    }
+
+
     return (
       <div>
-        <div className='review'>{new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</div>
+        <span>{review.reviewer_name + ','}</span>
+        <span className='review'>{' ' + new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</span>
+        <br></br>
         <div>
           {summary}
         </div>
         <div>{fullReview}</div>
+        <div className='image'>
+          {review.photos.map((photo)=> {
+            //TODO: NEED TO BUILD A MODEL TO OPEN IMAGE IN MODAL WINDOW
+            //CAN BE SHARED WITH QA COMPONENTS AND MORE
+            return (
+              console.log('photo url', photo.url)
+            );
+          })}
+        </div>
+        <br></br>
+        <div>{recommend}</div>
+        <div>{response}</div>
+        <div>
+          Helpful?
+          <a href='#'>Yes</a>
+        </div>
+
         <br></br>
       </div>
 
