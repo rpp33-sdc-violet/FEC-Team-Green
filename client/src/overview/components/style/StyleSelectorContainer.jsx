@@ -9,7 +9,7 @@ const StyleSelectorContainer = (props) => {
   //setSelectedImageUrl
   //setSelectedThumbnailUrl
 
-
+  console.log('props', props.productStyles);
 
   if (props.productStyles.length > 1) {
     return (
