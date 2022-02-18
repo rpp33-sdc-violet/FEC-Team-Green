@@ -30,8 +30,6 @@ class ReviewList extends React.Component {
   }
 
 
-
-
   render() {
     return (
 
