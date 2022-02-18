@@ -94,7 +94,7 @@ const IndividualQuestion = (props) => {
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">
-        {moreAnsButtonVisible ? <p onClick={handleMoreAnsClick}>LOAD/SEE MORE ANSWERS</p> : null}
+        {moreAnsButtonVisible ? <p onClick={handleMoreAnsClick}><strong>LOAD MORE ANSWERS</strong></p> : null}
       </div>
     </div>
   );
