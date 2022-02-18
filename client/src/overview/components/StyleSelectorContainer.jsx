@@ -10,15 +10,20 @@ const StyleSelectorContainer = (props) => {
   //setSelectedThumbnailUrl
 
 
-  return (
-    <div className='style-selector panel'>
-      <h5 className='style-tag'> {props.productStyle.results[0].name}</h5>
 
-      <div>
-        StyleSelectorContainer
+  if (props.productStyles.length > 1) {
+    return (
+      <div className='style-selector panel'>
+        <h5 className='style-tag'> {props.productStyles[0].name}</h5>
+
+        <div>
+          StyleSelectorContainer
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div>...loading</div>;
+  }
 };
 
 export default StyleSelectorContainer;
