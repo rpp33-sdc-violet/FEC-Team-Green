@@ -7,7 +7,9 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       productId: props.product_id,
-      reviews: reviewSample
+      reviews: reviewSample,
+      displayReviews: null,
+      displayCount: 2
     };
   }
   componentDidMount() {
@@ -22,7 +24,8 @@ class ReviewList extends React.Component {
     })
       .then((res) => {
         //console.log('axios get reviews', res);
-        this.setState({reviews: res.data.results});
+        this.setState({reviews: res.data.results, displayReviews: res.data.results});
+
       })
       .catch((err) => {
         console.log('failed to get reviews', err.message);
@@ -31,6 +34,7 @@ class ReviewList extends React.Component {
 
 
   render() {
+    //TODO:slice displayreviews based on displaycount
     return (
 
       <div>
