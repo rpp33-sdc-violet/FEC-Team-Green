@@ -10,7 +10,7 @@ const ProductInformationContainer = (props) => {
   // default_price
   // id
 
-  if (Object.keys(props.product).length > 1) {
+  if (props.product && Object.keys(props.product).length > 1) {
     return (
       <div className='information panel'>
         {/* button */}
@@ -29,7 +29,20 @@ const ProductInformationContainer = (props) => {
     );
   } else {
     return (
-      <div> loading </div>
+      <div className='information panel'>
+        {/* button */}
+        <span className='stars ghost'>stars</span>
+        <h4 className='category ghost'>...loading
+        </h4>
+        <h1 className='name ghost'>...loading</h1>
+        <div>
+          <h4 className='price ghost'>...loading</h4>
+          ProductInformationContainer
+        </div>
+        {/* button */}
+        {/* <div className='feature-list'> FeatureList </div> */}
+      </div>
+
     );
   }
 };

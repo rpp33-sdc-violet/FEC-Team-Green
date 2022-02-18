@@ -11,7 +11,7 @@ const StyleSelectorContainer = (props) => {
 
   console.log('props', props.productStyles);
 
-  if (props.productStyles.length > 1) {
+  if (props.productStyle && props.productStyles.length > 1) {
     return (
       <div className='style-selector panel'>
         <h5 className='style-tag'> {props.productStyles[0].name}</h5>
@@ -22,7 +22,15 @@ const StyleSelectorContainer = (props) => {
       </div>
     );
   } else {
-    return <div>...loading</div>;
+    return (
+      <div className='style-selector panel'>
+        <h5 className='style-tag ghost'>...loading</h5>
+
+        <div>
+          StyleSelectorContainer
+        </div>
+      </div>
+    );
   }
 };
 

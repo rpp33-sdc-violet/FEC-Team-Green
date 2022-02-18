@@ -43,3 +43,7 @@ height: 100%;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(auto, auto);
     }
+    .ghost{
+      color: gray;
+      opacity: 0.4;
+    }
