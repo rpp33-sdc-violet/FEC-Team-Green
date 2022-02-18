@@ -6,6 +6,10 @@ import IndividualQuestion from '../components/IndividualQuestion.jsx';
 import { exampleQuestionData64624 } from '../../data/exampleQuestionData.js';
 
 describe('RENDER: INDIVIDUAL QUESTION', () => {
+  beforeAll(() => {
+    window.alert = () => {}; // provide an empty implementation for window.alert
+  });
+  
   beforeEach(() => {
     render(<IndividualQuestion question={exampleQuestionData64624.results[0]} />);
   });

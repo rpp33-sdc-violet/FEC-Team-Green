@@ -7,14 +7,18 @@ import { exampleQuestionData64624, exampleQuestionData64621 } from '../../data/e
 // 64624 = 5, 64621 = 8
 
 describe('QUESTIONS LIST', () => {
-  it('should render five qestions if five questions are passed as props', () => {
+  beforeAll(() => {
+    window.alert = () => {}; // provide an empty implementation for window.alert
+  });
+
+  it('should render five qestions if five questions are passed as props', () => {    
     render(<QuestionsList questions={exampleQuestionData64624.results} />);
     const questionsList = screen.getByRole('questions-list');
     const { getAllByRole } = within(questionsList);
     const questions = getAllByRole('question');
     expect(questions.length).toBe(5);
   });
-
+  
   it('should render eight qestions if eight questions are passed as props', () => {
     render(<QuestionsList questions={exampleQuestionData64621.results} />);
     const questionsList = screen.getByRole('questions-list');
