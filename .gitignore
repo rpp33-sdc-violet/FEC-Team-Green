@@ -9,5 +9,5 @@ dist/config/github.js
 
 
 ##Testing
-client/src/overview/Overview-enzyme.test.jsx
-client/src/overview/Overview-rtl.test.jsx
+client/src/overview/tests/Overview-enzyme.test.jsx
+client/src/overview/tests/Overview-rtl.test.jsx
