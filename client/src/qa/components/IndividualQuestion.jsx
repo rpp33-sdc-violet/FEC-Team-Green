@@ -45,7 +45,7 @@ const IndividualQuestion = (props) => {
           }
         })
         .catch((error) => {
-          console.log('ERROR IN getAllAnswers', error);
+          alert('ERROR IN getAllAnswers', error);
         });
     };
     // invoke the recursive inner function
