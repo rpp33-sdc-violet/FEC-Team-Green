@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class IndividualReview extends React.Component {
   constructor(props) {
@@ -16,9 +17,10 @@ class IndividualReview extends React.Component {
 
   helpfulRating(event) {
     if (this.state.helpfulRating === false) {
-      let path = `/reviews/${this.props.review.review_id}/helpful`;
+      let path = `/api/reviews/${this.props.review.review_id}/helpful`;
       axios.put(path).then(() => {
-        this.props.review.helpfulness++;
+        this.props.review.helpfulness++;//no need to make another get request for now
+        this.setState({helpfulRating: true});
       });
     }
   }
@@ -82,7 +84,10 @@ class IndividualReview extends React.Component {
         <div>{response}</div>
         <div>
           Helpful?
-          <a href='#'>Yes</a>
+          <a href='#'onClick = {() => {
+            this.helpfulRating();
+          }}>Yes</a>
+          ({review.helpfulness})
         </div>
 
         <br></br>

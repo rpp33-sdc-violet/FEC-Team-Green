@@ -20,6 +20,7 @@ class App extends React.Component {
         <Overview product={exampleProductData[0]} productStyle={exampleStyleData}></Overview>
         <RelatedProducts data={{productID: '007'}}></RelatedProducts>
         <QA product_id={64621}></QA>
+        <ReviewList product_id={64621}></ReviewList>
       </div>
     );
   }
