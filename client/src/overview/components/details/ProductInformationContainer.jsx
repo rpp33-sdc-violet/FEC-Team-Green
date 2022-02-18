@@ -10,23 +10,28 @@ const ProductInformationContainer = (props) => {
   // default_price
   // id
 
-
-  return (
-    <div className='information panel'>
-      {/* button */}
-      <span className='stars'>stars</span>
-      <h4 className='category'>{props.product.category}
-      </h4>
-      <h1 className='name'>{props.product.name}</h1>
-      <div>
-        <h4 className='price'>{props.product.default_price}</h4>
-        ProductInformationContainer
+  if (Object.keys(props.product).length > 1) {
+    return (
+      <div className='information panel'>
+        {/* button */}
+        <span className='stars'>stars</span>
+        <h4 className='category'>{props.product.category}
+        </h4>
+        <h1 className='name'>{props.product.name}</h1>
+        <div>
+          <h4 className='price'>{props.product.default_price}</h4>
+          ProductInformationContainer
+        </div>
+        {/* button */}
+        {/* <div className='feature-list'> FeatureList </div> */}
       </div>
-      {/* button */}
-      {/* <div className='feature-list'> FeatureList </div> */}
-    </div>
 
-  );
+    );
+  } else {
+    return (
+      <div> loading </div>
+    );
+  }
 };
 
 export default ProductInformationContainer;
