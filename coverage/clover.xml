@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1645309093995" clover="3.2.0">
+  <project timestamp="1645309093995" name="All files">
+    <metrics statements="205" coveredstatements="134" conditionals="44" coveredconditionals="18" methods="59" coveredmethods="33" elements="308" coveredelements="185" complexity="0" loc="205" ncloc="205" packages="10" files="27" classes="27"/>
+    <package name="config">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="styleMock.js" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/config/styleMock.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="data">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="exampleAnswerData.js" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/data/exampleAnswerData.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="exampleQuestionData.js" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/data/exampleQuestionData.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="168" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="overview">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="overview.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/overview.jsx">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="overview.components.Image">
+      <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="ImageContainer.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/Image/ImageContainer.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="ImageExpander.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/Image/ImageExpander.jsx">
+        <metrics statements="5" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="overview.components.details">
+      <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="ProductDescription.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/details/ProductDescription.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="ProductFeatureList.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/details/ProductFeatureList.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="ProductInformationContainer.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/details/ProductInformationContainer.jsx">
+        <metrics statements="4" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="overview.components.product">
+      <metrics statements="20" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
+      <file name="AddToBagButton.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/product/AddToBagButton.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="SelectOutfitButton.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/product/SelectOutfitButton.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="SelectProductContainer.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/product/SelectProductContainer.jsx">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+      <file name="SelectQuantityDropdown.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/product/SelectQuantityDropdown.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="SelectSizeDropdown.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/product/SelectSizeDropdown.jsx">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="overview.components.style">
+      <metrics statements="13" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="1"/>
+      <file name="StyleList.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/style/StyleList.jsx">
+        <metrics statements="4" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="StyleSelectorContainer.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/style/StyleSelectorContainer.jsx">
+        <metrics statements="4" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+      </file>
+      <file name="StyleThumbnail.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/overview/components/style/StyleThumbnail.jsx">
+        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="qa">
+      <metrics statements="37" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="8" coveredmethods="4"/>
+      <file name="QA.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/QA.jsx">
+        <metrics statements="37" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="8" coveredmethods="4"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="qa.components">
+      <metrics statements="74" coveredstatements="43" conditionals="12" coveredconditionals="2" methods="24" coveredmethods="13"/>
+      <file name="AddAQuestionButton.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/AddAQuestionButton.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="AddAnswerLink.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/AddAnswerLink.jsx">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="13" count="17" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="17" type="stmt"/>
+      </file>
+      <file name="AnswersList.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/AnswersList.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="20" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="13" count="20" type="stmt"/>
+      </file>
+      <file name="IndividualAnswer.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/IndividualAnswer.jsx">
+        <metrics statements="15" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="47" count="5" type="stmt"/>
+      </file>
+      <file name="IndividualQuestion.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/IndividualQuestion.jsx">
+        <metrics statements="40" coveredstatements="19" conditionals="10" coveredconditionals="2" methods="10" coveredmethods="4"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="11" count="17" type="stmt"/>
+        <line num="12" count="17" type="stmt"/>
+        <line num="13" count="17" type="stmt"/>
+        <line num="14" count="17" type="stmt"/>
+        <line num="15" count="17" type="stmt"/>
+        <line num="18" count="17" type="stmt"/>
+        <line num="19" count="17" type="stmt"/>
+        <line num="20" count="17" type="stmt"/>
+        <line num="21" count="17" type="stmt"/>
+        <line num="23" count="17" type="stmt"/>
+        <line num="24" count="17" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="17" type="stmt"/>
+        <line num="56" count="17" type="stmt"/>
+        <line num="57" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="60" count="17" type="stmt"/>
+        <line num="65" count="17" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="70" count="17" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="89" count="17" type="stmt"/>
+      </file>
+      <file name="QuestionsList.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/QuestionsList.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+      </file>
+      <file name="Search.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/qa/components/Search.jsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="reviews">
+      <metrics statements="31" coveredstatements="22" conditionals="10" coveredconditionals="7" methods="8" coveredmethods="3"/>
+      <file name="exampleData.js" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/reviews/exampleData.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="individualReview.jsx" path="/Users/chloem/RPP33/FEC-Team-Green/client/src/reviews/individualReview.jsx">
+        <metrics statements="30" coveredstatements="21" conditionals="10" coveredconditionals="7" methods="8" coveredmethods="3"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="40" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="50" count="5" type="stmt"/>
+        <line num="51" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="56" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="77" count="12" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
