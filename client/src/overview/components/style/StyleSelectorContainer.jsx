@@ -10,25 +10,34 @@ const StyleSelectorContainer = (props) => {
   //setSelectedThumbnailUrl
 
   // console.log('props', props.productStyles);
-  // var list = props.productStyles.map(style => {
-  //   return <img src={style.photos[0].thumbnail_url}></img>;
+  // console.log('img', props.productStyles[0].photos[0].thumbnail_url );
+  // var styleList = props.productStyles.map(style => {
+  //   return [style.photos[0].thumbnail_url, style.style_id];
   // });
-  // console.log('list', {list});
-  if (props.productStyle && props.productStyles.length > 1) {
+  // console.log('list', {styleList});
+  if (props.productStyles && props.productStyles.length > 1) {
     return (
-      <div className='style-selector panel'>
-        <h5 className='style-tag'> {props.selectedStyle[0].name}</h5>
-        {/* {list} */}
-        <div>
+      <div>
+        <div className='style-tag'> STYLE {">"}  {props.selectedStyle.name}</div>
+        <div className='style-selector panel'>
+
+          <StyleList styleList={props.productStyles} setSelectedStyle={props.setSelectedStyle}/>
+          <div>
           StyleSelectorContainer
+          </div>
+          {/* <img> src={props.productStyles[0].photos[0].thumbnail_url}</img> */}
         </div>
       </div>
     );
   } else {
     return (
-      <div className='style-selector panel'>
-        <h5 className='style-tag ghost'>...loading</h5>
 
+      <div className='style-selector panel'>
+        {list}
+        <h5 className='style-tag ghost'>...loading</h5>
+        <img className='style-thumbnail' src={props.productStyles[0].photos[0].thumbnail_url}></img>
+        <img className='style-thumbnail' src={props.productStyles[1].photos[0].thumbnail_url}></img>
+        <img className='style-thumbnail' src={props.productStyles[2].photos[0].thumbnail_url}></img>
         <div>
           StyleSelectorContainer
         </div>
