@@ -47,7 +47,7 @@ class App extends React.Component {
     if (this.state.product && this.state.productStyles.length > 1) {
       return (
         <div>
-          <h1>Hello TeamGreen Test</h1>
+          <h1>Logo</h1>
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
           <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
           <QA product_id={64624}></QA>
@@ -56,7 +56,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <h1>Hello TeamGreen Test</h1>
+          <h1>Logo</h1>
           {/* <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> */}
           <div>loading</div>
           <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
