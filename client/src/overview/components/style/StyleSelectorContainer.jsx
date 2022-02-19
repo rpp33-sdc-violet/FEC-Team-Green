@@ -9,12 +9,8 @@ const StyleSelectorContainer = (props) => {
   //setSelectedImageUrl
   //setSelectedThumbnailUrl
 
-  // console.log('props', props.productStyles);
-  // console.log('img', props.productStyles[0].photos[0].thumbnail_url );
-  // var styleList = props.productStyles.map(style => {
-  //   return [style.photos[0].thumbnail_url, style.style_id];
-  // });
-  // console.log('list', {styleList});
+
+  //if data has been passed to component, render it here
   if (props.productStyles && props.productStyles.length > 1) {
     return (
       <div>
@@ -28,16 +24,13 @@ const StyleSelectorContainer = (props) => {
           {/* <img> src={props.productStyles[0].photos[0].thumbnail_url}</img> */}
         </div>
       </div>
-    );
+    ); // if data hasn't loaded, render empty component
   } else {
     return (
 
       <div className='style-selector panel'>
-        {list}
+        {/* //maybe put 8 empty circles */}
         <h5 className='style-tag ghost'>...loading</h5>
-        <img className='style-thumbnail' src={props.productStyles[0].photos[0].thumbnail_url}></img>
-        <img className='style-thumbnail' src={props.productStyles[1].photos[0].thumbnail_url}></img>
-        <img className='style-thumbnail' src={props.productStyles[2].photos[0].thumbnail_url}></img>
         <div>
           StyleSelectorContainer
         </div>
@@ -48,7 +41,7 @@ const StyleSelectorContainer = (props) => {
 
 export default StyleSelectorContainer;
 
-//displays the selected style
-// a list of styles to select from
+//displays the selected style  check
+// a list of styles to select from check
 // the selcted style will also have a checkmark on it
-// the styles will be displayed in a list
+// the styles will be displayed in a list check
