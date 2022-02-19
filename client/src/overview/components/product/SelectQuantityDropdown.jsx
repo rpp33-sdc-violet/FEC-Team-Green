@@ -8,11 +8,15 @@ const SelectQuantityDropdown = (props) => {
   //setSelectedQuantity()
 
 
+  // var options = objects.keys(sizes).map(key => {
+  //   return <option>key</option>;
+  // });
 
   return (
-    <div className ='select-quantity'>
+    <select className ='select-quantity'>
+      <option>0</option>
       SelectQuantityDropdown
-    </div>
+    </select>
   );
 };
 

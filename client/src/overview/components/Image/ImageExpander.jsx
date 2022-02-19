@@ -4,12 +4,20 @@ var ImageExpander = function (props) {
 
   //props props.toggleSize;
 
-
-  return (
-    <div className ='expander'>
-      ImageExpander
-    </div>
-  );
+  console.log('img expander: ', props);
+  if (props.selectedStyle && props.selectedStyle.name) {
+    return (
+      <div className ='image'>
+        <img className='main-image' src={props.selectedStyle.photos[0].url}></img>
+      </div>
+    );
+  } else {
+    return (
+      <div className ='expander'>
+        ImageExpander
+      </div>
+    );
+  }
 };
 
 export default ImageExpander;

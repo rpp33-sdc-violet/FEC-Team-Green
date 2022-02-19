@@ -7,12 +7,23 @@ const SelectSizeDropdown = (props) => {
   //selectedStyleSizes(list)
   //setSelectedSize()
 
+  var options = [];
 
+  options.push(<option key={0}>{props.selectedSize}</option>);
 
+  var options2 = (Object.keys(props.sizes).map(skuKey => {
+    return <option key={skuKey} >{skuKey}</option>;
+  }));
+
+  options = options.concat(options2);
+
+  // options.unshift(<option>Select Size</option>);
   return (
-    <div className ='select-size'>
-      SelectSizeDropdown
-    </div>
+
+    <select className ='select-size'>
+      {options}
+    </select>
+
   );
 };
 
