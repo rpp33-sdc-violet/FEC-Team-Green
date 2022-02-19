@@ -12,15 +12,10 @@ const ProductFeatureList = (props)=> {
 
   //props
 
-  //
-
-
-
-
   return (
     <div>
 
-      <div className='feature-list'> FeatureList </div>
+      <div className='feature-list'>FeatureList</div>
     </div>
 
   );

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import StyleSelectorContainer from './components/StyleSelectorContainer.jsx';
-import SelectProductContainer from './components/SelectProductContainer.jsx';
-import ProductDescription from './components/ProductDescription.jsx';
-import ImageContainer from './components/ImageContainer.jsx';
-import ProductFeatureList from './components/ProductFeatureList.jsx';
-import ProductInformationContainer from './components/ProductInformationContainer.jsx';
+import StyleSelectorContainer from './components/style/StyleSelectorContainer.jsx';
+import SelectProductContainer from './components/product/SelectProductContainer.jsx';
+import ProductDescription from './components/details/ProductDescription.jsx';
+import ImageContainer from './components/image/ImageContainer.jsx';
+import ProductFeatureList from './components/details/ProductFeatureList.jsx';
+import ProductInformationContainer from './components/details/ProductInformationContainer.jsx';
 import './styles/style.css';
 
 
@@ -27,18 +27,21 @@ const Overview = (props) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState('');
 
-
+  // setSelectedStyle(props.productStyles[0]);
   // useEffect(() => {
 
-
-  //});
+  // setStyleList({styleList: props.productStyles});
+  // setProduct({product: props.product});
+  // });
 
   return (
     < div className='overview-wrapper' >
       <div> <ImageContainer></ImageContainer> </div>
       <div>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
-        <StyleSelectorContainer></StyleSelectorContainer>
+
+        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}></StyleSelectorContainer>
+
         <SelectProductContainer></SelectProductContainer>
       </div>
       <ProductDescription></ProductDescription>
