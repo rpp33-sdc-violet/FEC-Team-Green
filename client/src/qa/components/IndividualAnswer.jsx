@@ -30,24 +30,22 @@ const IndividualAnswer = (props) => {
 
   // date formatter
   const formatDate = () => {
-    const splitT = props.answer.date.split('T');
-    const dateOnly = splitT[0];
-    const splitDate = dateOnly.split('-');
-    const year = splitDate[0];
-    const day = splitDate[2];
-    // get the name of the month 
-    const monthNum = Number(splitDate[1]);
-    const monthsArr = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const month = monthsArr[monthNum];
-    
-    return `${month} ${day}, ${year}`;
+    // implementation credit: Wen 
+    // use Date constructor 
+    const date = new Date(props.answer.date);
+    // access the toLocaleString method to format the date based on BRD requirements
+    return date.toLocaleString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
   };
   
   // render
   // A text and *****TODO: photos?*******
   // *****TODO: Report Link
   return (
-    <div className="answer">
+    <div className="answer" role="answer">
       <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
       <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | placeholder: Report</p>
     </div>

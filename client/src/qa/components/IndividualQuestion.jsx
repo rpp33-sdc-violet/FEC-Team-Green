@@ -45,7 +45,7 @@ const IndividualQuestion = (props) => {
           }
         })
         .catch((error) => {
-          console.log('ERROR IN getAllAnswers', error);
+          alert('ERROR IN getAllAnswers', error);
         });
     };
     // invoke the recursive inner function
@@ -87,7 +87,7 @@ const IndividualQuestion = (props) => {
 
   // AddAnswerLink - state: AddAnswerLinkClick
   return (
-    <div className="question">
+    <div className="question" role="question">
       <div className="question-row">
         <p className="question-text">Q: {props.question.question_body}</p>
         <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerLink /></p>
