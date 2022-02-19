@@ -45,7 +45,7 @@ const IndividualAnswer = (props) => {
   // A text and *****TODO: photos?*******
   // *****TODO: Report Link
   return (
-    <div className="answer">
+    <div className="answer" role="answer">
       <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
       <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | placeholder: Report</p>
     </div>
