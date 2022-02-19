@@ -92,3 +92,14 @@ height: 100%;
       height: 50px;
 
     }
+    .main-image{
+      /* width: 1fr;
+      height: 1fr; */
+      /* width: 1fr;
+      height: 1fr; */
+      /* object-fit: contain; */
+      max-width: 97%;
+
+
+
+    }
