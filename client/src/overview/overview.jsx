@@ -57,4 +57,3 @@ export default Overview;
 // Product Description  displays all text describing the product
 // styleSelectorContainer contains all components and logic for selecting style
 // ct Produc allows you to select size, quantitiy and add p roduct to bag--it also allows you to add product to outfit
-
