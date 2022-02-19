@@ -6,7 +6,11 @@
   "scripts": {
     "build": "webpack --watch",
     "web-dev": "webpack serve --open",
-    "test": "jest",
+    "test": "jest --collectCoverage",
+    "test:overview": "jest client/src/overview/tests/ --detectOpenHandles",
+    "test:related": "jest client/src/relatedProducts/tests/ --detectOpenHandles",
+    "test:qa": "jest client/src/qa/tests --detectOpenHandles",
+    "test:reviews": "jest client/src/reviews/tests --detectOpenHandles",
     "prepare": "husky install",
     "start": "npx nodemon server/index.js"
   },
