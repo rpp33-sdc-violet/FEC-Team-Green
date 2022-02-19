@@ -22,6 +22,8 @@ class App extends React.Component {
     ).then((resp) => {
       this.setState({ product: resp.data },
         () => { console.log('PRODUCT DATA', this.state.product); });
+    }).catch(err => {
+      console.log('error fetching product data', err);
     });
   }
   getProductStylesData(productId) {
@@ -30,6 +32,8 @@ class App extends React.Component {
     ).then((resp) => {
       this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
 
+    }).catch(err => {
+      console.log('error fetching style data', err);
     });
   }
   componentDidMount() {
