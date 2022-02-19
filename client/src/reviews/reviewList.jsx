@@ -19,6 +19,7 @@ class ReviewList extends React.Component {
   getReviews() {
     axios.get('/api/reviews', {
       params: {
+        // eslint-disable-next-line camelcase
         product_id: this.state.productId
       }
     })

@@ -39,21 +39,32 @@ class App extends React.Component {
   }
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    const product_id = 64624;
+    const product_id = 64622;
     this.getProductData(product_id);
     this.getProductStylesData(product_id);
 
   }
   render() {
-    return (
-      <div>
-        <h1>Hello TeamGreen Test</h1>
-        <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
-        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={64624}></QA>
-        <ReviewList product_id={64621}></ReviewList>
-      </div>
-    );
+    if (this.state.product && this.state.productStyles.length > 1) {
+      return (
+        <div>
+          <h1>Logo</h1>
+          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>Logo</h1>
+          {/* <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> */}
+          <div>loading</div>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+        </div>
+      );
+    }
   }
 }
 

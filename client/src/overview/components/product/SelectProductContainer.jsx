@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SelectSizeDropdown from './SelectSizeDropdown.jsx';
 import SelectQuantityDropdown from './SelectQuantityDropdown.jsx';
 import SelectOutfitButton from './SelectOutfitButton.jsx';
@@ -18,11 +18,26 @@ const SelectProductContainer = (props) => {
   //selectedQuantity default 1
   //
 
+  console.log('sizes', props.selectedStyle.skus);
+
+  var sizes = {};
+  Object.keys(props.selectedStyle.skus).forEach(skuKey => {
+    sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+  });
+  console.log('sizes', sizes);
 
 
   return (
-    <div className ='select-product panel'>
+    <div>
       SelectProductContainer
+
+      <div className='select-product panel'>
+        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize} /></div>
+        <div> <SelectQuantityDropdown sizes={sizes} /></div>
+
+        <AddToBagButton />
+        <SelectOutfitButton />
+      </div>
     </div>
   );
 };

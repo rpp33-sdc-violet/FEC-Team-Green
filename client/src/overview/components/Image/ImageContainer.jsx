@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ImageExpander from './ImageExpander.jsx';
 var ImageContainer = function (props) {
 
   //props props.toggleSize;
@@ -8,6 +8,7 @@ var ImageContainer = function (props) {
   return (
     <div className ='image-container'>
       ImageContainer
+      <ImageExpander selectedStyle={props.selectedStyle}/>
     </div>
   );
 };
