@@ -8,8 +8,4 @@ client/src/config/github.js
 dist/config/github.js
 
 
-##Testing
-client/src/overview/tests/Overview-enzyme.test.jsx
-client/src/overview/tests/Overview-rtl.test.jsx
-client/src/qa/tests/QA-enzyme.test.jsx
-client/src/qa/tests/QA-RTL.test.jsx
+
