@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import Overview from './Overview';
+import Overview from '../Overview';
 import ImageContainer from './components/image/ImageContainer';
 import StyleSelectorContainer from './components/style/StyleSelectorContainer';
 import SelectProductContainer from './components/product/SelectProductContainer';
