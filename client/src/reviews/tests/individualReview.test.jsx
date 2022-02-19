@@ -4,9 +4,6 @@ import '@testing-library/jest-dom/extend-expect';
 import IndividualReview from '../individualReview.jsx';
 import reviewSample from '../exampleData.js';
 describe('IndividualReview', ()=>{
-  /*beforeEach(() => {
-    render(<IndividualReview review={reviewSample[0]} />);
-  });*/
 
   it('should render Review Summary', ()=>{
     render(<IndividualReview review={reviewSample[0]} />);
