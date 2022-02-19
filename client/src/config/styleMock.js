@@ -1,1 +1,2 @@
-module.exports = {};
+var styleMock = {};
+module.exports = styleMock;
