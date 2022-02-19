@@ -26,4 +26,9 @@ describe('QUESTIONS LIST', () => {
     const questions = getAllByRole('question');
     expect(questions.length).toBe(8);
   });
+
+  it('should render no questions if no questions are passed as props', () => {
+    render(<QuestionsList questions={[]} />);
+    expect(screen.queryByText(/Q/)).toBeNull();
+  });
 });
