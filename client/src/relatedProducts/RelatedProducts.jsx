@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/style.css';
 import ProductCard from './ProductCard.jsx';
 import OutfitCard from './OutfitCard.jsx';
 
