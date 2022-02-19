@@ -8,4 +8,4 @@ client/src/config/github.js
 dist/config/github.js
 
 ## Coverage ##
-coverage
+coverage/
