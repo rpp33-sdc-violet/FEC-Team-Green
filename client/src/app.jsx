@@ -44,14 +44,26 @@ class App extends React.Component {
 
   }
   render() {
-    return (
-      <div>
-        <h1>Hello TeamGreen Test</h1>
-        <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
-        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={64624}></QA>
-      </div>
-    );
+    if (this.state.product && this.state.productStyles.length > 1) {
+      return (
+        <div>
+          <h1>Hello TeamGreen Test</h1>
+          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>Hello TeamGreen Test</h1>
+          {/* <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> */}
+          <div>loading</div>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+        </div>
+      );
+    }
   }
 }
 
