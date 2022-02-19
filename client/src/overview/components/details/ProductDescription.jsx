@@ -19,7 +19,7 @@ const ProductDescription = (props)=> {
   return (
     <div className='description-container'>
       {/* button */}
-      <div className='slogan'> Product Slogan </div>
+      <div className='slogan'>ProductSlogan</div>
 
       <div className='description'>
         ProductDescription
