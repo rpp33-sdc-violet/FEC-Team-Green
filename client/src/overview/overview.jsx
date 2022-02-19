@@ -11,7 +11,8 @@ import './styles/style.css';
 
 const Overview = (props) => {
 
-
+  // props.product
+  // props.productList
   //const [urlList, setUrlList] = useState([]);
   //const [thumbUrlList, setThumbUrlList] = useState([]);
 
@@ -27,16 +28,17 @@ const Overview = (props) => {
   const [selectedSize, setSelectedSize] = useState('Select Size');
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  // setSelectedStyle(props.productStyles[0]);
-  // useEffect(() => {
-  //   console.log('selectedStyle: ', selectedStyle);
+  //
+  useEffect(() => {
+    console.log('selectedStyle:-->> ', props);
+    setSelectedStyle(props.productStyles[0]);
+  }, []);
 
-  // setStyleList({styleList: props.productStyles});
-  // setProduct({product: props.product});
-  // });
   return (
+
     < div className='overview-wrapper' >
-      <div> <ImageContainer></ImageContainer> </div>
+      <div> <ImageContainer selectedStyle={selectedStyle}></ImageContainer> </div>
+      {/* <div>{selectedStyle}</div> */}
       <div>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
 
