@@ -52,6 +52,7 @@ class App extends React.Component {
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
           <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
           <QA product_id={64624}></QA>
+          <ReviewList product_id={64621}></ReviewList>
         </div>
       );
     } else {
@@ -62,6 +63,7 @@ class App extends React.Component {
           <div>loading</div>
           <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
           <QA product_id={64624}></QA>
+          <ReviewList product_id={64621}></ReviewList>
         </div>
       );
     }
