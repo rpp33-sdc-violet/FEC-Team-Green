@@ -11,7 +11,7 @@ describe('QUESTIONS LIST', () => {
     window.alert = () => {}; // provide an empty implementation for window.alert
   });
 
-  it('should render five qestions if five questions are passed as props', () => {    
+  it('should render five questions if five questions are passed as props', () => {    
     render(<QuestionsList questions={exampleQuestionData64624.results} />);
     const questionsList = screen.getByRole('questions-list');
     const { getAllByRole } = within(questionsList);
@@ -19,7 +19,7 @@ describe('QUESTIONS LIST', () => {
     expect(questions.length).toBe(5);
   });
   
-  it('should render eight qestions if eight questions are passed as props', () => {
+  it('should render eight questions if eight questions are passed as props', () => {
     render(<QuestionsList questions={exampleQuestionData64621.results} />);
     const questionsList = screen.getByRole('questions-list');
     const { getAllByRole } = within(questionsList);
