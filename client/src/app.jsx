@@ -38,7 +38,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    const product_id = 64624;
+    const product_id = 64622;
     this.getProductData(product_id);
     this.getProductStylesData(product_id);
 

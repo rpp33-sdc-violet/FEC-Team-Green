@@ -68,3 +68,27 @@ height: 100%;
     .style-thumbnail:hover {
       border-color: gray;
     }
+    .select-product {
+      display: grid;
+      grid-template-columns: .5fr .5fr ;
+      grid-template-rows: 75px 75px;
+
+      grid-template-areas:
+      "size size size  . quantity quantity"
+      "add add add add outfit";
+      padding: 10px;
+    }
+    .select-bag {
+      height: 50px;
+      margin-right: 20px;
+    }
+    .select-quantity {
+      height: 50px;
+    }
+    .select-size {
+      height: 50px;
+    }
+    .select-outfit {
+      height: 50px;
+
+    }

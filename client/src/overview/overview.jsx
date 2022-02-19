@@ -23,26 +23,27 @@ const Overview = (props) => {
   // product overview will contain
   //  id, name, slogan, description, category, default_price, features (an array)
 
-  const [selectedStyle, setSelectedStyle] = useState('');
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedQuantity, setSelectedQuantity] = useState('');
+  const [selectedStyle, setSelectedStyle] = useState({skus: {}, size: 0});
+  const [selectedSize, setSelectedSize] = useState('Select Size');
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   // setSelectedStyle(props.productStyles[0]);
   // useEffect(() => {
+  //   console.log('selectedStyle: ', selectedStyle);
 
   // setStyleList({styleList: props.productStyles});
   // setProduct({product: props.product});
   // });
-
   return (
     < div className='overview-wrapper' >
       <div> <ImageContainer></ImageContainer> </div>
       <div>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
 
-        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}></StyleSelectorContainer>
+        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 
-        <SelectProductContainer></SelectProductContainer>
+        <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
+          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} selectQuantity={setSelectedQuantity} />
       </div>
       <ProductDescription></ProductDescription>
       <ProductFeatureList></ProductFeatureList>

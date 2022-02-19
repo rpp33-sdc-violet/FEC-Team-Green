@@ -11,9 +11,9 @@ const SelectOutfitButton = (props) => {
 
 
   return (
-    <div className ='select-outfit'>
+    <button className ='select-outfit'>
       SelectOutfitButton
-    </div>
+    </button>
   );
 };
 
