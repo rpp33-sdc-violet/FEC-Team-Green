@@ -18,7 +18,7 @@ const StyleSelectorContainer = (props) => {
   if (props.productStyles && props.productStyles.length > 1) {
     return (
       <div>
-        <div className='style-tag'> STYLE {">"}  {props.selectedStyle.name}</div>
+        <div className='style-tag'> STYLE {'>'}  {props.selectedStyle.name}</div>
         <div className='style-selector panel'>
 
           <StyleList styleList={props.productStyles} setSelectedStyle={props.setSelectedStyle}/>
