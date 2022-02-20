@@ -4,7 +4,7 @@ var ImageExpander = function (props) {
 
   //props props.toggleSize;
 
-  console.log('img expander: ', props);
+  // console.log('img expander: ', props);
   if (props.selectedStyle && props.selectedStyle.name) {
     return (
       <div className ='image-container'>
