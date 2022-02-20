@@ -7,7 +7,7 @@ var ImageExpander = function (props) {
   console.log('img expander: ', props);
   if (props.selectedStyle && props.selectedStyle.name) {
     return (
-      <div className ='image'>
+      <div className ='image-container'>
         <img className='main-image' src={props.selectedStyle.photos[0].url}></img>
       </div>
     );

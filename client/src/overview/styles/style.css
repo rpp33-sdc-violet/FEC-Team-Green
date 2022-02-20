@@ -5,6 +5,9 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 1fr;
   border: 1px solid black;
+  height: 1000px;
+  max-height: 1000px;
+  overflow: hidden;
 
 };
 
@@ -98,8 +101,27 @@ height: 100%;
       /* width: 1fr;
       height: 1fr; */
       /* object-fit: contain; */
+      width: auto;
+      /* min-width */
+      height: 100%;
+      max-height: 600px;
       max-width: 97%;
+    }
+    .image-container, .rightPanel{
+      max-height: 600px;
+      height: 600px;
 
-
-
+    }
+    .image-container{
+      display: flex;
+      flex-wrap: wrap;
+      /* max-height: 700px;*/
+      height: auto;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .rightPanel {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-around;
     }

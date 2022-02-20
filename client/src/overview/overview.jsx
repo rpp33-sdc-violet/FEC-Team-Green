@@ -37,9 +37,9 @@ const Overview = (props) => {
   return (
 
     < div className='overview-wrapper' >
-      <div> <ImageContainer selectedStyle={selectedStyle}></ImageContainer> </div>
+      <ImageContainer selectedStyle={selectedStyle}></ImageContainer>
       {/* <div>{selectedStyle}</div> */}
-      <div>
+      <div className='rightPanel'>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>
 
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
