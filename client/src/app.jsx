@@ -45,28 +45,19 @@ class App extends React.Component {
 
   }
   render() {
-    if (this.state.product && this.state.productStyles.length > 1) {
-      return (
-        <div>
-          <h1>Logo</h1>
-          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
-          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-          <QA product_id={64624}></QA>
-          <ReviewList product_id={64621}></ReviewList>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h1>Logo</h1>
-          {/* <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> */}
-          <div>loading</div>
-          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-          <QA product_id={64624}></QA>
-          <ReviewList product_id={64621}></ReviewList>
-        </div>
-      );
-    }
+    // if  {
+    return (
+      <div>
+        <h1>Logo</h1>
+        {this.state.product && this.state.productStyles.length > 1 ?
+          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
+          <div>loading</div>}
+        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+        <QA product_id={64624}></QA>
+        <ReviewList product_id={64621}></ReviewList>
+
+      </div>
+    );
   }
 }
 
