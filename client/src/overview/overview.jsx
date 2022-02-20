@@ -30,7 +30,6 @@ const Overview = (props) => {
 
   //
   useEffect(() => {
-    console.log('selectedStyle:-->> ', props);
     setSelectedStyle(props.productStyles[0]);
   }, []);
 
@@ -47,7 +46,7 @@ const Overview = (props) => {
         <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
           selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} selectQuantity={setSelectedQuantity} />
       </div>
-      <ProductDescription></ProductDescription>
+      <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>
     </div >
   );
