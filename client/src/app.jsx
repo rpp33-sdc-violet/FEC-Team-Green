@@ -50,14 +50,11 @@ class App extends React.Component {
   }
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    // const product_id = 64622;
     this.getProductData(this.state.product_id);
-    // this.getProductStylesData(product_id);
   }//64669
   searchProductID(query) {
     console.log('query', query);
     this.getProductData(query);
-    // this.getProductStylesData(query);
   }
   handleChange(event) {
     this.setState({search: event.target.value});
@@ -71,7 +68,10 @@ class App extends React.Component {
           <form>
             <input value={this.state.search} onChange={this.handleChange}></input>
           </form>
-          <BiSearchAlt2 className={'searchIcon'} onClick={() => { this.searchProductID(this.state.search); }}viewBox={[0, 0, 24, 21]} />
+          <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
+            // event.preventDefault();
+            this.searchProductID(this.state.search);
+          }}viewBox={[0, 0, 24, 21]} />
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
