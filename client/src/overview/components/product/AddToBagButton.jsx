@@ -11,9 +11,9 @@ const AddToBagButton = (props) => {
 
 
   return (
-    <div className ='select-bag'>
+    <button className ='select-bag'>
       AddToBagButton
-    </div>
+    </button>
   );
 };
 

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './appStyles/style.css';
@@ -6,26 +7,78 @@ import Overview from './overview/Overview.jsx';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
 import QA from './qa/QA.jsx';
 import ReviewList from './reviews/reviewList.jsx';
-
+import exampleProductData from './data/exampleProductData.js';
+import exampleStyleData from './data/exampleStyleData.js';
+import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      product: {},
+      productStyles: [],
+      search: '',
+      // eslint-disable-next-line camelcase
+      product_id: 64622
+    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  getProductData(productId) {
+
+    axios.get(`/api/products/${productId}/`
+    ).then((resp) => {
+      this.setState({ product: resp.data },
+        () => { console.log('PRODUCT DATA', this.state.product); });
+      this.getProductStylesData(this.state.product_id);
+    }).catch(err => {
+      console.log('error fetching product data', err);
+    });
+  }
+  getProductStylesData(productId) {
+
+    axios.get(`/api/products/${productId}/styles`
+    ).then((resp) => {
+      this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
+
+    }).catch(err => {
+      console.log('error fetching style data', err);
+    });
+  }
+  componentDidMount() {
+    // // eslint-disable-next-line camelcase
+    // const product_id = 64622;
+    this.getProductData(this.state.product_id);
+
+
+  }
+  searchProductID(query) {
+    console.log('query', query);
+    // eslint-disable-next-line camelcase
+    //this.setState({product_id: query});
+    this.getProductData(query);
+    // this.getProductStylesData(query);
+  }
+  handleChange(event) {
+    this.setState({search: event.target.value});
+  }
   render() {
+    // if  {
     return (
       <div>
         <nav id={'navbar'}>
           <p className='logo'>LOGO</p>
           <form>
-            <input></input>
+            <input value={this.state.search} onChange={this.handleChange}></input>
           </form>
-          <BiSearchAlt2 className={'searchIcon'} viewBox={[0, 0, 24, 21]}/>
+          <BiSearchAlt2 className={'searchIcon'} onClick={() => { this.searchProductID(this.state.search); }}viewBox={[0, 0, 24, 21]} />
         </nav>
-        <h1>Hello TeamGreen Test</h1>
-        <Overview></Overview>
-        <RelatedProducts data={{productID: '007'}}></RelatedProducts>
+        {this.state.product && this.state.productStyles.length > 1 ?
+          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
+          <div>loading</div>}
+        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
         <QA product_id={64624}></QA>
+        <ReviewList product_id={64621}></ReviewList>
+
       </div>
     );
   }

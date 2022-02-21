@@ -16,16 +16,15 @@ const ProductDescription = (props)=> {
   // local state highlighted url index
   //method to change highlighted url
 
+
   return (
     <div className='description-container'>
-      {/* button */}
-      <div className='slogan'> Product Slogan </div>
-
-      <div className='description'>
-        ProductDescription
+      <div className='slogan'>
+        {props.slogan ? props.slogan : '...loading'}
       </div>
-      {/* button */}
-      {/* <div className='feature-list'> FeatureList </div> */}
+      <div className='description'>
+        {props.description ? props.description : '...loading'}
+      </div>
     </div>
 
   );

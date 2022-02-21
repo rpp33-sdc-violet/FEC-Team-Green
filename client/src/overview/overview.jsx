@@ -1,18 +1,18 @@
-
 import React, { useState, useEffect } from 'react';
-import StyleSelectorContainer from './components/StyleSelectorContainer.jsx';
-import SelectProductContainer from './components/SelectProductContainer.jsx';
-import ProductDescription from './components/ProductDescription.jsx';
-import ImageContainer from './components/ImageContainer.jsx';
-import ProductFeatureList from './components/ProductFeatureList.jsx';
-import ProductInformationContainer from './components/ProductInformationContainer.jsx';
+import StyleSelectorContainer from './components/style/StyleSelectorContainer.jsx';
+import SelectProductContainer from './components/product/SelectProductContainer.jsx';
+import ProductDescription from './components/details/ProductDescription.jsx';
+import ImageContainer from './components/image/ImageContainer.jsx';
+import ProductFeatureList from './components/details/ProductFeatureList.jsx';
+import ProductInformationContainer from './components/details/ProductInformationContainer.jsx';
 import './styles/style.css';
 
 
 
 const Overview = (props) => {
 
-
+  // props.product
+  // props.productList
   //const [urlList, setUrlList] = useState([]);
   //const [thumbUrlList, setThumbUrlList] = useState([]);
 
@@ -24,25 +24,29 @@ const Overview = (props) => {
   // product overview will contain
   //  id, name, slogan, description, category, default_price, features (an array)
 
-  const [selectedStyle, setSelectedStyle] = useState('');
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedQuantity, setSelectedQuantity] = useState('');
+  const [selectedStyle, setSelectedStyle] = useState({skus: {}, size: 0});
+  const [selectedSize, setSelectedSize] = useState('Select Size');
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-
+  //
   useEffect(() => {
-
-
-  });
+    setSelectedStyle(props.productStyles[0]);
+  }, []);
 
   return (
+
     < div className='overview-wrapper' >
-      <div> <ImageContainer></ImageContainer> </div>
-      <div>
-        <ProductInformationContainer></ProductInformationContainer>
-        <StyleSelectorContainer></StyleSelectorContainer>
-        <SelectProductContainer></SelectProductContainer>
+      <ImageContainer selectedStyle={selectedStyle}></ImageContainer>
+      {/* <div>{selectedStyle}</div> */}
+      <div className='rightPanel'>
+        <ProductInformationContainer product={props.product}></ProductInformationContainer>
+
+        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
+
+        <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
+          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} selectQuantity={setSelectedQuantity} />
       </div>
-      <ProductDescription></ProductDescription>
+      <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>
     </div >
   );
@@ -55,4 +59,3 @@ export default Overview;
 // Product Description  displays all text describing the product
 // styleSelectorContainer contains all components and logic for selecting style
 // ct Produc allows you to select size, quantitiy and add p roduct to bag--it also allows you to add product to outfit
-

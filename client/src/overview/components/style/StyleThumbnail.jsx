@@ -8,12 +8,17 @@ const StyleThumbnail = (props) => {
   //StyleThumbnail img;
   //setSelectedImageUrl
   //setSelectedThumbnailUrl
-
+  var onClick = () => {
+    console.log('clicked');
+    props.setSelectedStyle(props.style);
+  };
 
   return (
-    <div className ='style-thumbnail'>
-      StyleThumbnail
-    </div>
+    <li>
+      <img className ='style-thumbnail' src={props.style.photos[0].thumbnail_url} onClick={onClick}>
+      </img>
+    </li>
+
   );
 };
 

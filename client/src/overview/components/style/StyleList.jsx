@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import StyleThmbnail from './StyleThumbnail.jsx';
 
 //this is list that contains all thumbnail buttons
@@ -9,11 +9,14 @@ const StyleList = (props) => {
   //setSelectedImageUrl
   //setSelectedListUrl
 
-
+  var styleThumbnails = props.styleList.map(style => {
+    return <StyleThmbnail style={style} key={style.style_id} setSelectedStyle={props.setSelectedStyle}/>;
+  });
   return (
-    <div className ='style-list'>
-      StyleList
-    </div>
+    <ul className='style-list'>
+      { styleThumbnails }
+    </ul>
+
   );
 };
 
