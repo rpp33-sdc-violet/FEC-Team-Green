@@ -22,7 +22,7 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
- 
+
 
   getProductData(productId) {
 
@@ -30,7 +30,9 @@ class App extends React.Component {
     ).then((resp) => {
       this.setState({ product: resp.data },
         () => { console.log('PRODUCT DATA', this.state.product); });
-      this.getProductStylesData(this.state.product_id);
+
+    }).then(() => {
+      this.getProductStylesData(productId);
     }).catch(err => {
       console.log('error fetching product data', err);
     });
@@ -40,23 +42,37 @@ class App extends React.Component {
     axios.get(`/api/products/${productId}/styles`
     ).then((resp) => {
       this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
-
+      // eslint-disable-next-line camelcase
+      this.setState({product_id: productId});
     }).catch(err => {
       console.log('error fetching style data', err);
     });
   }
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    const product_id = 64622;
-    this.getProductData(product_id);
-    this.getProductStylesData(product_id);
-
+    // const product_id = 64622;
+    this.getProductData(this.state.product_id);
+    // this.getProductStylesData(product_id);
+  }//64669
+  searchProductID(query) {
+    console.log('query', query);
+    this.getProductData(query);
+    // this.getProductStylesData(query);
+  }
+  handleChange(event) {
+    this.setState({search: event.target.value});
   }
   render() {
-    // if  {
+
     return (
       <div>
-        <h1>Logo</h1>
+        <nav id={'navbar'}>
+          <p className='logo'>LOGO</p>
+          <form>
+            <input value={this.state.search} onChange={this.handleChange}></input>
+          </form>
+          <BiSearchAlt2 className={'searchIcon'} onClick={() => { this.searchProductID(this.state.search); }}viewBox={[0, 0, 24, 21]} />
+        </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
           <div>loading</div>}
