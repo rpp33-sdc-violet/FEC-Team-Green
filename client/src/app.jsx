@@ -22,6 +22,7 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+ 
 
   getProductData(productId) {
 
@@ -45,42 +46,35 @@ class App extends React.Component {
     });
   }
   componentDidMount() {
-    // // eslint-disable-next-line camelcase
-    // const product_id = 64622;
-    this.getProductData(this.state.product_id);
-
-
-  }
-  searchProductID(query) {
-    console.log('query', query);
     // eslint-disable-next-line camelcase
-    //this.setState({product_id: query});
-    this.getProductData(query);
-    // this.getProductStylesData(query);
-  }
-  handleChange(event) {
-    this.setState({search: event.target.value});
+    const product_id = 64622;
+    this.getProductData(product_id);
+    this.getProductStylesData(product_id);
+
   }
   render() {
-    // if  {
-    return (
-      <div>
-        <nav id={'navbar'}>
-          <p className='logo'>LOGO</p>
-          <form>
-            <input value={this.state.search} onChange={this.handleChange}></input>
-          </form>
-          <BiSearchAlt2 className={'searchIcon'} onClick={() => { this.searchProductID(this.state.search); }}viewBox={[0, 0, 24, 21]} />
-        </nav>
-        {this.state.product && this.state.productStyles.length > 1 ?
-          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
-          <div>loading</div>}
-        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={64624}></QA>
-        <ReviewList product_id={64621}></ReviewList>
-
-      </div>
-    );
+    if (this.state.product && this.state.productStyles.length > 1) {
+      return (
+        <div>
+          <h1>Logo</h1>
+          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+          <ReviewList product_id={64621}></ReviewList>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>Logo</h1>
+          {/* <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> */}
+          <div>loading</div>
+          <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
+          <QA product_id={64624}></QA>
+          <ReviewList product_id={64621}></ReviewList>
+        </div>
+      );
+    }
   }
 }
 

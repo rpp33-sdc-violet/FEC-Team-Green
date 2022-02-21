@@ -14,7 +14,7 @@ const ProductInformationContainer = (props) => {
     return (
       <div className='information panel'>
         <div className='stars'>stars</div>
-        
+
         {props.product.category ? <h4 className='category'>{props.product.category}
         </h4> : <h4 className='category ghost'>...loading
         </h4>}

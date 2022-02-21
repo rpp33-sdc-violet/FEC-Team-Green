@@ -6,9 +6,10 @@ var ImageContainer = function (props) {
 
 
   return (
-
-    <ImageExpander selectedStyle={props.selectedStyle}/>
-
+    <div className ='image-container'>
+      ImageContainer
+      <ImageExpander selectedStyle={props.selectedStyle}/>
+    </div>
   );
 };
 
