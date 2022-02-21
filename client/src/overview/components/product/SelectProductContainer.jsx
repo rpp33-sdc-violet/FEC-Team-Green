@@ -18,13 +18,11 @@ const SelectProductContainer = (props) => {
   //selectedQuantity default 1
   //
 
-  console.log('sizes', props.selectedStyle.skus);
 
   var sizes = {};
   Object.keys(props.selectedStyle.skus).forEach(skuKey => {
     sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
   });
-  console.log('sizes', sizes);
 
   var sizes = {};
   Object.keys(props.selectedStyle.skus).forEach(skuKey => {
