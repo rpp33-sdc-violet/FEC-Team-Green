@@ -18,7 +18,6 @@
 }
 
 .questions-list {
-  border: 2px solid blue;
   overflow: scroll;
 }
 
@@ -29,7 +28,7 @@
 .question-row {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  border: 1px solid yellow;
+  border: 1px solid blue;
 }
 
 .question-text {
@@ -42,6 +41,5 @@
 }
 
 .answers-list {
-  border: 2px solid black;
   overflow: scroll;
 }
