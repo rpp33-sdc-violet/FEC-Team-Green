@@ -1,6 +1,6 @@
 .QA-container {
   display: grid;
-  grid-template-rows: 1fr 1fr fit-content(350px) 1fr;
+  grid-template-rows: 1fr 1fr fit-content(360px) 1fr;
   grid-template-areas: 
     "header"
     "search"
@@ -29,10 +29,19 @@
 .question-row {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  border: 1px solid blue;
-
+  border: 1px solid yellow;
 }
 
 .question-text {
   font-weight: bold;
+}
+
+.answers-container {
+  display: grid;
+  grid-template-rows: fit-content(180px);
+}
+
+.answers-list {
+  border: 2px solid black;
+  overflow: scroll;
 }
