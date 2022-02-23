@@ -28,6 +28,7 @@ const IndividualAnswer = (props) => {
     }
   };
 
+  // handleReportClick - request to "report answer" endpoint
   const handleReportClick = (event) => {
     event.preventDefault();
     if (!isReportClicked) {
@@ -59,14 +60,12 @@ const IndividualAnswer = (props) => {
   
   // render
   // A text and *****TODO: photos?*******
-  // *****TODO: Report Link
   return (
     <div className="answer" role="answer">
       <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
       <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href="/" onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | <a href="/" onClick={handleReportClick}>{reportText}</a></p>
     </div>
   );
-
 };
 
 export default IndividualAnswer;
