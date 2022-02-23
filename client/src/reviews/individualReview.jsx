@@ -75,7 +75,7 @@ class IndividualReview extends React.Component {
             //TODO: NEED TO BUILD A MODEL TO OPEN IMAGE IN MODAL WINDOW
             //CAN BE SHARED WITH QA COMPONENTS AND MORE
             return (
-              console.log('photo url', photo.url)
+              'console.log("photo url", photo.url)'
             );
           })}
         </div>
