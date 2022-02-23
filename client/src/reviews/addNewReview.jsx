@@ -12,9 +12,7 @@ class AddNewReview extends React.Component {
   }
   render() {
     return (
-      <div>
-        <button>ADD A REVIEW</button>
-      </div>
+      <button>ADD A REVIEW</button>
     );
   }
 }

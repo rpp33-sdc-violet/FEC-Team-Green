@@ -9,21 +9,29 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       productId: this.props.product_id,
-      reviews: reviewSample,
+      reviews: [],
       displayCount: 2,
-      buttonVisible: true
+      buttonVisible: true,
+      sort: 'relevant'
     };
     this.loadReviews = this.loadReviews.bind(this);
+    this.sortReviews = this.sortReviews.bind(this);
   }
+
   componentDidMount() {
     this.getReviews();
   }
 
-  getReviews() {
+  getReviews(currentOption) {
     axios.get('/api/reviews', {
       params: {
         // eslint-disable-next-line camelcase
-        product_id: this.state.productId
+        product_id: this.state.productId,
+        //sort: this.state.sort
+        //TODO: why sort has to be an input in getReviews function, otherwise  option is not updated as expected
+        //it will be the last selection
+
+        sort: currentOption
       }
     })
       .then((res) => {
@@ -44,6 +52,12 @@ class ReviewList extends React.Component {
     }
   }
 
+  sortReviews(option) {
+    this.setState({sort: option});
+    this.getReviews(option);
+    console.log('option', option);
+  }
+
 
   render() {
     //slice displayed reviews based on displaycount
@@ -54,15 +68,11 @@ class ReviewList extends React.Component {
 
     let moreReviewButton = null;
     if (this.state.buttonVisible && this.state.reviews.length > 2) {
-      moreReviewButton = <div>
-        <button onClick = {this.loadReviews}>MORE REVIEWS</button>
-      </div>;
+      moreReviewButton = <button onClick = {this.loadReviews}>MORE REVIEWS</button>;
     }
 
-
-
     //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
-    if (this.state.reviews.length === 0 || this.state.reviews === null) {
+    if (this.state.reviews.length === 0) {
       return (
         <div>
           <h3>Review List</h3>
@@ -73,6 +83,12 @@ class ReviewList extends React.Component {
       return (
         <div>
           <h3>Review List</h3>
+          <select onChange = {() => { this.sortReviews(event.target.value); }}>
+            <option value="relevane">relevant</option>
+            <option value="newest">newest</option>
+            <option value="helpful">helpful</option>
+          </select>
+          <br></br>
           <div>
             {currentReviews.map((review) => {
               return (
