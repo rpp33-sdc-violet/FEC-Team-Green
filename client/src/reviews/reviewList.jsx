@@ -2,11 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
+import AddNewReview from './addNewReview.jsx';
+
 class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: props.product_id,
+      productId: this.props.product_id,
       reviews: reviewSample,
       displayCount: 2,
       buttonVisible: true
@@ -57,21 +59,38 @@ class ReviewList extends React.Component {
       </div>;
     }
 
-    return (
-      <div>
-        <h3>Review List</h3>
+
+
+    //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
+    if (this.state.reviews.length === 0 || this.state.reviews === null) {
+      return (
         <div>
-          {currentReviews.map((review) => {
-            return (
-              <IndividualReview review = {review} key = {review.review_id} />
-            );
-          })}
+          <h3>Review List</h3>
+          <AddNewReview productId = {this.state.productId}/>
         </div>
+      );
+    } else {
+      return (
         <div>
-          {moreReviewButton}
+          <h3>Review List</h3>
+          <div>
+            {currentReviews.map((review) => {
+              return (
+                <IndividualReview review = {review} key = {review.review_id} />
+              );
+            })}
+          </div>
+          <div>
+            {moreReviewButton}
+            <AddNewReview productId = {this.state.productId}/>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+
+
+
   }
 
 
