@@ -12,7 +12,8 @@
     "test:qa": "jest client/src/qa/tests --detectOpenHandles",
     "test:reviews": "jest client/src/reviews/tests --detectOpenHandles",
     "prepare": "husky install",
-    "start": "npx nodemon server/index.js"
+    "start": "npx nodemon server/index.js",
+    "start2": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -49,6 +50,7 @@
     "http-proxy-middleware": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-test-renderer": "^17.0.2",
     "style-loader": "^3.3.1"
   }
