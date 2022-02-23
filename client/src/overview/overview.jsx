@@ -26,7 +26,7 @@ const Overview = (props) => {
 
   const [selectedStyle, setSelectedStyle] = useState({skus: {}, size: 0});
   const [selectedSize, setSelectedSize] = useState('Select Size');
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState('-');
 
   //
   useEffect(() => {
@@ -59,3 +59,6 @@ export default Overview;
 // Product Description  displays all text describing the product
 // styleSelectorContainer contains all components and logic for selecting style
 // ct Produc allows you to select size, quantitiy and add p roduct to bag--it also allows you to add product to outfit
+//If the size has not been selected, then the quantity dropdown will display ‘-’ and the dropdown will be disabled.
+//Once a size has been selected, the dropdown should default to 1.
+

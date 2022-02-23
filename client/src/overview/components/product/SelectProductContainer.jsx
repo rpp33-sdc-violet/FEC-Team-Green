@@ -29,14 +29,13 @@ const SelectProductContainer = (props) => {
     sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
   });
 
-
   return (
     <div>
       SelectProductContainer
 
       <div className='select-product panel'>
-        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize} /></div>
-        <div> <SelectQuantityDropdown sizes={sizes} /></div>
+        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
+        <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity}/></div>
 
         <AddToBagButton />
         <SelectOutfitButton />

@@ -1,7 +1,7 @@
 /* ** APPLY TO ALL ** */
 * {
   margin: 0;
-  border: 0;
+  /* border: 0; */
   padding: 0;
 }
 
@@ -10,21 +10,25 @@
   display: flex;
   background-color: black;
   border-bottom: 2px solid #39FF14;
+  /* border: 0; */
 }
 
 #navbar .logo {
   display: inline-block;
   color: #39FF14;;
   padding: 9px;
+
 }
 
 #navbar > form {
   margin-left: auto;
   display: inline-block;
   padding: 9px 3px;
+  /* border: 0 */
 }
 
 #navbar > form > input {
+  border: 0;
   outline: none;
   background-color: transparent;
   border-bottom: 1px solid #39FF14;

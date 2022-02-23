@@ -11,12 +11,16 @@ const SelectQuantityDropdown = (props) => {
   // var options = objects.keys(sizes).map(key => {
   //   return <option>key</option>;
   // });
+  console.log('selectedq: ', props);
+  // var options =
 
   return (
-    <select className ='select-quantity'>
-      <option>0</option>
+
+    <select className ={`select-quantity ${(props.selectedQuantity === '-') ? 'disabled' : ''}`}>
+      <option>{props.selectedQuantity}</option>
       SelectQuantityDropdown
     </select>
+
   );
 };
 
