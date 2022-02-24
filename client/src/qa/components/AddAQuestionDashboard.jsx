@@ -27,17 +27,19 @@ const AddAQuestionDashboard = (props) => {
     setShow(false);
   };
   
-  const hideModalAndPOST = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setShow(false);
+    console.log('here', question, nickname, email);
     // POST 
   };
 
   return (
     <>
-      <AddAQuestionModal show={show} handleClose={hideModal} handleSubmit={hideModalAndPOST}>
+      <AddAQuestionModal show={show} handleClose={hideModal}>
         <h1>Ask Your Question</h1>
         <h3>About the {props.product_name}</h3>
-        <form className="question-form">
+        <form className="question-form" onSubmit={handleSubmit}>
           <label>
             Your Question*
             <textarea maxLength="1000" required value={question} onChange={(e) => setQuestion(e.target.value)}/>
@@ -56,7 +58,7 @@ const AddAQuestionDashboard = (props) => {
             <br />
             For authentication reasons, you will not be emailed
           </label>
-          <button className="modal-button-submit" type="submit">Submit</button>
+          <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
       </AddAQuestionModal>
       <button type="button" onClick={showModal}>ADD A QUESTION +</button>

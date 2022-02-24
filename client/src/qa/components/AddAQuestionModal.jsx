@@ -15,7 +15,7 @@ import React from 'react';
 
 import '../styles/modal.css';
 
-const AddAQuestionModal = ({ handleClose, handleSubmit, show, children }) => {
+const AddAQuestionModal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 
   return (
