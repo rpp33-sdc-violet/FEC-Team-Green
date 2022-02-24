@@ -3,15 +3,13 @@ const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
-  entry: `${SRC_DIR}/app.jsx`,
+  entry: {
+    app: `${SRC_DIR}/app.jsx`,
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(DIST_DIR),
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    static: DIST_DIR
+    // clean: true,
   },
   module: {
     rules: [
