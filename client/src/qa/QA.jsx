@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddAQuestionButton from './components/AddAQuestionButton.jsx';
+import AddAQuestionDashboard from './components/AddAQuestionDashboard.jsx';
 import QuestionsList from './components/QuestionsList.jsx';
 import Search from './components/Search.jsx';
 import './styles/style.css';
 
 const QA = (props) => {
+  // props: product_id, product_name
 
   const [allQues, setAllQues] = useState([]);
   const [filteredQues, setFilteredQues] = useState([]);
@@ -84,7 +85,7 @@ const QA = (props) => {
       <QuestionsList questions={filteredQues.slice(0, countQ)} />
       <div className="buttons">
         {moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-        <AddAQuestionButton />
+        <AddAQuestionDashboard product_name={props.product_name}/>
       </div>
     </div>
   );
