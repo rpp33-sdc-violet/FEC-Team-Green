@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
-import StarRating from '../starRating.jsx';
+
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -42,7 +42,6 @@ class ReviewList extends React.Component {
 
       <div>
         <h3>Review List</h3>
-        <StarRating />
         {this.state.reviews.map((review) => {
           return (
             <IndividualReview review = {review} key = {review.review_id} />

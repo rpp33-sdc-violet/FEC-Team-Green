@@ -2,15 +2,15 @@ import React from 'react';
 
 
 const StarRating = (props) => {
-
-  //render size, width, comfort, quality, length and fit factor bar
+  // need to figure out correct equation -> now filling out star based on percentage
+  //TODO: the visual rating should be representative of up to a quarter of a veview point
+  //ex:3.8 should display 3+3/4 (=3.75), now displaying 3.8
+  let rating = {'--rating': props.rating / 5};
   return (
-    <div className="Stars" style={{rating: '2.3'}} aria-label="Rating of this product is 2.3 out of 5."></div>
+    <div className="Stars" style={rating}></div>
   );
 
 
 };
 
 export default StarRating;
-
-//style={{color: "red"}}
