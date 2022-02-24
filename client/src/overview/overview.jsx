@@ -44,7 +44,7 @@ const Overview = (props) => {
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 
         <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
-          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} selectQuantity={setSelectedQuantity} />
+          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} />
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>

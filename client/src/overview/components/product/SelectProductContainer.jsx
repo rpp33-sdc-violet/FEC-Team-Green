@@ -8,6 +8,7 @@ import AddToBagButton from './AddToBagButton.jsx';
 
 const SelectProductContainer = (props) => {
 
+
   //props
   //selectedStyle (id?)
   //selectedStyleSizes(list)
@@ -34,7 +35,9 @@ const SelectProductContainer = (props) => {
       SelectProductContainer
 
       <div className='select-product panel'>
-        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
+        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize}
+          setSelectedSize={props.setSelectedSize}
+          selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
         <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity}/></div>
 
         <AddToBagButton />
