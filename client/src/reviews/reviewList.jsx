@@ -28,8 +28,8 @@ class ReviewList extends React.Component {
         // eslint-disable-next-line camelcase
         product_id: this.state.productId,
         //sort: this.state.sort
-        //TODO: why sort has to be an input in getReviews function, otherwise  option is not updated as expected
-        //it will be the last selection
+        //option has to be an input in getReviews function, otherwise  option is not updated as expected
+        //(it would be user's last selection)  setState() as a request rather than an immediate command to update the component
 
         sort: currentOption
       }
@@ -55,7 +55,6 @@ class ReviewList extends React.Component {
   sortReviews(option) {
     this.setState({sort: option});
     this.getReviews(option);
-    console.log('option', option);
   }
 
 
