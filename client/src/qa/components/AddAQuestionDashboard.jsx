@@ -43,7 +43,6 @@ const AddAQuestionDashboard = (props) => {
         isCorrectEmail = false;
       } else {
         const dotSplit = atSplit[1].split('.');
-        console.log('dotSplit', dotSplit);
         if (dotSplit.length !== 2) {
           isCorrectEmail = false;
         }
@@ -77,7 +76,6 @@ const AddAQuestionDashboard = (props) => {
       setErrorMsg(errorText);
     } else {
       // submission form has been validated succesfully! 
-      console.log('omg we are here');
       const bodyParams = {
         body: question,
         name: nickname,
@@ -85,7 +83,6 @@ const AddAQuestionDashboard = (props) => {
         // eslint-disable-next-line camelcase
         product_id: props.product_id
       };
-      console.log('bodyParams', bodyParams);
       axios.post('/api/qa/questions', bodyParams)
         .then((response) => {
           setShow(false);
