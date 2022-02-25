@@ -3,7 +3,7 @@ import Modal from './Modal.jsx';
 import axios from 'axios';
 
 const AddAQuestionDashboard = (props) => {
-  // props: product_name
+  // props: product_name, product_id
   const [show, setShow] = useState(false);
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
