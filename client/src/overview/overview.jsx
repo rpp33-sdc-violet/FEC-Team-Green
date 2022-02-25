@@ -30,8 +30,17 @@ const Overview = (props) => {
 
   //
   useEffect(() => {
-    setSelectedStyle(props.productStyles[0]);
+    console.log('1: ', selectedStyle);
+
+    console.log('pstyles: ', props.productStyles);
+
+    setSelectedStyle((props.productStyles !== undefined ? props.productStyles[0] : {skus: {}, size: 0}) );
+
+    console.log('2: ', selectedStyle);
   }, []);
+
+
+
 
   return (
 

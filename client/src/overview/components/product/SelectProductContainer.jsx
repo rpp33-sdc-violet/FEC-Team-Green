@@ -10,40 +10,39 @@ const SelectProductContainer = (props) => {
 
 
   //props
-  //selectedStyle (id?)
-  //selectedStyleSizes(list)
-  //selectedStylQuantity number
-
-  //state
+  //selectedStyle {}
+  //selectedQuantity default '-'
   //selectedSize default 'SELECT SIZE'
-  //selectedQuantity default 1
-  //
+  //setSelectedSize ()
+  //setSelectedQuantity ()
 
 
-  var sizes = {};
-  Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-    sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
-  });
 
   var sizes = {};
-  Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-    sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
-  });
+  if (props.selectedStyle) {
+
+    Object.keys(props.selectedStyle.skus).forEach(skuKey => {
+      sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+    });
+  }
+
+  // var sizes = {};
+  // Object.keys(props.selectedStyle.skus).forEach(skuKey => {
+  //   sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+  // });
 
   return (
-    <div>
-      SelectProductContainer
 
-      <div className='select-product panel'>
-        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize}
-          setSelectedSize={props.setSelectedSize}
-          selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
-        <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} selectedSize = {props.selectedSize}/></div>
+    <div className='select-product panel'>
+      <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize ? props.selectedSize : 'Select Size'}
+        setSelectedSize={props.setSelectedSize}
+        selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
+      <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity ? props.selectedQuantity : '-' } setSelectedQuantity={props.setSelectedQuantity} selectedSize = {props.selectedSize}/></div>
 
-        <AddToBagButton />
-        <SelectOutfitButton />
-      </div>
+      <AddToBagButton />
+      <SelectOutfitButton />
     </div>
+
   );
 };
 

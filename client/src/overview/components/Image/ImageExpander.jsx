@@ -13,8 +13,8 @@ var ImageExpander = function (props) {
     );
   } else {
     return (
-      <div className ='expander'>
-        ImageExpander
+      <div className ='image-container'>
+        ...loading
       </div>
     );
   }
