@@ -1,27 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
 
 const AddAnswerDashboard = (props) => {
   // props: product_name, question_body, question_id
-  // state
-  // show
-  // state: AddAnswerLinkClick?
+  const [show, setShow] = useState(false);
 
-  // methods
-  // showModal
-  // hideModal
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
 
   const handleClick = (event) => {
     event.preventDefault();
     console.log('add answer link clicked');
   };
-  
 
-  // render
-  // link
+
   return (
-    <a href='#' onClick={handleClick}>Add Answer</a>
+    <>
+      <Modal show={show} handleClose={hideModal}>
+        <p>TEST</p>
+      </Modal>
+      <a href='#' onClick={showModal}>Add Answer</a>
+    </>
   );
 };
 
