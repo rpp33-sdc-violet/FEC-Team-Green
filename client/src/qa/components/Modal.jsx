@@ -1,16 +1,3 @@
-// AddAQuestionModal
-// props
-// show
-
-// state
-// form contents
-
-// methods
-// handle form changes
-// handle submit (POST to server)
-
-// render
-// modal/form
 import React from 'react';
 
 import '../styles/modal.css';
