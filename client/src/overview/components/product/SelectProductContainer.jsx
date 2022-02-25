@@ -15,7 +15,9 @@ const SelectProductContainer = (props) => {
   //selectedSize default 'SELECT SIZE'
   //setSelectedSize ()
   //setSelectedQuantity ()
-
+  const [selectedSize, setSelectedSize] = useState('Select Size');
+  const [selectedQuantity, setSelectedQuantity] = useState('-');
+  const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-'});
 
 
   var sizes = {};
@@ -26,18 +28,13 @@ const SelectProductContainer = (props) => {
     });
   }
 
-  // var sizes = {};
-  // Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-  //   sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
-  // });
-
   return (
 
     <div className='select-product panel'>
-      <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize ? props.selectedSize : 'Select Size'}
-        setSelectedSize={props.setSelectedSize}
-        selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
-      <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity ? props.selectedQuantity : '-' } setSelectedQuantity={props.setSelectedQuantity} selectedSize = {props.selectedSize}/></div>
+      <SelectSizeDropdown sizes={sizes} selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+        selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
+      <SelectQuantityDropdown sizes={sizes} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} selectedSize = {selectedSize} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
 
       <AddToBagButton />
       <SelectOutfitButton />

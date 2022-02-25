@@ -23,20 +23,13 @@ const Overview = (props) => {
   const [productOverview, setProductOverview] = useState({});
   // product overview will contain
   //  id, name, slogan, description, category, default_price, features (an array)
-
   const [selectedStyle, setSelectedStyle] = useState({skus: {}, size: 0});
-  const [selectedSize, setSelectedSize] = useState('Select Size');
-  const [selectedQuantity, setSelectedQuantity] = useState('-');
+
 
   //
   useEffect(() => {
-    console.log('1: ', selectedStyle);
-
-    console.log('pstyles: ', props.productStyles);
-
+  //set up style as first style in data or as an empty style object
     setSelectedStyle((props.productStyles !== undefined ? props.productStyles[0] : {skus: {}, size: 0}) );
-
-    console.log('2: ', selectedStyle);
   }, []);
 
 
@@ -52,8 +45,7 @@ const Overview = (props) => {
 
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 
-        <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
-          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} />
+        <SelectProductContainer selectedStyle={selectedStyle}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>

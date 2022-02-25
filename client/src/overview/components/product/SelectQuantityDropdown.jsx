@@ -11,7 +11,7 @@ const SelectQuantityDropdown = (props) => {
   // var options = objects.keys(sizes).map(key => {
   var i = 1;
   var options = [];
-  console.log('sizes->: ', props);
+ 
   if ( Object.keys(props.sizes).length > 0 && props.selectedSize !== 'Select Size') {
     while (i < 16 && i < props.sizes[props.selectedSize].quantity) {
       options.push(<option key={i}>{i}</option>);
@@ -19,16 +19,11 @@ const SelectQuantityDropdown = (props) => {
     }
   }
   console.log('options ', options);
-  // var options =
 
   return (
-
     <select className ={`select-quantity ${(props.selectedQuantity === '-') ? 'disabled' : ''}`}>
       {props.selectedQuantity === '-' ? <option>{props.selectedQuantity}</option> : options }
-
-      SelectQuantityDropdown
     </select>
-
   );
 };
 
