@@ -15,8 +15,8 @@ const SelectProductContainer = (props) => {
   //selectedSize default 'SELECT SIZE'
   //setSelectedSize ()
   //setSelectedQuantity ()
-  const [selectedSize, setSelectedSize] = useState('Select Size');
-  const [selectedQuantity, setSelectedQuantity] = useState('-');
+  // const [selectedSize, setSelectedSize] = useState('Select Size');
+  // const [selectedQuantity, setSelectedQuantity] = useState('-');
   const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-'});
 
 
@@ -29,14 +29,12 @@ const SelectProductContainer = (props) => {
   }
 
   return (
-
+    //maybe this should be a high order function?
     <div className='select-product panel'>
-      <SelectSizeDropdown sizes={sizes} selectedSize={selectedSize}
-        setSelectedSize={setSelectedSize}
-        selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
-      <SelectQuantityDropdown sizes={sizes} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} selectedSize = {selectedSize} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
+      <SelectSizeDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
+      <SelectQuantityDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
 
-      <AddToBagButton />
+      <AddToBagButton sizeAndQuantity={sizeAndQuantity}/>
       <SelectOutfitButton />
     </div>
 

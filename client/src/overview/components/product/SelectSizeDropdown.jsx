@@ -9,25 +9,23 @@ const SelectSizeDropdown = (props) => {
 
   var options = [];
   options.push(<option key={0}>{'Select Size'}</option>);
-  var options2 = (Object.keys(props.sizes).map(skuKey => {
-    return <option key={skuKey} >{skuKey}</option>;
-  }));
-  options = options.concat(options2);
+  if (props.sizes) {
+    var options2 = (Object.keys(props.sizes).map(skuKey => {
+      return <option key={skuKey} >{skuKey}</option>;
+    }));
+    options = options.concat(options2);
+  }
 
   // options.unshift(<option>Select Size</option>);
   return (
 
     <select className ='select-size' onChange={(e)=> {
-      props.setSelectedSize(e.target.value);
-      // props.setSizeAndQuantity({ ...myState, size: e.target.value});
-      if (props.selectedQuantity === '-') {
-      } props.setSelectedQuantity(1);
-      if (e.target.value === 'Select Size') {
-        props.setSelectedQuantity('-');
-        props.setSizeAndQuantity({'quantity': '-'});
-
-        console.log('sizeandQ', props.sizeAndQuantity);
-
+      if (props.sizeAndQuantity.quantity === '-' ) {
+        props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, quantity: 1 });
+      } else if (e.target.value === 'Select Size') {
+        props.setSizeAndQuantity({ ...props.sizeAndQuantity, size: e.target.value, quantity: '-'} );
+      } else {
+        props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value} );
       }
     }}>
       {options}

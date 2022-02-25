@@ -2,27 +2,22 @@ import React, {useState} from 'react';
 
 //this is the container for my quantity selector
 const SelectQuantityDropdown = (props) => {
-
-  //props
-  //selectedStyleQuantity
-  //setSelectedQuantity()
-
-
-  // var options = objects.keys(sizes).map(key => {
+// create the options for quantities
   var i = 1;
   var options = [];
- 
-  if ( Object.keys(props.sizes).length > 0 && props.selectedSize !== 'Select Size') {
-    while (i < 16 && i < props.sizes[props.selectedSize].quantity) {
+  if ( Object.keys(props.sizes).length > 0 && props.sizeAndQuantity.size !== 'Select Size') {
+    while (i < 16 && i <= props.sizes[props.sizeAndQuantity.size].quantity) {
       options.push(<option key={i}>{i}</option>);
       i++;
     }
   }
-  console.log('options ', options);
+
 
   return (
-    <select className ={`select-quantity ${(props.selectedQuantity === '-') ? 'disabled' : ''}`}>
-      {props.selectedQuantity === '-' ? <option>{props.selectedQuantity}</option> : options }
+    <select className ={`select-quantity ${(props.sizeAndQuantity.quanity === '-') ? 'disabled' : ''}`} onChange={(e) => {
+      props.setSizeAndQuantity({...props.sizeAndQuantity, quantity: e.target.value});
+    }}>
+      {props.sizeAndQuantity.quantity === '-' ? <option>{props.sizeAndQuantity.quantity}</option> : options }
     </select>
   );
 };
