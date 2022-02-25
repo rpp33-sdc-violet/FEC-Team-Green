@@ -5,8 +5,7 @@ import AnswersList from './AnswersList.jsx';
 
 
 const IndividualQuestion = (props) => {
-  // props
-  // question (from QuestionsList)
+  // props: question, product name (pass to AddAnswerDashboard)
 
   const [answers, setAnswers] = useState([]);
   const [countA, setCountA] = useState(2);
@@ -74,7 +73,7 @@ const IndividualQuestion = (props) => {
     } else {
       // revert back to only 2 answers
       setCountA(2);
-      // change button text to allow view of all answers if clickec
+      // change button text to allow view of all answers if clicked
       setMoreAnsButtonText('LOAD MORE ANSWERS');
     }
   };
@@ -103,7 +102,7 @@ const IndividualQuestion = (props) => {
     <div className="question" role="question">
       <div className="question-row">
         <p className="question-text">Q: {props.question.question_body}</p>
-        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerDashboard /></p>
+        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></p>
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">

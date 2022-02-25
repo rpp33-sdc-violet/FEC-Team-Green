@@ -1,7 +1,10 @@
 import React from 'react';
+import Modal from './Modal.jsx';
+import axios from 'axios';
 
-const AddAnswerDashboard = () => {
-  //   state
+const AddAnswerDashboard = (props) => {
+  // props: product_name, question_body, question_id
+  // state
   // show
   // state: AddAnswerLinkClick?
 
