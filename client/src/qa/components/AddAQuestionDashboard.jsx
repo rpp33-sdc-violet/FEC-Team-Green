@@ -114,7 +114,7 @@ const AddAQuestionDashboard = (props) => {
           </label>
           <label>
             Your email*
-            <input type="text" maxLength="60" placeholder="Why did you like the product or not?"
+            <input type="text" maxLength="60" placeholder="Example: sample@email.com"
               value={email} onChange={(e) => setEmail(e.target.value)} />
             <br />
             For authentication reasons, you will not be emailed
