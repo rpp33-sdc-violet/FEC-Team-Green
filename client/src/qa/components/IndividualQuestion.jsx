@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddAnswerLink from './AddAnswerLink.jsx';
+import AddAnswerDashboard from './AddAnswerDashboard.jsx';
 import AnswersList from './AnswersList.jsx';
 
 
@@ -103,7 +103,7 @@ const IndividualQuestion = (props) => {
     <div className="question" role="question">
       <div className="question-row">
         <p className="question-text">Q: {props.question.question_body}</p>
-        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerLink /></p>
+        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerDashboard /></p>
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">

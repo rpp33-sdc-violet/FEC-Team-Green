@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-const AddAnswerLink = () => {
+const AddAnswerDashboard = () => {
   //   state
   // show
   // state: AddAnswerLinkClick?
@@ -23,4 +22,4 @@ const AddAnswerLink = () => {
   );
 };
 
-export default AddAnswerLink;
+export default AddAnswerDashboard;
