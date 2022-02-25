@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddAQuestionModal from './AddAQuestionModal.jsx';
+import Modal from './Modal.jsx';
 import axios from 'axios';
 
 const AddAQuestionDashboard = (props) => {
@@ -98,7 +98,7 @@ const AddAQuestionDashboard = (props) => {
 
   return (
     <>
-      <AddAQuestionModal show={show} handleClose={hideModal}>
+      <Modal show={show} handleClose={hideModal}>
         <h1>Ask Your Question</h1>
         <h3>About the {props.product_name}</h3>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
@@ -124,7 +124,7 @@ const AddAQuestionDashboard = (props) => {
           </label>
           <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
-      </AddAQuestionModal>
+      </Modal>
       <button type="button" onClick={showModal}>ADD A QUESTION +</button>
     </>
   );

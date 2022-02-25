@@ -15,7 +15,7 @@ import React from 'react';
 
 import '../styles/modal.css';
 
-const AddAQuestionModal = ({ handleClose, show, children }) => {
+const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 
   return (
@@ -30,4 +30,4 @@ const AddAQuestionModal = ({ handleClose, show, children }) => {
   );
 };
 
-export default AddAQuestionModal;
+export default Modal;
