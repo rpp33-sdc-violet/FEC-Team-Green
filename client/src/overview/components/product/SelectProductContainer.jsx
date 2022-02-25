@@ -38,7 +38,7 @@ const SelectProductContainer = (props) => {
         <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize}
           setSelectedSize={props.setSelectedSize}
           selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} /></div>
-        <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity}/></div>
+        <div> <SelectQuantityDropdown sizes={sizes} selectedQuantity={props.selectedQuantity} setSelectedQuantity={props.setSelectedQuantity} selectedSize = {props.selectedSize}/></div>
 
         <AddToBagButton />
         <SelectOutfitButton />
