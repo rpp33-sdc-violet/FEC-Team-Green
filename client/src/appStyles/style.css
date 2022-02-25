@@ -24,7 +24,7 @@
   margin-left: auto;
   display: inline-block;
   padding: 9px 3px;
-  /* border: 0 */
+
 }
 
 #navbar > form > input {
@@ -48,4 +48,13 @@
 
 .searchIcon:hover {
   color: #39FF14;
+}
+.overview-skeleton {
+  display: grid;
+  background-color: white;
+  grid-template-columns: 1.75fr 1.25fr;
+  grid-template-rows: 1.75fr 1.25fr;
+  border: 1px solid black;
+  height: 800px;
+  max-height: 800px;
 }

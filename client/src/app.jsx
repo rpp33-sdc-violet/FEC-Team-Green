@@ -75,7 +75,7 @@ class App extends React.Component {
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
-          <div>loading</div>}
+          <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
         <QA product_id={64624}></QA>
         <ReviewList product_id={64621}></ReviewList>
