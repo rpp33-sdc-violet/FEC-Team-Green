@@ -24,7 +24,7 @@ const AddAnswerDashboard = (props) => {
     <>
       <Modal show={show} handleClose={hideModal}>
         <h1>Submit Your Answer</h1>
-        <h2></h2>
+        <h2>{props.product_name}: {props.question_body}</h2>
       </Modal>
       <a href='#' onClick={showModal}>Add Answer</a>
     </>

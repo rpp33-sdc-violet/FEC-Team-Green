@@ -97,7 +97,7 @@ const AddAQuestionDashboard = (props) => {
     <>
       <Modal show={show} handleClose={hideModal}>
         <h1>Ask Your Question</h1>
-        <h3>About the {props.product_name}</h3>
+        <h2>About the {props.product_name}</h2>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
         {postErrorMsg === '' || <p className="modal-error-msg">{postErrorMsg}</p>}
         <form className="question-form" onSubmit={handleSubmit}>

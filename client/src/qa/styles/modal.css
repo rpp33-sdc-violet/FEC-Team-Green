@@ -81,3 +81,11 @@
 .modal-error-msg {
   color: red;
 }
+
+.modal-main h1 {
+  font-size: large;
+}
+
+.modal-main h2 {
+  font-size: medium;
+}
