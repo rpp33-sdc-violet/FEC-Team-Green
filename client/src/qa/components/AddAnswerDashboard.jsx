@@ -48,7 +48,10 @@ const AddAnswerDashboard = (props) => {
             <br />
             For authentication reasons, you will not be emailed
           </label>
-
+          <label>
+            Upload your photos
+            <input type="file" id="img" name="img" accept="image/*" />
+          </label>
           <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
       </Modal>

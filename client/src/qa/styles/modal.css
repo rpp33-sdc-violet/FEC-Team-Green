@@ -30,7 +30,7 @@
 .question-form {
   margin-top: 10px;
   display: grid;
-  grid-template-rows: auto 1fr 1fr 50px;
+  grid-template-rows: repeat(3, 1fr) 50px;
 }
 
 .question-form label {
@@ -88,4 +88,45 @@
 
 .modal-main h2 {
   font-size: medium;
+}
+
+/* ANSWER FORM STYLING */
+.answer-form {
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr) 50px;
+}
+
+.answer-form label {
+  padding: 10px;
+}
+
+.answer-form input {
+  width: 90%;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+}
+
+.answer-form input:focus {
+  border: 3px solid lightseagreen;
+}
+
+.answer-form textarea {
+  width: 90%;
+  height: 70px;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+  resize: none;
+}
+
+.answer-form textarea:focus {
+  border: 3px solid lightseagreen;
 }
