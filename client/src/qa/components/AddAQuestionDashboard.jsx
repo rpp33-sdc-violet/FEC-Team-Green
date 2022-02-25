@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import AddAQuestionModal from './AddAQuestionModal.jsx';
+import axios from 'axios';
 
 const AddAQuestionDashboard = (props) => {
   // props: product_name
-
   const [show, setShow] = useState(false);
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
-  const [hasError, setHasError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [postErrorMsg, setPostErrorMsg] = useState('');
 
   const showModal = () => {
     setShow(true);
@@ -76,14 +76,23 @@ const AddAQuestionDashboard = (props) => {
 
       setErrorMsg(errorText);
     } else {
-      // submission form is sucessfully 
-      // handle POST
-      // if successful
-      // setShow to false
-      // else
-      // alert error message
-      console.log('omg, we are here');
-      setShow(false);
+      // submission form has been validated succesfully! 
+      console.log('omg we are here');
+      const bodyParams = {
+        body: question,
+        name: nickname,
+        email: email,
+        // eslint-disable-next-line camelcase
+        product_id: props.product_id
+      };
+      console.log('bodyParams', bodyParams);
+      axios.post('/api/qa/questions', bodyParams)
+        .then((response) => {
+          setShow(false);
+        })
+        .catch((error) => {
+          setPostErrorMsg('error in submitting your question - please try again later');
+        });
     }
   };
 
@@ -93,6 +102,7 @@ const AddAQuestionDashboard = (props) => {
         <h1>Ask Your Question</h1>
         <h3>About the {props.product_name}</h3>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
+        {postErrorMsg === '' || <p className="modal-error-msg">{postErrorMsg}</p>}
         <form className="question-form" onSubmit={handleSubmit}>
           <label>
             Your Question*
@@ -117,7 +127,6 @@ const AddAQuestionDashboard = (props) => {
       </AddAQuestionModal>
       <button type="button" onClick={showModal}>ADD A QUESTION +</button>
     </>
-
   );
 };
 
