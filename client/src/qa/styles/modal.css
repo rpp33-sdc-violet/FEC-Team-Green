@@ -77,3 +77,7 @@
 .question-form textarea:focus {
   border: 3px solid lightseagreen;
 }
+
+.modal-error-msg {
+  color: red;
+}

@@ -1,13 +1,3 @@
-// AddAQuestionDashboard
-// state
-// show
-
-// methods
-// showModal
-// hideModal
-
-// render
-// button
 import React, { useState } from 'react';
 import AddAQuestionModal from './AddAQuestionModal.jsx';
 
@@ -18,6 +8,8 @@ const AddAQuestionDashboard = (props) => {
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+  const [hasError, setHasError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const showModal = () => {
     setShow(true);
@@ -26,12 +18,73 @@ const AddAQuestionDashboard = (props) => {
   const hideModal = () => {
     setShow(false);
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setShow(false);
-    console.log('here', question, nickname, email);
-    // POST 
+
+    var errors = [];
+    // check if mandatory fields are empty
+    if (question === '') {
+      errors.push('your question');
+    }
+
+    if (nickname === '') {
+      errors.push('your nickname');
+    }
+
+    if (email === '') {
+      errors.push('your email');
+    } else {
+      // check for corret email format
+      let isCorrectEmail = true;
+      const atSplit = email.split('@');
+
+      if (atSplit.length !== 2) {
+        isCorrectEmail = false;
+      } else {
+        const dotSplit = atSplit[1].split('.');
+        console.log('dotSplit', dotSplit);
+        if (dotSplit.length !== 2) {
+          isCorrectEmail = false;
+        }
+      }
+
+      if (!isCorrectEmail) {
+        errors.push('a valid email address format');
+      }
+    }
+
+    // if there are errors, create errorText and update errorMsg 
+    if (errors.length > 0) {
+      let errorText = '';
+
+      // proper grammar for lists
+      if (errors.length === 1) {
+        errorText = `${errors[0]}.`;
+      } else if (errors.length === 2) {
+        errorText = `${errors[0]} and ${errors[1]}.`;
+      } else {
+        for (let i = 0; i < errors.length; i++) {
+          // if on the last element
+          if (i === errors.length - 1) {
+            errorText += `and ${errors[i]}.`;
+          } else {
+            errorText += `${errors[i]}, `;
+          }
+        }
+      }
+
+      setErrorMsg(errorText);
+    } else {
+      // submission form is sucessfully 
+      // handle POST
+      // if successful
+      // setShow to false
+      // else
+      // alert error message
+      console.log('omg, we are here');
+      setShow(false);
+    }
   };
 
   return (
@@ -39,21 +92,22 @@ const AddAQuestionDashboard = (props) => {
       <AddAQuestionModal show={show} handleClose={hideModal}>
         <h1>Ask Your Question</h1>
         <h3>About the {props.product_name}</h3>
+        {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
         <form className="question-form" onSubmit={handleSubmit}>
           <label>
             Your Question*
-            <textarea maxLength="1000" required value={question} onChange={(e) => setQuestion(e.target.value)}/>
+            <textarea maxLength="1000" value={question} onChange={(e) => setQuestion(e.target.value)} />
           </label>
           <label>
             What is your nickname?*
-            <input type="text" maxLength="60" required placeholder="Example: jackson11!" 
+            <input type="text" maxLength="60" placeholder="Example: jackson11!"
               value={nickname} onChange={(e) => setNickname(e.target.value)} />
             <br />
             For privacy reasons, do not use your full name or email address
           </label>
           <label>
             Your email*
-            <input type="email" maxLength="60" required placeholder="Why did you like the product or not?" 
+            <input type="text" maxLength="60" placeholder="Why did you like the product or not?"
               value={email} onChange={(e) => setEmail(e.target.value)} />
             <br />
             For authentication reasons, you will not be emailed
