@@ -102,7 +102,7 @@ const IndividualQuestion = (props) => {
     <div className="question" role="question">
       <div className="question-row">
         <p className="question-text">Q: {props.question.question_body}</p>
-        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></p>
+        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></aside>
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">

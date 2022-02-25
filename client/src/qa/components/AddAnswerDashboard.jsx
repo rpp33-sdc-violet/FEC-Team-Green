@@ -23,7 +23,8 @@ const AddAnswerDashboard = (props) => {
   return (
     <>
       <Modal show={show} handleClose={hideModal}>
-        <p>TEST</p>
+        <h1>Submit Your Answer</h1>
+        <h2></h2>
       </Modal>
       <a href='#' onClick={showModal}>Add Answer</a>
     </>
