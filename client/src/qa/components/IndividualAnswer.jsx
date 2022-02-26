@@ -7,6 +7,8 @@ const IndividualAnswer = (props) => {
 
   const [isHelpfulClickedA, setIsHelpfulClickedA] = useState(false); 
   const [helpfulCountA, setHelpfulCountA] = useState(props.answer.helpfulness);  
+  const [reportText, setReportText] = useState('Report');
+  const [isReportClicked, setIsReportClicked] = useState(false);
 
   // methods
   // handleHelpfulClick - request to "mark answer as helpful" endpoint 
@@ -26,7 +28,22 @@ const IndividualAnswer = (props) => {
     }
   };
 
-  // *****TODO: handleReportClick - request to "report answer" endpoint
+  // handleReportClick - request to "report answer" endpoint
+  const handleReportClick = (event) => {
+    event.preventDefault();
+    if (!isReportClicked) {
+      axios.put(`api/qa/answers/${props.answer.answer_id}/report`)
+        .then((response) => {
+          setIsReportClicked(true);
+          setReportText('Reported');
+        })
+        .catch((error) => {
+          alert('Answer Already Reported');
+        });
+    } else {
+      alert('Answer Already Reported');
+    }
+  };
 
   // date formatter
   const formatDate = () => {
@@ -43,14 +60,12 @@ const IndividualAnswer = (props) => {
   
   // render
   // A text and *****TODO: photos?*******
-  // *****TODO: Report Link
   return (
     <div className="answer" role="answer">
       <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
-      <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | placeholder: Report</p>
+      <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href="/" onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | <a href="/" onClick={handleReportClick}>{reportText}</a></p>
     </div>
   );
-
 };
 
 export default IndividualAnswer;

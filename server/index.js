@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
@@ -65,6 +65,7 @@ const options = {
     '^/api/': '/'
   },
   logLevel: 'error', //control the amount of logging of http-proxy-middleware
+  onProxyReq: fixRequestBody, // used to fix proxied POST requests when bodyParser is applied before this middleware
 };
 
 //when the base of the requested path matches path specified in app.use
