@@ -48,7 +48,7 @@
 
 :root {
   --star-size: 15px;
-  --star-color: #fff;
+  --star-color: #eee;
   --star-background: #fc0;
 }
 
@@ -68,15 +68,5 @@
   -webkit-text-fill-color: transparent;
 }
 
-body {
-  background: #eee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
-* {
-  position: relative;
-  box-sizing: border-box;
-}
+
