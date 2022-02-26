@@ -12,6 +12,8 @@ const AddAnswerDashboard = (props) => {
   const [photos, setPhotos] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
   const [canUpload, setCanUpload] = useState(true);
+  const [photoErrorMsg, setPhotoErrorMsg] = useState('');
+  const [postErrorMsg, setPostErrorMsg] = useState('');
 
   useEffect(() => {
     if (photos.length >= 5) {
@@ -28,7 +30,7 @@ const AddAnswerDashboard = (props) => {
         setPhotos(oldPhotos => [...oldPhotos, response]);
       })
       .catch((error) => {
-        // ********** TODO **********
+        setPhotoErrorMsg('photo unable to be uploaded');
       });
   };
 
@@ -42,7 +44,7 @@ const AddAnswerDashboard = (props) => {
         fetchPhotoURL(response.key);
       })
       .catch((error) => {
-        // ********** TODO **********
+        setPhotoErrorMsg('photo unable to be uploaded');
       });
   };
 
@@ -114,9 +116,18 @@ const AddAnswerDashboard = (props) => {
         body: answer,
         name: nickname,
         email: email,
+        photos: photos
       };
+
       console.log('bodyParams', bodyParams);
-      setShow(false);
+      console.log('questionId', props.question_id);
+      axios.post(`/api/qa/questions/${props.question_id}/answers`, bodyParams)
+        .then((response) => {
+          setShow(false);
+        })
+        .catch((error) => {
+          setPostErrorMsg('error in submitting your answer - please try again later');
+        });
     }
   };
 
@@ -126,6 +137,7 @@ const AddAnswerDashboard = (props) => {
         <h1>Submit Your Answer</h1>
         <h2>{props.product_name}: {props.question_body}</h2>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
+        {postErrorMsg === '' || <p className="modal-error-msg">{postErrorMsg}</p>}
         <form className="answer-form" onSubmit={handleSubmit}>
           <label>
             Your Answer*
@@ -148,6 +160,7 @@ const AddAnswerDashboard = (props) => {
           <label>
             Upload your photos
             {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} />}
+            {photoErrorMsg === '' || <p className="modal-error-msg">*You must enter the following: {photoErrorMsg}</p>}
             <div className="add-answer-uploads-container">
               {
                 photos.map(photo => (
