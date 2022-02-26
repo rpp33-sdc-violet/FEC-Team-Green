@@ -78,7 +78,7 @@ class App extends React.Component {
           <div>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
         <QA product_id={64624}></QA>
-        <ReviewList product_id={64621}></ReviewList>
+        <ReviewList product_id={64639}></ReviewList>
 
       </div>
     );
