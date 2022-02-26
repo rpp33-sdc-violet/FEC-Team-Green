@@ -6,7 +6,8 @@ const QuestionsList = (props) => {
   const questions = props.questions.map((question) => 
     <IndividualQuestion
       key={question.question_id}
-      question={question}/>
+      question={question}
+      product_name={props.product_name}/>
   );
   
   // render: maps to IndividualQuestion
