@@ -10,6 +10,11 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+
+import Amplify from 'aws-amplify';
+import config from './qa/components/aws-exports.js';
+Amplify.configure(config);
+
 class App extends React.Component {
   constructor(props) {
     super(props);

@@ -1,0 +1,17 @@
+{
+  "resourceName": "FECimages",
+  "policyUUID": "b4db7d81",
+  "bucketName": "fecteamgreen75ce183310f8493fa078f6bd32c2f26d",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

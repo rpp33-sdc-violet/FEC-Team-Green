@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fecteamgreen-dev-230931-authRole",
+      "UnauthRoleArn": "arn:aws:iam::930220481681:role/amplify-fecteamgreen-dev-230931-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::930220481681:role/amplify-fecteamgreen-dev-230931-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fecteamgreen-dev-230931-deployment",
+      "UnauthRoleName": "amplify-fecteamgreen-dev-230931-unauthRole",
+      "StackName": "amplify-fecteamgreen-dev-230931",
+      "StackId": "arn:aws:cloudformation:us-east-1:930220481681:stack/amplify-fecteamgreen-dev-230931/49779bc0-96c2-11ec-b0a6-126a38603dbf",
+      "AmplifyAppId": "d3leybynuqn40h"
+    },
+    "categories": {
+      "auth": {
+        "fecteamgreen4f7f1c47": {},
+        "true": {}
+      }
+    }
+  }
+}
