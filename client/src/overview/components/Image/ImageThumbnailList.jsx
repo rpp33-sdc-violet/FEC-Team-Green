@@ -14,7 +14,8 @@ const ImageThumbnailList = (props) => {
   var photoThumbnails = [];
   if (props.photos) {
     photoThumbnails = props.photos.map ((photo, index) => {
-      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto}/>;
+      photo.index = index;
+      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} selectedPhoto={props.selectedPhoto}/>;
     });
   }
   // console.log('photos', photoThumbnails);
@@ -22,12 +23,10 @@ const ImageThumbnailList = (props) => {
 
     <div className='img-thumbnail-list'>
       {/* button */}
-
-      {/* button */}
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'></img>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onClick={() => { console.log('clicked up'); }}></img>
       {photoThumbnails}
-      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow"></img>
-
+      {/* button */}
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onClick={() => { console.log('clicked down'); }}></img>
     </div>
 
   );

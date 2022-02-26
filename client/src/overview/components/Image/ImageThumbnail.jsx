@@ -2,21 +2,11 @@ import React from 'react';
 
 const ImageThumbnail = (props) => {
 
-  //props
-
-  // props.thumnail_url = thumbnail url
-  // props.url = main image url
-  // console.log('props ', props);
-  props.thumbnail_url;
-
+  // this component displays individual thumbnails -it adds a class to the currently selected thumbnail
   return (
-
     <li>
-      {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className ='img-thumbnail' onClick={(e)=>{
-        console.log('clicked', props.photo);
-        props.setSelectedPhoto(props.photo.url);
-
-
+      {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? 'img-thumbnail selected' : 'img-thumbnail'} onClick={(e)=>{
+        props.setSelectedPhoto(props.photo);
       }}></img> : 'image'}
     </li>
   );
