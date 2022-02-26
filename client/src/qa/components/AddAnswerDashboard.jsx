@@ -54,8 +54,6 @@ const AddAnswerDashboard = (props) => {
             console.log('ERROR after FETCH,', error);
           });
 
-
-
       });
 
     // post image directly to S3 bucket
