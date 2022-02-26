@@ -34,6 +34,34 @@ const AddAnswerDashboard = (props) => {
     const file = event.target.files[0];
     // upload file/photo to S3 bucket using PUT method
 
+    // get secure url from server
+    axios.get('/s3Url')
+      .then((response) => {
+        const url = response.data.response;
+        console.log('S3URL', url);
+
+        fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          body: file
+        })
+          .then((response) => {
+            console.log('response after FETCH,', response);
+          })
+          .catch((error) => {
+            console.log('ERROR after FETCH,', error);
+          });
+
+
+
+      });
+
+    // post image directly to S3 bucket
+
+    // post request to my server to store data
+
   };
 
   const showModal = () => {

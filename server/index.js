@@ -5,6 +5,7 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const generateUploadURL = require('./s3.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,6 +73,13 @@ const options = {
 //middleware function excuted, create the proxy and mount it in web server
 // use proxy middleware and created '/api' endpoint that communicates with our real API
 app.use('/api/*', createProxyMiddleware(options));
+
+app.get('/s3Url', (req, res) => {
+  generateUploadURL()
+    .then((response) => {
+      res.send({response});
+    });
+});
 
 
 app.get('*', (req, res) => {
