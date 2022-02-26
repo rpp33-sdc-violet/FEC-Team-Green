@@ -10,10 +10,6 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
-// AWS AMPLIFY: STORES PHOTOS IN AN S3 BUCKET
-import Amplify from 'aws-amplify';
-import config from './aws-exports.js';
-Amplify.configure(config);
 
 class App extends React.Component {
   constructor(props) {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
-import { Storage } from 'aws-amplify';
 
 const AddAnswerDashboard = (props) => {
   // props: product_name, question_body, question_id
@@ -15,37 +14,26 @@ const AddAnswerDashboard = (props) => {
   const [photoErrorMsg, setPhotoErrorMsg] = useState('');
   const [postErrorMsg, setPostErrorMsg] = useState('');
 
-  useEffect(() => {
-    if (photos.length >= 5) {
-      setCanUpload(false);
-    }
-  });
+  // useEffect(() => {
+  //   if (photos.length >= 5) {
+  //     setCanUpload(false);
+  //   }
+  // });
 
   const fetchPhotoURL = (key) => {
     // Get a presigned URL of a stored file
-    Storage.get(key)
-      .then((response) => {
-        // response: returns a signed URL string to your file
-        // setPhotos which spreads previous state's array and adds URL to update state
-        setPhotos(oldPhotos => [...oldPhotos, response]);
-      })
-      .catch((error) => {
-        setPhotoErrorMsg('photo unable to be uploaded');
-      });
+
+    // setPhotos(oldPhotos => [...oldPhotos, response]);
+
+    // setPhotoErrorMsg('photo unable to be uploaded');
+
   };
 
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
     // upload file/photo to S3 bucket using PUT method
-    Storage.put(file.name, file)
-      .then((response) => {
-        // response: {key: S3 Object key}
-        fetchPhotoURL(response.key);
-      })
-      .catch((error) => {
-        setPhotoErrorMsg('photo unable to be uploaded');
-      });
+
   };
 
   const showModal = () => {
