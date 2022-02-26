@@ -34,11 +34,13 @@ const Overview = (props) => {
 
 
 
-
+  console.log('overview->selectedStyle: ', selectedStyle);
   return (
 
     < div className='overview-wrapper' >
-      <ImageContainer selectedStyle={selectedStyle}></ImageContainer>
+      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
+        <div> loading </div>
+      }
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
         <ProductInformationContainer product={props.product}></ProductInformationContainer>

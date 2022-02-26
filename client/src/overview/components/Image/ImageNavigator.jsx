@@ -6,6 +6,7 @@ var ImageNavigator = function (props) {
 
 
   return (
+
     <div className ='rightNav||leftNav'>
       ImageNavigator
     </div>

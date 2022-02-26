@@ -1,6 +1,8 @@
 import React from 'react';
+import ImageThumbnail from './ImageThumbnail.jsx';
 
-var ImageThumbnailList = function (props) {
+
+const ImageThumbnailList = (props) => {
 
   //props
 
@@ -9,19 +11,23 @@ var ImageThumbnailList = function (props) {
   // local state highlighted url index
   //method to change highlighted url
 
-
-
-
+  var photoThumbnails = [];
+  if (props.photos) {
+    photoThumbnails = props.photos.map ((photo, index) => {
+      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto}/>;
+    });
+  }
+  // console.log('photos', photoThumbnails);
   return (
-    <div>
-      {/* button */}
-      <div className='upArrow'> upArrow </div>
 
-      <div className='img-thumbnail-list'>
-        ImageThumbnailList
-      </div>
+    <div className='img-thumbnail-list'>
       {/* button */}
-      <div className='downArrow'> downArrow </div>
+
+      {/* button */}
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'></img>
+      {photoThumbnails}
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow"></img>
+
     </div>
 
   );
