@@ -148,11 +148,13 @@ const AddAnswerDashboard = (props) => {
           <label>
             Upload your photos
             {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} />}
-            {
-              photos.map(photo => (
-                <img src={photo} key={photo} />
-              ))
-            }
+            <div className="add-answer-uploads-container">
+              {
+                photos.map(photo => (
+                  <img src={photo} key={photo} className="add-answer-photo" />
+                ))
+              }
+            </div>
           </label>
           <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
