@@ -3,6 +3,7 @@ import axios from 'axios';
 import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
 import AddNewReview from './addNewReview.jsx';
+import Ratings from './ratings.jsx';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class ReviewList extends React.Component {
     this.state = {
       productId: this.props.product_id,
       reviews: [],
+      metaData: {},
       displayCount: 2,
       buttonVisible: true,
       sort: 'relevant'
@@ -19,7 +21,8 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews();
+    this.getReviews(this.state.sort);
+    this.getMetaData();
   }
 
   getReviews(currentOption) {
@@ -41,6 +44,18 @@ class ReviewList extends React.Component {
       })
       .catch((err) => {
         console.log('failed to get reviews', err.message);
+      });
+  }
+
+  getMetaData() {
+    axios.get('/api/reviews/meta', {
+      params: {
+        // eslint-disable-next-line camelcase
+        product_id: this.state.productId
+      }
+    })
+      .then((res) => {
+        this.setState({metaData: res.data});
       });
   }
 
@@ -82,6 +97,12 @@ class ReviewList extends React.Component {
       return (
         <div>
           <h3>Review List</h3>
+          <h3>RATINGS and REVIEWS</h3>
+          <Ratings metaData = {this.state.metaData}/>
+
+
+
+
           <select onChange = {() => { this.sortReviews(event.target.value); }}>
             <option value="relevane">relevant</option>
             <option value="newest">newest</option>
