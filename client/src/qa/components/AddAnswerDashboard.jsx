@@ -11,6 +11,13 @@ const AddAnswerDashboard = (props) => {
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
+  const [canUpload, setCanUpload] = useState(true);
+
+  useEffect(() => {
+    if (photos.length >= 5) {
+      setCanUpload(false);
+    }
+  });
 
   const fetchPhotoURL = (key) => {
     // Get a presigned URL of a stored file
@@ -24,29 +31,29 @@ const AddAnswerDashboard = (props) => {
         // ********** TODO **********
       });
   };
-  
-  const handlePhotoUpload = function(event) {
+
+  const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
     // upload file/photo to S3 bucket using PUT method
     Storage.put(file.name, file)
       .then((response) => {
         // response: {key: S3 Object key}
-        fetchPhotoURL(response.key); 
+        fetchPhotoURL(response.key);
       })
       .catch((error) => {
         // ********** TODO **********
       });
   };
-  
+
   const showModal = () => {
     setShow(true);
   };
-  
+
   const hideModal = () => {
     setShow(false);
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     var errors = [];
@@ -140,7 +147,7 @@ const AddAnswerDashboard = (props) => {
           </label>
           <label>
             Upload your photos
-            <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} />
+            {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} />}
             {
               photos.map(photo => (
                 <img src={photo} key={photo} />
