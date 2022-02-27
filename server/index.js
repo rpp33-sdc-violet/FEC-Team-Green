@@ -3,32 +3,38 @@ const axios = require('axios');
 const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-// Multer: handles multipart/form-data, which is primarily used for uploading files
+// MULTER: handles multipart/form-data, which is primarily used for uploading files
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
-// FOR UPLOADING PHOTOS TO S3 BUCKET
-const generateUploadURL = require('./s3.js');
+const uploadFileToS3 = require('./s3.js');
+// to remove file that multer stored in uploads directory
+const { unlink } = require('fs/promises');
 
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-// ENDPOINT TO RECEIVE PHOTO FILE AND RETURN URL
-app.post('/s3Url', upload.single('photo'), (req, res) => {
-  console.log('REQ FILE', req.file);
-  generateUploadURL(req.file, (err, url) => {
-    if (err) {
+// PHOTO UPLOAD TO S3 BUCKET
+app.post('/photos', upload.single('photo'), (req, res) => {
+  console.log('req file:', req.file);
+  uploadFileToS3(req.file, (error, url) => {
+    if (error) {
       res.status(500).send('error in uploading photo');
     } else {
-      res.send(url);
+      // remove file and then send url back to client to render
+      unlink(req.file.path)
+        .then((response) => {
+          res.send(url);
+        })
+        .catch((error) => {
+          console.log('did not delete file in uploads directory');
+        });
     }
   });
-
 });
 
 // COOKIES - In QA widget, need to persist data whether helpful links have been clicked or not

@@ -7,6 +7,5 @@ client/dist/bundle.js
 client/src/config/github.js
 dist/config/github.js
 
-## ENV ID AND KEYS ##
+## ENVIRONMENT KEYS TO ACCESS AWS S3 BUCKET ##
 .env
-s3keys.js

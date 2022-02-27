@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
+// create readable "multipart/form-data" streams
 import FormData from 'form-data';
 
 const AddAnswerDashboard = (props) => {
@@ -24,20 +25,19 @@ const AddAnswerDashboard = (props) => {
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
-    console.log('FILE', file);
 
     let data = new FormData();
     data.append('photo', file);
-    // console.log('SEE FILE', data.get('photo'));
+    // console.log('SEE FORM DATA', data.get('photo'));
 
-    axios.post('/s3Url', data, {
+    axios.post('/photos', data, {
       headers: {
-        'content-type': 'multipart/form-data' // do not forget this 
+        'content-type': 'multipart/form-data' 
       }
     })
       .then((response) => {
-        console.log('RESPONSE IN HANDLE PHOTO UPLOAD', response.data);
         setPhotos(oldPhotos => [...oldPhotos, response.data]);
+        setPhotoErrorMsg('');
       })
       .catch((error) => {
         setPhotoErrorMsg('photo unable to be uploaded');
