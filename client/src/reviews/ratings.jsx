@@ -1,5 +1,6 @@
 //rating section top level component
 import React from 'react';
+import RatingBar from './ratingBreakdown.jsx';
 
 class Ratings extends React.Component {
   constructor(props) {
@@ -50,6 +51,7 @@ class Ratings extends React.Component {
     return (
       <div>
         Rating bar and factor bar go here
+        <RatingBar percent = {50}/>
       </div>
     );
 
