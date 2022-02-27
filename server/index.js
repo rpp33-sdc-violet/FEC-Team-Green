@@ -1,16 +1,35 @@
 const express = require('express');
 const axios = require('axios');
 const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware');
-const app = express();
-const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+// Multer: handles multipart/form-data, which is primarily used for uploading files
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+// FOR UPLOADING PHOTOS TO S3 BUCKET
 const generateUploadURL = require('./s3.js');
+
+const app = express();
+const PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(express.static(__dirname + '/../client/dist'));
+
+// ENDPOINT TO RECEIVE PHOTO FILE AND RETURN URL
+app.post('/s3Url', upload.single('photo'), (req, res) => {
+  console.log('REQ FILE', req.file);
+  generateUploadURL(req.file, (err, url) => {
+    if (err) {
+      res.status(500).send('error in uploading photo');
+    } else {
+      res.send(url);
+    }
+  });
+
+});
 
 // COOKIES - In QA widget, need to persist data whether helpful links have been clicked or not
 app.use(cookieParser());
@@ -74,12 +93,6 @@ const options = {
 // use proxy middleware and created '/api' endpoint that communicates with our real API
 app.use('/api/*', createProxyMiddleware(options));
 
-app.get('/s3Url', (req, res) => {
-  generateUploadURL()
-    .then((response) => {
-      res.send({response});
-    });
-});
 
 
 app.get('*', (req, res) => {

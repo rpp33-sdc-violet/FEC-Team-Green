@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
+import FormData from 'form-data';
 
 const AddAnswerDashboard = (props) => {
   // props: product_name, question_body, question_id
@@ -14,52 +15,33 @@ const AddAnswerDashboard = (props) => {
   const [photoErrorMsg, setPhotoErrorMsg] = useState('');
   const [postErrorMsg, setPostErrorMsg] = useState('');
 
-  // useEffect(() => {
-  //   if (photos.length >= 5) {
-  //     setCanUpload(false);
-  //   }
-  // });
-
-  const fetchPhotoURL = (key) => {
-    // Get a presigned URL of a stored file
-
-    // setPhotos(oldPhotos => [...oldPhotos, response]);
-
-    // setPhotoErrorMsg('photo unable to be uploaded');
-
-  };
+  useEffect(() => {
+    if (photos.length >= 5) {
+      setCanUpload(false);
+    }
+  });
 
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
-    // upload file/photo to S3 bucket using PUT method
+    console.log('FILE', file);
 
-    // get secure url from server
-    axios.get('/s3Url')
+    let data = new FormData();
+    data.append('photo', file);
+    // console.log('SEE FILE', data.get('photo'));
+
+    axios.post('/s3Url', data, {
+      headers: {
+        'content-type': 'multipart/form-data' // do not forget this 
+      }
+    })
       .then((response) => {
-        const url = response.data.response;
-        console.log('S3URL', url);
-
-        fetch(url, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          body: file
-        })
-          .then((response) => {
-            console.log('response after FETCH,', response);
-          })
-          .catch((error) => {
-            console.log('ERROR after FETCH,', error);
-          });
-
+        console.log('RESPONSE IN HANDLE PHOTO UPLOAD', response.data);
+        setPhotos(oldPhotos => [...oldPhotos, response.data]);
+      })
+      .catch((error) => {
+        setPhotoErrorMsg('photo unable to be uploaded');
       });
-
-    // post image directly to S3 bucket
-
-    // post request to my server to store data
-
   };
 
   const showModal = () => {

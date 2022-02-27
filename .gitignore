@@ -9,3 +9,4 @@ dist/config/github.js
 
 ## ENV ID AND KEYS ##
 .env
+s3keys.js
