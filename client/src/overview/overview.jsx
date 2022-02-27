@@ -34,7 +34,7 @@ const Overview = (props) => {
 
 
 
-  console.log('overview->selectedStyle: ', selectedStyle);
+  // console.log('overview->selectedStyle: ', selectedStyle);
   return (
 
     < div className='overview-wrapper' >

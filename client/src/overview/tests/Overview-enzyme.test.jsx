@@ -5,6 +5,7 @@ import Overview from '../Overview';
 import ImageContainer from '../components/Image/ImageContainer';
 import ImageExpander from '../components/Image/ImageExpander';
 import StyleSelectorContainer from '../components/style/StyleSelectorContainer';
+import StyleList from '../components/style/StyleList';
 import SelectProductContainer from '../components/product/SelectProductContainer';
 import SelectSizeDropdown from '../components/product/SelectSizeDropdown';
 import ProductInformationContainer from '../components/details/ProductInformationContainer';
@@ -13,6 +14,33 @@ import ProductDescription from '../components/details/ProductDescription';
 import ProductFeatureList from '../components/details/ProductFeatureList';
 import exampleStyleData from '../../data/exampleStyleData.js';
 import exampleProductData from '../../data/exampleProductData.js';
+
+
+describe('Overview', () => {
+  test('selected image index stays the same when selected style changes', () => {
+    const wrap = mount(
+      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
+    );
+    expect(wrap.find('ImageExpander').props().selectedPhoto.index).toEqual(0);
+  });
+
+  test('selected image index stays the same when selected style changes', () => {
+    const wrap = mount(
+      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
+    );
+    var originallySelectedId = wrap.find(ImageContainer).props().selectedStyle.style_id;
+    console.log('id ', originallySelectedId);
+    var index = wrap.find(ImageExpander).props().selectedPhoto.index;
+    wrap.find('ImageThumbnail').at(2).simulate('click');
+    var index2 = wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index;
+    wrap.find('#id398221').simulate('click');
+
+    expect(wrap.find('ImageContainer').props().selectedStyle.style_id).toEqual(398221);
+    expect(wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index).toEqual(index2);
+  });
+
+});
+
 /* ======================IMAGE_CONTAINER_TESTS======================*/
 
 describe('ImageContainer', () => {
@@ -24,6 +52,7 @@ describe('ImageContainer', () => {
     expect(wrap.find('.image-container').text()).toEqual('...loading');
     // expect(wrap.find('h3').text()).toEqual('Overview');
   });
+
 });
 
 /* ==================PRODUCT_INFORMATION_CONTAINER_TESTS======================*/
@@ -94,7 +123,7 @@ describe('SelectSizeDropdown', () => {
     );
     expect(wrap.find('.select-size option').length).toEqual(1);
     expect(wrap.find('.select-size option').text()).toEqual('Select Size');
-    console.log('shallow', wrap.props());
+    // console.log('shallow', wrap.props());
   });
   test('SizeDropDown to have options including Select Size and numbers and length of 12 when example data is given', () => {
     const wrap = mount(
@@ -133,7 +162,8 @@ describe('SelectSizeDropdown SelectQuantityDropdown Integration', () => {
     wrap.find('select.select-size').simulate('change', { target: { value: 'Select Size' }});
     expect(wrap.find('.select-quantity option').length).toEqual(1);
   });
-  test('quantityDropDown max value show is 15 even when quantity avabliable is larger', () => {
+
+  test('quantityDropDown max value show is 15 even when quantity available is larger', () => {
     const wrap = mount(
       <SelectProductContainer selectedStyle ={exampleStyleData.results[0]}/>
     );
@@ -145,7 +175,7 @@ describe('SelectSizeDropdown SelectQuantityDropdown Integration', () => {
       <SelectProductContainer selectedStyle ={exampleStyleData.results[0]}/>
     );
     wrap.find('select.select-size').simulate('change', { target: { value: 9 }});
-    console.log('wrap props', wrap.find('SelectQuantityDropdown').props().sizeAndQuantity.quantity);
+    // console.log('wrap props', wrap.find('SelectQuantityDropdown').props().sizeAndQuantity.quantity);
     expect(wrap.find('SelectQuantityDropdown').props().sizeAndQuantity.quantity).toEqual(1);
 
   });
