@@ -9,19 +9,30 @@ import './styles/style.css';
 import styled from 'styled-components';
 
 const RatingBar = (props) => {
-  //let percent = {'--percentV': props.percent};
+
+  let ratingBar =
+  <Bar percent = {props.percent} empty = {100 - props.percent}>
+    <Filled percent = {props.percent}> </Filled>
+    <Empty empty = {props.empty} ></Empty>
+  </Bar>;
+
   return (
-    <Bar percent = {props.percent} empty = {100 - props.percent}>
-      <Filled percent = {props.percent}> </Filled>
-      <Empty empty = {props.empty} ></Empty>
-    </Bar>
+    //TODO:implement onClick event handler in BarWrapper to fullfill the requirement 'label, bar and the count will act as a filter
+    <BarWrapper>
+      <BarTitle>{props.stars} stars</BarTitle>
+      {ratingBar}
+    </BarWrapper>
+
   );
 };
 
+const BarWrapper = styled.div``;
+
+const BarTitle = styled.div``;
+
 const Bar = styled.div`
   border-radius: 0;
-  height: 1rem;
-  flex-basis: 45%;
+  height: 12px;
   border: 1px solid;
   display: flex;
 `;
