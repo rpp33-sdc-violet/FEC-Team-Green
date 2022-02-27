@@ -11,11 +11,14 @@ class ReviewList extends React.Component {
     this.state = {
       productId: this.props.product_id,
       reviews: [],
+      displayReviews: [],
       metaData: {},
       ratingBreakdown: [],
       displayCount: 2,
       buttonVisible: true,
-      sort: 'relevant'
+      sort: 'relevant',
+      filters: [],
+      filtersOn: false
     };
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -40,7 +43,7 @@ class ReviewList extends React.Component {
     })
       .then((res) => {
         //console.log('axios get reviews', res);
-        this.setState({reviews: res.data.results});
+        this.setState({reviews: res.data.results, displayReviews: res.data.results});
 
       })
       .catch((err) => {
@@ -58,6 +61,8 @@ class ReviewList extends React.Component {
       .then((res) => {
         this.setState({metaData: res.data});
         this.ratingBreakdown(res.data);
+      }).catch((err) => {
+        console.log('failed to get meta data', err.message);
       });
   }
 
@@ -103,12 +108,49 @@ class ReviewList extends React.Component {
     this.getReviews(option);
   }
 
+  /*toggleFilter() {
+    this.setState({filtersOn: !this.state.filtersOn});
+  }*/
+
+  filterReviews(rating) {
+    this.setState({filtersOn: !this.state.filtersOn}, () => {
+      if (this.state.filtersOn) {
+        let tempFilters = this.state.filters.push(rating);
+      } else {
+        let index = this.state.filters.indexOf(rating);
+        let tempFilters = this.state.filters.splice(index, 1);
+      }
+      //TODO: implement filter reviews cb in the below setState
+      this.setState({filters: tempFilters}, () => {
+        this.filterHelper(this.state.filters);
+      });
+    });
+  }
+
+
+  filterHelper(filters) {
+    let tempReviews = [];
+    if (filters.length === 0) {
+      tempReviews = this.state.reviews;
+    } else {
+      this.state.reviews.map((review) => {
+        for (let i = 0; i < filters.length; i++) {
+          if (review.rating === filters[i]) {
+            tempReviews.push(review);
+            break;
+          }
+        }
+      });
+    }
+    this.setState({displayReviews: tempReviews});
+  }
+
 
   render() {
     //slice displayed reviews based on displaycount
     let currentReviews = [];
     if (this.state.reviews) {
-      currentReviews = this.state.reviews.slice(0, this.state.displayCount);
+      currentReviews = this.state.displayReviews.slice(0, this.state.displayCount);
     }
 
     let moreReviewButton = null;
