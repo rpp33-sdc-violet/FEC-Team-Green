@@ -57,36 +57,38 @@ class ReviewList extends React.Component {
     })
       .then((res) => {
         this.setState({metaData: res.data});
-        let ratingMeta = res.data.ratings;
-        let ratingValues = Object.values(ratingMeta);
-        let sum = 0;
-        ratingValues.map((rating) => {
-          sum += parseInt(rating);
-        });
-
-        let breakdown = [0, 0, 0, 0, 0];
-        let counter = 1;
-        // TODO: replace the below code with loop, this is not acceptable
-        if (ratingMeta['1']) {
-          breakdown[0] = parseInt(ratingMeta['1']) / sum * 100;
-        }
-        if (ratingMeta['2']) {
-          breakdown[1] = parseInt(ratingMeta['2'] / sum * 100);
-        }
-        if (ratingMeta['3']) {
-          breakdown[2] = parseInt(ratingMeta['3'] / sum * 100);
-        }
-        if (ratingMeta['4']) {
-          breakdown[3] = parseInt(ratingMeta['4'] / sum * 100);
-        }
-        if (ratingMeta['5']) {
-          breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
-        }
-        console.log('ratingBreakdown', breakdown);
-        this.setState({ratingBreakdown: breakdown});
+        this.ratingBreakdown(res.data);
       });
   }
 
+  ratingBreakdown(metaData) {
+    let ratingMeta = metaData.ratings;
+    let ratingValues = Object.values(ratingMeta);
+    let sum = 0;
+    ratingValues.map((rating) => {
+      sum += parseInt(rating);
+    });
+
+    let breakdown = [0, 0, 0, 0, 0];
+    let counter = 1;
+    // TODO: replace the below code with loop, this is not acceptable
+    if (ratingMeta['1']) {
+      breakdown[0] = parseInt(ratingMeta['1']) / sum * 100;
+    }
+    if (ratingMeta['2']) {
+      breakdown[1] = parseInt(ratingMeta['2'] / sum * 100);
+    }
+    if (ratingMeta['3']) {
+      breakdown[2] = parseInt(ratingMeta['3'] / sum * 100);
+    }
+    if (ratingMeta['4']) {
+      breakdown[3] = parseInt(ratingMeta['4'] / sum * 100);
+    }
+    if (ratingMeta['5']) {
+      breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
+    }
+    this.setState({ratingBreakdown: breakdown});
+  }
 
   loadReviews() {
     if (this.state.displayCount <= this.state.reviews.length) {
