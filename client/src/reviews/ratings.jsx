@@ -15,11 +15,11 @@ class Ratings extends React.Component {
 
     return (
       <div>
-        <RatingBar stars = {5} percent = {this.props.ratingBreakdown[4]}/>
-        <RatingBar stars = {4} percent = {this.props.ratingBreakdown[3]}/>
-        <RatingBar stars = {3} percent = {this.props.ratingBreakdown[2]}/>
-        <RatingBar stars = {2} percent = {this.props.ratingBreakdown[1]}/>
-        <RatingBar stars = {1} percent = {this.props.ratingBreakdown[0]}/>
+        <RatingBar stars = {5} percent = {this.props.ratingBreakdown[4]} filters = {this.props.filters}/>
+        <RatingBar stars = {4} percent = {this.props.ratingBreakdown[3]} filters = {this.props.filters}/>
+        <RatingBar stars = {3} percent = {this.props.ratingBreakdown[2]} filters = {this.props.filters}/>
+        <RatingBar stars = {2} percent = {this.props.ratingBreakdown[1]} filters = {this.props.filters}/>
+        <RatingBar stars = {1} percent = {this.props.ratingBreakdown[0]} filters = {this.props.filters}/>
       </div>
     );
 

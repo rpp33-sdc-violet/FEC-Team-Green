@@ -18,7 +18,7 @@ const RatingBar = (props) => {
 
   return (
     //TODO:implement onClick event handler in BarWrapper to fullfill the requirement 'label, bar and the count will act as a filter
-    <BarWrapper>
+    <BarWrapper onClick = {() => { props.filters(props.stars); }}>
       <BarTitle>{props.stars} stars</BarTitle>
       {ratingBar}
     </BarWrapper>

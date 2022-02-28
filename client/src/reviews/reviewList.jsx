@@ -22,6 +22,7 @@ class ReviewList extends React.Component {
     };
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
   }
 
   componentDidMount() {
@@ -113,7 +114,9 @@ class ReviewList extends React.Component {
   }*/
 
   filterReviews(rating) {
+
     this.setState({filtersOn: !this.state.filtersOn}, () => {
+      let tempFilters = this.state.filters;
       if (this.state.filtersOn) {
         let tempFilters = this.state.filters.push(rating);
       } else {
@@ -171,7 +174,7 @@ class ReviewList extends React.Component {
         <div>
           <h3>Review List</h3>
           <h3>RATINGS and REVIEWS</h3>
-          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown}/>
+          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews}/>
 
           <select onChange = {() => { this.sortReviews(event.target.value); }}>
             <option value="relevane">relevant</option>
