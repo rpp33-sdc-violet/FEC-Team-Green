@@ -20,7 +20,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 // PHOTO UPLOAD TO S3 BUCKET
 app.post('/photos', upload.single('photo'), (req, res) => {
-  console.log('req file:', req.file);
   uploadFileToS3(req.file, (error, url) => {
     if (error) {
       res.status(500).send('error in uploading photo');

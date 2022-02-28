@@ -16,7 +16,6 @@ const s3 = new S3({
 
 const uploadFileToS3 = (file, callback) => {
   // get the contents of the file
-  console.log('file here', file);
   const fileStream = fs.createReadStream(file.path);
 
   const params = ({
