@@ -130,7 +130,6 @@ class ReviewList extends React.Component {
         let tempFilters = this.state.filters.splice(index, 1);
       }
       console.log('tempFilters', tempFilters);
-      //TODO: implement filter reviews cb in the below setState
       this.setState({filters: tempFilters}, () => {
         this.filterHelper(this.state.filters);
       });
