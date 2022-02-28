@@ -66,6 +66,16 @@ describe('ProductInformationContainer', () => {
     expect(wrap.find('.category').text()).toEqual('...loading');
     // expect(wrap.find('h3').text()).toEqual('Overview');
   });
+
+
+  test('price renders', () => {
+    const wrap = shallow(
+      <ProductInformationContainer />
+    );
+
+  // expect(wrap.find('.price').text()).toEqual('$');
+  // expect(wrap.find('h3').text()).toEqual('Overview');
+  });
 });
 /* ==================SELECT_PRODUCT_CONTAINER_TESTS======================*/
 
@@ -117,12 +127,12 @@ describe('ProductDescription', () => {
 
 
 describe('SelectSizeDropdown', () => {
-  test('SizeDropDown to have  text Select Size and length of 1 when no data is given', () => {
+  test('SizeDropDown to have  text OUT OF STOCK and length of 1 when no data is given', () => {
     const wrap = shallow(
       <SelectSizeDropdown/>
     );
     expect(wrap.find('.select-size option').length).toEqual(1);
-    expect(wrap.find('.select-size option').text()).toEqual('Select Size');
+    expect(wrap.find('.select-size option').text()).toEqual('OUT OF STOCK');
     // console.log('shallow', wrap.props());
   });
   test('SizeDropDown to have options including Select Size and numbers and length of 12 when example data is given', () => {
@@ -142,6 +152,39 @@ describe('SelectSizeDropdown', () => {
       )
     ).toBeTruthy();
   });
+  //Only sizes that are currently in stock for the style selected should be listed.  Sizes not available should not appear within the list.  If there is no remaining stock for the current style, the dropdown should become inactive and read “OUT OF STOCK”.
+
+  test('SizeDropDown to have only display options when a size has stock in supply', () => {
+    const wrap = mount(
+      <SelectProductContainer selectedStyle ={exampleStyleData.results[1]}/>
+    );
+    expect(wrap.find('.select-size option').length).toEqual(10);
+
+    expect(
+      wrap.containsMatchingElement(
+        <option>Select Size</option>
+      )
+    ).toBeTruthy();
+  });
+
+  test('SizeDropDown to display OUT OF STOCK when no stock in supply option disabled', () => {
+    const wrap = mount(
+      <SelectProductContainer selectedStyle ={exampleStyleData.results[2]}/>
+    );
+    // console.log('here', wrap.debug());
+    expect(wrap.find('.select-size option').length).toEqual(1);
+
+    expect(
+      wrap.containsMatchingElement(
+        <option>OUT OF STOCK</option>
+      )
+    ).toBeTruthy();
+    expect(wrap.find('#ss').props().disabled).toBeTruthy();
+
+    expect(wrap.find('.select-quantity').props().disabled).toBeTruthy();
+  });
+
+
 });
 describe('SelectSizeDropdown SelectQuantityDropdown Integration', () => {
   test('quantityDropDown to have 14 options when size 7 is selected', () => {
@@ -179,6 +222,8 @@ describe('SelectSizeDropdown SelectQuantityDropdown Integration', () => {
     expect(wrap.find('SelectQuantityDropdown').props().sizeAndQuantity.quantity).toEqual(1);
 
   });
+
+
 });
 describe(' SelectQuantityDropdown ', () => {
   test('quantityDropDown selected quantity to change when quantity is selected', () => {

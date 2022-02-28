@@ -8,15 +8,25 @@ const SelectSizeDropdown = (props) => {
   //setSelectedSize()
 
   var options = [];
-  options.push(<option key={0}>{'Select Size'}</option>);
+  // options.push(<option key={0}>{'Select Size'}</option>);
   if (props.sizes) {
-    var options2 = (Object.keys(props.sizes).map(skuKey => {
-      return <option key={skuKey} >{skuKey}</option>;
-    }));
-    options = options.concat(options2);
-  }
+    // var options = (Object.keys(props.sizes).filter(skuKey => props.sizes[skuKey].quantity > 0), => {
+    var len = Object.keys(props.sizes).length;
+    for (var skuKey of Object.keys(props.sizes) ) {
+      // console.log('skuKey ', skuKey);
+      // console.log('skuKey2 ', props.sizes[skuKey]);
 
-  // options.unshift(<option>Select Size</option>);
+      if (props.sizes[skuKey] && props.sizes[skuKey].quantity > 0) {
+        options.push(<option key={skuKey} >{skuKey}</option>);
+
+      }
+    }
+
+  }
+  // console.log('options? ', options);
+
+  options.length > 0 ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
+
   return (
 
     <select className ='select-size'id='ss'
@@ -28,7 +38,7 @@ const SelectSizeDropdown = (props) => {
         } else {
           props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value} );
         }
-      }}>
+      }}disabled={options[0].props.children === 'OUT OF STOCK' ? true : false} >
       {options}
     </select>
 
