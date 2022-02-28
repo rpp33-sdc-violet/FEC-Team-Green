@@ -12,7 +12,7 @@
 }
 
 .QA-header {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 100;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -34,12 +34,19 @@
 
 .question-row {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: auto 180px;
   border: 1px solid blue;
 }
 
 .question-text {
   font-weight: bold;
+  font-size: 18px;
+}
+
+.helpfulQ-addAnswerLink {
+  font-size: 12px;
+  font-weight: 100;
+  text-align: right;
 }
 
 .answers-container {
