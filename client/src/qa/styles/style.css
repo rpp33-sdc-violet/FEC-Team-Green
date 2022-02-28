@@ -36,6 +36,8 @@
   display: grid;
   grid-template-columns: auto 180px;
   border: 1px solid blue;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .question-text {
