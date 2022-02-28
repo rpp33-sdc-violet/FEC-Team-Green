@@ -1,13 +1,13 @@
 .QA-container {
   display: grid;
-  grid-template-rows: 40px 70px fit-content(420px) 70px;
+  grid-template-rows: 40px 60px fit-content(380px) 60px;
   grid-template-areas: 
     "header"
     "search"
     "questions"
     "buttons";
   /* height: 600px; */
-  max-height: 600px;
+  max-height: 540px;
   margin: 40px 60px 40px;
 }
 
@@ -57,7 +57,7 @@
 
 .answers-container {
   display: grid;
-  grid-template-rows: fit-content(210px);
+  grid-template-rows: fit-content(190px);
   padding-top: 5px;
   padding-bottom: 5px;
 }
