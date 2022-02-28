@@ -32,15 +32,19 @@
   border: 1px solid red;
 }
 
-.question-row {
-  display: grid;
-  grid-template-columns: auto 180px;
-  border: 1px solid blue;
+.question {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.question-text {
+.question-row {
+  display: grid;
+  grid-template-columns: auto 180px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.question-text, #answer-letter {
   font-weight: bold;
   font-size: 18px;
 }
@@ -54,16 +58,36 @@
 .answers-container {
   display: grid;
   grid-template-rows: fit-content(210px);
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .answers-list {
   overflow: scroll;
 }
 
+.answer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.answer-text {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.answerData-helpfulA-reportLink {
+  font-size: 12px;
+  font-weight: 100;
+  padding-top: 8px;
+  margin-left: 30px;
+}
+
 #moreAnswers-button {
   background: none;
   border: none;
   font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 30px;
 }
