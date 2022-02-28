@@ -27,67 +27,66 @@
 .questions-list {
   overflow: scroll;
 }
+  .question {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+    .question-row {
+      display: grid;
+      grid-template-columns: auto 180px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+      .question-text, #answer-letter {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .helpfulQ-addAnswerLink {
+        font-size: 12px;
+        font-weight: 100;
+        text-align: right;
+      }
+    .answers-container {
+      display: grid;
+      grid-template-rows: fit-content(190px);
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .answers-list {
+      overflow: scroll;
+    }
+      .answer {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+        .answer-text {
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .answerData-helpfulA-reportLink {
+          font-size: 12px;
+          font-weight: 100;
+          padding-top: 8px;
+          margin-left: 30px;
+        }
+    #moreAnswers-button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: 30px;
+    }
 
-.buttons {
-  border: 1px solid red;
-}
-
-.question {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.question-row {
+.QA-buttons {
   display: grid;
-  grid-template-columns: auto 180px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  grid-template-columns: 250px 180px;
+  margin-top: 10px;
 }
+  #moreQuestions-button, #addQuestion-button {
+    margin-right: 20px;
+    background: none;
+    border: 1px solid black;
+    font-weight: bold;
+  }
 
-.question-text, #answer-letter {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.helpfulQ-addAnswerLink {
-  font-size: 12px;
-  font-weight: 100;
-  text-align: right;
-}
-
-.answers-container {
-  display: grid;
-  grid-template-rows: fit-content(190px);
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.answers-list {
-  overflow: scroll;
-}
-
-.answer {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.answer-text {
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.answerData-helpfulA-reportLink {
-  font-size: 12px;
-  font-weight: 100;
-  padding-top: 8px;
-  margin-left: 30px;
-}
-
-#moreAnswers-button {
-  background: none;
-  border: none;
-  font-weight: bold;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-left: 30px;
-}
