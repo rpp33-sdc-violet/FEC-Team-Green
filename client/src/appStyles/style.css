@@ -3,12 +3,14 @@
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: 'proxima-nova', sans-serif;
+  color: #404040;
 }
 
 /* ** NAVBAR ** */
 #navbar {
   display: flex;
-  background-color: black;
+  background-color: #404040;
   border-bottom: 2px solid #39FF14;
 }
 
@@ -16,6 +18,9 @@
   display: inline-block;
   color: #39FF14;;
   padding: 9px;
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #navbar > form {
