@@ -18,17 +18,26 @@
   padding-bottom: 10px;
 }
 
+/* .serach-container {
+  width: 500px;
+  height: 60px
+} */
+
 .search {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-  .question-search {
+  #question-search {
     width: 100%;
     padding: 10px 35px 10px 15px;
-    border: none;
-    border-radius: 100px;
+    border: 1px solid #404040;
     outline: none;
+  }
+  #question-search::placeholder {
+    font-weight: bold;
+    color: #505050;
   }
 
 .questions-list {
@@ -93,7 +102,7 @@
   #moreQuestions-button, #addQuestion-button {
     margin-right: 20px;
     background: none;
-    border: 1px solid black;
+    border: 1px solid #404040;
     font-weight: bold;
   }
 

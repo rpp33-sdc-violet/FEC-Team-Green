@@ -11,14 +11,12 @@ const Search = (props) => {
   };
 
   return (
-    <div className="search-container">
-      <form role="search" className="search">
-        <input type="search" id="question-search" name="q"
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          aria-label="Search questions" onChange={handleChange}>
-        </input>
-      </form>
-    </div>
+    <form role="search" className="search">
+      <input type="search" id="question-search" name="q"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        aria-label="Search questions" onChange={handleChange}>
+      </input>
+    </form>
   );
 };
 
