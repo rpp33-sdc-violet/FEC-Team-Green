@@ -59,3 +59,11 @@
 .answers-list {
   overflow: scroll;
 }
+
+#moreAnswers-button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
