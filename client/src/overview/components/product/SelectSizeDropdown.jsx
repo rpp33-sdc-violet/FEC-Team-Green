@@ -19,15 +19,16 @@ const SelectSizeDropdown = (props) => {
   // options.unshift(<option>Select Size</option>);
   return (
 
-    <select className ='select-size' onChange={(e)=> {
-      if (props.sizeAndQuantity.quantity === '-' ) {
-        props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, quantity: 1 });
-      } else if (e.target.value === 'Select Size') {
-        props.setSizeAndQuantity({ ...props.sizeAndQuantity, size: e.target.value, quantity: '-'} );
-      } else {
-        props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value} );
-      }
-    }}>
+    <select className ='select-size'id='ss'
+      onChange={(e)=> {
+        if (props.sizeAndQuantity.quantity === '-' ) {
+          props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, quantity: 1 });
+        } else if (e.target.value === 'Select Size') {
+          props.setSizeAndQuantity({ ...props.sizeAndQuantity, size: e.target.value, quantity: '-'} );
+        } else {
+          props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value} );
+        }
+      }}>
       {options}
     </select>
 

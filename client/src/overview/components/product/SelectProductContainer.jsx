@@ -31,6 +31,7 @@ const SelectProductContainer = (props) => {
   return (
     //maybe this should be a high order function?
     <div className='select-product panel'>
+      <span id='select-message'> Please select a size</span>
       <SelectSizeDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
       <SelectQuantityDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
 

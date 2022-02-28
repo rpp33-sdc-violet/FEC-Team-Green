@@ -90,6 +90,16 @@ ul {
   "size size size  . quantity quantity"
   "add add add add outfit";
   padding: 10px;
+  position: relative;
+}
+#select-message{
+  margin: 0;
+  display: inline;
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  display: none;
+  color: red
 }
 .select-bag {
   height: 50px;
@@ -162,11 +172,7 @@ ul {
   overflow: hidden;
 
 }
-.img-thumbnail-list li {
-      /* position: relative; */
-      /* width: 90%; */
 
-}
   .img-thumbnail{
   border: 1px solid #ddd;
   border-radius: 4px;
