@@ -18,7 +18,7 @@ class ReviewList extends React.Component {
       buttonVisible: true,
       sort: 'relevant',
       filters: [],
-      filtersOn: false
+      filtersOn: [false, false, false, false, false]
     };
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -39,7 +39,8 @@ class ReviewList extends React.Component {
         //option has to be an input in getReviews function, otherwise  option is not updated as expected
         //(it would be user's last selection)  setState() as a request rather than an immediate command to update the component
 
-        sort: currentOption
+        sort: currentOption,
+        count: 10
       }
     })
       .then((res) => {
@@ -93,6 +94,7 @@ class ReviewList extends React.Component {
     if (ratingMeta['5']) {
       breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
     }
+    console.log('rating breakdown', breakdown);
     this.setState({ratingBreakdown: breakdown});
   }
 
@@ -114,15 +116,20 @@ class ReviewList extends React.Component {
   }*/
 
   filterReviews(rating) {
+    let index = parseInt(rating) - 1;
+    let tempfiltersOn = this.state.filtersOn;
+    tempfiltersOn[index] = !this.state.filtersOn[index];
+    console.log('tempfilterOn', tempfiltersOn);
 
-    this.setState({filtersOn: !this.state.filtersOn}, () => {
+    this.setState({filtersOn: tempfiltersOn}, () => {
       let tempFilters = this.state.filters;
-      if (this.state.filtersOn) {
+      if (this.state.filtersOn[index]) {
         let tempFilters = this.state.filters.push(rating);
       } else {
         let index = this.state.filters.indexOf(rating);
         let tempFilters = this.state.filters.splice(index, 1);
       }
+      console.log('tempFilters', tempFilters);
       //TODO: implement filter reviews cb in the below setState
       this.setState({filters: tempFilters}, () => {
         this.filterHelper(this.state.filters);
