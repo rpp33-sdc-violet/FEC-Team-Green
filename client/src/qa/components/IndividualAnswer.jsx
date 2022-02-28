@@ -62,8 +62,8 @@ const IndividualAnswer = (props) => {
   // A text and *****TODO: photos?*******
   return (
     <div className="answer" role="answer">
-      <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
-      <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href="/" onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | <a href="/" onClick={handleReportClick}>{reportText}</a></p>
+      <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>
+      <footer className="answerData-helpfulA-reportLink">by {props.answer.answerer_name}, {formatDate()}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful? <a href="/" onClick={handleHelpfulClick}>Yes</a> ({helpfulCountA})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a></footer>
     </div>
   );
 };

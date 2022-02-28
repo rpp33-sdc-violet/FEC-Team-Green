@@ -1,6 +1,10 @@
 /* ** APPLY TO ALL ** */
 * {
   margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'proxima-nova', sans-serif;
+  color: #404040;
 }
 #app {
   margin-left: auto;
@@ -10,7 +14,7 @@
 /* ** NAVBAR ** */
 #navbar {
   display: flex;
-  background-color: black;
+  background-color: #404040;
   border-bottom: 2px solid #39FF14;
   /* border: 0; */
 }
@@ -19,7 +23,9 @@
   display: inline-block;
   color: #39FF14;;
   padding: 9px;
-
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #navbar > form {
@@ -60,3 +66,28 @@
   height: 800px;
   max-height: 800px;
 }
+
+:root {
+  --star-size: 15px;
+  --star-color: #eee;
+  --star-background: #fc0;
+}
+
+
+.Stars {
+  --percent: calc(var(--rating) * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+.Stars::before {
+  content: "★★★★★";
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+

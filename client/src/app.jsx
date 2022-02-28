@@ -64,7 +64,7 @@ class App extends React.Component {
     return (
       <div>
         <nav id={'navbar'}>
-          <p className='logo'>LOGO</p>
+          <p className='logo'>Logo</p>
           <form>
             <input value={this.state.search} onChange={this.handleChange}></input>
           </form>
