@@ -122,7 +122,7 @@ const AddAQuestionDashboard = (props) => {
           <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
       </Modal>
-      <button type="button" onClick={showModal}>ADD A QUESTION +</button>
+      <button id="addQuestion-button" type="button" onClick={showModal}>ADD A QUESTION +</button>
     </>
   );
 };

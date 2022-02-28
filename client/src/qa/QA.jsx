@@ -78,13 +78,11 @@ const QA = (props) => {
 
   return (
     <div className="QA-container">
-      <div className="QA-header">
-        <p>QUESTIONS & ANSWERS</p>
-      </div>
+      <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
       <Search userSearch={userSearch} />
       <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
-      <div className="buttons">
-        {moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+      <div className="QA-buttons">
+        {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
         <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name}/>
       </div>
     </div>
