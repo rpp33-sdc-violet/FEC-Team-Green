@@ -95,7 +95,7 @@ class ReviewList extends React.Component {
     if (ratingMeta['5']) {
       breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
     }
-    //console.log('rating breakdown', breakdown);
+    console.log('rating breakdown', breakdown);
     this.setState({ratingBreakdown: breakdown});
   }
 
