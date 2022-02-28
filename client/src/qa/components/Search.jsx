@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { BiSearchAlt2 } from 'react-icons/bi';
+
 
 const Search = (props) => {
   // props
@@ -16,6 +18,7 @@ const Search = (props) => {
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         aria-label="Search questions" onChange={handleChange}>
       </input>
+      <BiSearchAlt2 id="QA-search-icon"/>
     </form>
   );
 };

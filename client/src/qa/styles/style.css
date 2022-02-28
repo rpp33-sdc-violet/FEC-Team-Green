@@ -9,6 +9,7 @@
   /* height: 600px; */
   max-height: 540px;
   margin: 40px 60px 40px;
+  color: #404040;
 }
 
 .QA-header {
@@ -37,7 +38,15 @@
   }
   #question-search::placeholder {
     font-weight: bold;
-    color: #505050;
+    color: #404040;
+  }
+  #QA-search-icon {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -33px;
+    margin-top: 18px;
+    transform: scale(1.2);
   }
 
 .questions-list {
