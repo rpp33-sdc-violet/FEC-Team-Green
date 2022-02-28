@@ -7,7 +7,6 @@
   border: 1px solid black;
   height: 800px;
   max-height: 800px;
-
 };
 
 .disabled{
@@ -25,7 +24,6 @@ color: red;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
 }
 .description-container {
   display: flex;
@@ -40,148 +38,165 @@ color: red;
   width: 70%;
 }
 
-  .information {
+.information {
+  display: flex;
+  flex-wrap: wrap;
+  /* align-content: space-around; */
+  justify-content: space-between;
+  flex-direction: column;
+  height: 155px;
+}
+.stars{
+  height: 20%;
+}
+.category, .price{
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.name{
+  margin: 5px;
+}
 
-    display: flex;
-    flex-wrap: wrap;
-    /* align-content: space-around; */
-    justify-content: space-between;
-    flex-direction: column;
-    height: 155px;
+.ghost{
+  color: gray;
+  opacity: 0.4;
+}
+.style-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(auto, auto);
+}
+.style-thumbnail {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid black;
+  display: inline;
+  float: left;
+  margin: 5px;
+}
+ul {
+  list-style-type: none;
+  padding-inline-start: 5px;
+}
+.style-thumbnail:hover {
+  border-color: gray;
+}
+.select-product {
+  display: grid;
+  grid-template-columns: .5fr .5fr ;
+  grid-template-rows: 75px 75px;
+  grid-template-areas:
+  "size size size  . quantity quantity"
+  "add add add add outfit";
+  padding: 10px;
+}
+.select-bag {
+  height: 50px;
+  margin-right: 20px;
+}
+.select-quantity {
+  height: 50px;
+}
+.select-size {
+  height: 50px;
+}
+.select-outfit {
+  height: 50px;
 
-    }
-    .stars{
-      height: 20%;
-    }
-    .category, .price{
-      margin-top: 1px;
-      margin-bottom: 1px;
-    }
-    .name{
-      margin: 5px;
-    }
+}
+.main-image{
+  width: auto;
+  height: 100%;
+  max-height: 600px;
+  max-width: 97%;
+}
+.image-container, .rightPanel{
+  max-height: 600px;
+  height: 600px;
+}
+.image-container{
+  display: flex;
+  flex-wrap: wrap;
+  /* max-height: 700px;*/
+  height: auto;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: -5px;
+  /* flex-direction: column; */
+  z-index: 0;
+  position: relative;
+}
+.image-block {
+  position: relative;
 
-    .ghost{
-      color: gray;
-      opacity: 0.4;
-    }
-    .style-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: minmax(auto, auto);
-    }
-    .style-thumbnail {
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      border: 2px solid black;
-      display: inline;
-      float: left;
-      margin: 5px;
-    }
-    ul {
-      list-style-type: none;
-      padding-inline-start: 5px;
-    }
-    .style-thumbnail:hover {
-      border-color: gray;
-    }
-    .select-product {
-      display: grid;
-      grid-template-columns: .5fr .5fr ;
-      grid-template-rows: 75px 75px;
+}
+.img-thumbnail-list {
+  width: 80%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* overflow: hidden; */
+  overflow: auto;
+  height: 375px;
+  z-index: 1;
+}
+.img-thumbnail-list::-webkit-scrollbar {
+  display: none;
+}
 
-      grid-template-areas:
-      "size size size  . quantity quantity"
-      "add add add add outfit";
-      padding: 10px;
-    }
-    .select-bag {
-      height: 50px;
-      margin-right: 20px;
-    }
-    .select-quantity {
-      height: 50px;
-    }
-    .select-size {
-      height: 50px;
-    }
-    .select-outfit {
-      height: 50px;
+.img-thumbnail-panel {
+  /* display: float; */
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  align-items: center;
+  /* margin: 5px; */
+  list-style-type: none;
+  width: 70px;
+  top: 0;
+  left: 4px;
+  justify-content: center;
+  overflow: hidden;
 
-    }
-    .main-image{
-      width: auto;
-      height: 100%;
-      max-height: 600px;
-      max-width: 97%;
-    }
-    .image-container, .rightPanel{
-      max-height: 600px;
-      height: 600px;
-    }
-    .image-container{
-      display: flex;
-      flex-wrap: wrap;
-      /* max-height: 700px;*/
-      height: auto;
-      justify-content: center;
-      margin-top: 20px;
-      margin-left: -5px;
-      /* flex-direction: column; */
-      z-index: 0;
-      position: relative;
-    }
-    .image-block {
-      position: relative;
+}
+.img-thumbnail-list li {
+      /* position: relative; */
+      /* width: 90%; */
 
-    }
-    .img-thumbnail-list {
-      /* display: float; */
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      z-index: 1;
-      position: absolute;
-      top:0;
-      left: 0;
-      /* margin: 5px; */
-      list-style-type: none;
-      width: 40px
+}
+  .img-thumbnail{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  height: 60px;
+  width: 70%;
+  margin-left: 5px;
+  z-index: 10;
+}
+.img-thumbnail.selected {
+  border-bottom: 8px black solid;
+}
+.upArrow, .downArrow {
+  color: yellow;
+  height: 7px;
+  width: auto;
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+  justify-content: left;
+  padding: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
+  width: 15px;
+}
 
 
-    }
-    li {
-      width: 70px;
-      padding-left: 10px;
-    }
-     .img-thumbnail{
-      border: 1px solid #ddd; /* Gray border */
-      border-radius: 4px;  /* Rounded border */
-      padding: 5px;
-      max-height: 75px;
-      max-width: 50px;
-    }
-    .img-thumbnail.selected {
-      border-bottom: 8px #ddd solid;
-    }
-    .upArrow, .downArrow {
-      color: yellow;
-      height: 12px;
-      width: auto;
-      filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
-      justify-content: left;
-      padding: 5px;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-
-    .rightPanel {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: space-around;
-      margin-left: 15px;
-      padding-left: 10px;
-      margin-top: 20px;
-    }
+.rightPanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-left: 15px;
+  padding-left: 10px;
+  margin-top: 20px;
+}

@@ -21,11 +21,11 @@ const ImageThumbnailList = (props) => {
   // console.log('photos', photoThumbnails);
   return (
 
-    <div className='img-thumbnail-list'>
-      {/* button */}
+    <div className='img-thumbnail-panel'>
       <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onClick={() => { console.log('clicked up'); }}></img>
-      {photoThumbnails}
-      {/* button */}
+      <div className ='img-thumbnail-list'>
+        {photoThumbnails}
+      </div>
       <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onClick={() => { console.log('clicked down'); }}></img>
     </div>
 
