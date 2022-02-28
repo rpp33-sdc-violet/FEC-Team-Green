@@ -35,6 +35,9 @@ const Bar = styled.div`
   height: 12px;
   border: 1px solid;
   display: flex;
+  &:hover {
+    background-color: #F2F2F2;
+  }
 `;
 
 const Filled = styled.div`

@@ -23,6 +23,7 @@ class ReviewList extends React.Component {
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
+    this.removeAllFilters = this.removeAllFilters.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class ReviewList extends React.Component {
         //(it would be user's last selection)  setState() as a request rather than an immediate command to update the component
 
         sort: currentOption,
-        count: 10
+        count: 50
       }
     })
       .then((res) => {
@@ -94,7 +95,7 @@ class ReviewList extends React.Component {
     if (ratingMeta['5']) {
       breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
     }
-    console.log('rating breakdown', breakdown);
+    //console.log('rating breakdown', breakdown);
     this.setState({ratingBreakdown: breakdown});
   }
 
@@ -129,7 +130,7 @@ class ReviewList extends React.Component {
         let index = this.state.filters.indexOf(rating);
         let tempFilters = this.state.filters.splice(index, 1);
       }
-      console.log('tempFilters', tempFilters);
+      //console.log('tempFilters', tempFilters);
       this.setState({filters: tempFilters}, () => {
         this.filterHelper(this.state.filters);
       });
@@ -154,6 +155,9 @@ class ReviewList extends React.Component {
     this.setState({displayReviews: tempReviews});
   }
 
+  removeAllFilters() {
+    this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
+  }
 
   render() {
     //slice displayed reviews based on displaycount
@@ -165,6 +169,23 @@ class ReviewList extends React.Component {
     let moreReviewButton = null;
     if (this.state.buttonVisible && this.state.reviews.length > 2) {
       moreReviewButton = <button onClick = {this.loadReviews}>MORE REVIEWS</button>;
+    }
+
+    let removeFilter = null;
+    let displayFilters = null;
+    let currentFilters = this.state.filters;
+    console.log('currentFitlers', currentFilters);
+    if (this.state.filters.length >= 1) {
+      displayFilters = <div>Current Filters:
+        {currentFilters.map((filter) => {
+          return (
+            ` ${filter}`
+          );
+        })}
+         stars</div>;
+      removeFilter = <a href='#'onClick = {() => {
+        this.removeAllFilters();
+      }}>Remove all filters</a>;
     }
 
     //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
@@ -180,6 +201,8 @@ class ReviewList extends React.Component {
         <div>
           <h3>Review List</h3>
           <h3>RATINGS and REVIEWS</h3>
+          {displayFilters}
+          {removeFilter}
           <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews}/>
 
           <select onChange = {() => { this.sortReviews(event.target.value); }}>
