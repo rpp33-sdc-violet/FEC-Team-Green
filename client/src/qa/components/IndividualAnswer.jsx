@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const IndividualAnswer = (props) => { 
+const IndividualAnswer = (props) => {
   // props
   // answer (from AnswersList)
 
-  const [isHelpfulClickedA, setIsHelpfulClickedA] = useState(false); 
-  const [helpfulCountA, setHelpfulCountA] = useState(props.answer.helpfulness);  
+  const [isHelpfulClickedA, setIsHelpfulClickedA] = useState(false);
+  const [helpfulCountA, setHelpfulCountA] = useState(props.answer.helpfulness);
   const [reportText, setReportText] = useState('Report');
   const [isReportClicked, setIsReportClicked] = useState(false);
 
@@ -46,24 +46,24 @@ const IndividualAnswer = (props) => {
   };
 
   // date formatter
-  const formatDate = () => {
-    // implementation credit: Wen 
-    // use Date constructor 
-    const date = new Date(props.answer.date);
-    // access the toLocaleString method to format the date based on BRD requirements
-    return date.toLocaleString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
-    });
+  const formatDate = (string) => {
+    const justDate = string.split('T')[0];
+    const dateParts = justDate.split('-');
+    const year = dateParts[0];
+    const day = dateParts[2];
+    const monthNum = Number(dateParts[1]);
+    const months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = months[monthNum];
+    return `${month} ${day}, ${year}`;
   };
-  
+
+
   // render
   // A text and *****TODO: photos?*******
   return (
     <div className="answer" role="answer">
       <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>
-      <footer className="answerData-helpfulA-reportLink">by {props.answer.answerer_name}, {formatDate()}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful? <a href="/" onClick={handleHelpfulClick}>Yes</a> ({helpfulCountA})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a></footer>
+      <footer className="answerData-helpfulA-reportLink">by {props.answer.answerer_name}, {formatDate(props.answer.date)}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful? <a href="/" onClick={handleHelpfulClick}>Yes</a> ({helpfulCountA})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a></footer>
     </div>
   );
 };
