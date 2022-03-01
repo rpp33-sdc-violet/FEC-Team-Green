@@ -15,9 +15,9 @@
 .interactive-panel {
   grid-template-rows: 1fr 1fr 1fr;
 }
-.category {
+/* .category {
 color: red;
-}
+} */
 
 .feature-list {
   display: flex;
@@ -109,7 +109,8 @@ ul {
 }
 .select-bag {
   height: 50px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
+  width: 200px;
 }
 .select-quantity {
   height: 50px;

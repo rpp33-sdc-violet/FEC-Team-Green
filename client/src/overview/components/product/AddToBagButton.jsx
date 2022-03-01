@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 // import StyleList from './StyleList.jsx';
 
 //this is the button to add items to user's cart/bag
@@ -20,14 +21,27 @@ const AddToBagButton = (props) => {
       });
     } else {
       console.log('Ajax call');
-
+      axios.post('/api/cart', {
+        'sku_id': props.sizeAndQuantity.skuId,
+        'count': props.sizeAndQuantity.quantity
+      })
+        .then(()=>{
+          console.log('post successful');
+          // axios.get('/api/cart')
+          //   .then(data => {
+          //     console.log('data', data);
+          //   });
+        })
+        .catch(er => {
+          console.log('error', er);
+        });
     }
 
   };
 
   return (
     <button className ='select-bag' id='select-bag' onClick={onClick}>
-      AddToBagButton
+      Add To Bag
     </button>
   );
 };
