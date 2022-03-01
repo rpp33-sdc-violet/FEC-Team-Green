@@ -49,6 +49,12 @@ color: red;
 .stars{
   height: 20%;
 }
+.price-sale{
+  color: red;
+}
+.price-struck{
+  text-decoration: line-through;
+}
 .category, .price{
   margin-top: 1px;
   margin-bottom: 1px;
@@ -184,6 +190,8 @@ ul {
 }
 .img-thumbnail.selected {
   border-bottom: 8px black solid;
+
+
 }
 .upArrow, .downArrow {
   color: yellow;

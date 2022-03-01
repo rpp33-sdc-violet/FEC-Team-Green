@@ -43,7 +43,7 @@ const Overview = (props) => {
       }
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
-        <ProductInformationContainer product={props.product}></ProductInformationContainer>
+        <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price={selectedStyle.original_price}></ProductInformationContainer>
 
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 

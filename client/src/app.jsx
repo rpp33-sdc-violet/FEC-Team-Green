@@ -10,6 +10,7 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
