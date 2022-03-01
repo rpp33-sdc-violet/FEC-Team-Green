@@ -101,6 +101,9 @@ class ReviewList extends React.Component {
 
     let recommend = metaData.recommended;
     let recommendavg = parseInt(recommend['true']) / (parseInt(recommend['true']) + parseInt(recommend['false']));
+
+    let characteristics = metaData.characteristics;
+
     this.setState({recAvg: recommendavg});
   }
 
