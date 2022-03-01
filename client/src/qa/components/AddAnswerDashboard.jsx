@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
-// create readable "multipart/form-data" streams
-import FormData from 'form-data';
 
 const AddAnswerDashboard = (props) => {
   // props: product_name, question_body, question_id
@@ -15,21 +13,22 @@ const AddAnswerDashboard = (props) => {
   const [canUpload, setCanUpload] = useState(true);
   const [photoErrorMsg, setPhotoErrorMsg] = useState('');
   const [postErrorMsg, setPostErrorMsg] = useState('');
-
+  
   useEffect(() => {
     if (photos.length >= 5) {
       setCanUpload(false);
     }
   });
-
+  
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
-
+    
+    // to create readable "multipart/form-data" streams
     let data = new FormData();
     data.append('photo', file);
     // console.log('SEE FORM DATA', data.get('photo'));
-
+    
     axios.post('/photos', data, {
       headers: {
         'content-type': 'multipart/form-data' 
