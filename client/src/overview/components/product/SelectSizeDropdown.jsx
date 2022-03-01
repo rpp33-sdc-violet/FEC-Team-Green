@@ -18,7 +18,7 @@ const SelectSizeDropdown = (props) => {
   }
 
   //display OUT OF STOCK if no stock available
-  console.log('props skuID', props);
+  // console.log('props skuID', props);
   options.length > 0 ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
 
   return (

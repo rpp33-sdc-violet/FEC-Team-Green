@@ -9,7 +9,7 @@ const ProductInformationContainer = (props) => {
   // star_rating
   // default_price
   // id
-  console.log('info', props);
+
   if (props.product && Object.keys(props.product).length > 1) {
     return (
       <div className='information panel'>
