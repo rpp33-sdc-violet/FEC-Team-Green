@@ -174,7 +174,7 @@ class ReviewList extends React.Component {
     }
 
     let moreReviewButton = null;
-    if (this.state.buttonVisible && this.state.reviews.length > 2) {
+    if (this.state.buttonVisible && this.state.displayReviews.length > 2) {
       moreReviewButton = <button onClick = {this.loadReviews}>MORE REVIEWS</button>;
     }
 
