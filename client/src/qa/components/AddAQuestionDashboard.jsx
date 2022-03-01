@@ -97,7 +97,7 @@ const AddAQuestionDashboard = (props) => {
     <>
       <Modal show={show} handleClose={hideModal}>
         <h1>Ask Your Question</h1>
-        <h2>About the {props.product_name}</h2>
+        <h2>About the <span className="modal-subtitle">{props.product_name}</span></h2>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
         {postErrorMsg === '' || <p className="modal-error-msg">{postErrorMsg}</p>}
         <form className="question-form" onSubmit={handleSubmit}>
@@ -109,15 +109,13 @@ const AddAQuestionDashboard = (props) => {
             What is your nickname?*
             <input type="text" maxLength="60" placeholder="Example: jackson11!"
               value={nickname} onChange={(e) => setNickname(e.target.value)} />
-            <br />
-            For privacy reasons, do not use your full name or email address
+            <p className="form-extra-info">For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
             Your email*
             <input type="text" maxLength="60" placeholder="Example: sample@email.com"
               value={email} onChange={(e) => setEmail(e.target.value)} />
-            <br />
-            For authentication reasons, you will not be emailed
+            <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
           </label>
           <input className="modal-button-submit" type="submit" value="Submit" />
         </form>
