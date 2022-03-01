@@ -18,7 +18,8 @@ class ReviewList extends React.Component {
       buttonVisible: true,
       sort: 'relevant',
       filters: [],
-      filtersOn: [false, false, false, false, false]
+      filtersOn: [false, false, false, false, false],
+      recAvg: 0
     };
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -95,8 +96,12 @@ class ReviewList extends React.Component {
     if (ratingMeta['5']) {
       breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
     }
-    console.log('rating breakdown', breakdown);
+    //console.log('rating breakdown', breakdown);
     this.setState({ratingBreakdown: breakdown});
+
+    let recommend = metaData.recommended;
+    let recommendavg = parseInt(recommend['true']) / (parseInt(recommend['true']) + parseInt(recommend['false']));
+    this.setState({recAvg: recommendavg});
   }
 
   loadReviews() {
@@ -159,6 +164,8 @@ class ReviewList extends React.Component {
     this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
   }
 
+
+
   render() {
     //slice displayed reviews based on displaycount
     let currentReviews = [];
@@ -174,7 +181,7 @@ class ReviewList extends React.Component {
     let removeFilter = null;
     let displayFilters = null;
     let currentFilters = this.state.filters;
-    console.log('currentFitlers', currentFilters);
+    //console.log('currentFitlers', currentFilters);
     if (this.state.filters.length >= 1) {
       displayFilters = <div>Current Filters:
         {currentFilters.map((filter) => {
@@ -203,7 +210,7 @@ class ReviewList extends React.Component {
           <h3>RATINGS and REVIEWS</h3>
           {displayFilters}
           {removeFilter}
-          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews}/>
+          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg}/>
 
           <select onChange = {() => { this.sortReviews(event.target.value); }}>
             <option value="relevane">relevant</option>
