@@ -58,7 +58,7 @@
   }
     .question-row {
       display: grid;
-      grid-template-columns: auto 180px;
+      grid-template-columns: auto 250px;
       padding-top: 5px;
       padding-bottom: 5px;
     }
