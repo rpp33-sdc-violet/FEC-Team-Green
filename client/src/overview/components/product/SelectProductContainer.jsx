@@ -8,17 +8,7 @@ import AddToBagButton from './AddToBagButton.jsx';
 
 const SelectProductContainer = (props) => {
 
-
-  //props
-  //selectedStyle {}
-  //selectedQuantity default '-'
-  //selectedSize default 'SELECT SIZE'
-  //setSelectedSize ()
-  //setSelectedQuantity ()
-  // const [selectedSize, setSelectedSize] = useState('Select Size');
-  // const [selectedQuantity, setSelectedQuantity] = useState('-');
   const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-'});
-
 
   var sizes = {};
   if (props.selectedStyle) {
