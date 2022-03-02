@@ -10,35 +10,17 @@ const ImageThumbnailList = (props) => {
   // props.urlList = list of urls
   // local state highlighted url index
   //method to change highlighted url
+
+  var startScroll = (direction, e ) => {
+    var nav = direction === 'down' ? 2 : -2;
+    var list = $('.img-thumbnail-list');
+    list.scroll(function(e) {
+      list.scrollTop(list.scrollTop() + nav);
+    });
+    list.trigger('scroll');
+  };
   var stopScroll = () => {
     $('.img-thumbnail-list').unbind();
-  };
-  var scroll = (direction, e ) => {
-    if (direction === 'down') {
-      var list = $('.img-thumbnail-list');
-      console.log('scrolldown ', list);
-      // list.scroll();
-      list.scroll(function(e) {
-        console.log('scrolling', list.scrollTop());
-        list.scrollTop(list.scrollTop() + 3);
-      });
-      list.trigger('scroll');
-
-    } else if (direction === 'up') {
-
-      var list = $('.img-thumbnail-list');
-      console.log('scrolldown ', list);
-      // list.scroll();
-      list.scroll(function(e) {
-        console.log('scrolling ^', list.scrollTop());
-        list.scrollTop(list.scrollTop() - 3);
-
-
-      });
-      list.trigger('scroll');
-
-    }
-
   };
   var photoThumbnails = [];
   if (props.photos) {
@@ -51,11 +33,11 @@ const ImageThumbnailList = (props) => {
   return (
 
     <div className='img-thumbnail-panel'>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { scroll('up', event.target); }} onMouseUp={stopScroll}></img>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
       <div className ='img-thumbnail-list'>
         {photoThumbnails}
       </div>
-      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { scroll('down', event.target); }} onMouseUp={stopScroll} ></img>
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
     </div>
 
   );
