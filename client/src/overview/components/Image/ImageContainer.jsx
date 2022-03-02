@@ -13,7 +13,7 @@ var ImageContainer = (props) => {
 
   var expandImage = () => {
     var imageModal = $('#image-modal-frame');
-    imageModal.toggle();
+    imageModal.css('display', 'flex');
     console.log('toggle ', imageModal);
   };
   // set state ONLY if it has never been set before or the style changes

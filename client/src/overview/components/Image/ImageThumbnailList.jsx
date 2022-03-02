@@ -10,7 +10,36 @@ const ImageThumbnailList = (props) => {
   // props.urlList = list of urls
   // local state highlighted url index
   //method to change highlighted url
+  var stopScroll = () => {
+    $('.img-thumbnail-list').unbind();
+  };
+  var scroll = (direction, e ) => {
+    if (direction === 'down') {
+      var list = $('.img-thumbnail-list');
+      console.log('scrolldown ', list);
+      // list.scroll();
+      list.scroll(function(e) {
+        console.log('scrolling', list.scrollTop());
+        list.scrollTop(list.scrollTop() + 3);
+      });
+      list.trigger('scroll');
 
+    } else if (direction === 'up') {
+
+      var list = $('.img-thumbnail-list');
+      console.log('scrolldown ', list);
+      // list.scroll();
+      list.scroll(function(e) {
+        console.log('scrolling ^', list.scrollTop());
+        list.scrollTop(list.scrollTop() - 3);
+
+
+      });
+      list.trigger('scroll');
+
+    }
+
+  };
   var photoThumbnails = [];
   if (props.photos) {
     photoThumbnails = props.photos.map ((photo, index) => {
@@ -22,11 +51,11 @@ const ImageThumbnailList = (props) => {
   return (
 
     <div className='img-thumbnail-panel'>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onClick={() => { console.log('clicked up'); }}></img>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { scroll('up', event.target); }} onMouseUp={stopScroll}></img>
       <div className ='img-thumbnail-list'>
         {photoThumbnails}
       </div>
-      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onClick={() => { console.log('clicked down'); }}></img>
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { scroll('down', event.target); }} onMouseUp={stopScroll} ></img>
     </div>
 
   );
