@@ -258,7 +258,6 @@ const RatingWrapper = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-
 `;
 
 const ReviewWrapper = styled.div`
@@ -266,7 +265,7 @@ const ReviewWrapper = styled.div`
   flex-direction: column;
   margin-left: 60px;
   overflow: scroll;
-  height: 50vh
+  height: 50vh;
 `;
 //px for overflow height control does not work well...need view height %
 
