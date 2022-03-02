@@ -5,6 +5,7 @@ import IndividualReview from './individualReview.jsx';
 import AddNewReview from './addNewReview.jsx';
 import Ratings from './ratings.jsx';
 import ProductBreakdown from './productBreakdown.jsx';
+import styled from 'styled-components';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -180,7 +181,7 @@ class ReviewList extends React.Component {
 
     let moreReviewButton = null;
     if (this.state.buttonVisible && this.state.displayReviews.length > 2) {
-      moreReviewButton = <button onClick = {this.loadReviews}>MORE REVIEWS</button>;
+      moreReviewButton = <MoreReview onClick = {this.loadReviews}>MORE REVIEWS</MoreReview>;
     }
 
     let removeFilter = null;
@@ -211,39 +212,75 @@ class ReviewList extends React.Component {
     } else {
       return (
         <div>
-          <h3>Review List</h3>
-          <h3>RATINGS and REVIEWS</h3>
-          {displayFilters}
-          {removeFilter}
-          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
-          <ProductBreakdown charac = {this.state.charac}/>
+          <RatingandReviews>
+            <RatingWrapper>
+              <h3>RATINGS and REVIEWS</h3>
+              {displayFilters}
+              {removeFilter}
+              <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
+              <ProductBreakdown charac = {this.state.charac}/>
+            </RatingWrapper>
 
-          <select onChange = {() => { this.sortReviews(event.target.value); }}>
-            <option value="relevane">relevant</option>
-            <option value="newest">newest</option>
-            <option value="helpful">helpful</option>
-          </select>
-          <br></br>
-          <div>
-            {currentReviews.map((review) => {
-              return (
-                <IndividualReview review = {review} key = {review.review_id} />
-              );
-            })}
-          </div>
-          <div>
-            {moreReviewButton}
-            <AddNewReview productId = {this.state.productId}/>
-          </div>
+            <ReviewWrapper>
+              <div>
+                <select onChange = {() => { this.sortReviews(event.target.value); }}>
+                  <option value="relevane">relevant</option>
+                  <option value="newest">newest</option>
+                  <option value="helpful">helpful</option>
+                </select>
+              </div>
+              <div>
+                {currentReviews.map((review) => {
+                  return (
+                    <IndividualReview review = {review} key = {review.review_id} />
+                  );
+                })}
+              </div>
+              <Button>
+                {moreReviewButton}
+                <AddNewReview productId = {this.state.productId}> </AddNewReview>
+              </Button>
+            </ReviewWrapper>
+          </RatingandReviews>
         </div>
       );
     }
 
   }
-
-
-
 }
 
+const RatingandReviews = styled.div`
+  display: flex;
+  margin: 40px 60px 40px;
+`;
+
+const RatingWrapper = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+`;
+
+const ReviewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  overflow: scroll;
+  height: 50vh
+`;
+//px for overflow height control does not work well...need view height %
+
+const Button = styled.div`
+  display: grid;
+  grid-template-columns: 250px 180px;
+  margin-top: 10px;
+`;
+const MoreReview = styled(Button)`
+  margin-right: 20px;
+  background: none;
+  border: 1px solid black;
+  font-weight: bold;
+`;
 
 export default ReviewList;
+

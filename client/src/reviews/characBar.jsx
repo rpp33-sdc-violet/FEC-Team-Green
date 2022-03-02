@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const CharacBar = (props) => {
 
-  console.log('indicator value', (parseInt(props.value)) / 5 * 100);
+  //console.log('indicator value', parseInt(props.value));
   return (
     <CBar>
       <Name>{props.name}</Name>
