@@ -28,7 +28,7 @@ const AddAnswerDashboard = (props) => {
     <>
       <Modal show={show} handleClose={hideModal}>
         <h1>Submit Your Answer</h1>
-        <h2>{props.product_name}: {props.question_body}</h2>
+        <h2>{props.product_name}: <span className="modal-subtitle">{props.question_body}</span></h2>
         <form className="answer-form" onSubmit={handleSubmit}>
           <label>
             Your Answer*
@@ -38,15 +38,13 @@ const AddAnswerDashboard = (props) => {
             What is your nickname?*
             <input type="text" maxLength="60" placeholder="Example: jack543!"
               value={nickname} onChange={(e) => setNickname(e.target.value)} />
-            <br />
-            For privacy reasons, do not use your full name or email address
+            <p className="form-extra-info">For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
             Your email*
             <input type="text" maxLength="60" placeholder="Example: jack@email.com"
               value={email} onChange={(e) => setEmail(e.target.value)} />
-            <br />
-            For authentication reasons, you will not be emailed
+            <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
           </label>
           <label>
             Upload your photos
