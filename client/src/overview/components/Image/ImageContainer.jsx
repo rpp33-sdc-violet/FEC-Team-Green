@@ -13,8 +13,9 @@ var ImageContainer = (props) => {
 
   var expandImage = () => {
     var imageModal = $('#image-modal-frame');
-    imageModal.css('display', 'flex');
-    console.log('toggle ', imageModal);
+    imageModal.css('display') === 'none' ?
+      imageModal.css('display', 'flex') :
+      imageModal.css('display', 'none');
   };
   // set state ONLY if it has never been set before or the style changes
   useEffect(()=> {
@@ -29,11 +30,8 @@ var ImageContainer = (props) => {
 
   // I would like to eventually rename image-container to image-gallery and image-block to image-container
   return (
-    //style={{backgroundImage: `url(${selectedPhoto.url})`}}
-    //src={selectedPhoto.url}
     <div className ='image-container'>
       <div id='image-modal-frame'>
-        {/* <img className={'main-image modal'} src = {selectedPhoto.url}></img> */}
         <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
       </div>

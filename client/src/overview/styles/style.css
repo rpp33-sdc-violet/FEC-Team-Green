@@ -1,4 +1,3 @@
-
 .overview-wrapper {
   display: grid;
   background-color: white;
@@ -122,14 +121,15 @@ ul {
   height: 50px;
 
 }
-.main-image, .main-image-modal{
-  width: auto;
-  height: 100%;
+.main-image {
+  width: 100%;
+  height: auto;
   max-height: 600px;
-  /* //max-width: 97%; */
+  max-width: 97%;
   cursor: pointer;
 }
 .main-image-modal {
+  /* width: auto; */
   cursor: zoom-in;
   cursor: -moz-zoom-in;
   width: 100%;
@@ -140,6 +140,9 @@ ul {
   margin-right: auto;
   margin-left: auto;
 }
+/* .main-image-modal:hover {
+  cursor: crosshair;
+} */
 .image-container, .rightPanel{
   max-height: 600px;
   height: 600px;
@@ -156,6 +159,9 @@ ul {
 }
 .image-block {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 }
 #image-modal-frame {
   display: none;
@@ -234,6 +240,8 @@ ul {
   margin-right: 10px;
   width: 15px;
 }
+.upArrow {
+opacity: 0}
 
 
 .rightPanel {

@@ -8,11 +8,14 @@ var ImageExpander = (props) => {
     console.log('modal', e);
 
     if (!scaled) {
-
       $('.main-image-modal').css('transform', 'translate(100px, 10px) scale(2.5)');
       $('.main-image-modal').css('cursor', 'zoom-out');
+      $('.main-image-modal').mousemove(function(e) {
+        $('.main-image-modal').css('transform', `translate(${e.clientX}px, ${e.clientY}px) scale(2.5)`);
+      });
     } else {
       $('.main-image-modal').css('transform', 'scale(1)');
+      $('.main-image-modal').unbind();
       $('.main-image-modal').css('cursor', 'zoom-in');
     }
 

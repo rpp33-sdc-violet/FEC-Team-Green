@@ -16,8 +16,14 @@ const ImageThumbnailList = (props) => {
     var list = $('.img-thumbnail-list');
     list.scroll(function(e) {
       list.scrollTop(list.scrollTop() + nav);
+      $('.img-thumbnail-list').scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
+      var maxHeight = list[0].scrollHeight - list.outerHeight();
+      $('.img-thumbnail-list').scrollTop() === maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
+
+      // console.log('scrolltop', ;
     });
     list.trigger('scroll');
+
   };
   var stopScroll = () => {
     $('.img-thumbnail-list').unbind();
@@ -39,7 +45,6 @@ const ImageThumbnailList = (props) => {
       </div>
       <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
     </div>
-
   );
 };
 
