@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ImageExpander from './ImageExpander.jsx';
 import ImageThumbnailList from './ImageThumbnailList.jsx';
 import ImageThumbnail from './ImageThumbnail.jsx';
+import { AiOutlineExpand } from 'react-icons/ai';
 var ImageContainer = (props) => {
 
 
@@ -10,6 +11,11 @@ var ImageContainer = (props) => {
   const [selectedPhoto, setSelectedPhoto] = useState('loading');
   const [currentStyleId, setCurrentStyleId] = useState(0);
 
+  var expandImage = () => {
+    var imageModal = $('#image-modal-frame');
+    imageModal.toggle();
+    console.log('toggle ', imageModal);
+  };
   // set state ONLY if it has never been set before or the style changes
   useEffect(()=> {
     if ( props.selectedStyle.photos && (selectedPhoto === 'loading' || currentStyleId !== props.selectedStyle['style_id'] )) {
@@ -23,10 +29,18 @@ var ImageContainer = (props) => {
 
   // I would like to eventually rename image-container to image-gallery and image-block to image-container
   return (
+    //style={{backgroundImage: `url(${selectedPhoto.url})`}}
+    //src={selectedPhoto.url}
     <div className ='image-container'>
+      <div id='image-modal-frame'>
+        {/* <img className={'main-image modal'} src = {selectedPhoto.url}></img> */}
+        <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
+        <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
+      </div>
       <div className ='image-block'>
         <ImageExpander selectedPhoto={selectedPhoto}/>
         <ImageThumbnailList selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
       </div>
     </div>
 

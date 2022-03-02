@@ -41,9 +41,10 @@ const Overview = (props) => {
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }
+     
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
-        <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price={selectedStyle.original_price}></ProductInformationContainer>
+        <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>
 
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 
@@ -52,6 +53,7 @@ const Overview = (props) => {
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>
     </div >
+
   );
 
 };
