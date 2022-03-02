@@ -4,6 +4,7 @@ import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
 import AddNewReview from './addNewReview.jsx';
 import Ratings from './ratings.jsx';
+import ProductBreakdown from './productBreakdown.jsx';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class ReviewList extends React.Component {
       sort: 'relevant',
       filters: [],
       filtersOn: [false, false, false, false, false],
-      recAvg: 0
+      recAvg: 0,
+      charac: {}
     };
     this.loadReviews = this.loadReviews.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -97,14 +99,14 @@ class ReviewList extends React.Component {
       breakdown[4] = parseInt(ratingMeta['5'] / sum * 100);
     }
     //console.log('rating breakdown', breakdown);
-    this.setState({ratingBreakdown: breakdown});
+    //this.setState({ratingBreakdown: breakdown});
 
     let recommend = metaData.recommended;
     let recommendavg = parseInt(recommend['true']) / (parseInt(recommend['true']) + parseInt(recommend['false']));
 
     let characteristics = metaData.characteristics;
-
-    this.setState({recAvg: recommendavg});
+    //console.log('charac', characteristics);
+    this.setState({ratingBreakdown: breakdown, recAvg: recommendavg, charac: characteristics});
   }
 
   loadReviews() {
@@ -213,7 +215,8 @@ class ReviewList extends React.Component {
           <h3>RATINGS and REVIEWS</h3>
           {displayFilters}
           {removeFilter}
-          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg}/>
+          <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
+          <ProductBreakdown charac = {this.state.charac}/>
 
           <select onChange = {() => { this.sortReviews(event.target.value); }}>
             <option value="relevane">relevant</option>
