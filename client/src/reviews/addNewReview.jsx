@@ -12,12 +12,13 @@ class AddNewReview extends React.Component {
       show: false,
       hoverRating: [0, 0, 0, 0, 0],
       rating: 0,
-      displayText: null
+      displayText: null,
+      recommend: null
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.recommendChange = this.recommendChange.bind(this);
   }
-
 
   showModal () {
     this.setState({show: true});
@@ -27,6 +28,11 @@ class AddNewReview extends React.Component {
     this.setState({show: false});
   }
 
+  recommendChange (event) {
+    let answer = event.target.value;
+    let booleanValue = (answer === 'true');
+    this.setState({recommend: booleanValue});
+  }
 
   render() {
 
@@ -57,16 +63,21 @@ class AddNewReview extends React.Component {
         <span className="fa fa-star-o" aria-hidden="true" onClick = {() => { this.setState({ hoverRating: [1, 1, 1, 1, 1], rating: 5, displayText: starText[4]}); }}/> :
         <span className="fa fa-star" aria-hidden="true"/>;
 
-
-
-
     return (
       <div>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <form>
-            <h1>Write Your Review</h1>
+            <h1>Write Your Review </h1>
             <h3>About the {this.props.product_name}</h3>
-            {star1} {star2} {star3} {star4} {star5} {this.state.displayText}
+            <div>
+              <div>Rating*</div>
+              {star1} {star2} {star3} {star4} {star5} {this.state.displayText}
+              <div>Do you recommend this product? *</div>
+              <input type = 'radio' id = 'yes' name = 'recommend' value={true} onClick = {this.recommendChange}></input>
+              <label htmlFor = 'yes'> Yes </label>
+              <input type = 'radio' id = 'no' name = 'recommend' value={false} onClick = {this.recommendChange}></input>
+              <label htmlFor = 'no'> No </label>
+            </div>
           </form>
 
         </Modal>
