@@ -16,7 +16,7 @@ class AddNewReview extends React.Component {
       displayText: null,
       recommend: null,
       summary: null,
-      body: null,
+      body: '',
       characteristics: {},
       displayCharac: {Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null}
     };
@@ -25,6 +25,7 @@ class AddNewReview extends React.Component {
     this.recommendChange = this.recommendChange.bind(this);
     this.characChange = this.characChange.bind(this);
     this.generalChange = this.generalChange.bind(this);
+    this.textCounter = this.textCounter.bind(this);
   }
 
   showModal () {
@@ -62,6 +63,15 @@ class AddNewReview extends React.Component {
   generalChange(event) {
     event.preventDefault();
     this.setState({[event.target.name]: event.target.value});
+  }
+
+  textCounter() {
+    let totalText = this.state.body;
+    if (totalText.length >= 50) {
+      return 'Minimum reached';
+    } else {
+      return `Minimum required characters left:"${(50 - totalText.length)}"`;
+    }
   }
 
   render() {
@@ -150,7 +160,8 @@ class AddNewReview extends React.Component {
 
               <div>Review Body</div>
               <textarea name = 'body' maxLength='1000' placeholder = {'Why did you like the product or not?'} onChange={this.generalChange}/>
-              <small></small>
+              <br></br>
+              <small>{this.textCounter()}</small>
             </div>
           </form>
 
