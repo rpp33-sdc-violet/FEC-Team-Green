@@ -7,18 +7,25 @@ const withInteractions = (WrappedComponent, widget) => {
     
     const handleClickTracking = (event) => {
       event.preventDefault();
-      console.log('element', event.target.outerHTML);
-      console.log('widget', widget);
-      console.log('time', Date.now());
+
+      // Getting the CSS Selectors and InnerText to send to Interactions API
+      const split1 = event.target.outerHTML.split('>');
+      const split2 = split1[0].split('<');
+      const justSelectors = split2[1];
+      const selectorsAndText = `Selectors: ${justSelectors}, Text: ${event.target.innerText}`; 
   
+      // Time
+      const currentDateAndTime = new Date().toString();
+
       const bodyParams = {
-        element: event.target.outerHTML,
+        element: selectorsAndText,
         widget: widget,
-        time: Date.now().toString()
+        time: currentDateAndTime
       };
 
       axios.post('/api/interactions', bodyParams)
         .then((response) => {
+          // ***** We can remove this console.log once we've all incorporated the HOC into our widgets *****
           console.log('SUCCESS sending click tracker interaction to API: ', response);
         })
         .catch((error) => {
@@ -30,7 +37,6 @@ const withInteractions = (WrappedComponent, widget) => {
       <WrappedComponent interactions={handleClickTracking} {...props} />
     );
   };
-
 };
 
 export default withInteractions;
