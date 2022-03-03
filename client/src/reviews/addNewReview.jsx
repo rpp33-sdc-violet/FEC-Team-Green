@@ -15,6 +15,8 @@ class AddNewReview extends React.Component {
       rating: 0,
       displayText: null,
       recommend: null,
+      summary: null,
+      body: null,
       characteristics: {},
       displayCharac: {Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null}
     };
@@ -22,6 +24,7 @@ class AddNewReview extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.recommendChange = this.recommendChange.bind(this);
     this.characChange = this.characChange.bind(this);
+    this.generalChange = this.generalChange.bind(this);
   }
 
   showModal () {
@@ -54,6 +57,11 @@ class AddNewReview extends React.Component {
     let display = this.state.displayCharac;
     display[name] = info[name][event.target.value - 1];
     this.setState({characteristics: inputCharac, displayCharac: display});
+  }
+
+  generalChange(event) {
+    event.preventDefault();
+    this.setState({[event.target.name]: event.target.value});
   }
 
   render() {
@@ -96,7 +104,7 @@ class AddNewReview extends React.Component {
       {this.state.displayCharac}
     </div>;
 
-    //console.log('charac', this.state.characteristics);
+    //console.log('review', this.state.body);
 
 
     return (
@@ -137,6 +145,12 @@ class AddNewReview extends React.Component {
                 );
               })}
 
+              <div>Review Summary</div>
+              <textarea name = 'summary' maxLength='60' placeholder = {'Example: Best purchase ever!'} onChange={this.generalChange} />
+
+              <div>Review Body</div>
+              <textarea name = 'body' maxLength='1000' placeholder = {'Why did you like the product or not?'} onChange={this.generalChange}/>
+              <small></small>
             </div>
           </form>
 
