@@ -10,6 +10,8 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,6 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
 
   getProductData(productId) {
 
@@ -43,12 +44,15 @@ class App extends React.Component {
     ).then((resp) => {
       this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
       // eslint-disable-next-line camelcase
-      this.setState({product_id: productId});
+      this.setState({ product_id: productId });
     }).catch(err => {
       console.log('error fetching style data', err);
     });
   }
   componentDidMount() {
+    // let params = useParams();
+    // console.log('params', params.product_id);
+
     // eslint-disable-next-line camelcase
     this.getProductData(this.state.product_id);
   }//64669
@@ -57,10 +61,9 @@ class App extends React.Component {
     this.getProductData(query);
   }
   handleChange(event) {
-    this.setState({search: event.target.value});
+    this.setState({ search: event.target.value });
   }
   render() {
-
     return (
       <div>
         <nav id={'navbar'}>
@@ -71,7 +74,7 @@ class App extends React.Component {
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();
             this.searchProductID(this.state.search);
-          }}viewBox={[0, 0, 24, 21]} />
+          }} viewBox={[0, 0, 24, 21]} />
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
@@ -85,4 +88,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
+
+// move to index.jsx
+// ReactDOM.render(<App />, document.getElementById('app'));
