@@ -238,7 +238,7 @@ class ReviewList extends React.Component {
               </div>
               <Button>
                 {moreReviewButton}
-                <AddNewReview productId = {this.state.productId}> </AddNewReview>
+                <AddNewReview productId = {this.state.productId} product_name={this.props.product_name}> </AddNewReview>
               </Button>
             </ReviewWrapper>
           </RatingandReviews>
