@@ -1,0 +1,24 @@
+
+
+
+.ratingBar {
+  border-radius: 0;
+  height: 1rem;
+  flex-basis: 45%;
+  border: 1px solid;
+  display: flex;
+  --percent:calc(var(--percentV) * 100%);
+}
+
+/*.filled {
+  border-radius: 0;
+  height: 99%;
+  width: var(--percent);
+  background: #fc0;
+}*/
+
+.ratingBar ::before {
+  background: var(--percent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,3 +1,8 @@
+body.modal {
+  overflow: hidden;
+  background: pink;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -5,18 +10,21 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  overflow: auto;
 }
 
 .modal-main {
-  position:fixed;
+  position: absolute;
   background: white;
   width: 80%;
-  height: 80%;
-  top: 50%;
+  height: 550px;
+  max-height: 100%;
+  top: 300px;
   left: 50%;
   transform: translate(-50%,-50%);
   padding: 20px;
-  overflow: scroll;
+  overflow: auto;
+  text-align: left;
 }
 
 .display-block {
@@ -35,11 +43,14 @@
 
 .question-form label {
   padding: 10px;
+  font-size: 16px;
 }
 
 .modal-button-submit {
   padding: 10px;
   margin: 8px;
+  font-size: 16px;
+  color: black;
 }
 
 .modal-button-close {
@@ -59,7 +70,7 @@
 }
 
 .question-form input:focus {
-  border: 3px solid lightseagreen;
+  border: 3px solid #39FF14;
 }
 
 .question-form textarea {
@@ -75,7 +86,7 @@
 }
 
 .question-form textarea:focus {
-  border: 3px solid lightseagreen;
+  border: 3px solid #39FF14;
 }
 
 .modal-error-msg {
@@ -83,11 +94,17 @@
 }
 
 .modal-main h1 {
-  font-size: large;
+  font-size: 22px;
+  font-weight: 100;
+  padding-bottom: 10px;
 }
 
 .modal-main h2 {
-  font-size: medium;
+  font-size: 18px;
+}
+
+.modal-subtitle {
+  font-style: italic
 }
 
 /* ANSWER FORM STYLING */
@@ -99,6 +116,8 @@
 
 .answer-form label {
   padding: 10px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .answer-form input {
@@ -112,7 +131,7 @@
 }
 
 .answer-form input:focus {
-  border: 3px solid lightseagreen;
+  border: 3px solid #39FF14;
 }
 
 .answer-form textarea {
@@ -128,5 +147,11 @@
 }
 
 .answer-form textarea:focus {
-  border: 3px solid lightseagreen;
+  border: 3px solid #39FF14;
+}
+
+.form-extra-info {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 100;
 }
