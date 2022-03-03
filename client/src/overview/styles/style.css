@@ -157,6 +157,18 @@ ul {
   z-index: 1;
   position: relative;
 }
+.rightArrow, .leftArrow {
+  height: 30px;
+  width: auto;
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+  position: absolute;
+}
+.rightArrow {
+  right: 10px;
+}
+.leftArrow {
+  left: 60px;
+}
 .image-block {
   position: relative;
   display: flex;
@@ -230,7 +242,7 @@ ul {
 
 }
 .upArrow, .downArrow {
-  color: yellow;
+
   height: 7px;
   width: auto;
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);

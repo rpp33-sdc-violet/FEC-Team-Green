@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageThumbnailList from './ImageThumbnailList.jsx';
+import ImageNavigator from './ImageNavigator.jsx';
 var ImageExpander = (props) => {
 
   //this component displays the main gallery image
@@ -33,10 +34,14 @@ var ImageExpander = (props) => {
     imageModal.toggle();
   };
   return (
+  // <React-Fragment>
+
     props.selectedPhoto ? <img className = { props.modal ? 'main-image-modal' : 'main-image'} src={props.selectedPhoto.url} onClick={props.modal ? onModalClick : onImageClick}></img>
       : <div className ='image-container'>
-      ...loading
+        ...loading
       </div>
+  // <ImageNavigator></ImageNavigator>
+  // {/* </React-Fragment> */}
 
   );
 

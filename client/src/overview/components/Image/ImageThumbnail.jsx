@@ -3,6 +3,8 @@ import React from 'react';
 const ImageThumbnail = (props) => {
 
   // this component displays individual thumbnails -it adds a class to the currently selected thumbnail
+  // console.log($('img-thumbnail.selected').is(':hidden'));
+  // console.log($('.img-thumbnail.selected'));
   return (
     <li>
       {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? 'img-thumbnail selected' : 'img-thumbnail'} onClick={(e)=>{

@@ -3,9 +3,9 @@ import ImageExpander from './ImageExpander.jsx';
 import ImageThumbnailList from './ImageThumbnailList.jsx';
 import ImageThumbnail from './ImageThumbnail.jsx';
 import { AiOutlineExpand } from 'react-icons/ai';
+import ImageNavigator from './ImageNavigator.jsx';
+
 var ImageContainer = (props) => {
-
-
 
   // this state helps keep track of the current style and current picture for the gallery
   const [selectedPhoto, setSelectedPhoto] = useState('loading');
@@ -38,7 +38,10 @@ var ImageContainer = (props) => {
       <div className ='image-block'>
         <ImageExpander selectedPhoto={selectedPhoto}/>
         <ImageThumbnailList selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>
+        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
+
       </div>
     </div>
 
