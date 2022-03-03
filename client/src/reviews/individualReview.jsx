@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import StarRating from '../starRating.jsx';
+import styled from 'styled-components';
 
 class IndividualReview extends React.Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class IndividualReview extends React.Component {
 
 
     return (
-      <div>
+      <Review>
         <StarRating rating = {this.props.review.rating}/>
         <span>{review.reviewer_name + ','}</span>
         <span className='review'>{' ' + new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</span>
@@ -93,14 +94,15 @@ class IndividualReview extends React.Component {
         </div>
 
         <br></br>
-      </div>
+      </Review>
 
     );
   }
 
-
-
-
 }
+
+const Review = styled.div`
+  margin-top: 10px;
+`;
 
 export default IndividualReview;
