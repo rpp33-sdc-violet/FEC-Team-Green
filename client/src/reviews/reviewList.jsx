@@ -251,18 +251,19 @@ class ReviewList extends React.Component {
 
 const RatingandReviews = styled.div`
   display: flex;
+  justifyContent: 'center';
   margin: 40px 60px 40px;
+  alightItems: 'center'
 `;
 
 const RatingWrapper = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
+  gridColumn: '1';
+  gridRow: '1';
 `;
 
 const ReviewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  gridColumn: '2';
+  gridRow: '1';
   margin-left: 60px;
   overflow: scroll;
   height: 50vh;
