@@ -41,30 +41,46 @@ color: red;
   display: flex;
   flex-wrap: wrap;
   /* align-content: space-around; */
-  justify-content: space-between;
+  /* justify-content: space-between;*/
+  justify-content: center;
   flex-direction: column;
   height: 155px;
 }
 .stars{
   height: 20%;
 }
+.price{
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
 .price-sale{
   color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .price-struck{
   text-decoration: line-through;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-.category, .price{
-  margin-top: 1px;
-  margin-bottom: 1px;
+.category {
+  margin-top: 10px;
+  text-transform: uppercase;
+  color: gray;
+
+  /* margin: 0; */
 }
 .name{
-  margin: 5px;
+  margin-bottom: 5px;
 }
 
 .ghost{
   color: gray;
   opacity: 0.4;
+}
+.style-tag {
+  text-transform: uppercase;
+
 }
 .style-list {
   display: grid;

@@ -18,9 +18,7 @@ const StyleSelectorContainer = (props) => {
         <div className='style-selector panel'>
 
           <StyleList styleList={props.productStyles} setSelectedStyle={props.setSelectedStyle}/>
-          <div>
-          StyleSelectorContainer
-          </div>
+
           {/* <img> src={props.productStyles[0].photos[0].thumbnail_url}</img> */}
         </div>
       </div>
