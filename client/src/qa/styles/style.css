@@ -1,7 +1,7 @@
 .QA-container {
   display: grid;
   grid-template-rows: 40px 60px fit-content(380px) 60px;
-  grid-template-areas: 
+  grid-template-areas:
     "header"
     "search"
     "questions"
@@ -9,6 +9,7 @@
   /* height: 600px; */
   max-height: 540px;
   margin: 40px 60px 40px;
+  color: #404040;
 }
 
 .QA-header {
@@ -16,13 +17,37 @@
   font-weight: 100;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 3px solid pink;
-
 }
+
+/* .serach-container {
+  width: 500px;
+  height: 60px
+} */
 
 .search {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+  #question-search {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid #404040;
+    outline: none;
+  }
+  #question-search::placeholder {
+    font-weight: bold;
+    color: #404040;
+  }
+  #QA-search-icon {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -33px;
+    margin-top: 18px;
+    transform: scale(1.2);
+  }
 
 .questions-list {
   overflow: scroll;
@@ -33,7 +58,7 @@
   }
     .question-row {
       display: grid;
-      grid-template-columns: auto 180px;
+      grid-template-columns: auto 250px;
       padding-top: 5px;
       padding-bottom: 5px;
     }
@@ -86,7 +111,7 @@
   #moreQuestions-button, #addQuestion-button {
     margin-right: 20px;
     background: none;
-    border: 1px solid black;
+    border: 1px solid #404040;
     font-weight: bold;
   }
 
