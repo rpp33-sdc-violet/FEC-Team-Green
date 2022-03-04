@@ -206,6 +206,7 @@ ul {
   overflow: hidden;
   height: 375px;
   z-index: 1;
+  transition: all 1s ease-in-out;
 }
 .img-thumbnail-list::-webkit-scrollbar {
   display: none;
