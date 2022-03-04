@@ -1,7 +1,7 @@
 .QA-container {
   display: grid;
   grid-template-rows: 40px 60px fit-content(380px) 60px;
-  grid-template-areas: 
+  grid-template-areas:
     "header"
     "search"
     "questions"
