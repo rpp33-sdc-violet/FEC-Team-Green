@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import StarRating from '../../../starRating.jsx';
 const ProductInformationContainer = (props) => {
 
   //props
@@ -13,14 +13,16 @@ const ProductInformationContainer = (props) => {
   if (props.product && Object.keys(props.product).length > 1) {
     return (
       <div className='information panel'>
-        <div className='stars'>stars</div>
+        {/* <div className='stars'>stars</div> */}
+        <StarRating rating={3.5}/>
 
         {props.product.category ? <h4 className='category'>{props.product.category}
         </h4> : <h4 className='category ghost'>...loading
         </h4>}
         { props.product.name ? <h1 className='name'>{props.product.name}</h1> : <h1 className='name ghost'>...loading</h1>
         }
-        { props.product.default_price ? <h4 className='price'>{props.product.default_price}</h4> : <h4 className='price ghost'>...loading</h4> }
+
+        { props.sale_price ? <span><h4 className='price-sale'>${props.sale_price}</h4> <h4 className='price-struck'>${props.original_price}</h4> </span> : props.original_price ? <h4 className='price'>${props.original_price}</h4> : <h4 className='price ghost'>...loading</h4> }
 
       </div>
 

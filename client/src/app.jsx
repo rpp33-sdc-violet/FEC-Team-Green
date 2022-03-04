@@ -10,6 +10,7 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -64,7 +65,7 @@ class App extends React.Component {
     return (
       <div>
         <nav id={'navbar'}>
-          <p className='logo'>LOGO</p>
+          <p className='logo'>Logo</p>
           <form>
             <input value={this.state.search} onChange={this.handleChange}></input>
           </form>
@@ -75,10 +76,10 @@ class App extends React.Component {
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
-          <div>loading</div>}
+          <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={64624}></QA>
-        <ReviewList product_id={64621}></ReviewList>
+        <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA>
+        <ReviewList product_id={this.state.product_id}></ReviewList>
 
       </div>
     );

@@ -1,38 +1,117 @@
 .QA-container {
   display: grid;
-  grid-template-rows: 1fr 1fr fit-content(350px) 1fr;
-  grid-template-areas: 
+  grid-template-rows: 40px 60px fit-content(380px) 60px;
+  grid-template-areas:
     "header"
     "search"
     "questions"
     "buttons";
-  border: 1px solid green;
+  /* height: 600px; */
+  max-height: 540px;
+  margin: 40px 60px 40px;
+  color: #404040;
 }
 
 .QA-header {
-  border: 1px solid red;
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+/* .serach-container {
+  width: 500px;
+  height: 60px
+} */
 
 .search {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+  #question-search {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid #404040;
+    outline: none;
+  }
+  #question-search::placeholder {
+    font-weight: bold;
+    color: #404040;
+  }
+  #QA-search-icon {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -33px;
+    margin-top: 18px;
+    transform: scale(1.2);
+  }
 
 .questions-list {
-  border: 2px solid blue;
   overflow: scroll;
 }
+  .question {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+    .question-row {
+      display: grid;
+      grid-template-columns: auto 250px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+      .question-text, #answer-letter {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .helpfulQ-addAnswerLink {
+        font-size: 12px;
+        font-weight: 100;
+        text-align: right;
+      }
+    .answers-container {
+      display: grid;
+      grid-template-rows: fit-content(190px);
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .answers-list {
+      overflow: scroll;
+    }
+      .answer {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+        .answer-text {
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .answerData-helpfulA-reportLink {
+          font-size: 12px;
+          font-weight: 100;
+          padding-top: 8px;
+          margin-left: 30px;
+        }
+    #moreAnswers-button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: 30px;
+    }
 
-.buttons {
-  border: 1px solid red;
-}
-
-.question-row {
+.QA-buttons {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  border: 1px solid blue;
-
+  grid-template-columns: 250px 180px;
+  margin-top: 10px;
 }
+  #moreQuestions-button, #addQuestion-button {
+    margin-right: 20px;
+    background: none;
+    border: 1px solid #404040;
+    font-weight: bold;
+  }
 
-.question-text {
-  font-weight: bold;
-}

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddAQuestionButton from './components/AddAQuestionButton.jsx';
+import AddAQuestionDashboard from './components/AddAQuestionDashboard.jsx';
 import QuestionsList from './components/QuestionsList.jsx';
 import Search from './components/Search.jsx';
 import './styles/style.css';
 
 const QA = (props) => {
+  // props: product_id, product_name
 
   const [allQues, setAllQues] = useState([]);
   const [filteredQues, setFilteredQues] = useState([]);
@@ -37,7 +38,7 @@ const QA = (props) => {
     };
     // invoke the recursive inner function
     getAllQuestions();
-  }, []); // the empty array stops the effect from running more than once
+  }, [props.product_id]); // the empty array stops the effect from running more than once
 
   // isMoreQButtonVisible - checks countQ with allQues length, if countQ less than length -> true, else, false
   useEffect(() => {
@@ -77,14 +78,12 @@ const QA = (props) => {
 
   return (
     <div className="QA-container">
-      <div className="QA-header">
-        <p>QUESTIONS & ANSWERS</p>
-      </div>
+      <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
       <Search userSearch={userSearch} />
-      <QuestionsList questions={filteredQues.slice(0, countQ)} />
-      <div className="buttons">
-        {moreQButtonVisible ? <button onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-        <AddAQuestionButton />
+      <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
+      <div className="QA-buttons">
+        {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name}/>
       </div>
     </div>
   );

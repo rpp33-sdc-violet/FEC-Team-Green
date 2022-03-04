@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddAnswerLink from './AddAnswerLink.jsx';
+import AddAnswerDashboard from './AddAnswerDashboard.jsx';
 import AnswersList from './AnswersList.jsx';
 
 
 const IndividualQuestion = (props) => {
-  // props
-  // question (from QuestionsList)
+  // props: question, product name (pass to AddAnswerDashboard)
 
   const [answers, setAnswers] = useState([]);
   const [countA, setCountA] = useState(2);
   const [moreAnsButtonVisible, setMoreAnsButtonVisible] = useState(false);
   const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false);
   const [helpfulCountQ, setHelpfulCountQ] = useState(props.question.question_helpfulness);
+  const [moreAnsButtonText, setMoreAnsButtonText] = useState('LOAD MORE ANSWERS');
 
   // getAllAnswers/useEffect
   useEffect(() => {
@@ -52,18 +52,30 @@ const IndividualQuestion = (props) => {
     getAllAnswers();
   }, []); // the empty array stops the effect from running more than once
 
-  // isMoreAnsButtonVisible - checks countA with answers length, if countA less than length -> true, else, false
+  // isMoreAnsButtonVisible - checks if there are more than 2 answers total; if yes, button is visible (true)
   useEffect(() => {
-    if (countA < answers.length) {
+    if (answers.length > 2) {
       setMoreAnsButtonVisible(true);
     } else {
       setMoreAnsButtonVisible(false);
     }
   });
 
-  // handleMoreAnsClick - increments countA and setState with new countA (should trigger render with more questions), (invoke isMoreAButtonVisible)
-  const handleMoreAnsClick = () => {
-    setCountA(countA + 2);
+  // handleMoreAnsClick - changes countA and button text 
+  const handleMoreAnsClick = (event) => {
+    event.preventDefault();
+    if (moreAnsButtonText === 'LOAD MORE ANSWERS') {
+      // change countA to all the answers
+      const fullList = answers.length;
+      setCountA(fullList);
+      // change button text to allow view to just 2 answers
+      setMoreAnsButtonText('COLLAPSE ANSWERS');
+    } else {
+      // revert back to only 2 answers
+      setCountA(2);
+      // change button text to allow view of all answers if clicked
+      setMoreAnsButtonText('LOAD MORE ANSWERS');
+    }
   };
 
   // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true 
@@ -83,18 +95,18 @@ const IndividualQuestion = (props) => {
     }
   };
 
-  // handle AddAnswerLinkClick
+  // handle AddAnswerLinkClick ***** TODO *****
 
-  // AddAnswerLink - state: AddAnswerLinkClick
+  // AddAnswerLink - state: AddAnswerLinkClick ***** TODO *****
   return (
     <div className="question" role="question">
       <div className="question-row">
-        <p className="question-text">Q: {props.question.question_body}</p>
-        <p className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountQ}) | <AddAnswerLink /></p>
+        <p className="question-text">Q:&nbsp;&nbsp;{props.question.question_body}</p>
+        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></aside>
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">
-        {moreAnsButtonVisible ? <p onClick={handleMoreAnsClick}><strong>LOAD MORE ANSWERS</strong></p> : null}
+        {moreAnsButtonVisible ? <button id="moreAnswers-button" onClick={handleMoreAnsClick}>{moreAnsButtonText}</button> : null}
       </div>
     </div>
   );
