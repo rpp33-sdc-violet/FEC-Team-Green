@@ -8,40 +8,27 @@ import AddToBagButton from './AddToBagButton.jsx';
 
 const SelectProductContainer = (props) => {
 
-  //props
-  //selectedStyle (id?)
-  //selectedStyleSizes(list)
-  //selectedStylQuantity number
-
-  //state
-  //selectedSize default 'SELECT SIZE'
-  //selectedQuantity default 1
-  //
-
+  const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-', 'skuId': ''});
 
   var sizes = {};
-  Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-    sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
-  });
+  if (props.selectedStyle) {
 
-  var sizes = {};
-  Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-    sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
-  });
-
+    Object.keys(props.selectedStyle.skus).forEach(skuKey => {
+      sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+    });
+  }
 
   return (
-    <div>
-      SelectProductContainer
+    //maybe this should be a high order function?
+    <div className='select-product panel'>
+      <span id='select-message'> Please select a size</span>
+      <SelectSizeDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
+      <SelectQuantityDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
 
-      <div className='select-product panel'>
-        <div>  <SelectSizeDropdown sizes={sizes} selectedSize={props.selectedSize} /></div>
-        <div> <SelectQuantityDropdown sizes={sizes} /></div>
-
-        <AddToBagButton />
-        <SelectOutfitButton />
-      </div>
+      <AddToBagButton sizeAndQuantity={sizeAndQuantity}/>
+      <SelectOutfitButton />
     </div>
+
   );
 };
 

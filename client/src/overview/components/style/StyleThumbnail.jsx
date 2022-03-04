@@ -15,7 +15,7 @@ const StyleThumbnail = (props) => {
 
   return (
     <li>
-      <img className ='style-thumbnail' src={props.style.photos[0].thumbnail_url} onClick={onClick}>
+      <img className ='style-thumbnail' id={`id${props.id}`} src={props.style.photos[0].thumbnail_url} onClick={onClick}>
       </img>
     </li>
 

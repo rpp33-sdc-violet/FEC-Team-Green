@@ -154,7 +154,7 @@ const exampleStyleData = {
       ],
       'skus': {
         '2313215': {
-          'quantity': 14,
+          'quantity': 0,
           'size': '7'
         },
         '2313216': {
@@ -194,7 +194,7 @@ const exampleStyleData = {
           'size': '11.5'
         },
         '2313225': {
-          'quantity': 25,
+          'quantity': 0,
           'size': '12'
         }
       }
@@ -253,47 +253,47 @@ const exampleStyleData = {
       ],
       'skus': {
         '2313226': {
-          'quantity': 14,
+          'quantity': 0,
           'size': '7'
         },
         '2313227': {
-          'quantity': 25,
+          'quantity': 0,
           'size': '7.5'
         },
         '2313228': {
-          'quantity': 9,
+          'quantity': 0,
           'size': '8'
         },
         '2313229': {
-          'quantity': 2,
+          'quantity': 0,
           'size': '8.5'
         },
         '2313230': {
-          'quantity': 18,
+          'quantity': 0,
           'size': '9'
         },
         '2313231': {
-          'quantity': 12,
+          'quantity': 0,
           'size': '9.5'
         },
         '2313232': {
-          'quantity': 10,
+          'quantity': 0,
           'size': '10'
         },
         '2313233': {
-          'quantity': 18,
+          'quantity': 0,
           'size': '10.5'
         },
         '2313234': {
-          'quantity': 11,
+          'quantity': 0,
           'size': '11'
         },
         '2313235': {
-          'quantity': 35,
+          'quantity': 0,
           'size': '11.5'
         },
         '2313236': {
-          'quantity': 25,
+          'quantity': 0,
           'size': '12'
         }
       }
