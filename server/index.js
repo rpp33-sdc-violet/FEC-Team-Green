@@ -5,6 +5,7 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -75,7 +76,9 @@ app.use('/api/*', createProxyMiddleware(options));
 
 
 app.get('*', (req, res) => {
-  res.send(data);
+  // res.send('data');
+  // res.end();
+  res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {

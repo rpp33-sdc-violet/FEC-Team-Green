@@ -10,7 +10,9 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
-
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import withParams from './hoc.js';
+// import {withRouter} from 'react-router';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,7 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+  // const {id} = useParams();
 
 
   getProductData(productId) {
@@ -51,7 +54,15 @@ class App extends React.Component {
   }
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.getProductData(this.state.product_id);
+    // const id = this.props.match.params.id;
+    // console.log('ID IS ', id);
+    // eslint-disable-next-line camelcase
+    this.setState({product_id: this.props.params.productId}, ()=> {
+      console.log('state', this.state.product_id);
+      this.getProductData(this.state.product_id);
+    }
+    );
+
   }//64669
   searchProductID(query) {
     console.log('query', query);
@@ -59,6 +70,12 @@ class App extends React.Component {
   }
   handleChange(event) {
     this.setState({search: event.target.value});
+  }
+
+  componentDidUpdate() {
+
+
+    console.log('ID BABBY', this.props.params);
   }
   render() {
 
@@ -85,5 +102,5 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'));
+export default withParams(App);
+// ReactDOM.render(<App />, document.getElementById('app'));
