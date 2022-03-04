@@ -1,6 +1,8 @@
 import React from 'react';
+import ImageThumbnail from './ImageThumbnail.jsx';
 
-var ImageThumbnailList = function (props) {
+
+const ImageThumbnailList = (props) => {
 
   //props
 
@@ -9,21 +11,38 @@ var ImageThumbnailList = function (props) {
   // local state highlighted url index
   //method to change highlighted url
 
+  var startScroll = (direction, e ) => {
+    var nav = direction === 'down' ? 2 : -2;
+    var list = $('.img-thumbnail-list');
+    list.scroll(function(e) {
+      list.scrollTop(list.scrollTop() + nav);
+      $('.img-thumbnail-list').scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
+      var maxHeight = list[0].scrollHeight - list.outerHeight();
+      $('.img-thumbnail-list').scrollTop() === maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
+    });
+    list.trigger('scroll');
 
-
-
+  };
+  var stopScroll = () => {
+    $('.img-thumbnail-list').unbind();
+  };
+  var photoThumbnails = [];
+  if (props.photos) {
+    photoThumbnails = props.photos.map ((photo, index) => {
+      photo.index = index;
+      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} selectedPhoto={props.selectedPhoto}/>;
+    });
+  }
+  // console.log('photos', photoThumbnails);
   return (
-    <div>
-      {/* button */}
-      <div className='upArrow'> upArrow </div>
 
-      <div className='img-thumbnail-list'>
-        ImageThumbnailList
+    <div className='img-thumbnail-panel'>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
+      <div className ='img-thumbnail-list'>
+        {photoThumbnails}
       </div>
-      {/* button */}
-      <div className='downArrow'> downArrow </div>
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
     </div>
-
   );
 };
 

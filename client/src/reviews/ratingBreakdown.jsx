@@ -44,7 +44,7 @@ const Filled = styled.div`
   border-radius: 0;
   height: 99%;
   width: ${props => props.percent}%;
-  background: #fc0 ;
+  background: #383f47 ;
 `;
 
 const Empty = styled.div`

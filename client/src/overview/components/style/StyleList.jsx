@@ -10,7 +10,7 @@ const StyleList = (props) => {
   //setSelectedListUrl
 
   var styleThumbnails = props.styleList.map(style => {
-    return <StyleThmbnail style={style} key={style.style_id} setSelectedStyle={props.setSelectedStyle}/>;
+    return <StyleThmbnail style={style} key={style.style_id} setSelectedStyle={props.setSelectedStyle} id={style.style_id}/>;
   });
   return (
     <ul className='style-list'>

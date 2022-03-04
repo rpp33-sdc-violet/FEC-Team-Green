@@ -3,24 +3,36 @@ import React, {useState} from 'react';
 //this is the container for my size selector
 const SelectSizeDropdown = (props) => {
 
-  //props
-  //selectedStyleSizes(list)
-  //setSelectedSize()
-
   var options = [];
+  // if any sizes are available, search through them and find the sizes with quantities above 0
+  if (props.sizes) {
+    var len = Object.keys(props.sizes).length;
+    for (var skuKey of Object.keys(props.sizes) ) {
 
-  options.push(<option key={0}>{props.selectedSize}</option>);
+      if (props.sizes[skuKey] && props.sizes[skuKey].quantity > 0) {
+        options.push(<option key={skuKey} >{skuKey}</option>);
 
-  var options2 = (Object.keys(props.sizes).map(skuKey => {
-    return <option key={skuKey} >{skuKey}</option>;
-  }));
+      }
+    }
 
-  options = options.concat(options2);
+  }
 
-  // options.unshift(<option>Select Size</option>);
+  //display OUT OF STOCK if no stock available
+  // console.log('props skuID', props);
+  options.length > 0 ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
+
   return (
 
-    <select className ='select-size'>
+    <select className ='select-size'id='ss'
+      onChange={(e)=> {
+        if (props.sizeAndQuantity.quantity === '-' ) {
+          props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, quantity: 1, skuId: props.sizes[e.target.value].skuId });
+        } else if (e.target.value === 'Select Size') {
+          props.setSizeAndQuantity({ ...props.sizeAndQuantity, size: e.target.value, quantity: '-', skuId: ''} );
+        } else {
+          props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, skuId: props.sizes[e.target.value].skuId} );
+        }
+      }}disabled={options[0].props.children === 'OUT OF STOCK' ? true : false} >
       {options}
     </select>
 
