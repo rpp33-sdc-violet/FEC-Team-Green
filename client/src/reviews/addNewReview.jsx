@@ -17,6 +17,7 @@ class AddNewReview extends React.Component {
       recommend: null,
       summary: null,
       body: '',
+      name: null,
       characteristics: {},
       displayCharac: {Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null}
     };
@@ -162,6 +163,16 @@ class AddNewReview extends React.Component {
               <textarea name = 'body' maxLength='1000' placeholder = {'Why did you like the product or not?'} onChange={this.generalChange}/>
               <br></br>
               <small>{this.textCounter()}</small>
+
+              <div>Upload your photos</div>
+              <button onClick = {(event) => event.preventDefault}>Add Photos</button>
+
+              <div>What is your nickname*</div>
+              <input name = 'name' type='text' maxLength='60' placeholder='Example: jack11!'
+                onChange={this.generalChange} />
+              <br></br>
+              <small>For privacy reasons, do not use your full name or email address</small>
+
             </div>
           </form>
 
