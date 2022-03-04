@@ -224,25 +224,20 @@ class AddNewReview extends React.Component {
           </form>
 
         </Modal>
-        <Button>
-          <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >
-        </Button>
+
+        <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >
+
       </div>
     );
   }
 }
 
-const Button = styled.div`
-  display: grid;
-  grid-template-columns: 250px 180px;
-  margin-top: 10px;
-`;
 
-const AddReview = styled(Button)`
-  margin-right: 20px;
+const AddReview = styled.button`
   background: none;
-  border: 1px solid black;
+  border: 1px solid #404040;
   font-weight: bold;
+  margin-right: 20px;
 `;
 
 
