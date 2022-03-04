@@ -104,14 +104,13 @@ ul {
   border-color: gray;
 }
 .select-product {
-  display: grid;
-  grid-template-columns: .5fr .5fr ;
-  grid-template-rows: 75px 75px;
-  grid-template-areas:
-  "size size size  . quantity quantity"
-  "add add add add outfit";
+  display: flex;
   padding: 10px;
   position: relative;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 110px;
 }
 #select-message{
   margin: 0;
@@ -124,17 +123,19 @@ ul {
 }
 .select-bag {
   height: 50px;
-  /* margin-right: 20px; */
   width: 200px;
 }
 .select-quantity {
   height: 50px;
+  width: 100px;
 }
 .select-size {
   height: 50px;
+  width: 150px;
 }
 .select-outfit {
   height: 50px;
+  width: 50px;
 
 }
 .main-image {
@@ -276,8 +277,8 @@ opacity: 0}
 .rightPanel {
   display: flex;
   flex-wrap: wrap;
-  align-content: space-around;
-  margin-left: 15px;
-  padding-left: 10px;
-  margin-top: 20px;
+  /* align-content: space-around; */
+  margin-left: 7px;
+  /* padding-left: 10px; */
+  /* margin-top: 20px; */
 }
