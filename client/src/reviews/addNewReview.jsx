@@ -18,7 +18,10 @@ class AddNewReview extends React.Component {
       summary: null,
       body: '',
       name: null,
+      email: null,
       characteristics: {},
+      postCharac: {},
+      photos: [],
       displayCharac: {Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null}
     };
     this.showModal = this.showModal.bind(this);
@@ -27,6 +30,7 @@ class AddNewReview extends React.Component {
     this.characChange = this.characChange.bind(this);
     this.generalChange = this.generalChange.bind(this);
     this.textCounter = this.textCounter.bind(this);
+    this.submitReview = this.submitReview.bind(this);
   }
 
   showModal () {
@@ -55,10 +59,14 @@ class AddNewReview extends React.Component {
     };
     let inputCharac = this.state.characteristics;
     let name = event.target.name;
+    let id = event.target.id;
+    console.log('id type', typeof id);
     inputCharac[name] = parseInt(event.target.value);
     let display = this.state.displayCharac;
     display[name] = info[name][event.target.value - 1];
-    this.setState({characteristics: inputCharac, displayCharac: display});
+    let forPost = this.state.postCharac;
+    forPost[id] = parseInt(event.target.value);
+    this.setState({characteristics: inputCharac, displayCharac: display, postCharac: forPost});
   }
 
   generalChange(event) {
@@ -73,6 +81,36 @@ class AddNewReview extends React.Component {
     } else {
       return `Minimum required characters left:"${(50 - totalText.length)}"`;
     }
+  }
+
+  submitReview(event) {
+    event.preventDefault();
+    let reviewParam = {
+      // eslint-disable-next-line camelcase
+      product_id: parseInt(this.props.productId),
+      rating: parseInt(this.state.rating),
+      summary: this.state.summary,
+      body: this.state.body,
+      recommend: this.state.recommend,
+      name: this.state.name,
+      photos: this.state.photos,
+      email: this.state.email,
+      characteristics: this.state.postCharac
+    };
+    console.log('reviewParam', reviewParam);
+
+    axios.post('/api/reviews', reviewParam)
+      .then((res) => {
+        alert('Successfully submitted your review');
+        console.log('success', res);
+        this.hideModal();
+      })
+      .catch((err) => {
+        //TODO: need error handling method funciton to catch and process error message
+        console.log('error posting reviews', err.message);
+        alert('Failed to post review');
+      });
+
   }
 
   render() {
@@ -172,6 +210,15 @@ class AddNewReview extends React.Component {
                 onChange={this.generalChange} />
               <br></br>
               <small>For privacy reasons, do not use your full name or email address</small>
+
+              <div>Your email*</div>
+              <input name = 'email' type='text' maxLength='60' placeholder='jackson11@gmail.com'
+                onChange={this.generalChange} />
+              <br></br>
+              <small>For authentication reasons, you will not be emailed</small>
+              <div>
+                <button onClick = {this.submitReview}>Submit Review</button>
+              </div>
 
             </div>
           </form>
