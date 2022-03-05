@@ -11,6 +11,11 @@ import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
 
+// CHANGE REQUEST - import HOC
+import withInteractions from './utils/withInteractions.jsx';
+// CHANGE REQUEST - container component with HOC and QA widget
+const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -78,8 +83,9 @@ class App extends React.Component {
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
           <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA>
-        <ReviewList product_id={this.state.product_id}></ReviewList>
+        {/* <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA> */}
+        <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> 
+        <ReviewList product_id={64621}></ReviewList>
 
       </div>
     );
