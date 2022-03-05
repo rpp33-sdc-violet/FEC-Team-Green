@@ -48,7 +48,7 @@ const Overview = (props) => {
         <SelectProductContainer selectedStyle={selectedStyle}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
-      <ProductFeatureList></ProductFeatureList>
+      <ProductFeatureList features={props.product.features}></ProductFeatureList>
     </div >
 
   );
