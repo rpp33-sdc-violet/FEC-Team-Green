@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StyleSelectorContainer from './components/style/StyleSelectorContainer.jsx';
 import SelectProductContainer from './components/product/SelectProductContainer.jsx';
 import ProductDescription from './components/details/ProductDescription.jsx';
-import ImageContainer from './components/image/ImageContainer.jsx';
+import ImageContainer from './components/Image/ImageContainer.jsx';
 import ProductFeatureList from './components/details/ProductFeatureList.jsx';
 import ProductInformationContainer from './components/details/ProductInformationContainer.jsx';
 import './styles/style.css';
