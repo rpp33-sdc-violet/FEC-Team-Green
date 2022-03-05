@@ -60,10 +60,9 @@ class App extends React.Component {
 
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.setState({product_id: this.props.params.productId}, ()=> {
+    this.props.params.productId ? this.setState({product_id: this.props.params.productId}, ()=> {
       this.getProductData(this.state.product_id);
-    }
-    );
+    }) : this.getProductData(this.state.product_id);
 
   }//64669
   searchProductID(query) {
