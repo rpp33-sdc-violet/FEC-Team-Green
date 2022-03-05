@@ -7,6 +7,7 @@
   height: 800px;
   max-height: 800px;
 };
+html { scroll-behavior: smooth; }
 
 .disabled{
    pointer-events: none;
@@ -14,9 +15,14 @@
 .interactive-panel {
   grid-template-rows: 1fr 1fr 1fr;
 }
-/* .category {
-color: red;
-} */
+#read-reviews{
+  position: absolute;
+  right: 263px;
+  top: 59px;
+  text-decoration: underline;
+  font-size: smaller;
+  display: none;
+}
 
 #feature-list {
   /* display: flex; */
@@ -107,6 +113,7 @@ color: red;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: minmax(auto, auto);
+  position: relative;
 }
 .style-thumbnail {
   border-radius: 50%;

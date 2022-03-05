@@ -33,8 +33,8 @@ const Overview = (props) => {
 
 
   return (
-
-    < div className='overview-wrapper' >
+  
+    < div className='overview-wrapper' onClick={props.interactions} >
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }
