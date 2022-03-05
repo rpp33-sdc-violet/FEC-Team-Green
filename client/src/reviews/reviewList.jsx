@@ -221,26 +221,30 @@ class ReviewList extends React.Component {
               <ProductBreakdown charac = {this.state.charac}/>
             </RatingWrapper>
 
-            <ReviewWrapper>
-              <div>
-                <select onChange = {() => { this.sortReviews(event.target.value); }}>
-                  <option value="relevane">relevant</option>
-                  <option value="newest">newest</option>
-                  <option value="helpful">helpful</option>
-                </select>
-              </div>
-              <div>
-                {currentReviews.map((review) => {
-                  return (
-                    <IndividualReview review = {review} key = {review.review_id} />
-                  );
-                })}
-              </div>
+            <Wrapper>
+              <ReviewWrapper>
+                <div>
+                  <select onChange = {() => { this.sortReviews(event.target.value); }}>
+                    <option value="relevane">relevant</option>
+                    <option value="newest">newest</option>
+                    <option value="helpful">helpful</option>
+                  </select>
+                </div>
+                <div>
+                  {currentReviews.map((review) => {
+                    return (
+                      <IndividualReview review = {review} key = {review.review_id} />
+                    );
+                  })}
+                </div>
+              </ReviewWrapper>
               <Button>
-                {moreReviewButton}
-                <AddNewReview productId = {this.state.productId}> </AddNewReview>
+                <BWrapper>
+                  {moreReviewButton}
+                  <AddNewReview productId = {this.state.productId} product_name={this.props.product_name} charac = {this.state.charac}> </AddNewReview>
+                </BWrapper>
               </Button>
-            </ReviewWrapper>
+            </Wrapper>
           </RatingandReviews>
         </div>
       );
@@ -251,35 +255,46 @@ class ReviewList extends React.Component {
 
 const RatingandReviews = styled.div`
   display: flex;
+  justifyContent: 'center';
   margin: 40px 60px 40px;
+  alightItems: 'center'
 `;
 
 const RatingWrapper = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
+  gridColumn: '1';
+  gridRow: '1';
+`;
+const Wrapper = styled.div`
+  gridcolumn: '2';
+  margin-left: 60px;
 `;
 
 const ReviewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 60px;
+  gridColumn: '2';
+  gridRow: '1';
   overflow: scroll;
   height: 50vh;
 `;
 //px for overflow height control does not work well...need view height %
 
 const Button = styled.div`
+  gridColumn: '2';
+  gridRow: '2';
+`;
+
+const BWrapper = styled.div`
   display: grid;
   grid-template-columns: 250px 180px;
   margin-top: 10px;
 `;
-const MoreReview = styled(Button)`
-  margin-right: 20px;
+
+const MoreReview = styled.button`
   background: none;
-  border: 1px solid black;
+  border: 1px solid #404040;
   font-weight: bold;
+  margin-right: 20px;
 `;
+
 
 export default ReviewList;
 
