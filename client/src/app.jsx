@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Overview from './overview/Overview.jsx';
+import Overview from './overview/overview.jsx';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
 import QA from './qa/QA.jsx';
 import ReviewList from './reviews/reviewList.jsx';
