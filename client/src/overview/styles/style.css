@@ -44,6 +44,14 @@ color: red;
   margin-left: auto;
   overflow-wrap: normal;
   width: 70%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#slogan {
+  font-weight: bold;
+}
+#description {
+  margin-top: 0;
 }
 
 .information {
