@@ -152,7 +152,7 @@ const AddAnswerDashboard = (props) => {
             <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
           </label>
           <label>
-            Upload your photos!
+            Upload your photos
             {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} onClick={(e) => e.stopPropagation()} />}
             {photoErrorMsg === '' || <p className="modal-error-msg">*You must enter the following: {photoErrorMsg}</p>}
             <div className="add-answer-uploads-container">
