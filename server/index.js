@@ -5,6 +5,7 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const path = require('path');
 var shrinkRay = require('shrink-ray-current');
 app.use(shrinkRay());
 app.use(bodyParser.json());
@@ -76,8 +77,8 @@ app.use('/api/*', createProxyMiddleware(options));
 
 
 app.get('*', (req, res) => {
-  console.log('DATA UNDEFINED');
-  // res.send(data);
+  // res.send('data');
+  res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {

@@ -19,6 +19,7 @@ var ImageContainer = (props) => {
   };
   // set state ONLY if it has never been set before or the style changes
   useEffect(()=> {
+
     if ( props.selectedStyle.photos && (selectedPhoto === 'loading' || currentStyleId !== props.selectedStyle['style_id'] )) {
       var selected = props.selectedStyle.photos[selectedPhoto.index ? selectedPhoto.index : 0];
       selected.index = 0;

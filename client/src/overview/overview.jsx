@@ -13,8 +13,6 @@ const Overview = (props) => {
 
   // props.product
   // props.productList
-  //const [urlList, setUrlList] = useState([]);
-  //const [thumbUrlList, setThumbUrlList] = useState([]);
 
 
   const [styleList, setStyleList] = useState([]);
@@ -30,18 +28,17 @@ const Overview = (props) => {
   useEffect(() => {
   //set up style as first style in data or as an empty style object
     setSelectedStyle((props.productStyles !== undefined ? props.productStyles[0] : {skus: {}, size: 0}) );
-  }, []);
+
+  }, [props.productStyles]);
 
 
-
-  // console.log('overview->selectedStyle: ', selectedStyle);
   return (
 
     < div className='overview-wrapper' >
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }
-     
+
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
         <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>
@@ -51,7 +48,7 @@ const Overview = (props) => {
         <SelectProductContainer selectedStyle={selectedStyle}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
-      <ProductFeatureList></ProductFeatureList>
+      <ProductFeatureList features={props.product.features}></ProductFeatureList>
     </div >
 
   );

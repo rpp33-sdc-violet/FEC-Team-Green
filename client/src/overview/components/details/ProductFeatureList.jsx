@@ -1,23 +1,24 @@
 import React, {useState} from 'react';
 
-// var pFeatureList = {
-//   'display': 'grid',
-//   'backgroundColor': 'pink',
 
-//   'grid-template-columns': '1fr',
-//   // 'grid-template-rows': 'minmax(100px, auto)',
 
-// };
 const ProductFeatureList = (props)=> {
 
   //props
+  console.log('product feature', props.features);
 
+  var list = [];
+  if (props.features) {
+    list = props.features.map((feature) => {
+      return <li>{feature.feature}: {feature.value} </li>;
+    });
+  }
   return (
     <div>
-
-      <div className='feature-list'>FeatureList</div>
+      {list.length > 1 ?
+        <ul id='feature-list'>{list}</ul> :
+        <div id='feature-list'>FeatureList</div>}
     </div>
-
   );
 };
 
