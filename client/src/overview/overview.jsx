@@ -41,7 +41,7 @@ const Overview = (props) => {
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }
-     
+
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
         <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>
@@ -51,7 +51,7 @@ const Overview = (props) => {
         <SelectProductContainer selectedStyle={selectedStyle}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
-      <ProductFeatureList></ProductFeatureList>
+      <ProductFeatureList features={props.product.features}></ProductFeatureList>
     </div >
 
   );
