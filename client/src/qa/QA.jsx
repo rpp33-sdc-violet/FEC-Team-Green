@@ -77,7 +77,8 @@ const QA = (props) => {
   };
 
   return (
-    <div className="QA-container">
+    // CHANGE REQUEST: onClick listener to entire QA widget container
+    <div onClick={props.interactions} className="QA-container">
       <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
       <Search userSearch={userSearch} />
       <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
