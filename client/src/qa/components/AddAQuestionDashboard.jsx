@@ -117,7 +117,7 @@ const AddAQuestionDashboard = (props) => {
               value={email} onChange={(e) => setEmail(e.target.value)} />
             <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
           </label>
-          <input className="modal-button-submit" type="submit" value="Submit" />
+          <input className="modal-button-submit" type="submit" value="Submit" onClick={(e) => e.stopPropagation()} />
         </form>
       </Modal>
       <button id="addQuestion-button" type="button" onClick={showModal}>ADD A QUESTION +</button>
