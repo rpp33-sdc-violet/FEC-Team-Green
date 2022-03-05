@@ -7,6 +7,7 @@ import StarRating from '../starRating.jsx';
 const Ratings = (props) => {
 
   let percentArray = props.ratingBreakdown;
+  //console.log('percentArray', percentArray );
   let average = (percentArray[0] + percentArray[1] * 2 + percentArray[2] * 3 + percentArray[3] * 4 + percentArray[4] * 5) / 100;
   let averageRounded = Math.round(average * 10) / 10;
 
