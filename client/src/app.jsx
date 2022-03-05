@@ -10,6 +10,8 @@ import ReviewList from './reviews/reviewList.jsx';
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import withParamsAndNavigate from './hoc.js';
 
 // CHANGE REQUEST - import HOC
 import withInteractions from './utils/withInteractions.jsx';
@@ -43,27 +45,40 @@ class App extends React.Component {
       console.log('error fetching product data', err);
     });
   }
+  // if this function is successful it will set the product id and change the url
   getProductStylesData(productId) {
 
     axios.get(`/api/products/${productId}/styles`
     ).then((resp) => {
-      this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
-      // eslint-disable-next-line camelcase
-      this.setState({product_id: productId});
+      this.setState({ productStyles: resp.data.results }, () => {
+        console.log('STYLE DATA', this.state.productStyles);
+        // eslint-disable-next-line camelcase
+        this.setState({product_id: productId});
+        this.props.navigate(`/${productId}`);
+
+      });
+
     }).catch(err => {
       console.log('error fetching style data', err);
     });
   }
+
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.getProductData(this.state.product_id);
+    this.props.params.productId ? this.setState({product_id: this.props.params.productId}, ()=> {
+      this.getProductData(this.state.product_id);
+    }) : this.getProductData(this.state.product_id);
+
   }//64669
   searchProductID(query) {
-    console.log('query', query);
     this.getProductData(query);
   }
   handleChange(event) {
     this.setState({search: event.target.value});
+  }
+
+  componentDidUpdate() {
+
   }
   render() {
 
@@ -91,5 +106,5 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'));
+export default withParamsAndNavigate(App);
+// ReactDOM.render(<App />, document.getElementById('app'));
