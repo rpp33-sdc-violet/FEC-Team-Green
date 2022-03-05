@@ -6,7 +6,8 @@ const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const path = require('path');
-
+var shrinkRay = require('shrink-ray-current');
+app.use(shrinkRay());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -77,7 +78,6 @@ app.use('/api/*', createProxyMiddleware(options));
 
 app.get('*', (req, res) => {
   // res.send('data');
-  // res.end();
   res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
 });
 
