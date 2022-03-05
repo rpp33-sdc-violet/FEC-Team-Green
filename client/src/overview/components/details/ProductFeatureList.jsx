@@ -16,7 +16,7 @@ const ProductFeatureList = (props)=> {
   return (
     <div>
       {list.length > 1 ?
-        <ul  id='feature-list'>{list}</ul> :
+        <ul id='feature-list'>{list}</ul> :
         <div id='feature-list'>FeatureList</div>}
     </div>
   );
