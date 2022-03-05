@@ -53,6 +53,7 @@ const AddAnswerDashboard = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     var errors = [];
     // check if mandatory fields are empty
     if (answer === '') {
@@ -152,7 +153,7 @@ const AddAnswerDashboard = (props) => {
           </label>
           <label>
             Upload your photos!
-            {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} />}
+            {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} onClick={(e) => e.stopPropagation()} />}
             {photoErrorMsg === '' || <p className="modal-error-msg">*You must enter the following: {photoErrorMsg}</p>}
             <div className="add-answer-uploads-container">
               {
@@ -162,7 +163,7 @@ const AddAnswerDashboard = (props) => {
               }
             </div>
           </label>
-          <input className="modal-button-submit" type="submit" value="Submit" />
+          <input className="modal-button-submit" type="submit" value="Submit" onClick={(e) => e.stopPropagation()} />
         </form>
       </Modal>
       <a href='#' onClick={showModal}>Add Answer</a>
