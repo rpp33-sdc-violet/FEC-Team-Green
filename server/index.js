@@ -1,15 +1,43 @@
 const express = require('express');
 const axios = require('axios');
 const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware');
-const app = express();
-const PORT = 3000;
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+// MULTER: handles multipart/form-data, which is primarily used for uploading files
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const uploadFileToS3 = require('./s3.js');
+// to remove file that multer stored in uploads directory
+const { unlink } = require('fs/promises');
 
+const app = express();
+const PORT = 3000;
+
+const path = require('path');
+var shrinkRay = require('shrink-ray-current');
+app.use(shrinkRay());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
+
+// PHOTO UPLOAD TO S3 BUCKET
+app.post('/photos', upload.single('photo'), (req, res) => {
+  uploadFileToS3(req.file, (error, url) => {
+    if (error) {
+      res.status(500).send('error in uploading photo');
+    } else {
+      // remove file and then send url back to client to render
+      unlink(req.file.path)
+        .then((response) => {
+          res.send(url);
+        })
+        .catch((error) => {
+          console.log('did not delete file in uploads directory');
+        });
+    }
+  });
+});
 
 // COOKIES - In QA widget, need to persist data whether helpful links have been clicked or not
 app.use(cookieParser());
@@ -74,8 +102,10 @@ const options = {
 app.use('/api/*', createProxyMiddleware(options));
 
 
+
 app.get('*', (req, res) => {
-  res.send(data);
+  // res.send('data');
+  res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {
