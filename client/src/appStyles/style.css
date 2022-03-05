@@ -1,30 +1,43 @@
 /* ** APPLY TO ALL ** */
 * {
   margin: 0;
-  border: 0;
-  padding: 0;
-}
+  /* border: 0; */
+  /* padding: 0; */
+  font-family: 'proxima-nova', sans-serif;
 
+}
+#app {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+
+}
 /* ** NAVBAR ** */
 #navbar {
   display: flex;
-  background-color: black;
+  background-color: #404040;
   border-bottom: 2px solid #39FF14;
+  /* border: 0; */
 }
 
 #navbar .logo {
   display: inline-block;
   color: #39FF14;;
   padding: 9px;
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #navbar > form {
   margin-left: auto;
   display: inline-block;
   padding: 9px 3px;
+
 }
 
 #navbar > form > input {
+  border: 0;
   outline: none;
   background-color: transparent;
   border-bottom: 1px solid #39FF14;
@@ -45,3 +58,37 @@
 .searchIcon:hover {
   color: #39FF14;
 }
+.overview-skeleton {
+  display: grid;
+  background-color: white;
+  grid-template-columns: 1.75fr 1.25fr;
+  grid-template-rows: 1.75fr 1.25fr;
+  border: 1px solid black;
+  height: 800px;
+  max-height: 800px;
+}
+
+:root {
+  --star-size: 15px;
+  --star-color: #eee;
+  --star-background: #fc0;
+}
+
+
+.Stars {
+  --percent: calc(var(--rating) * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+.Stars::before {
+  content: "★★★★★";
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+

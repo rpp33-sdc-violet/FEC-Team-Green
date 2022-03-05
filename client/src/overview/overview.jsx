@@ -23,32 +23,37 @@ const Overview = (props) => {
   const [productOverview, setProductOverview] = useState({});
   // product overview will contain
   //  id, name, slogan, description, category, default_price, features (an array)
-
   const [selectedStyle, setSelectedStyle] = useState({skus: {}, size: 0});
-  const [selectedSize, setSelectedSize] = useState('Select Size');
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
 
   //
   useEffect(() => {
-    setSelectedStyle(props.productStyles[0]);
+  //set up style as first style in data or as an empty style object
+    setSelectedStyle((props.productStyles !== undefined ? props.productStyles[0] : {skus: {}, size: 0}) );
   }, []);
 
+
+
+  // console.log('overview->selectedStyle: ', selectedStyle);
   return (
 
     < div className='overview-wrapper' >
-      <ImageContainer selectedStyle={selectedStyle}></ImageContainer>
+      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
+        <div> loading </div>
+      }
+     
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
-        <ProductInformationContainer product={props.product}></ProductInformationContainer>
+        <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>
 
         <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
 
-        <SelectProductContainer setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}
-          selectedSize={selectedSize}setSelectedSize={setSelectedSize} selectedQuantity={selectedQuantity} selectQuantity={setSelectedQuantity} />
+        <SelectProductContainer selectedStyle={selectedStyle}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList></ProductFeatureList>
     </div >
+
   );
 
 };
@@ -59,3 +64,6 @@ export default Overview;
 // Product Description  displays all text describing the product
 // styleSelectorContainer contains all components and logic for selecting style
 // ct Produc allows you to select size, quantitiy and add p roduct to bag--it also allows you to add product to outfit
+//If the size has not been selected, then the quantity dropdown will display ‘-’ and the dropdown will be disabled.
+//Once a size has been selected, the dropdown should default to 1.
+

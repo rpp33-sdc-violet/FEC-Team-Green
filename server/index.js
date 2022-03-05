@@ -13,6 +13,8 @@ const { unlink } = require('fs/promises');
 const app = express();
 const PORT = 3000;
 
+var shrinkRay = require('shrink-ray-current');
+app.use(shrinkRay());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -101,7 +103,8 @@ app.use('/api/*', createProxyMiddleware(options));
 
 
 app.get('*', (req, res) => {
-  res.send(data);
+  console.log('DATA UNDEFINED');
+  // res.send(data);
 });
 
 app.listen(PORT, () => {

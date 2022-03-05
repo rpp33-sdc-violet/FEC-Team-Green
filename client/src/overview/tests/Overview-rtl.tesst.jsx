@@ -8,6 +8,6 @@ describe('overview', () => {
   test('should print the overview component heading', () => {
     render(<Overview />);
 
-    expect(screen.getByText('ImageContainer')).toBeInTheDocument();
+    expect(screen.getByText('SelectProductContainer')).toBeInTheDocument();
   });
 });
