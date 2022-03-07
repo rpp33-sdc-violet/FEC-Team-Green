@@ -31,9 +31,9 @@ const Overview = (props) => {
 
   }, [props.productStyles]);
 
-
+  //onClick={props.interactions}
   return (
-    < div className='overview-wrapper' onClick={props.interactions} >
+    < div className='overview-wrapper' >
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }

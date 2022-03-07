@@ -50,6 +50,8 @@ var ImageContainer = (props) => {
         <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left' id='leftExpanded'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
+        <ImageThumbnailList id='miniCarousel' selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+
       </div>
       <div className ='image-block'>
         <ImageExpander selectedPhoto={selectedPhoto}/>

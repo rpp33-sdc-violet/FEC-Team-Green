@@ -36,8 +36,8 @@ const ImageThumbnailList = (props) => {
   // console.log('photos', photoThumbnails);
   return (
 
-    <div className='img-thumbnail-panel'>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
+    <div className='img-thumbnail-panel' id={props.id}>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' onClick={(e) => e.stopPropagation()}alt='SVG downward arrow'onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
       <div className ='img-thumbnail-carousel'>
         {photoThumbnails}
       </div>
