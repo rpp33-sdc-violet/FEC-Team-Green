@@ -6,18 +6,46 @@ var ImageExpander = (props) => {
   //this component displays the main gallery image
   var scaled = false;
   var onModalClick = (e) => {
+
+    var container = $('#main-image-modal');
     console.log('modal', e);
 
     if (!scaled) {
-      $('#main-image-modal').css('transform', 'translate(100px, 10px) scale(2.5)');
+
+      // console.log('height', container);
       $('#main-image-modal').css('cursor', 'zoom-out');
-      $('#main-image-modal').mousemove(function(e) {
-        $('#main-image-modal').css('transform', `translate(${e.clientX}px, ${e.clientY}px) scale(2.5)`);
-      });
+
+      var image = new Image();
+      image.src = props.selectedPhoto.url;
+      image.onload = function () {
+        var width = image.width;
+        var height = image.height;
+        let ratio = height / width;
+        let percentage = ratio * 100 + '%';
+
+        $('#main-image-modal').mousemove(function(e) {
+          let rect = e.target.getBoundingClientRect();
+          let xPos = e.clientX;
+          let yPos = e.clientY;
+          // console.log('ratio', ratio);
+          let xPercent = xPos / (container.innerWidth() / 80);
+          let yPercent = yPos / ((container.innerWidth() * ratio) / 190);
+          container.css('backgroundSize', 250 + '%');
+          yPercent > 105 ? yPercent = 105 : '';
+          $('#main-image-modal').css('backgroundPosition', xPercent + '% ' + yPercent + '%');
+          // backgroundSize: img.naturalWidth + 'px';
+          // $('#main-image-modal').css('transform', 'scale(2.5)');
+          container.mouseout = (e) => {
+            $('#main-image-modal').css('backgroundPosition', 'center');
+            container.css('backgroundSize', 'cover');
+          };
+        });
+      };
     } else {
-      $('#main-image-modal').css('transform', 'scale(1)');
       $('#main-image-modal').unbind();
       $('#main-image-modal').css('cursor', 'zoom-in');
+      $('#main-image-modal').css('backgroundPosition', 'center');
+      $('#main-image-modal').css('backgroundSize', 'cover');
     }
 
     scaled = !scaled;
@@ -34,16 +62,18 @@ var ImageExpander = (props) => {
     imageModal.toggle();
   };
   return (
-  // <React-Fragment>
 
-    props.selectedPhoto ? <img id = { props.modal ? 'main-image-modal' : 'main-image'} src={props.selectedPhoto.url} onClick={props.modal ? onModalClick : onImageClick}></img>
+    props.selectedPhoto ? props.modal ? <div style={{backgroundImage: `url(${props.selectedPhoto.url})`}} id='main-image-modal' onClick={onModalClick} ></div> : <img id = 'main-image' src={props.selectedPhoto.url} onClick={onImageClick}></img>
       : <div className ='image-container'>
         ...loading
       </div>
-  // <ImageNavigator></ImageNavigator>
-  // {/* </React-Fragment> */}
 
   );
 
 };
 export default ImageExpander;
+
+/* props.selectedPhoto ? props.modal ? <div></div> : <img id = { props.modal ? 'main-image-modal' : 'main-image'} src={props.selectedPhoto.url} onClick={props.modal ? onModalClick : onImageClick}></img>
+      : <div className ='image-container'>
+        ...loading
+      </div>*/
