@@ -188,6 +188,7 @@ ul {
   background-size: contain;
   height: 900px;
   background-repeat: no-repeat;
+  display: block;
 }
 
 .image-container, .rightPanel{

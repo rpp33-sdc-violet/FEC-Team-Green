@@ -12,10 +12,23 @@ var ImageContainer = (props) => {
   const [currentStyleId, setCurrentStyleId] = useState(0);
 
   var expandImage = () => {
+    // var imageModal = $('#image-modal-frame');
+    // imageModal.css('display') === 'none' ?
+    //   imageModal.css('display', 'flex') :
+    //   imageModal.css('display', 'none');
+
     var imageModal = $('#image-modal-frame');
-    imageModal.css('display') === 'none' ?
-      imageModal.css('display', 'flex') :
-      imageModal.css('display', 'none');
+    var wrapperWidth = $('.overview-wrapper').width();
+    var wrapperHeight = $('.overview-wrapper').height();
+    console.log('img width', wrapperWidth);
+
+    imageModal.css('width', `${wrapperWidth * .95}px`);
+    imageModal.css('height', `${wrapperHeight * .95}px`);
+    imageModal.toggle();
+
+
+
+
   };
   // set state ONLY if it has never been set before or the style changes
   useEffect(()=> {
