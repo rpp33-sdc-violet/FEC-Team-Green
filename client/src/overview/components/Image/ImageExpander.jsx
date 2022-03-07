@@ -9,15 +9,15 @@ var ImageExpander = (props) => {
     console.log('modal', e);
 
     if (!scaled) {
-      $('.main-image-modal').css('transform', 'translate(100px, 10px) scale(2.5)');
-      $('.main-image-modal').css('cursor', 'zoom-out');
-      $('.main-image-modal').mousemove(function(e) {
-        $('.main-image-modal').css('transform', `translate(${e.clientX}px, ${e.clientY}px) scale(2.5)`);
+      $('#main-image-modal').css('transform', 'translate(100px, 10px) scale(2.5)');
+      $('#main-image-modal').css('cursor', 'zoom-out');
+      $('#main-image-modal').mousemove(function(e) {
+        $('#main-image-modal').css('transform', `translate(${e.clientX}px, ${e.clientY}px) scale(2.5)`);
       });
     } else {
-      $('.main-image-modal').css('transform', 'scale(1)');
-      $('.main-image-modal').unbind();
-      $('.main-image-modal').css('cursor', 'zoom-in');
+      $('#main-image-modal').css('transform', 'scale(1)');
+      $('#main-image-modal').unbind();
+      $('#main-image-modal').css('cursor', 'zoom-in');
     }
 
     scaled = !scaled;
@@ -36,7 +36,7 @@ var ImageExpander = (props) => {
   return (
   // <React-Fragment>
 
-    props.selectedPhoto ? <img className = { props.modal ? 'main-image-modal' : 'main-image'} src={props.selectedPhoto.url} onClick={props.modal ? onModalClick : onImageClick}></img>
+    props.selectedPhoto ? <img id = { props.modal ? 'main-image-modal' : 'main-image'} src={props.selectedPhoto.url} onClick={props.modal ? onModalClick : onImageClick}></img>
       : <div className ='image-container'>
         ...loading
       </div>
