@@ -10,6 +10,8 @@
   max-height: 540px;
   margin: 40px 60px 40px;
   color: #404040;
+  z-index: 11;
+  position: relative;
 }
 
 .QA-header {
