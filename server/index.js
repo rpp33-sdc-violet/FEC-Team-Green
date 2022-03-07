@@ -80,14 +80,15 @@ app.all('*', function (req, res, next) {
   }
 });
 
-const config = require('../client/src/config/github.js');
-
+// const config = require('../client/src/config/github.js'); <-- REPLACED WITH DOTENV CONFIG
+require('dotenv').config({path: './server/.env'}); // <-- retrieve Github API Key in our .env file
+const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
 // when you send a request to the '/api/**' endpoint, it automatically re-routed to the API server(done by pathRewrite)
 const options = {
   target: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp', //target host
   changeOrigin: 'true', //needed for virtual hosted sites
   headers: {
-    'Authorization': config
+    'Authorization': GITHUB_API_KEY
   },
   pathRewrite: {
     '^/api/': '/'
