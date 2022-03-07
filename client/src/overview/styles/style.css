@@ -189,6 +189,16 @@ ul {
   height: 900px;
   background-repeat: no-repeat;
   display: block;
+
+}
+#rightExpanded {
+  top: 50%;
+  height: 60px;
+}
+#leftExpanded {
+  top: 50%;
+  height: 60px;
+
 }
 
 .image-container, .rightPanel{

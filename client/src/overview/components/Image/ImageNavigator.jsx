@@ -74,12 +74,12 @@ var ImageNavigator = function (props) {
   }
   return (
     props.direction === 'right' ?
-      <MdOutlineKeyboardArrowRight className={`${props.direction}Arrow`} onClick={()=> {
+      <MdOutlineKeyboardArrowRight className={`${props.direction}Arrow`} id={props.id} onClick={()=> {
         var nextPhoto = props.selectedPhoto.index + 1;
         props.setSelectedPhoto(props.photos[nextPhoto]);
         console.log(isScrolledIntoView());
       }}></MdOutlineKeyboardArrowRight> :
-      <MdOutlineKeyboardArrowLeft className={`${props.direction}Arrow`} onClick={()=> {
+      <MdOutlineKeyboardArrowLeft className={`${props.direction}Arrow`}id={props.id} onClick={()=> {
         var nextPhoto = props.selectedPhoto.index - 1;
         props.setSelectedPhoto(props.photos[nextPhoto]);
 

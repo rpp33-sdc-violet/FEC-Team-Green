@@ -46,7 +46,9 @@ var ImageContainer = (props) => {
   return (
     <div className ='image-container'>
       <div id='image-modal-frame'>
+        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right' id='rightExpanded'></ImageNavigator>
         <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
+        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left' id='leftExpanded'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
       </div>
       <div className ='image-block'>
