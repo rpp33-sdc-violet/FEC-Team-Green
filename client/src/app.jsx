@@ -102,7 +102,12 @@ class App extends React.Component {
 
         {/* <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA> */}
         <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} />
-        <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+
+        {this.state.product_id && this.state.product.name ?
+          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList> :
+          <div className='reviews'>loading reviews</div>
+        }
+
 
       </div>
     );
