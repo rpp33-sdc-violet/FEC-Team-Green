@@ -55,9 +55,9 @@ const IndividualQuestion = (props) => {
     // invoke the recursive inner function
     getAllAnswers();
 
-    // return () => {
-    //   cancel = true;
-    // };
+    return () => {
+      cancel = true;
+    };
   }, [props.question]); // the empty array stops the effect from running more than once
 
   // isMoreAnsButtonVisible - checks if there are more than 2 answers total; if yes, button is visible (true)
