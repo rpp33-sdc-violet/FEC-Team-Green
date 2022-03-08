@@ -55,7 +55,7 @@ var ImageContainer = (props) => {
       </div>
       <div className ='image-block'>
         <ImageExpander selectedPhoto={selectedPhoto}/>
-        <ImageThumbnailList id='mainCarousel' selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <ImageThumbnailList id='mainCarousel' alternateClass={''}selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
