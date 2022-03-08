@@ -29,6 +29,7 @@ class App extends React.Component {
       product_id: 64622
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
 
@@ -76,6 +77,13 @@ class App extends React.Component {
   handleChange(event) {
     this.setState({search: event.target.value});
   }
+  
+  handleKeyDown(event) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      this.searchProductID(this.state.search);
+    }
+  }
 
   componentDidUpdate() {
 
@@ -87,7 +95,7 @@ class App extends React.Component {
         <nav id={'navbar'}>
           <p className='logo'>Logo</p>
           <form>
-            <input value={this.state.search} onChange={this.handleChange}></input>
+            <input value={this.state.search} onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
           </form>
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();
