@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from './Modal.jsx';
+import Modal from '../../utils/Modal.jsx';
 
 const AnswerPhoto = (props) => {
   const [show, setShow] = useState(false);
