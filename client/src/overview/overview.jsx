@@ -33,11 +33,10 @@ const Overview = (props) => {
 
   //onClick={props.interactions}
   return (
-    < div className='overview-wrapper' >
+    < div className='overview-wrapper' onClick={props.interactions} >
       { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
         <div> loading </div>
       }
-
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
         <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>

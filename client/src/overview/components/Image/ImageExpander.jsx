@@ -5,14 +5,21 @@ var ImageExpander = (props) => {
 
   //this component displays the main gallery image
   var scaled = false;
+  //set the arrow status here so that it carries over when I zoom in or out.
+  var rightArrow = $('.rightArrow').css('display');
+  var leftArrow = $('.leftArrow').css('display');
   var onModalClick = (e) => {
 
     var container = $('#main-image-modal');
     console.log('modal', e);
 
     if (!scaled) {
-
-      // console.log('height', container);
+      //-make arrows disappear when zoomed in then rest arrow status
+      rightArrow = $('.rightArrow').css('display');
+      leftArrow = $('.leftArrow').css('display');
+      $('#rightExpanded').css('display', 'none');
+      $('#leftExpanded').css('display', 'none');
+      $('#miniCarousel').hide();
       $('#main-image-modal').css('cursor', 'zoom-out');
 
       var image = new Image();
@@ -46,6 +53,9 @@ var ImageExpander = (props) => {
       $('#main-image-modal').css('cursor', 'zoom-in');
       $('#main-image-modal').css('backgroundPosition', 'center');
       $('#main-image-modal').css('backgroundSize', 'cover');
+      $('#rightExpanded').css('display', rightArrow);
+      $('#leftExpanded').css('display', leftArrow);
+      $('#miniCarousel').show();
     }
 
     scaled = !scaled;

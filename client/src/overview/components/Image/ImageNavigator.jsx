@@ -26,10 +26,10 @@ var ImageNavigator = function (props) {
     var list = $('.img-thumbnail-list');
     var minTop = list[0].getBoundingClientRect();
     var rect = el.getBoundingClientRect();
-    console.log('rect', rect.bottom);
-    console.log('rect', el.y);
-    console.log('minTop ', minTop );
-    console.log('current section', list.scrollTop(), ' to ', list.scrollTop() + list.outerHeight() );
+    // console.log('rect', rect.bottom);
+    // console.log('rect', el.y);
+    // console.log('minTop ', minTop );
+    // console.log('current section', list.scrollTop(), ' to ', list.scrollTop() + list.outerHeight() );
     var elemTop = rect.top;
     var elemBottom = rect.bottom;
 
@@ -39,7 +39,7 @@ var ImageNavigator = function (props) {
     //&& elemBottom - list.scrollTop() - (.5 * rect.height) >= minTop.top);
     isVisible = (rect.bottom - 9 <= list.outerHeight() + list.scrollTop());
 
-    console.log(`bottom ${rect.bottom - 9} <= outerHeight ${list.outerHeight()} + scrolltopHeight ${list.scrollTop()}`, isVisible);
+    // console.log(`bottom ${rect.bottom - 9} <= outerHeight ${list.outerHeight()} + scrolltopHeight ${list.scrollTop()}`, isVisible);
 
     //check if the we need to scroll down
     if (!(rect.bottom - 9 <= list.outerHeight() + list.scrollTop())) {

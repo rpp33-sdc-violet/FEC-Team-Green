@@ -20,7 +20,7 @@ var ImageContainer = (props) => {
     var imageModal = $('#image-modal-frame');
     var wrapperWidth = $('.overview-wrapper').width();
     var wrapperHeight = $('.overview-wrapper').height();
-    console.log('img width', wrapperWidth);
+    // console.log('img width', wrapperWidth);
 
     imageModal.css('width', `${wrapperWidth * .95}px`);
     imageModal.css('height', `${wrapperHeight * .95}px`);
@@ -55,7 +55,7 @@ var ImageContainer = (props) => {
       </div>
       <div className ='image-block'>
         <ImageExpander selectedPhoto={selectedPhoto}/>
-        <ImageThumbnailList selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <ImageThumbnailList id='mainCarousel' selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>

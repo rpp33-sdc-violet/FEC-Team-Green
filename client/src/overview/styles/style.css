@@ -260,7 +260,10 @@ ul {
 #miniCarousel {
   width: 45px;
 }
-.img-thumbnail-carousel {
+/* #mainCarousel{
+
+} */
+.img-thumbnail-list {
   width: 85%;
   position: relative;
   display: flex;
