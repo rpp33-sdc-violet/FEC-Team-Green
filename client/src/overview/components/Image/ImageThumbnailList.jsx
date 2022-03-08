@@ -21,7 +21,8 @@ const ImageThumbnailList = (props) => {
       list.scrollTop(list.scrollTop() + nav);
       list.scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
       var maxHeight = list[0].scrollHeight - list.outerHeight();
-      list.scrollTop() === maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
+      // console.log('maxHeight', maxHeight, ' scrollTop ',list.scrollTop());
+      list.scrollTop() >= maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
     });
     list.trigger('scroll');
 

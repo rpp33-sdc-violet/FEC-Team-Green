@@ -216,7 +216,7 @@ ul {
   position: relative;
 }
 .rightArrow, .leftArrow {
-  height: 30px;
+  height: 60px;
   width: auto;
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
   position: absolute;
@@ -225,7 +225,7 @@ ul {
   right: 10px;
 }
 .leftArrow {
-  left: 60px;
+  left: 70px;
 }
 .image-block {
   position: relative;
@@ -269,7 +269,7 @@ ul {
 }
 #mainCarousel{
 width: 80px;
-left: 18px;
+left: -3px;
 height: 535px;
 }
 #mainCarousel-panel{
