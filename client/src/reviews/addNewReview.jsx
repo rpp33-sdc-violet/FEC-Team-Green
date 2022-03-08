@@ -85,31 +85,42 @@ class AddNewReview extends React.Component {
 
   submitReview(event) {
     event.preventDefault();
-    let reviewParam = {
-      // eslint-disable-next-line camelcase
-      product_id: parseInt(this.props.productId),
-      rating: parseInt(this.state.rating),
-      summary: this.state.summary,
-      body: this.state.body,
-      recommend: this.state.recommend,
-      name: this.state.name,
-      photos: this.state.photos,
-      email: this.state.email,
-      characteristics: this.state.postCharac
-    };
-    console.log('reviewParam', reviewParam);
+    if (this.state.rating === 0 || this.state.recommend === null || this.state.body === ''
+    || this.state.name === null || this.state.email === null || this.state.characteristics === {}) {
+      alert('Please fill out the mandatory fields(*)');
+    } else if (this.state.body.length < 50) {
+      alert ('Review body must be over 50 characters long');
+    } else if (!this.state.email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      alert ('The email address provided is not in correct email format');
+    } else {
+      let reviewParam = {
+        // eslint-disable-next-line camelcase
+        product_id: parseInt(this.props.productId),
+        rating: parseInt(this.state.rating),
+        summary: this.state.summary,
+        body: this.state.body,
+        recommend: this.state.recommend,
+        name: this.state.name,
+        photos: this.state.photos,
+        email: this.state.email,
+        characteristics: this.state.postCharac
+      };
+      console.log('reviewParam', reviewParam);
 
-    axios.post('/api/reviews', reviewParam)
-      .then((res) => {
-        alert('Successfully submitted your review');
-        console.log('success', res);
-        this.hideModal();
-      })
-      .catch((err) => {
-        //TODO: need error handling method funciton to catch and process error message
-        console.log('error posting reviews', err.message);
-        alert('Failed to post review');
-      });
+      axios.post('/api/reviews', reviewParam)
+        .then((res) => {
+          alert('Successfully submitted your review');
+          console.log('success', res);
+          this.hideModal();
+        })
+        .catch((err) => {
+          //TODO: need error handling method funciton to catch and process error message
+          console.log('error posting reviews', err.message);
+          alert('Failed to post review');
+        });
+
+
+    }
 
   }
 

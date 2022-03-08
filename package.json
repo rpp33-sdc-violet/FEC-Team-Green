@@ -12,7 +12,7 @@
     "test:qa": "jest client/src/qa/tests --detectOpenHandles",
     "test:reviews": "jest client/src/reviews/tests --detectOpenHandles",
     "prepare": "husky install",
-    "start": "npx nodemon server/index.js",
+    "start": "nodemon server/index.js",
     "start2": "node server/index.js"
   },
   "repository": {
