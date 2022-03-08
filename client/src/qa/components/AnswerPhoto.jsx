@@ -12,7 +12,6 @@ const AnswerPhoto = (props) => {
     setShow(false);
   };
 
-
   return (
     <>
       <Modal show={show} handleClose={hideModal}>

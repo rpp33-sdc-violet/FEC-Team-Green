@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
 const QuestionsList = (props) => {
