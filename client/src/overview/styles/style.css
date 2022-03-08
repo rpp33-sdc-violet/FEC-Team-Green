@@ -239,16 +239,18 @@ ul {
   width: 1200px;
   overflow: hidden;
   position: absolute;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: rgb(0 0 0 / 25%) 0px 6px 8px 2px;
-  border: 1px solid rgb(148, 148, 148);
-  padding-left: 5%;
-  padding-right: 5%;
+  /* background: rgba(0, 0, 0, 0.6); */
+  background: white;
+  /* box-shadow: rgb(0 0 0 / 25%) 0px 6px 8px 2px; */
+  /* border: 1px solid rgb(148, 148, 148); */
+  padding-left: 54px;
+  padding-right: 54px;
   z-index: 4;
   top: -20px;
   left: 1px;
   max-width: 1120px;
   max-height: 900px;
+  height: 800px;
 
 }
 #expander-btn  {
@@ -257,8 +259,11 @@ ul {
   top: 10px;
   color: gray;
 }
-#miniCarousel {
-  width: 45px;
+#miniCarousel  {
+  width: 60px;
+}
+#miniCarousel .selected {
+  border: black 2px solid;
 }
 /* #mainCarousel{
 
@@ -290,7 +295,7 @@ ul {
   list-style-type: none;
   width: 70px;
   top: 0;
-  left: 4px;
+  left: -10px;
   justify-content: center;
   overflow: hidden;
 
@@ -305,15 +310,22 @@ ul {
   margin-left: 5px;
   z-index: 10;
 }
+
 .img-thumbnail:hover{
  border-color: #FFD700;
 }
+
 .img-thumbnail.selected {
 
   border: 2px solid #FFD700;
   border-bottom: 8px black solid;
 
 
+}
+.img-icons{
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
 }
 .upArrow, .downArrow {
 

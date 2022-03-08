@@ -38,7 +38,7 @@ const ImageThumbnailList = (props) => {
   if (props.photos) {
     photoThumbnails = props.photos.map ((photo, index) => {
       photo.index = index;
-      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} selectedPhoto={props.selectedPhoto}/>;
+      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} alternateClass ={props.alternateClass} selectedPhoto={props.selectedPhoto}/>;
     });
   }
 
