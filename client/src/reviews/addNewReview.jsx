@@ -22,6 +22,7 @@ class AddNewReview extends React.Component {
       characteristics: {},
       postCharac: {},
       photos: [],
+      canUpload: true,
       displayCharac: {Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null}
     };
     this.showModal = this.showModal.bind(this);
@@ -31,6 +32,13 @@ class AddNewReview extends React.Component {
     this.generalChange = this.generalChange.bind(this);
     this.textCounter = this.textCounter.bind(this);
     this.submitReview = this.submitReview.bind(this);
+    this.photoUpload = this.photoUpload.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.photos.length > 5) {
+      this.setState({canUpload: false});
+    }
   }
 
   showModal () {
@@ -83,6 +91,25 @@ class AddNewReview extends React.Component {
     }
   }
 
+  photoUpload(event) {
+    const file = event.target.files[0];
+    let data = new FormData();
+    data.append('photo', file);
+    console.log('form data', data.get('photo'));
+
+    axios.post('/photos', data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+      .then ((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        alert('Unable to upload photo');
+      });
+  }
+
   submitReview(event) {
     event.preventDefault();
     if (this.state.rating === 0 || this.state.recommend === null || this.state.body === ''
@@ -92,6 +119,8 @@ class AddNewReview extends React.Component {
       alert ('Review body must be over 50 characters long');
     } else if (!this.state.email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
       alert ('The email address provided is not in correct email format');
+    } else if (this.state.photos.length > 5) {
+      alert('can not upload more than five photos');
     } else {
       let reviewParam = {
         // eslint-disable-next-line camelcase
@@ -106,7 +135,6 @@ class AddNewReview extends React.Component {
         characteristics: this.state.postCharac
       };
       console.log('reviewParam', reviewParam);
-
       axios.post('/api/reviews', reviewParam)
         .then((res) => {
           alert('Successfully submitted your review');
@@ -214,7 +242,14 @@ class AddNewReview extends React.Component {
               <small>{this.textCounter()}</small>
 
               <div>Upload your photos</div>
-              <button onClick = {(event) => event.preventDefault}>Add Photos</button>
+              <input type="file" id="img" name="img" accept="image/*" onChange={this.photoUpload} onClick={(e) => e.stopPropagation()} />
+
+              {
+                this.state.photos.map(photo => (
+                  <img src={photo} key={photo} className="add-answer-photo" />
+                ))
+              }
+
 
               <div>What is your nickname*</div>
               <input name = 'name' type='text' maxLength='60' placeholder='Example: jack11!'
