@@ -32,9 +32,7 @@ class App extends React.Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-
   getProductData(productId) {
-
     axios.get(`/api/products/${productId}/`
     ).then((resp) => {
       this.setState({ product: resp.data },
@@ -46,19 +44,17 @@ class App extends React.Component {
       console.log('error fetching product data', err);
     });
   }
+
   // if this function is successful it will set the product id and change the url
   getProductStylesData(productId) {
-
     axios.get(`/api/products/${productId}/styles`
     ).then((resp) => {
       this.setState({ productStyles: resp.data.results }, () => {
         console.log('STYLE DATA', this.state.productStyles);
         // eslint-disable-next-line camelcase
-        this.setState({product_id: productId});
+        this.setState({ product_id: productId });
         this.props.navigate(`/${productId}`);
-
       });
-
     }).catch(err => {
       console.log('error fetching style data', err);
     });
@@ -66,18 +62,19 @@ class App extends React.Component {
 
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.props.params.productId ? this.setState({product_id: this.props.params.productId}, ()=> {
+    this.props.params.productId ? this.setState({ product_id: this.props.params.productId }, () => {
       this.getProductData(this.state.product_id);
     }) : this.getProductData(this.state.product_id);
+  }
 
-  }//64669
   searchProductID(query) {
     this.getProductData(query);
   }
+
   handleChange(event) {
-    this.setState({search: event.target.value});
+    this.setState({ search: event.target.value });
   }
-  
+
   handleKeyDown(event) {
     if (event.code === 'Enter') {
       event.preventDefault();
@@ -85,11 +82,7 @@ class App extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-
-  }
   render() {
-
     return (
       <div>
         <nav id={'navbar'}>
@@ -100,22 +93,20 @@ class App extends React.Component {
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();
             this.searchProductID(this.state.search);
-          }}viewBox={[0, 0, 24, 21]} />
+          }} viewBox={[0, 0, 24, 21]} />
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
           <div className='overview-skeleton'>loading</div>}
-        <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-
+        {/* <RelatedProducts data={{ productID: '007' }}></RelatedProducts> */}
         {this.state.product && this.state.productStyles.length > 1 ?
           <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
           <div className="QA-container">loading</div>
-        }   
+        }
         <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
-
       </div>
     );
   }
 }
+
 export default withParamsAndNavigate(App);
-// ReactDOM.render(<App />, document.getElementById('app'));
