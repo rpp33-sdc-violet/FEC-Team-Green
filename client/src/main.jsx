@@ -9,9 +9,6 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {},
-      productStyles: [],
-      search: '',
       // eslint-disable-next-line camelcase
       product_id: 64622
     };
@@ -23,18 +20,10 @@ class Main extends React.Component {
         <Route path='/'element={<App />} >
         </Route>
         <Route path='/:productId'element={<App/>}></Route>
-
-
-
       </Routes>
-
-
-
     </Router>;
   }
 }
-
-
 
 
 ReactDOM.render(<Main />, document.getElementById('app'));
