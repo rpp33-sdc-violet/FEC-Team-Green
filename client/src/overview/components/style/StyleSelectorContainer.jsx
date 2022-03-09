@@ -13,14 +13,12 @@ const StyleSelectorContainer = (props) => {
   //if data has been passed to component, render it here
   if (props.productStyles && props.productStyles.length > 1) {
     return (
-      <div>
-        <div className='style-tag'> STYLE {'>'}  {props.selectedStyle.name}</div>
-        <div className='style-selector panel'>
+      <div id={'style-panel'}>
+        <div id='style-tag'> STYLE {'>'}  {props.selectedStyle.name}</div>
+        <div id='style-selector'>
 
           <StyleList styleList={props.productStyles} setSelectedStyle={props.setSelectedStyle}/>
-          <div>
-          StyleSelectorContainer
-          </div>
+
           {/* <img> src={props.productStyles[0].photos[0].thumbnail_url}</img> */}
         </div>
       </div>

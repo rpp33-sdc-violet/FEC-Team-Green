@@ -19,10 +19,10 @@ const ProductDescription = (props)=> {
 
   return (
     <div className='description-container'>
-      <div className='slogan'>
+      <div id='slogan'>
         {props.slogan ? props.slogan : '...loading'}
       </div>
-      <div className='description'>
+      <div id='description'>
         {props.description ? props.description : '...loading'}
       </div>
     </div>

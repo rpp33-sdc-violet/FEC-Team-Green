@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AnswerPhotosList from './AnswerPhotosList.jsx';
 
 const IndividualAnswer = (props) => { 
   // props
@@ -7,6 +8,8 @@ const IndividualAnswer = (props) => {
 
   const [isHelpfulClickedA, setIsHelpfulClickedA] = useState(false); 
   const [helpfulCountA, setHelpfulCountA] = useState(props.answer.helpfulness);  
+  const [reportText, setReportText] = useState('Report');
+  const [isReportClicked, setIsReportClicked] = useState(false);
 
   // methods
   // handleHelpfulClick - request to "mark answer as helpful" endpoint 
@@ -26,7 +29,22 @@ const IndividualAnswer = (props) => {
     }
   };
 
-  // *****TODO: handleReportClick - request to "report answer" endpoint
+  // handleReportClick - request to "report answer" endpoint
+  const handleReportClick = (event) => {
+    event.preventDefault();
+    if (!isReportClicked) {
+      axios.put(`api/qa/answers/${props.answer.answer_id}/report`)
+        .then((response) => {
+          setIsReportClicked(true);
+          setReportText('Reported');
+        })
+        .catch((error) => {
+          alert('Answer Already Reported');
+        });
+    } else {
+      alert('Answer Already Reported');
+    }
+  };
 
   // date formatter
   const formatDate = () => {
@@ -41,16 +59,13 @@ const IndividualAnswer = (props) => {
     });
   };
   
-  // render
-  // A text and *****TODO: photos?*******
-  // *****TODO: Report Link
   return (
     <div className="answer" role="answer">
-      <p className="answer-text"><strong>A: </strong>{props.answer.body}</p>
-      <p>by {props.answer.answerer_name}, {formatDate()} | Helpful? <a href='/' onClick={handleHelpfulClick}>Yes </a>({helpfulCountA}) | placeholder: Report</p>
+      <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>
+      <AnswerPhotosList photos={props.answer.photos} answerer_name={props.answer.answerer_name} />
+      <footer className="answerData-helpfulA-reportLink">by {props.answer.answerer_name}, {formatDate()}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful? <a href="/" onClick={handleHelpfulClick}>Yes</a> ({helpfulCountA})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a></footer>
     </div>
   );
-
 };
 
 export default IndividualAnswer;

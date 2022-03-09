@@ -1,9 +1,8 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Overview from './overview/Overview.jsx';
+import Overview from './overview/overview.jsx';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
 import QA from './qa/QA.jsx';
 import ReviewList from './reviews/reviewList.jsx';
@@ -14,6 +13,14 @@ import axios from 'axios';
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
 }
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import withParamsAndNavigate from './hoc.js';
+
+// CHANGE REQUEST - import HOC
+import withInteractions from './utils/withInteractions.jsx';
+// CHANGE REQUEST - container component with HOC and QA widget
+const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
 
 class App extends React.Component {
   constructor(props) {
@@ -42,34 +49,47 @@ class App extends React.Component {
       console.log('error fetching product data', err);
     });
   }
+  // if this function is successful it will set the product id and change the url
   getProductStylesData(productId) {
 
     axios.get(`/api/products/${productId}/styles`
     ).then((resp) => {
-      this.setState({ productStyles: resp.data.results }, () => { console.log('STYLE DATA', this.state.productStyles); });
-      // eslint-disable-next-line camelcase
-      this.setState({product_id: productId});
+      this.setState({ productStyles: resp.data.results }, () => {
+        console.log('STYLE DATA', this.state.productStyles);
+        // eslint-disable-next-line camelcase
+        this.setState({product_id: productId});
+        this.props.navigate(`/${productId}`);
+
+      });
+
     }).catch(err => {
       console.log('error fetching style data', err);
     });
   }
+
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.getProductData(this.state.product_id);
+    this.props.params.productId ? this.setState({product_id: this.props.params.productId}, ()=> {
+      this.getProductData(this.state.product_id);
+    }) : this.getProductData(this.state.product_id);
+
   }//64669
   searchProductID(query) {
-    console.log('query', query);
     this.getProductData(query);
   }
   handleChange(event) {
     this.setState({search: event.target.value});
+  }
+
+  componentDidUpdate() {
+
   }
   render() {
 
     return (
       <div>
         <nav id={'navbar'}>
-          <p className='logo'>LOGO</p>
+          <p className='logo'>Logo</p>
           <form>
             <input value={this.state.search} onChange={this.handleChange}></input>
           </form>
@@ -80,14 +100,17 @@ class App extends React.Component {
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
           <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
-          <div>loading</div>}
+          <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-        <QA product_id={64624}></QA>
-        <ReviewList product_id={64621}></ReviewList>
+
+
+        {/* <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA> */}
+        <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} />
+        <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
 
       </div>
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'));
+export default withParamsAndNavigate(App);
+// ReactDOM.render(<App />, document.getElementById('app'));
