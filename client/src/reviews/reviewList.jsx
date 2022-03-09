@@ -166,7 +166,8 @@ class ReviewList extends React.Component {
     this.setState({displayReviews: tempReviews});
   }
 
-  removeAllFilters() {
+  removeAllFilters(event) {
+    event.preventDefault();
     this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
   }
 
@@ -196,9 +197,7 @@ class ReviewList extends React.Component {
           );
         })}
          stars</div>;
-      removeFilter = <a href='#'onClick = {() => {
-        this.removeAllFilters();
-      }}>Remove all filters</a>;
+      removeFilter = <a href='#'onClick = {this.removeAllFilters}>Remove all filters</a>;
     }
 
     //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
