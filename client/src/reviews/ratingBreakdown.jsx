@@ -5,7 +5,6 @@
 //it will be passed to widget top level component
 
 import React from 'react';
-import './styles/style.css';
 import styled from 'styled-components';
 
 const RatingBar = (props) => {

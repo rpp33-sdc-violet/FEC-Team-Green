@@ -62,27 +62,29 @@ class IndividualReview extends React.Component {
 
     let response = null;
     if (review.response) {
-      response = <div>
-        <div>Response from seller:</div>
-        <div>{review.response}</div>
-      </div>;
+      response =
+      <ResponseWrapper>
+        <ResponseTitle>Response:</ResponseTitle>
+        <Response>{review.response}</Response>
+      </ResponseWrapper>;
     }
 
 
     return (
       <Review>
-        <StarRating rating = {this.props.review.rating}/>
         <TopInfo>
+          <StarWrapper>
+            <StarRating rating = {this.props.review.rating}/>
+          </StarWrapper>
           <UserDate>
             {review.reviewer_name + ','}
             {' ' + new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}
           </UserDate>
         </TopInfo>
 
-        <div>
-          {summary}
-        </div>
-        <div>{fullReview}</div>
+        <Summary>{summary}</Summary>
+        <ReviewBody>{fullReview}</ReviewBody>
+
         <div className='image'>
           {review.photos.map((photo)=> {
             //TODO: NEED TO BUILD A MODEL TO OPEN IMAGE IN MODAL WINDOW
@@ -92,16 +94,17 @@ class IndividualReview extends React.Component {
             );
           })}
         </div>
-        <br></br>
-        <div>{recommend}</div>
-        <div>{response}</div>
-        <div>
+
+        <Recommend>{recommend}</Recommend>
+        {response}
+
+        <Helpful>
           Helpful?
           <a href='#'onClick = {
             this.helpfulRating
-          }>Yes</a>
+          }> Yes</a>
           ({review.helpfulness})
-        </div>
+        </Helpful>
 
         <br></br>
       </Review>
@@ -119,16 +122,75 @@ const Review = styled.div`
   color: #404040;
 `;
 
+
+
 const TopInfo = styled.div`
-  display: grid;
-  grid-template-columns: auto 250px;
   padding-top: 5px;
   padding-bottom: 5px;
 `;
 
+const StarWrapper = styled.div`
+  display: inline-block;
+  float: left;
+`;
+
 const UserDate = styled.div`
+  display: inline-block;
+  float: right;
   font-size: 12px;
   font-weight: 100;
-  text-align: right;
+  margin-top: 4px;
 `;
+
+const Summary = styled.div`
+  display: grid;
+  grid-template-columns: auto 250px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+`;
+
+const ReviewBody = styled.div`
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  font-weight: normal;
+`;
+
+const Recommend = styled.div`
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: normal;
+`;
+
+const ResponseWrapper = styled.div`
+  display: grid;
+  grid-template-rows: fit-content(190px);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #F2F2F2
+`;
+
+const ResponseTitle = styled.div`
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const Response = styled.div`
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-size: 16px;
+`;
+
+const Helpful = styled.div`
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-size: 16px;
+`;
+
 export default IndividualReview;
