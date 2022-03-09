@@ -69,10 +69,12 @@ class IndividualReview extends React.Component {
 
     return (
       <Review>
+        <StarRating rating = {this.props.review.rating}/>
         <TopInfo>
-          <StarRating rating = {this.props.review.rating}/>
-          <span>{review.reviewer_name + ','}</span>
-          <span className='review'>{' ' + new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</span>
+          <UserDate>
+            {review.reviewer_name + ','}
+            {' ' + new Date(this.props.review.date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}
+          </UserDate>
         </TopInfo>
 
         <div>
@@ -110,7 +112,8 @@ class IndividualReview extends React.Component {
 const Review = styled.div`
   margin-top: 10px;
   display: grid;
-  max-height: 540px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: #404040;
 `;
 
@@ -119,5 +122,11 @@ const TopInfo = styled.div`
   grid-template-columns: auto 250px;
   padding-top: 5px;
   padding-bottom: 5px;
+`;
+
+const UserDate = styled.div`
+  font-size: 12px;
+  font-weight: 100;
+  text-align: right;
 `;
 export default IndividualReview;
