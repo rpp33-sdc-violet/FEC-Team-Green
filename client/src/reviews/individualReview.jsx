@@ -51,7 +51,11 @@ class IndividualReview extends React.Component {
 
     let recommend = null;
     if (review.recommend) {
-      recommend = <div>I recommend this product</div>;
+      recommend =
+      <div>
+        ✓ I recommend this product
+      </div>;
+
     }
 
     let response = null;
