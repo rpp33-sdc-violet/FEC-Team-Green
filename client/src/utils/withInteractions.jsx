@@ -4,7 +4,7 @@ import axios from 'axios';
 // CHANGE REQUEST - Higher Order Component that handles click on element and sends metadata to Atelier Interactions API
 const withInteractions = (WrappedComponent, widget) => {
   return function withInteractionsComponent(props) {
-    
+
     const handleClickTracking = (event) => {
       event.preventDefault();
 
@@ -12,8 +12,9 @@ const withInteractions = (WrappedComponent, widget) => {
       const split1 = event.target.outerHTML.split('>');
       const split2 = split1[0].split('<');
       const justSelectors = split2[1];
-      const selectorsAndText = `Selectors: ${justSelectors}, Text: ${event.target.innerText}`; 
-  
+      const selectorsAndText = `Selectors: ${justSelectors}, Text: ${event.target.innerText}`;
+
+      console.log('selectorsAndText', selectorsAndText);
       // Time
       const currentDateAndTime = new Date().toString();
 
@@ -32,7 +33,7 @@ const withInteractions = (WrappedComponent, widget) => {
           console.log('ERROR sending click tracker interaction to API', error);
         });
     };
-  
+
     return (
       <WrappedComponent interactions={handleClickTracking} {...props} />
     );
