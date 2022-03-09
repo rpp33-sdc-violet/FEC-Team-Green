@@ -10,6 +10,7 @@ class IndividualReview extends React.Component {
       helpfulRating: false
     };
     this.moreReview = this.moreReview.bind(this);
+    this.helpfulRating = this.helpfulRating.bind(this);
   }
 
   moreReview(reviewId, fullReview) {
@@ -18,6 +19,7 @@ class IndividualReview extends React.Component {
   }
 
   helpfulRating(event) {
+    event.preventDefault();
     if (this.state.helpfulRating === false) {
       let path = `/api/reviews/${this.props.review.review_id}/helpful`;
       axios.put(path).then(() => {
@@ -87,9 +89,9 @@ class IndividualReview extends React.Component {
         <div>{response}</div>
         <div>
           Helpful?
-          <a href='#'onClick = {() => {
-            this.helpfulRating();
-          }}>Yes</a>
+          <a href='#'onClick = {
+            this.helpfulRating
+          }>Yes</a>
           ({review.helpfulness})
         </div>
 
