@@ -1,5 +1,10 @@
 import React from 'react';
 import { shallow, configure, mount } from 'enzyme';
+// const { JSDOM } = require( 'jsdom' );
+// const { window } = new JSDOM( '' );
+// const $ = require( 'jquery' )( window );
+import $ from 'jquery';
+global.$ = $;
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Overview from '../Overview';
 import ImageContainer from '../components/Image/ImageContainer';
@@ -16,32 +21,10 @@ import exampleStyleData from '../../data/exampleStyleData.js';
 import exampleProductData from '../../data/exampleProductData.js';
 
 
-describe('Overview', () => {
-  test('selected image index stays the same when selected style changes', () => {
-    const wrap = mount(
-      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
-    );
-    expect(wrap.find('ImageExpander').props().selectedPhoto.index).toEqual(0);
-  });
 
-  test('selected image index stays the same when selected style changes', () => {
-    const wrap = mount(
-      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
-    );
-    var originallySelectedId = wrap.find(ImageContainer).props().selectedStyle.style_id;
-    console.log('id ', originallySelectedId);
-    var index = wrap.find(ImageExpander).props().selectedPhoto.index;
-    wrap.find('ImageThumbnail').at(2).simulate('click');
-    var index2 = wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index;
-    wrap.find('#id398221').simulate('click');
-
-    expect(wrap.find('ImageContainer').props().selectedStyle.style_id).toEqual(398221);
-    expect(wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index).toEqual(index2);
-  });
-
-});
 
 /* ======================IMAGE_CONTAINER_TESTS======================*/
+
 
 describe('ImageContainer', () => {
   test('ImageContainer component renders', () => {
@@ -54,6 +37,56 @@ describe('ImageContainer', () => {
   });
 
 });
+
+
+describe('image', () => {
+  test('Selected image in main image gallery index stays the same when selected style changes', () => {
+    const wrap = mount(
+      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
+    );
+    expect(wrap.find('ImageExpander').at(0).props().selectedPhoto.index).toEqual(0);
+  });
+
+  test('selected image index stays the same when selected style changes', () => {
+    const wrap = mount(
+      <Overview product={exampleProductData[4]} productStyles={exampleStyleData.results}/>
+    );
+    var originallySelectedId = wrap.find(ImageContainer).props().selectedStyle.style_id;
+    // console.log('id ', originallySelectedId);
+    var index = wrap.find(ImageExpander).at(0).props().selectedPhoto.index;
+    wrap.find('ImageThumbnail').at(2).simulate('click');
+    var index2 = wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index;
+    wrap.find('#id398221').simulate('click');
+
+    expect(wrap.find('ImageContainer').props().selectedStyle.style_id).toEqual(398221);
+    expect(wrap.find('ImageThumbnail').at(2).props().selectedPhoto.index).toEqual(index2);
+  });
+
+});
+/* ==================EXPANDED_IMAGE_TESTS=====================================*/
+//product={exampleProductData[4]}
+describe('Expanded Image ', () => {
+  test('expanded image in gallery opens zoomed in image when clicked', () => {
+    const wrap = mount(
+      <ImageContainer selectedStyle={exampleStyleData.results[0]}/>
+    );
+    // var image =
+    const elem = wrap.find('#image-modal-frame');
+    // expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('display')).toBe('none');
+    // expect(wrap.find('ImageExpander').at(0).props().selectedPhoto.index).toEqual(0);
+    // wrap.find('ImageExpander').at(0).simulate('click');
+
+    // expect(containerStyle).toHaveProperty('display', 'block');
+    // expect(wrapper.find('#main-image-nodal').prop('style')).toHaveProperty('display', 'block');
+
+
+
+    expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('display')).toBe('block');
+  });
+});
+
+
+
 
 /* ==================PRODUCT_INFORMATION_CONTAINER_TESTS======================*/
 
@@ -109,9 +142,8 @@ describe('ProductDescription', () => {
       <ProductDescription/>
     );
 
-
-    expect(wrap.find('.description').text()).toEqual('...loading');
-    expect(wrap.find('.slogan').text()).toEqual('...loading');
+    expect(wrap.find('#description').text()).toEqual('...loading');
+    expect(wrap.find('#slogan').text()).toEqual('...loading');
 
     // expect(wrap.find('h3').text()).toEqual('Overview');
   });
@@ -121,7 +153,7 @@ describe('ProductDescription', () => {
       <ProductFeatureList/>
     );
 
-    expect(wrap.find('.feature-list').text()).toEqual('FeatureList');
+    expect(wrap.find('#feature-list').text()).toEqual('FeatureList');
   });
 });
 

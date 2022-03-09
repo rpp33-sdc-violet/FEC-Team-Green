@@ -7,7 +7,7 @@ const ImageThumbnail = (props) => {
   // console.log($('.img-thumbnail.selected'));
   return (
     <li>
-      {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? 'img-thumbnail selected' : 'img-thumbnail'} onClick={(e)=>{
+      {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? `img-thumbnail ${props.alternateClass} selected` : `img-thumbnail ${props.alternateClass}`} onClick={(e)=>{
         props.setSelectedPhoto(props.photo);
       }}></img> : 'image'}
     </li>
