@@ -50,6 +50,7 @@ class AddNewReview extends React.Component {
   }
 
   recommendChange (event) {
+    event.preventDefault();
     let answer = event.target.value;
     let booleanValue = (answer === 'true');
     this.setState({recommend: booleanValue});
@@ -57,6 +58,7 @@ class AddNewReview extends React.Component {
 
 
   characChange (event) {
+    event.preventDefault();
     let info = {
       Size: ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'too wide'],
       Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
@@ -104,6 +106,9 @@ class AddNewReview extends React.Component {
     })
       .then ((res) => {
         console.log(res.data);
+        let photoURL = this.state.photos;
+        photoURL.push(res.data);
+        this.setState({photos: photoURL});
       })
       .catch((err) => {
         alert('Unable to upload photo');
@@ -138,12 +143,9 @@ class AddNewReview extends React.Component {
       axios.post('/api/reviews', reviewParam)
         .then((res) => {
           alert('Successfully submitted your review');
-          console.log('success', res);
           this.hideModal();
         })
         .catch((err) => {
-          //TODO: need error handling method funciton to catch and process error message
-          console.log('error posting reviews', err.message);
           alert('Failed to post review');
         });
 
