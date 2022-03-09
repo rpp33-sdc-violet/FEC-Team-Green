@@ -17,6 +17,7 @@ import withParamsAndNavigate from './hoc.js';
 import withInteractions from './utils/withInteractions.jsx';
 // CHANGE REQUEST - container component with HOC and QA widget
 const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
+const ReviewsWithIntercations = withInteractions(ReviewList, 'Reviews');
 
 class App extends React.Component {
   constructor(props) {
@@ -104,7 +105,7 @@ class App extends React.Component {
         <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} />
 
         {this.state.product_id && this.state.product.name ?
-          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList> :
+          <ReviewsWithIntercations product_id={this.state.product_id} product_name={this.state.product.name}></ReviewsWithIntercations> :
           <div className='reviews'>loading reviews</div>
         }
 

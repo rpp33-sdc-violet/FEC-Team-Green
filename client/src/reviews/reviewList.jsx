@@ -211,7 +211,7 @@ class ReviewList extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div onClick={this.props.interactions}>
           <RatingandReviews>
             <RatingWrapper>
               <h3>RATINGS and REVIEWS</h3>
