@@ -12,37 +12,47 @@ const ImageThumbnailList = (props) => {
   //method to change highlighted url
 
   var startScroll = (direction, e ) => {
-    var nav = direction === 'down' ? 2 : -2;
-    var list = $('.img-thumbnail-list');
+
+    var nav = direction === 'down' ? 4 : -4;
+    var list = $(`#${props.id}`);
+
     list.scroll(function(e) {
+      //makes scrollbars move up or down and hides the arrows when approrpiate
       list.scrollTop(list.scrollTop() + nav);
-      $('.img-thumbnail-list').scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
+      list.scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
       var maxHeight = list[0].scrollHeight - list.outerHeight();
-      $('.img-thumbnail-list').scrollTop() === maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
+      // console.log('maxHeight', maxHeight, ' scrollTop ',list.scrollTop());
+      list.scrollTop() >= maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
     });
     list.trigger('scroll');
 
   };
+  //stops the scrolling action
   var stopScroll = () => {
-    $('.img-thumbnail-list').unbind();
+    var list = $(`#${props.id}`);
+    list.unbind();
   };
+
+
+
   var photoThumbnails = [];
   if (props.photos) {
     photoThumbnails = props.photos.map ((photo, index) => {
       photo.index = index;
-      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} selectedPhoto={props.selectedPhoto}/>;
+      return <ImageThumbnail photo={photo} key ={index} setSelectedPhoto={props.setSelectedPhoto} alternateClass ={props.alternateClass} selectedPhoto={props.selectedPhoto}/>;
     });
   }
-  // console.log('photos', photoThumbnails);
+
   return (
 
-    <div className='img-thumbnail-panel'>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow'onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
-      <div className ='img-thumbnail-list'>
+    <div className='img-thumbnail-panel' id={`${props.id}-panel`}>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}onMouseOver={()=>{ console.log('please work'); }}></img>
+      <div className ='img-thumbnail-list' id={props.id}>
         {photoThumbnails}
       </div>
-      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG downward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
+      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG upward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
     </div>
+
   );
 };
 

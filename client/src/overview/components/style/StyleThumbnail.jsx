@@ -9,14 +9,20 @@ const StyleThumbnail = (props) => {
   //setSelectedImageUrl
   //setSelectedThumbnailUrl
   var onClick = () => {
-    console.log('clicked');
     props.setSelectedStyle(props.style);
+  };
+  var showText = () => {
+    $(`#${props.id}.hoverText`).show();
+  };
+  var hideText = () => {
+    $(`#${props.id}.hoverText`).hide();
   };
 
   return (
     <li>
-      <img className ='style-thumbnail' id={`id${props.id}`} src={props.style.photos[0].thumbnail_url} onClick={onClick}>
+      <img className ='style-thumbnail' id={`id${props.id}`} src={props.style.photos[0].thumbnail_url} onClick={onClick} title={props.style.name} alt={`style thumbnail ${props.style.name}`}>
       </img>
+
     </li>
 
   );

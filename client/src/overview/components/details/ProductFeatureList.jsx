@@ -5,12 +5,12 @@ import React, {useState} from 'react';
 const ProductFeatureList = (props)=> {
 
   //props
-  console.log('product feature', props.features);
+  // console.log('product feature', props.features);
 
   var list = [];
   if (props.features) {
-    list = props.features.map((feature) => {
-      return <li>{feature.feature}: {feature.value} </li>;
+    list = props.features.map((feature, i) => {
+      return <li key={i}>{feature.feature}: {feature.value} </li>;
     });
   }
   return (

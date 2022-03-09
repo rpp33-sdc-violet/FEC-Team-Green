@@ -14,6 +14,7 @@ const withInteractions = (WrappedComponent, widget) => {
       const justSelectors = split2[1];
       const selectorsAndText = `Selectors: ${justSelectors}, Text: ${event.target.innerText}`;
 
+      console.log('selectorsAndText', selectorsAndText);
       // Time
       const currentDateAndTime = new Date().toString();
 

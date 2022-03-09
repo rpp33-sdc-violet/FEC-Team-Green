@@ -11,13 +11,14 @@ import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import withParamsAndNavigate from './hoc.js';
+import withParamsAndNavigate from './utils/withParamsAndNavigate.js';
 
 // CHANGE REQUEST - import HOC
 import withInteractions from './utils/withInteractions.jsx';
 // CHANGE REQUEST - container component with HOC and QA widget
 const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
 const ReviewsWithIntercations = withInteractions(ReviewList, 'Reviews');
+const OverviewWithInteractions = withInteractions(Overview, 'Overview');
 
 class App extends React.Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class App extends React.Component {
           }}viewBox={[0, 0, 24, 21]} />
         </nav>
         {this.state.product && this.state.productStyles.length > 1 ?
-          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
+          <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
           <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
 
