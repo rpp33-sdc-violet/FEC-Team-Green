@@ -283,8 +283,8 @@ const Button = styled.div`
 
 const BWrapper = styled.div`
   display: grid;
-  grid-template-columns: 250px 180px;
   margin-top: 10px;
+  grid-template-columns: 180px 250px;
 `;
 
 const MoreReview = styled.button`
@@ -292,6 +292,8 @@ const MoreReview = styled.button`
   border: 1px solid #404040;
   font-weight: bold;
   margin-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `;
 //for commit
 

@@ -273,7 +273,7 @@ class AddNewReview extends React.Component {
 
         </Modal>
 
-        <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >
+        <AddReview onClick = {this.showModal}>ADD A REVIEW +</AddReview >
 
       </div>
     );
@@ -286,6 +286,10 @@ const AddReview = styled.button`
   border: 1px solid #404040;
   font-weight: bold;
   margin-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px
 `;
 
 
