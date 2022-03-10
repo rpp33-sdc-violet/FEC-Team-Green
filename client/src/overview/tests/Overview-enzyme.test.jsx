@@ -63,6 +63,24 @@ describe('image', () => {
   });
 
 });
+
+describe('ImageNav', () => {
+  test('Selected image in main image gallery index stays the same when selected style changes', () => {
+    const wrap = mount(
+      <ImageContainer selectedStyle={exampleStyleData.results[0]}/>
+    );
+    expect(wrap.find('#main-image').text()).toEqual('...loading');
+    wrap.find('.rightArrow').at(0).simulate('click');
+  });
+});
+
+
+//does clicking the right side take you to a new image?
+//does clicking the left side take you to a previous image
+// does the right arrow dissappear if you reach the end of the list
+// does the left arrow dissappear if you reach the beginning of the list
+//
+
 /* ==================EXPANDED_IMAGE_TESTS=====================================*/
 //product={exampleProductData[4]}
 describe('Expanded Image ', () => {
@@ -84,6 +102,7 @@ describe('Expanded Image ', () => {
     expect(getComputedStyle(elem.getDOMNode()).getPropertyValue('display')).toBe('block');
   });
 });
+
 
 
 
