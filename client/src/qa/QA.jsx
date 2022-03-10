@@ -84,7 +84,7 @@ const QA = (props) => {
       <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
       <div className="QA-buttons">
         {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name}/>
+        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} />
       </div>
     </div>
   );
