@@ -19,10 +19,14 @@ const IndividualQuestion = (props) => {
     const count = 20; // start with a high number to avoid too many calls to the API
     let page = 1;
     let answers = [];
+    let cancel = false;
     // inner function that keeps calling until length of data is less than the count
     const getAllAnswers = () => {
       axios.get(`/api/qa/questions/${props.question.question_id}/answers?count=${count}&page=${page}`)
         .then((response) => {
+          if (cancel) {
+            return;
+          }
           answers = answers.concat(response.data.results);
           if (response.data.results.length === count) { // there are still more answers
             page++; // increment page to get more answers
@@ -50,7 +54,11 @@ const IndividualQuestion = (props) => {
     };
     // invoke the recursive inner function
     getAllAnswers();
-  }, []); // the empty array stops the effect from running more than once
+
+    return () => {
+      cancel = true;
+    };
+  }, [props.question]); // the empty array stops the effect from running more than once
 
   // isMoreAnsButtonVisible - checks if there are more than 2 answers total; if yes, button is visible (true)
   useEffect(() => {
