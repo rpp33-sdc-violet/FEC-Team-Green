@@ -1,11 +1,8 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import AddAQuestionDashboard from './components/AddAQuestionDashboard.jsx';
-const AddAQuestionDashboard = React.lazy(() => import('./components/AddAQuestionDashboard.jsx'));
-// import QuestionsList from './components/QuestionsList.jsx';
-const QuestionsList = React.lazy(() => import('./components/QuestionsList.jsx'));
-// import Search from './components/Search.jsx';
-const Search = React.lazy(() => import('./components/Search.jsx'));
+import AddAQuestionDashboard from './components/AddAQuestionDashboard.jsx';
+import QuestionsList from './components/QuestionsList.jsx';
+import Search from './components/Search.jsx';
 import './styles/style.css';
 
 const QA = (props) => {
@@ -83,14 +80,12 @@ const QA = (props) => {
     // CHANGE REQUEST: onClick listener to entire QA widget container
     <div onClick={props.interactions} className="QA-container">
       <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <Search userSearch={userSearch} />
-        <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
-        <div className="QA-buttons">
-          {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-          <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} />
-        </div>
-      </Suspense>
+      <Search userSearch={userSearch} />
+      <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
+      <div className="QA-buttons">
+        {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} />
+      </div>
     </div>
   );
 };

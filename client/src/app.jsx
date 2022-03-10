@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Overview from './overview/overview.jsx';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
-import QA from './qa/QA.jsx';
-import ReviewList from './reviews/reviewList.jsx';
+
+// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info. 
+const Overview = React.lazy(() => import('./overview/overview.jsx'));
+const QA = React.lazy(() => import('./qa/QA.jsx'));
+const ReviewList = React.lazy(()=> import('./reviews/reviewList.jsx'));
+
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
@@ -58,7 +61,7 @@ class App extends React.Component {
       this.setState({ productStyles: resp.data.results }, () => {
         console.log('STYLE DATA', this.state.productStyles);
         // eslint-disable-next-line camelcase
-        this.setState({product_id: productId});
+        this.setState({ product_id: productId });
         this.props.navigate(`/${productId}`);
 
       });
@@ -70,7 +73,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // eslint-disable-next-line camelcase
-    this.props.params.productId ? this.setState({product_id: this.props.params.productId}, ()=> {
+    this.props.params.productId ? this.setState({ product_id: this.props.params.productId }, () => {
       this.getProductData(this.state.product_id);
     }) : this.getProductData(this.state.product_id);
 
@@ -79,7 +82,7 @@ class App extends React.Component {
     this.getProductData(query);
   }
   handleChange(event) {
-    this.setState({search: event.target.value});
+    this.setState({ search: event.target.value });
   }
 
   componentDidUpdate() {
@@ -97,18 +100,17 @@ class App extends React.Component {
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();
             this.searchProductID(this.state.search);
-          }}viewBox={[0, 0, 24, 21]} />
+          }} viewBox={[0, 0, 24, 21]} />
         </nav>
-        {this.state.product && this.state.productStyles.length > 1 ?
-          <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
-          <div className='overview-skeleton'>loading</div>}
         <RelatedProducts data={{ productID: '007' }}></RelatedProducts>
-
-
-        {/* <QA product_id={this.state.product_id} product_name={this.state.product.name}></QA> */}
-        <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} />
-        <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
-
+        {/* for code-splitting, fallback attribute is needed */}
+        <Suspense fallback={<h1>Loading</h1>}>
+          {this.state.product && this.state.productStyles.length > 1 ?
+            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
+            <div className='overview-skeleton'>loading</div>}
+          <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} />
+          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+        </Suspense>
       </div>
     );
   }
