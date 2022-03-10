@@ -4,7 +4,7 @@ import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
 
-// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info. 
+// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info.
 const Overview = React.lazy(() => import('./overview/overview.jsx'));
 const QA = React.lazy(() => import('./qa/QA.jsx'));
 const ReviewList = React.lazy(() => import('./reviews/reviewList.jsx'));
@@ -96,7 +96,11 @@ class App extends React.Component {
         <nav id={'navbar'}>
           <p className='logo'>Logo</p>
           <form>
-            <input value={this.state.search} onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
+            <label>
+              Search Product Ids
+              <input value={this.state.search}
+                onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
+            </label>
           </form>
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();

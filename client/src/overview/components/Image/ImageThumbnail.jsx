@@ -9,7 +9,7 @@ const ImageThumbnail = (props) => {
     <li>
       {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? `img-thumbnail ${props.alternateClass} selected` : `img-thumbnail ${props.alternateClass}`} onClick={(e)=>{
         props.setSelectedPhoto(props.photo);
-      }}></img> : 'image'}
+      }} alt='image thumbnail'></img> : 'image'}
     </li>
   );
 };

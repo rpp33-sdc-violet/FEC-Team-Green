@@ -73,7 +73,7 @@ var ImageExpander = (props) => {
   };
   return (
 
-    props.selectedPhoto ? props.modal ? <div style={{backgroundImage: `url(${props.selectedPhoto.url})`}} id='main-image-modal' onClick={onModalClick} ></div> : <img id = 'main-image' src={props.selectedPhoto.url} onClick={onImageClick}></img>
+    props.selectedPhoto ? props.modal ? <div style={{backgroundImage: `url(${props.selectedPhoto.url})`}} id='main-image-modal' alt='gallery image modal' onClick={onModalClick} ></div> : <img id = 'main-image' alt='main gallery image' src={props.selectedPhoto.url} onClick={onImageClick}></img>
       : <div className ='image-container'>
         ...loading
       </div>
