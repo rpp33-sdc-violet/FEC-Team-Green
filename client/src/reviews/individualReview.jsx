@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import StarRating from '../starRating.jsx';
 import styled from 'styled-components';
+import ReviewPhoto from './reviewPhoto.jsx';
 
 class IndividualReview extends React.Component {
   constructor(props) {
@@ -87,10 +88,8 @@ class IndividualReview extends React.Component {
 
         <div className='image'>
           {review.photos.map((photo)=> {
-            //TODO: NEED TO BUILD A MODEL TO OPEN IMAGE IN MODAL WINDOW
-            //CAN BE SHARED WITH QA COMPONENTS AND MORE
             return (
-              'console.log("photo url", photo.url)'
+              <ReviewPhoto url={photo.url} key = {photo.id}/>
             );
           })}
         </div>
@@ -121,8 +120,6 @@ const Review = styled.div`
   padding-bottom: 10px;
   color: #404040;
 `;
-
-
 
 const TopInfo = styled.div`
   padding-top: 5px;

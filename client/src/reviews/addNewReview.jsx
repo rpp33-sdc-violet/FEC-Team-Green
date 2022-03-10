@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from './Modal.jsx';
+import Modal from '../utils/Modal.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
 
