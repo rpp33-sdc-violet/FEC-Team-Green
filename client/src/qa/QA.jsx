@@ -38,7 +38,7 @@ const QA = (props) => {
     };
     // invoke the recursive inner function
     getAllQuestions();
-  }, [props.product_id]); // the empty array stops the effect from running more than once
+  }, [props.product_id]); // <-- if the current value of the dependency and the value on previous render are not the same, effect is invoked
 
   // isMoreQButtonVisible - checks countQ with allQues length, if countQ less than length -> true, else, false
   useEffect(() => {
