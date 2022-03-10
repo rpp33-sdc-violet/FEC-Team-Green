@@ -12,7 +12,7 @@ const SelectOutfitButton = (props) => {
 
 
   return (
-    <button className ='select-outfit'>
+    <button className ='select-outfit'aria-label="add to outfit" >
       <AiOutlineStar> </AiOutlineStar>
     </button>
   );

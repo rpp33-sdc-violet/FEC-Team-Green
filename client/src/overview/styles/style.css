@@ -91,7 +91,7 @@ html { scroll-behavior: smooth; }
 .category {
   margin-top: 10px;
   text-transform: uppercase;
-  color: gray;
+  color: black;
 
   /* margin: 0; */
 }
