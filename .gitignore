@@ -2,7 +2,7 @@ node_modules
 
 ## Webpack Bundle ##
 client/dist/bundle.js
-
+*bundle.js
 ## API keys ##
 client/src/config/github.js
 dist/config/github.js
