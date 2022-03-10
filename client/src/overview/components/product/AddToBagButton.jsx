@@ -20,7 +20,7 @@ const AddToBagButton = (props) => {
         $('span').hide();
       });
     } else {
-      console.log('Ajax call');
+      // console.log('Ajax call');
       axios.post('/api/cart', {
         'sku_id': props.sizeAndQuantity.skuId,
         'count': props.sizeAndQuantity.quantity
