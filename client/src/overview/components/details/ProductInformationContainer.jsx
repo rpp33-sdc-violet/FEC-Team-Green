@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StarRating from '../../../starRating.jsx';
+import ReadReviewsLink from './ReadReviewsLink.jsx';
 const ProductInformationContainer = (props) => {
 
   //props
@@ -15,7 +16,7 @@ const ProductInformationContainer = (props) => {
       <div className='information panel'>
         {/* <div className='stars'>stars</div> */}
         <StarRating rating={3.5}/>
-
+        <ReadReviewsLink></ReadReviewsLink>
         {props.product.category ? <h4 className='category'>{props.product.category}
         </h4> : <h4 className='category ghost'>...loading
         </h4>}

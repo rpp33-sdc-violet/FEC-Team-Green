@@ -1,22 +1,30 @@
-
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Overview from './overview/overview.jsx';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
-import QA from './qa/QA.jsx';
-import ReviewList from './reviews/reviewList.jsx';
+
+// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info. 
+const Overview = React.lazy(() => import('./overview/overview.jsx'));
+const QA = React.lazy(() => import('./qa/QA.jsx'));
+const ReviewList = React.lazy(() => import('./reviews/reviewList.jsx'));
+
 import exampleProductData from './data/exampleProductData.js';
 import exampleStyleData from './data/exampleStyleData.js';
 import axios from 'axios';
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import withParamsAndNavigate from './hoc.js';
+import withParamsAndNavigate from './utils/withParamsAndNavigate.js';
 
 // CHANGE REQUEST - import HOC
 import withInteractions from './utils/withInteractions.jsx';
 // CHANGE REQUEST - container component with HOC and QA widget
 const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
+const OverviewWithInteractions = withInteractions(Overview, 'Overview');
 
 class App extends React.Component {
   constructor(props) {
@@ -95,15 +103,16 @@ class App extends React.Component {
             this.searchProductID(this.state.search);
           }} viewBox={[0, 0, 24, 21]} />
         </nav>
-        {this.state.product && this.state.productStyles.length > 1 ?
-          <Overview product={this.state.product} productStyles={this.state.productStyles}></Overview> :
-          <div className='overview-skeleton'>loading</div>}
-        {/* <RelatedProducts data={{ productID: '007' }}></RelatedProducts> */}
-        {this.state.product && this.state.productStyles.length > 1 ?
-          <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
-          <div className="QA-container">loading</div>
-        }
-        <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+        {/* for code-splitting, fallback attribute is needed */}
+        <Suspense fallback={<div>loading</div>}>
+          {this.state.product && this.state.productStyles.length > 1 ?
+            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
+            <div className='overview-skeleton'>loading</div>}
+          {this.state.product && this.state.productStyles.length > 1 ?
+            <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
+            <div className="QA-container">loading</div>}
+          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+        </Suspense>
       </div>
     );
   }
