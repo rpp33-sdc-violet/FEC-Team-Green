@@ -25,11 +25,22 @@ const RatingBar = (props) => {
   );
 };
 
-const BarWrapper = styled.div``;
+const BarWrapper = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+`;
 
-const BarTitle = styled.div``;
+const BarTitle = styled.div`
+  flex-basis: 20%;
+  align-self: flex-start;
+  font-size: 16px;
+  color: #404040;
+  text-decoration: underline;
+`;
 
 const Bar = styled.div`
+  flex-basis: 80%;
   border-radius: 0;
   height: 12px;
   border: 1px solid;

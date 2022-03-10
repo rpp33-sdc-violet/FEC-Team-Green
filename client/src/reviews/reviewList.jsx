@@ -190,13 +190,13 @@ class ReviewList extends React.Component {
     let currentFilters = this.state.filters;
     //console.log('currentFitlers', currentFilters);
     if (this.state.filters.length >= 1) {
-      displayFilters = <div>Current Filters:
+      displayFilters = <Filter>Current Filters:
         {currentFilters.map((filter) => {
           return (
-            ` ${filter}`
+            ` ${filter} `
           );
         })}
-         stars</div>;
+         stars</Filter>;
       removeFilter = <a href='#'onClick = {this.removeAllFilters}>Remove all filters</a>;
     }
 
@@ -213,7 +213,7 @@ class ReviewList extends React.Component {
         <div onClick={this.props.interactions}>
           <RatingandReviews>
             <RatingWrapper>
-              <h3>RATINGS and REVIEWS</h3>
+              <RatingHeader>RATINGS & REVIEWS</RatingHeader>
               {displayFilters}
               {removeFilter}
               <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
@@ -295,7 +295,20 @@ const MoreReview = styled.button`
   padding-top: 15px;
   padding-bottom: 15px;
 `;
-//for commit
+
+const RatingHeader = styled.div`
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+`;
+
+const Filter = styled.div`
+  font-size: 16px;
+  color: #404040;
+  margin-bottom: 10px;
+`;
 
 export default ReviewList;
 
