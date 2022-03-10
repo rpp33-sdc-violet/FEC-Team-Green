@@ -1,0 +1,166 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: scroll;
+}
+
+.modal-main {
+  position: absolute;
+  background: white;
+  width: 80%;
+  height: 550px;
+  max-height: 100%;
+  top: 300px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  overflow: scroll;
+  text-align: left;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.question-form {
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) 50px;
+}
+
+.question-form label {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.modal-button-submit {
+  padding: 10px;
+  margin: 8px;
+  font-size: 16px;
+  color: black;
+}
+
+.modal-button-close {
+  padding: 10px;
+  margin: 8px;
+  float: right;
+}
+
+.question-form input {
+  width: 90%;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+}
+
+.question-form input:focus {
+  border: 3px solid #39FF14;
+}
+
+.question-form textarea {
+  width: 90%;
+  height: 70px;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+  resize: none;
+}
+
+.question-form textarea:focus {
+  border: 3px solid #39FF14;
+}
+
+.modal-error-msg {
+  color: red;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.modal-main h1 {
+  font-size: 22px;
+  font-weight: 100;
+  padding-bottom: 10px;
+}
+
+.modal-main h2 {
+  font-size: 18px;
+}
+
+.modal-subtitle {
+  font-style: italic
+}
+
+/* ANSWER FORM STYLING */
+.answer-form {
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) auto 50px;
+}
+
+.answer-form label {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.answer-form input {
+  width: 90%;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+}
+
+.answer-form input:focus {
+  border: 3px solid #39FF14;
+}
+
+.answer-form textarea {
+  width: 90%;
+  height: 70px;
+  padding: 6px 10px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+  resize: none;
+}
+
+.answer-form textarea:focus {
+  border: 3px solid #39FF14;
+}
+
+.form-extra-info {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.add-answer-uploads-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.add-answer-photo {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+}

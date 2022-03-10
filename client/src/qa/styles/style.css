@@ -1,15 +1,16 @@
 .QA-container {
   display: grid;
   grid-template-rows: 40px 60px fit-content(380px) 60px;
-  grid-template-areas:
+  /* grid-template-areas:
     "header"
     "search"
     "questions"
-    "buttons";
-  /* height: 600px; */
+    "buttons"; */
   max-height: 540px;
-  margin: 40px 60px 40px;
+  margin: 80px 60px 80px;
   color: #404040;
+  z-index: 11;
+  position: relative;
 }
 
 .QA-header {
@@ -18,11 +19,6 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
-/* .serach-container {
-  width: 500px;
-  height: 60px
-} */
 
 .search {
   display: flex;
