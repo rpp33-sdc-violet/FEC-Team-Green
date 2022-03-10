@@ -46,7 +46,7 @@ const ImageThumbnailList = (props) => {
   return (
 
     <div className='img-thumbnail-panel' id={`${props.id}-panel`}>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}onMouseOver={()=>{ console.log('please work'); }}></img>
+      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
       <div className ='img-thumbnail-list' id={props.id}>
         {photoThumbnails}
       </div>

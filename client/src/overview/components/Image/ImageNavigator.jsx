@@ -1,10 +1,10 @@
 import React from 'react';
 import {MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft} from 'react-icons/md';
+// this component provides the forward and backwards arrows and the autoscroll functionality
 var ImageNavigator = function (props) {
 
-  //props props.imageNav;
-
   var startScroll = (direction, e ) => {
+    // nav controlls the scroll speed
     var nav = direction === 'down' ? 2 : -2;
     var list = $('.img-thumbnail-list');
     list.scroll(function(e) {
@@ -33,7 +33,7 @@ var ImageNavigator = function (props) {
     var elemTop = rect.top;
     var elemBottom = rect.bottom;
 
-    console.log(`bottom ${elemBottom} - scrolltop${list.scrollTop()} - (.5 * ${rect.height}) >= minTop.top${minTop.top}`, elemBottom - list.scrollTop() - (.5 * rect.height) >= minTop.top);
+    // console.log(`bottom ${elemBottom} - scrolltop${list.scrollTop()} - (.5 * ${rect.height}) >= minTop.top${minTop.top}`, elemBottom - list.scrollTop() - (.5 * rect.height) >= minTop.top);
     // Only completely visible elements return true:
     var isVisible = true;
     //&& elemBottom - list.scrollTop() - (.5 * rect.height) >= minTop.top);
@@ -77,7 +77,7 @@ var ImageNavigator = function (props) {
       <MdOutlineKeyboardArrowRight className={`${props.direction}Arrow`} id={props.id} onClick={()=> {
         var nextPhoto = props.selectedPhoto.index + 1;
         props.setSelectedPhoto(props.photos[nextPhoto]);
-        console.log(isScrolledIntoView());
+
       }}></MdOutlineKeyboardArrowRight> :
       <MdOutlineKeyboardArrowLeft className={`${props.direction}Arrow`}id={props.id} onClick={()=> {
         var nextPhoto = props.selectedPhoto.index - 1;
