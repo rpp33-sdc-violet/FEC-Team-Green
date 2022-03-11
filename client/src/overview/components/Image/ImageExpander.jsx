@@ -71,7 +71,6 @@ var ImageExpander = (props) => {
     var imageModal = $('#image-modal-frame');
     var wrapperWidth = $('.overview-wrapper').width();
     var wrapperHeight = $('.overview-wrapper').height();
-    console.log('img width', wrapperWidth);
 
     imageModal.css('width', `${wrapperWidth + 50}px`);
     imageModal.css('height', `${wrapperHeight + 50}px`);

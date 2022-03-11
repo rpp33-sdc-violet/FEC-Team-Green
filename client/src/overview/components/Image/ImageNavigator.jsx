@@ -67,8 +67,7 @@ var ImageNavigator = function (props) {
   // hide arrows if they are at the edge of the list of photos
   useEffect(()=> {
     if (props.direction === 'right') {
-      console.log('props.direction', props.direction, props.selectedPhoto.index, 'max', props.photos.length - 1);
-      props.selectedPhoto.index >= props.photos.length - 2 ?
+      props.selectedPhoto.index >= props.photos.length - 1 ?
         setRightArrowVisibility(false) :
         setRightArrowVisibility(true);
     }
