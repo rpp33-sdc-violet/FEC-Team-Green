@@ -251,7 +251,7 @@ class AddNewReview extends React.Component {
               </Section>
 
               <Section>
-                <div>Review Body</div>
+                <div>Review Body*</div>
                 <Text name = 'body' maxLength='1000' placeholder = {'Why did you like the product or not?'} onChange={this.generalChange}> </Text>
                 <br></br>
                 <Info>{this.textCounter()}</Info>
