@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageThumbnail from './ImageThumbnail.jsx';
-
+import $ from 'jquery';
 
 const ImageThumbnailList = (props) => {
 

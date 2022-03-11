@@ -4,6 +4,7 @@ import ImageThumbnailList from './ImageThumbnailList.jsx';
 import ImageThumbnail from './ImageThumbnail.jsx';
 import { AiOutlineExpand } from 'react-icons/ai';
 import ImageNavigator from './ImageNavigator.jsx';
+import $ from 'jquery';
 
 var ImageContainer = (props) => {
 

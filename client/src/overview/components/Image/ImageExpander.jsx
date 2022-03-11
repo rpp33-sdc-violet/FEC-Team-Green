@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageThumbnailList from './ImageThumbnailList.jsx';
 import ImageNavigator from './ImageNavigator.jsx';
+import $ from 'jquery';
 var ImageExpander = (props) => {
 
   //this component displays the main gallery image

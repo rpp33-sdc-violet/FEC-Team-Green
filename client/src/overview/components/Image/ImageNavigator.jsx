@@ -1,5 +1,6 @@
 import React from 'react';
 import {MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft} from 'react-icons/md';
+import $ from 'jquery';
 // this component provides the forward and backwards arrows and the autoscroll functionality
 var ImageNavigator = function (props) {
 
