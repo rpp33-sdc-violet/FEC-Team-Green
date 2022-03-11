@@ -75,13 +75,14 @@ const AddAQuestionDashboard = (props) => {
 
       setErrorMsg(errorText);
     } else {
+      console.log(typeof props.product_id, props.product_id);
       // submission form has been validated succesfully! 
       const bodyParams = {
         body: question,
         name: nickname,
         email: email,
         // eslint-disable-next-line camelcase
-        product_id: props.product_id
+        product_id: Number(props.product_id)
       };
       axios.post('/api/qa/questions', bodyParams)
         .then((response) => {
