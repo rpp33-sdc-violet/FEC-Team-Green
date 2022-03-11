@@ -53,7 +53,7 @@ var ImageContainer = (props) => {
         <ImageThumbnailList id='miniCarousel' alternateClass={'img-icons'} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
 
       </div>
-      <div className ='image-block'>
+      <div className ='image-block' style={selectedPhoto.url ? {'color': 'red'} : {'width': '700px', 'height': '800px'} }>
         <ImageExpander selectedPhoto={selectedPhoto}/>
         <ImageThumbnailList id='mainCarousel' alternateClass={''}selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>

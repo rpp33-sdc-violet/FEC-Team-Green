@@ -7,13 +7,19 @@ const ImageThumbnail = (props) => {
   // console.log($('.img-thumbnail.selected'));
   return (
     <li>
-      {props.photo.thumbnail_url ? <img src={props.photo.thumbnail_url} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? `img-thumbnail ${props.alternateClass} selected` : `img-thumbnail ${props.alternateClass}`} onClick={(e)=>{
+      <img src={props.photo.thumbnail_url ? props.photo.thumbnail_url : 'https://img.icons8.com/ios-glyphs/30/000000/image.png' } onError={({currentTarget}) => {
+        currentTarget.onerror = null; currentTarget.src = 'https://img.icons8.com/ios-glyphs/30/000000/image.png';
+      }} className = {props.selectedPhoto && props.selectedPhoto.index === props.photo.index ? `img-thumbnail ${props.alternateClass} selected` : `img-thumbnail ${props.alternateClass}`} onClick={(e)=>{
         props.setSelectedPhoto(props.photo);
-      }} alt='image thumbnail' onError='this.style.display = "none"'></img> : 'image'}
+      }} alt='image thumbnail' ></img>
     </li>
+
   );
 };
-
+//onerror="this.onerror=null;this.src='imagefound.gif';"
+//onError={() => { 'this.style.display = "none"'}}
+//onerror="this.onError=null;this.src='https://img.icons8.com/ios-glyphs/30/000000/image.png'"
+{ /* <img src="https://img.icons8.com/ios-glyphs/30/000000/image.png"/> */ }
 export default ImageThumbnail;
 
 //Test Clicking on any thumbnail should update the main image to match that shown in the thumbnail clicked.
