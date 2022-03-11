@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
 import AddNewReview from './addNewReview.jsx';
 import Ratings from './ratings.jsx';
