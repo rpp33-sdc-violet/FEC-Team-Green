@@ -20,20 +20,40 @@ const AddToBagButton = (props) => {
         $('span').hide();
       });
     } else {
-      // console.log('Ajax call');
-      axios.post('/api/cart', {
-        'sku_id': props.sizeAndQuantity.skuId,
-        'count': props.sizeAndQuantity.quantity
+      // var quantity =
+      //create an array that has 'quantity' number of spaces'
+      let filledArray = new Array(Number(props.sizeAndQuantity.quantity)).fill('/api/cart'); // had to fill it with something
+
+      // map that array and fill it with axio posts.
+      var responses = filledArray.map(req => {
+        return axios.post('/api/cart', {
+          'sku_id': props.sizeAndQuantity.skuId,
+          // 'count': props.sizeAndQuantity.quantity
+        });
+      });
+      //use axios.all to catch all responses.
+      axios.all(responses).then(axios.spread((...responses) => {
+
+      })).then(()=>{
+        console.log('succesfully posted to cart API');
+        //reset size and quantity state
+        props.setSizeAndQuantity({...props.sizeAndQuantity, size: 'Select Size', quantity: '-', skuId: ''});
+        // $('select-size')
+        //reset size selector
+        var sizeSelector = document.querySelector('.select-size').querySelector('option');
+        sizeSelector.selected = true;
+
+        // print out the contents of my cart.
+        axios.get('/api/cart')
+          .then(data => {
+            console.log('cart contents:', data.data);
+          }).catch(error => {
+            console.log('error', error);
+          });
       })
-        .then(()=>{
-          console.log('post successful');
-          // axios.get('/api/cart')
-          //   .then(data => {
-          //     console.log('data', data);
-          //   });
-        })
-        .catch(er => {
-          console.log('error', er);
+        .catch(error => {
+        // react on errors.
+          console.log('error', error);
         });
     }
 
