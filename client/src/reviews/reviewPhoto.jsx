@@ -24,10 +24,12 @@ class ReviewPhoto extends React.Component {
     return (
       <>
         <Modal show={this.state.show} handleClose={this.hideModal}>
-          <PhotoPop
-            src={this.props.url}
-            alt={`photo upload by ${this.props.id}`}>
-          </PhotoPop>
+          <PhotoWrapper>
+            <PhotoPop
+              src={this.props.url}
+              alt={`photo upload by ${this.props.id}`}>
+            </PhotoPop>
+          </PhotoWrapper>
         </Modal>
 
         <PhotoThumbnail src={this.props.url}
@@ -47,10 +49,16 @@ const PhotoThumbnail = styled.img`
   border: 1px solid #404040;
 `;
 
-const PhotoPop = styled.img`
-  width: 80%;
-  height: 550px;
-  max-height: 100%;
+const PhotoWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translate( -50%);
 `;
+
+const PhotoPop = styled.img`
+  max-height: 100%;
+  width: auto;
+`;
+
 
 export default ReviewPhoto;
