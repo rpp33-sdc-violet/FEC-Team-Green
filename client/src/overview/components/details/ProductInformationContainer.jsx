@@ -17,9 +17,9 @@ const ProductInformationContainer = (props) => {
         {/* <div className='stars'>stars</div> */}
         <StarRating rating={3.5}/>
         <ReadReviewsLink></ReadReviewsLink>
-        {props.product.category ? <h4 className='category'>{props.product.category}
-        </h4> : <h4 className='category ghost'>...loading
-        </h4>}
+        {props.product.category ? <h3 className='category'>{props.product.category}
+        </h3> : <h3 className='category ghost'>...loading
+        </h3>}
         { props.product.name ? <h1 className='name'>{props.product.name}</h1> : <h1 className='name ghost'>...loading</h1>
         }
 
