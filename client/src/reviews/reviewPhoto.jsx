@@ -6,7 +6,7 @@ class ReviewPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show:false
+      show: false
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -21,7 +21,7 @@ class ReviewPhoto extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <PhotoPop

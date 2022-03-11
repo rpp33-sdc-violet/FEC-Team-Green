@@ -119,7 +119,7 @@ const Review = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   color: #404040;
-  border-bottom: 1.2px solid #404040
+  border-bottom: 1.2px solid #404040;
 `;
 
 const TopInfo = styled.div`

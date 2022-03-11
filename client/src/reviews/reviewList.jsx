@@ -210,7 +210,7 @@ class ReviewList extends React.Component {
       );
     } else {
       return (
-        <div onClick={this.props.interactions}>
+        <ReviewsContainer onClick={this.props.interactions}>
           <RatingandReviews>
             <RatingWrapper>
               <RatingHeader>RATINGS & REVIEWS</RatingHeader>
@@ -246,18 +246,22 @@ class ReviewList extends React.Component {
               </Button>
             </Wrapper>
           </RatingandReviews>
-        </div>
+        </ReviewsContainer>
       );
     }
 
   }
 }
+const ReviewsContainer = styled.div`
+`;
+
 
 const RatingandReviews = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 280px auto;
   justifyContent: 'center';
   margin: 40px 60px 40px;
-  alightItems: 'center'
+  alightItems: 'center';
 `;
 
 const RatingWrapper = styled.div`
@@ -315,6 +319,7 @@ const SelectWrapper = styled.div`
   font-weight: bold;
   font-size: 18px;
   color: #404040;
+  padding-top: 55px;
 `;
 
 const Select = styled.select`
