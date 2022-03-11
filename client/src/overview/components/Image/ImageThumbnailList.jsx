@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ImageThumbnail from './ImageThumbnail.jsx';
 import $ from 'jquery';
 
 const ImageThumbnailList = (props) => {
 
+  const [upArrowVisibility, setUpArrowVisibility] = useState(false);
+  const [downArrowVisibility, setDownArrowVisibility] = useState(true);
+  // const [maxHeight2, setMaxHeight2] = useState(12);
   //props
 
   // props.thumnailUrlList = list of  thumbnail urls
@@ -11,19 +14,36 @@ const ImageThumbnailList = (props) => {
   // local state highlighted url index
   //method to change highlighted url
 
+  useEffect(() => {
+
+    if (props.photos.length < 7 ) {
+      setDownArrowVisibility(false);
+    }
+  });
+
   var startScroll = (direction, e ) => {
 
     var nav = direction === 'down' ? 4 : -4;
     var list = $(`#${props.id}`);
+    const scroller = document.querySelector(`#${props.id}`);
+
+
+    var maxHeight = props.photos.length * 76.5 > 535 ? props.photos.length * 76.5 - 535 : 0;
 
     list.scroll(function(e) {
       //makes scrollbars move up or down and hides the arrows when approrpiate
-      list.scrollTop(list.scrollTop() + nav);
-      list.scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
-      var maxHeight = list[0].scrollHeight - list.outerHeight();
-      // console.log('maxHeight', maxHeight, ' scrollTop ',list.scrollTop());
-      list.scrollTop() >= maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
+
+      scroller.scrollTop = scroller.scrollTop + nav;
+      var newScrollTop = scroller.scrollTop;
+      // console.log('scroller', newScrollTop, 'maxHeight', maxHeight);
+
+      // control upArrow visibility
+      newScrollTop === 0 ? setUpArrowVisibility(false) : setUpArrowVisibility(true);
+      // control upArrow visibility
+      newScrollTop >= maxHeight ? setDownArrowVisibility(false) : setDownArrowVisibility(true);
+
     });
+
     list.trigger('scroll');
 
   };
@@ -44,13 +64,20 @@ const ImageThumbnailList = (props) => {
   }
 
   return (
-
+  //  <img className={`upArrow${upArrowVisibility ? '' : '-invisible'}`}
     <div className='img-thumbnail-panel' id={`${props.id}-panel`}>
-      <img className='upArrow' src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
+      <img
+        id='upArrowMainGallery'
+        className={upArrowVisibility ? 'visible' : 'invisible'} src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
       <ul className ='img-thumbnail-list' id={props.id}>
         {photoThumbnails}
       </ul>
-      <img className='downArrow' src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg' alt="SVG upward arrow" onMouseDown={()=> { startScroll('down'); }} onMouseUp={stopScroll} ></img>
+      <img
+        id='downArrowMainGallery'
+        className={downArrowVisibility ? 'visible' : 'invisible'} src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg'
+        alt="SVG upward arrow"
+        onMouseDown={()=> { startScroll('down'); }}
+        onMouseUp={stopScroll} ></img>
     </div>
 
   );

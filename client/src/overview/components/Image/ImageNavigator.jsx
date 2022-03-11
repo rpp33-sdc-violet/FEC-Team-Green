@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft} from 'react-icons/md';
 import $ from 'jquery';
 // this component provides the forward and backwards arrows and the autoscroll functionality
 var ImageNavigator = function (props) {
 
+  const [upArrowVisibility, setupArrowVisibility] = useState(false);
+  const [downArrowVisibility, setdownArrowVisibility] = useState(true);
+
+
   var startScroll = (direction, e ) => {
     // nav controlls the scroll speed
     var nav = direction === 'down' ? 2 : -2;
     var list = $('.img-thumbnail-list');
+    
     list.scroll(function(e) {
       list.scrollTop(list.scrollTop() + nav);
-      $('.img-thumbnail-list').scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
+      // $('.img-thumbnail-list').scrollTop() === 0 ? $('.upArrow').css('opacity', 0) : $('.upArrow').css('opacity', 1);
+      // scrollTop = 0 ? setupArrowVisibility(false) : setupArrowVisibility(true);
+
+
       var maxHeight = list[0].scrollHeight - list.outerHeight();
       $('.img-thumbnail-list').scrollTop() === maxHeight ? $('.downArrow').css('opacity', 0) : $('.downArrow').css('opacity', 1);
     });
@@ -75,7 +83,7 @@ var ImageNavigator = function (props) {
   }
   return (
     props.direction === 'right' ?
-      <MdOutlineKeyboardArrowRight className={`${props.direction}Arrow`} id={props.id} onClick={()=> {
+      <MdOutlineKeyboardArrowRight className={`${props.direction}Arrow ${upArrowVisibility ? '' : 'invisible'}`} id={props.id} onClick={()=> {
         var nextPhoto = props.selectedPhoto.index + 1;
         props.setSelectedPhoto(props.photos[nextPhoto]);
 

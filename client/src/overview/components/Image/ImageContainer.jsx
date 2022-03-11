@@ -11,14 +11,13 @@ var ImageContainer = (props) => {
   // this state helps keep track of the current style and current picture for the gallery
   const [selectedPhoto, setSelectedPhoto] = useState('loading');
   const [currentStyleId, setCurrentStyleId] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
 
   var expandImage = () => {
-    // var imageModal = $('#image-modal-frame');
-    // imageModal.css('display') === 'none' ?
-    //   imageModal.css('display', 'flex') :
-    //   imageModal.css('display', 'none');
+
 
     var imageModal = $('#image-modal-frame');
+
     var wrapperWidth = $('.overview-wrapper').width();
     var wrapperHeight = $('.overview-wrapper').height();
     // console.log('img width', wrapperWidth);
@@ -51,12 +50,24 @@ var ImageContainer = (props) => {
         <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left' id='leftExpanded'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
-        <ImageThumbnailList id='miniCarousel' alternateClass={'img-icons'} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <ImageThumbnailList
+          id='miniCarousel'
+          alternateClass={'img-icons'}
+          selectedPhoto={selectedPhoto}
+          photos={props.selectedStyle.photos}
+          setSelectedPhoto={setSelectedPhoto}
+          scrollTop ={scrollTop}
+          setScrollTop={setScrollTop}/>
 
       </div>
       <div className ='image-block' style={selectedPhoto.url ? {'color': 'red'} : {'width': '700px', 'height': '800px'} }>
         <ImageExpander selectedPhoto={selectedPhoto}/>
-        <ImageThumbnailList id='mainCarousel' alternateClass={''}selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} setSelectedPhoto={setSelectedPhoto}/>
+        <ImageThumbnailList id='mainCarousel'
+          alternateClass={''}
+          selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos}
+          setSelectedPhoto={setSelectedPhoto}
+          scrollTop ={scrollTop}
+          setScrollTop={setScrollTop}/>/>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>
         <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>

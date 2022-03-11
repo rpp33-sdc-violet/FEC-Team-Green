@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ImageThumbnailList from './ImageThumbnailList.jsx';
 import ImageNavigator from './ImageNavigator.jsx';
 import $ from 'jquery';
 var ImageExpander = (props) => {
+
+  const [isClicked, setIsClicked] = useState(false);
 
   //this component displays the main gallery image
   var scaled = false;
   //set the arrow status here so that it carries over when I zoom in or out.
   var rightArrow = $('.rightArrow').css('display');
   var leftArrow = $('.leftArrow').css('display');
+
+
   var onModalClick = (e) => {
 
     var container = $('#main-image-modal');
@@ -63,6 +67,7 @@ var ImageExpander = (props) => {
   };
 
   var onImageClick = (e) => {
+    setIsClicked(!isClicked);
     var imageModal = $('#image-modal-frame');
     var wrapperWidth = $('.overview-wrapper').width();
     var wrapperHeight = $('.overview-wrapper').height();
