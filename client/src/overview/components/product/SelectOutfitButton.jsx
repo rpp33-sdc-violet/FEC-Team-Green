@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 
 //this button add's outfits to christians Component
+import {AiOutlineStar} from 'react-icons/ai';
 const SelectOutfitButton = (props) => {
 
   //props
@@ -12,7 +13,7 @@ const SelectOutfitButton = (props) => {
 
   return (
     <button className ='select-outfit'>
-      SelectOutfitButton
+      <AiOutlineStar> </AiOutlineStar>
     </button>
   );
 };

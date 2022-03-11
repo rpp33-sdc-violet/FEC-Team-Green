@@ -2,10 +2,17 @@ node_modules
 
 ## Webpack Bundle ##
 client/dist/bundle.js
+*bundle.js*
 
 ## API keys ##
 client/src/config/github.js
 dist/config/github.js
 
+## ENVIRONMENT KEYS TO ACCESS AWS S3 BUCKET ##
 .env
 
+## CODE COVERAGE DIRECTORY ##
+coverage
+
+
+copy_pasta.sh
