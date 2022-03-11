@@ -269,7 +269,7 @@ const NoReview = styled.div`
 
 const RatingandReviews = styled.div`
   display: grid;
-  grid-template-columns: 285px auto;
+  grid-template-columns: 300px auto;
   justifyContent: 'center';
   margin: 40px 60px 40px;
   alightItems: 'center';
