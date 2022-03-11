@@ -86,13 +86,13 @@ class IndividualReview extends React.Component {
         <Summary>{summary}</Summary>
         <ReviewBody>{fullReview}</ReviewBody>
 
-        <div className='image'>
+        <PhotoDisplay>
           {review.photos.map((photo)=> {
             return (
               <ReviewPhoto url={photo.url} key = {photo.id}/>
             );
           })}
-        </div>
+        </PhotoDisplay>
 
         <Recommend>{recommend}</Recommend>
         {response}
@@ -120,8 +120,12 @@ const Review = styled.div`
   padding-bottom: 10px;
   color: #404040;
   border-bottom: 1.2px solid #404040;
+  z-index: 15;
 `;
 
+const PhotoDisplay = styled.div`
+  z-index: 14
+`;
 const TopInfo = styled.div`
   padding-top: 5px;
   padding-bottom: 5px;
