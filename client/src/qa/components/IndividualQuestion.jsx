@@ -103,11 +103,8 @@ const IndividualQuestion = (props) => {
     }
   };
 
-  // handle AddAnswerLinkClick ***** TODO *****
-
-  // AddAnswerLink - state: AddAnswerLinkClick ***** TODO *****
   return (
-    <div className="question" role="question">
+    <div className="question">
       <div className="question-row">
         <p className="question-text">Q:&nbsp;&nbsp;{props.question.question_body}</p>
         <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></aside>
