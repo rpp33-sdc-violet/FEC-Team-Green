@@ -216,23 +216,20 @@ ul {
   z-index: 1;
   position: relative;
 }
-.rightArrow, .leftArrow {
+#rightArrow, #leftArrow {
   height: 60px;
   width: auto;
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
   position: absolute;
+  top: 50%;
 }
-.rightArrow {
-  right: 10px;
+#rightArrow {
+  right: 60px;
   opacity: 1;
-}
-.rightArrow, invisible {
-  right: 10px;
-  /* display: block; */
-  /* opacity: 0; */
 
 }
-.leftArrow {
+
+#leftArrow {
   left: 70px;
 }
 .image-block {

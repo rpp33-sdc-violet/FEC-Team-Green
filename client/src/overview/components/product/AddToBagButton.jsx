@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import $ from 'jquery';
 // import StyleList from './StyleList.jsx';
 
 //this is the button to add items to user's cart/bag

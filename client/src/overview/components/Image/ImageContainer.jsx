@@ -67,10 +67,21 @@ var ImageContainer = (props) => {
           selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos}
           setSelectedPhoto={setSelectedPhoto}
           scrollTop ={scrollTop}
-          setScrollTop={setScrollTop}/>/>
-        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right'></ImageNavigator>
-        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left'></ImageNavigator>
-        <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
+          setScrollTop={setScrollTop}/>
+        <ImageNavigator
+          setSelectedPhoto={setSelectedPhoto}
+          selectedPhoto={selectedPhoto}
+          photos={props.selectedStyle.photos} direction='right'>
+        </ImageNavigator>
+        <ImageNavigator
+          setSelectedPhoto={setSelectedPhoto}
+          selectedPhoto={selectedPhoto}
+          photos={props.selectedStyle.photos} direction='left'>
+        </ImageNavigator>
+        <AiOutlineExpand
+          id='expander-btn'
+          onClick={expandImage}>
+        </AiOutlineExpand>
 
       </div>
     </div>
