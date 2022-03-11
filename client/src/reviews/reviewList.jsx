@@ -203,10 +203,11 @@ class ReviewList extends React.Component {
     //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
     if (this.state.reviews.length === 0) {
       return (
-        <div>
-          <h3>Review List</h3>
+        <NoReview>
+          <div>RATINGS & REVIEWS</div>
+          <br></br>
           <AddNewReview productId = {this.state.productId}/>
-        </div>
+        </NoReview>
       );
     } else {
       return (
@@ -255,6 +256,16 @@ class ReviewList extends React.Component {
 const ReviewsContainer = styled.div`
 `;
 
+const NoReview = styled.div`
+  display: grid;
+  font-size: 16px;
+  font-weight: 100;
+  max-height: 540px;
+  margin: 80px 60px 80px;
+  color: #404040;
+  position: relative;
+  z-index: 21;
+`;
 
 const RatingandReviews = styled.div`
   display: grid;
