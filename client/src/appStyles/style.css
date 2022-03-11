@@ -15,7 +15,7 @@
 /* ** NAVBAR ** */
 #navbar {
   display: flex;
-  background-color: #404040;
+  background-color: black;
   border-bottom: 2px solid #39FF14;
   /* border: 0; */
 }
