@@ -17,13 +17,13 @@ const ProductInformationContainer = (props) => {
         {/* <div className='stars'>stars</div> */}
         <StarRating rating={3.5}/>
         <ReadReviewsLink></ReadReviewsLink>
-        {props.product.category ? <h3 className='category'>{props.product.category}
-        </h3> : <h3 className='category ghost'>...loading
-        </h3>}
+        {props.product.category ? <h2 className='category'>{props.product.category}
+        </h2> : <h2 className='category ghost'>...loading
+        </h2>}
         { props.product.name ? <h1 className='name'>{props.product.name}</h1> : <h1 className='name ghost'>...loading</h1>
         }
 
-        { props.sale_price ? <span><h4 className='price-sale'>${props.sale_price}</h4> <h4 className='price-struck'>${props.original_price}</h4> </span> : props.original_price ? <h4 className='price'>${props.original_price}</h4> : <h4 className='price ghost'>...loading</h4> }
+        { props.sale_price ? <span><p className='price-sale'>${props.sale_price}</p> <p className='price-struck'>${props.original_price}</p> </span> : props.original_price ? <p className='price'>${props.original_price}</p> : <p className='price ghost'>...loading</p> }
 
       </div>
 

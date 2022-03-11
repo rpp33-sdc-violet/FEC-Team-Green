@@ -34,7 +34,7 @@ var ImageExpander = (props) => {
           let rect = e.target.getBoundingClientRect();
           let xPos = e.clientX;
           let yPos = e.clientY;
-          // console.log('ratio', ratio);
+          console.log('rect', rect);
           let xPercent = xPos / (container.innerWidth() / 80);
           let yPercent = yPos / ((container.innerWidth() * ratio) / 190);
           container.css('backgroundSize', 250 + '%');
@@ -44,7 +44,7 @@ var ImageExpander = (props) => {
           // $('#main-image-modal').css('transform', 'scale(2.5)');
           container.mouseout = (e) => {
             $('#main-image-modal').css('backgroundPosition', 'center');
-            container.css('backgroundSize', 'cover');
+            container.css('backgroundSize', 'contain');
           };
         });
       };
@@ -52,7 +52,7 @@ var ImageExpander = (props) => {
       $('#main-image-modal').unbind();
       $('#main-image-modal').css('cursor', 'zoom-in');
       $('#main-image-modal').css('backgroundPosition', 'center');
-      $('#main-image-modal').css('backgroundSize', 'cover');
+      $('#main-image-modal').css('backgroundSize', 'contain');
       $('#rightExpanded').css('display', rightArrow);
       $('#leftExpanded').css('display', leftArrow);
       $('#miniCarousel').show();
@@ -67,8 +67,11 @@ var ImageExpander = (props) => {
     var wrapperHeight = $('.overview-wrapper').height();
     console.log('img width', wrapperWidth);
 
-    imageModal.css('width', `${wrapperWidth * .95}px`);
-    imageModal.css('height', `${wrapperHeight * .95}px`);
+    imageModal.css('width', `${wrapperWidth + 50}px`);
+    imageModal.css('height', `${wrapperHeight + 50}px`);
+    var image = $('#main-image-modal');
+    image.css('width', 'auto');
+    image.css('height', `${$('.overview-wrapper').height()}px`);
     imageModal.toggle();
   };
   return (

@@ -77,6 +77,7 @@ html { scroll-behavior: smooth; }
 .price{
   margin-top: 10px;
   margin-bottom: 1px;
+  height:
 }
 .price-sale{
   color: red;
@@ -92,6 +93,7 @@ html { scroll-behavior: smooth; }
   margin-top: 10px;
   text-transform: uppercase;
   color: black;
+  font-size: 1em;
 
   /* margin: 0; */
 }
@@ -234,6 +236,7 @@ ul {
   align-items:center;
 }
 #image-modal-frame {
+  height: 800px;
   box-sizing: content-box;
   display: none;
   width: 1200px;
@@ -250,7 +253,7 @@ ul {
   left: 1px;
   max-width: 1120px;
   max-height: 900px;
-  height: 800px;
+
 
 }
 #expander-btn  {

@@ -96,8 +96,8 @@ class App extends React.Component {
         <nav id={'navbar'}>
           <p className='logo'>Logo</p>
           <form>
-            <label>
-              Search Product Ids
+            <label id='search-message'>
+              Search Product Ids:
               <input value={this.state.search}
                 onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
             </label>
