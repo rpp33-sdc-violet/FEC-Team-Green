@@ -103,16 +103,19 @@ const AddAQuestionDashboard = (props) => {
         <form className="question-form" onSubmit={handleSubmit}>
           <label>
             Your Question*
+            <br></br>
             <textarea maxLength="1000" value={question} onChange={(e) => setQuestion(e.target.value)} />
           </label>
           <label>
             What is your nickname?*
+            <br></br>
             <input type="text" maxLength="60" placeholder="Example: jackson11!"
               value={nickname} onChange={(e) => setNickname(e.target.value)} />
             <p className="form-extra-info">For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
             Your email*
+            <br></br>
             <input type="text" maxLength="60" placeholder="Example: sample@email.com"
               value={email} onChange={(e) => setEmail(e.target.value)} />
             <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
