@@ -223,11 +223,12 @@ class ReviewList extends React.Component {
             <Wrapper>
               <ReviewWrapper>
                 <div>
-                  <select onChange = {() => { this.sortReviews(event.target.value); }}>
+                  {this.state.displayReviews.length} reviews, sorted by
+                  <Select onChange = {() => { this.sortReviews(event.target.value); }}>
                     <option value="relevane">relevant</option>
                     <option value="newest">newest</option>
                     <option value="helpful">helpful</option>
-                  </select>
+                  </Select>
                 </div>
                 <div>
                   {currentReviews.map((review) => {
@@ -308,6 +309,13 @@ const Filter = styled.div`
   font-size: 16px;
   color: #404040;
   margin-bottom: 10px;
+`;
+
+const Select = styled.select`
+  border: none;
+  font-size: 16px;
+  color: #404040;
+  text-decoration: underline;
 `;
 
 export default ReviewList;
