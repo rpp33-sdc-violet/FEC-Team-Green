@@ -6,8 +6,6 @@ const ImageThumbnailList = (props) => {
 
   const [upArrowVisibility, setUpArrowVisibility] = useState(false);
   const [downArrowVisibility, setDownArrowVisibility] = useState(true);
-  // const [maxHeight2, setMaxHeight2] = useState(12);
-  //props
 
   // props.thumnailUrlList = list of  thumbnail urls
   // props.urlList = list of urls
@@ -39,7 +37,7 @@ const ImageThumbnailList = (props) => {
 
       // control upArrow visibility
       newScrollTop === 0 ? setUpArrowVisibility(false) : setUpArrowVisibility(true);
-      // control upArrow visibility
+      // control downArrow visibility
       newScrollTop >= maxHeight ? setDownArrowVisibility(false) : setDownArrowVisibility(true);
 
     });
@@ -68,7 +66,8 @@ const ImageThumbnailList = (props) => {
     <div className='img-thumbnail-panel' id={`${props.id}-panel`}>
       <img
         id='upArrowMainGallery'
-        className={upArrowVisibility ? 'visible' : 'invisible'} src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}></img>
+        className={upArrowVisibility ? 'visible' : 'invisible'} src='https://kidshealth.org/images/mothership/navigation/mott-uparrow.svg' alt='SVG downward arrow' onMouseDown={()=> { startScroll('up'); }} onMouseUp={stopScroll}>
+      </img>
       <ul className ='img-thumbnail-list' id={props.id}>
         {photoThumbnails}
       </ul>
@@ -77,7 +76,8 @@ const ImageThumbnailList = (props) => {
         className={downArrowVisibility ? 'visible' : 'invisible'} src='https://kidshealth.org/images/mothership/navigation/mott-downarrow.svg'
         alt="SVG upward arrow"
         onMouseDown={()=> { startScroll('down'); }}
-        onMouseUp={stopScroll} ></img>
+        onMouseUp={stopScroll} >
+      </img>
     </div>
 
   );
@@ -93,6 +93,5 @@ export default ImageThumbnailList;
   Test can user scroll upwards and downwards between images
   test does the main thumbnail update when the user navigates to new main image
   Test If upon navigating to the previous or next image using the arrows, the thumbnail corresponding to the now selected image is no longer visible, then the thumbnail list should scroll similarly such that the newly selected thumbnail is visible.
-
 
 */
