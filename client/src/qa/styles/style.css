@@ -105,7 +105,7 @@
           height: 550px;
            max-height: 100%;
         }
-    #moreAnswers-button {
+    .moreAnswers-button {
       background: none;
       border: none;
       font-weight: bold;
