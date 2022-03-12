@@ -34,7 +34,7 @@ const Overview = (props) => {
   //onClick={props.interactions}
   return (
     < div className='overview-wrapper' onClick={props.interactions} >
-      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
+      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle} theme={props.theme}></ImageContainer> :
         <div> loading </div>
       }
       {/* <div>{selectedStyle}</div> */}
