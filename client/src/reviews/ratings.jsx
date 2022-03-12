@@ -49,13 +49,11 @@ const Summary = styled.div`
 const Rec = styled.div`
   margin-bottom: 10px;
   font-size: 16px;
-  color: #404040;
 `;
 
 const Average = styled.span`
   font-size: 50px;
   font-weight: bold;
-  color: #404040;
 `;
 
 const StarWrapper = styled.span`

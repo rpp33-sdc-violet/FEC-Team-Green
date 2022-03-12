@@ -35,7 +35,6 @@ const BarTitle = styled.div`
   flex-basis: 20%;
   align-self: flex-start;
   font-size: 16px;
-  color: #404040;
   text-decoration: underline;
 `;
 

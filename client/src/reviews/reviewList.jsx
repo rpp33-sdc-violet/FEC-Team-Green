@@ -332,7 +332,7 @@ const Filter = styled.div`
 const SelectWrapper = styled.div`
   font-weight: bold;
   font-size: 18px;
-  color: #404040;
+ 
   padding-top: 55px;
 `;
 
@@ -347,10 +347,10 @@ const Select = styled.select`
 // *****TRIAL: DARK MODE*****
 const MoreReviewDark = styled.button`
   background: #121212;
-  border: 1px solid #eee;
+  border: 1px solid #7ACC7A;
   font-weight: bold;
   margin-right: 20px;
-  color: #eee;
+  color: #7ACC7A;
   padding-top: 15px;
   padding-bottom: 15px;
 `;
