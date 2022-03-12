@@ -68,7 +68,6 @@ const Values = styled.div`
   display: grid;
   width: 100%;
   font-size: 15px;
-  
 `;
 
 

@@ -188,6 +188,17 @@ class ReviewList extends React.Component {
       moreReviewButton = <MoreReviewDark onClick={this.loadReviews}>MORE REVIEWS</MoreReviewDark>;
     }
 
+    let backgroundColor = null;
+    let color = null;
+    if (this.props.theme === 'light-theme') {
+      backgroundColor = '#fff';
+      color = '#222';
+    }
+    if (this.props.theme === 'dark-theme') {
+      backgroundColor = '#121212';
+      color = '#7ACC7A';
+    }
+
     let removeFilter = null;
     let displayFilters = null;
     let currentFilters = this.state.filters;
@@ -228,7 +239,7 @@ class ReviewList extends React.Component {
               <ReviewWrapper>
                 <SelectWrapper>
                   {this.state.displayReviews.length} reviews, sorted by
-                  <Select onChange = {() => { this.sortReviews(event.target.value); }}>
+                  <Select onChange = {() => { this.sortReviews(event.target.value); }} backgroundColor={backgroundColor} color={color}>
                     <option value="relevane">relevance</option>
                     <option value="newest">newest</option>
                     <option value="helpful">helpful</option>
@@ -332,7 +343,6 @@ const Filter = styled.div`
 const SelectWrapper = styled.div`
   font-weight: bold;
   font-size: 18px;
- 
   padding-top: 55px;
 `;
 
@@ -340,8 +350,9 @@ const Select = styled.select`
   border: none;
   text-decoration: underline;
   font-size: 18px;
-  color: #404040;
   font-weight: bold;
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
 `;
 
 // *****TRIAL: DARK MODE*****
