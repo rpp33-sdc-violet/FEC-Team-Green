@@ -17,11 +17,11 @@ html { scroll-behavior: smooth; }
 }
 #read-reviews{
   position: absolute;
-  right: 263px;
-  top: 59px;
+  right: 123px;
+  top: 61px;
   text-decoration: underline;
-  font-size: smaller;
-  display: none;
+  font-size: .7em;
+  /* display: none; */
 }
 
 /* #feature-list { */
