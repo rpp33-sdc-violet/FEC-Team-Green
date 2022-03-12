@@ -23,7 +23,7 @@ class ReviewPhoto extends React.Component {
   render() {
     return (
       <>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+        <Modal show={this.state.show} handleClose={this.hideModal} theme={this.props.theme}>
           <PhotoWrapper>
             <PhotoPop
               src={this.props.url}

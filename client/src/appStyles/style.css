@@ -6,6 +6,19 @@
   font-family: 'proxima-nova', sans-serif;
 
 }
+
+.light-theme {
+  background: #fff;
+  color: #222;
+}
+
+.dark-theme {
+  background: #121212;
+  /* color: #eee; */
+  color: #7ACC7A;
+
+}
+
 #app {
   margin-left: auto;
   margin-right: auto;
@@ -16,7 +29,8 @@
 #navbar {
   display: flex;
   background-color: black;
-  border-bottom: 2px solid #39FF14;
+  /* border-bottom: 2px solid #39FF14; */
+  border-bottom: 2px solid #7ACC7A;
   /* border: 0; */
 }
 #search-message{
@@ -91,6 +105,7 @@
   letter-spacing: 3px;
   background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

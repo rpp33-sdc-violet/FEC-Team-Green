@@ -96,7 +96,7 @@ const AddAQuestionDashboard = (props) => {
 
   return (
     <>
-      <Modal show={show} handleClose={hideModal}>
+      <Modal show={show} handleClose={hideModal} theme={props.theme}>
         <h1>Ask Your Question</h1>
         <h2>About the <span className="modal-subtitle">{props.product_name}</span></h2>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
@@ -124,7 +124,7 @@ const AddAQuestionDashboard = (props) => {
           <input className="modal-button-submit" type="submit" value="Submit" onClick={(e) => e.stopPropagation()} />
         </form>
       </Modal>
-      <button id="addQuestion-button" type="button" onClick={showModal}>ADD A QUESTION +</button>
+      <button id={`addQuestion-button-${props.theme}`} type="button" onClick={showModal}>ADD A QUESTION +</button>
     </>
   );
 };

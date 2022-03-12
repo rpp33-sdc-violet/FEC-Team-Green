@@ -14,7 +14,7 @@ const SelectQuantityDropdown = (props) => {
 
 
   return (
-    <select className ='select-quantity' disabled={(props.sizeAndQuantity.quantity === '-') ? true : false} onChange={(e) => {
+    <select className ={`select-quantity ${props.theme}`} disabled={(props.sizeAndQuantity.quantity === '-') ? true : false} onChange={(e) => {
       props.setSizeAndQuantity({...props.sizeAndQuantity, quantity: e.target.value});
     }}>
       {props.sizeAndQuantity.quantity === '-' ? <option>{props.sizeAndQuantity.quantity}</option> : options }

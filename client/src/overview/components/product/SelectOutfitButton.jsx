@@ -12,9 +12,11 @@ const SelectOutfitButton = (props) => {
 
 
   return (
-    <button className ='select-outfit'aria-label="add to outfit" >
+
+    <button className ={`select-outfit ${props.theme}`} disabled ={props.inStock ? false : true}>
       <AiOutlineStar> </AiOutlineStar>
     </button>
+
   );
 };
 
