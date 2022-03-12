@@ -14,7 +14,7 @@ const AnswerPhoto = (props) => {
 
   return (
     <>
-      <Modal show={show} handleClose={hideModal}>
+      <Modal show={show} handleClose={hideModal} theme={props.theme}>
         <img className="answer-photo"
           src={props.url}
           alt={`photo upload by ${props.answerer_name}`} />
