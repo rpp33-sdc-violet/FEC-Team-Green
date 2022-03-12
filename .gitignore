@@ -8,7 +8,7 @@ client/dist/bundle.js
 client/src/config/github.js
 dist/config/github.js
 
-## ENVIRONMENT KEYS TO ACCESS AWS S3 BUCKET ##
+## ENVIRONMENT KEYS ##
 .env
 
 ## CODE COVERAGE DIRECTORY ##
