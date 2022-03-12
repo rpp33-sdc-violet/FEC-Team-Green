@@ -8,7 +8,8 @@ const AnswerPhotosList = (props) => {
     <AnswerPhoto
       key={photo.id}
       url={photo.url}
-      answerer_name={props.answerer_name} />
+      answerer_name={props.answerer_name}
+      theme={props.theme} />
   );
 
   // render: maps to AnswerPhoto

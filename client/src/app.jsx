@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
+import {BsFillLightbulbOffFill} from 'react-icons/bs';
+import {BsFillLightbulbFill} from 'react-icons/bs';
 
 // using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info.
 const Overview = React.lazy(() => import('./overview/overview.jsx'));
@@ -35,10 +37,13 @@ class App extends React.Component {
       productStyles: [],
       search: '',
       // eslint-disable-next-line camelcase
-      product_id: 64622
+      product_id: 64622,
+      theme: 'light-theme',
+      themeText: 'dark mode'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleThemeChange = this.handleThemeChange.bind(this);
   }
 
   getProductData(productId) {
@@ -91,11 +96,25 @@ class App extends React.Component {
     }
   }
 
+  handleThemeChange() {
+    if (this.state.themeText === 'dark mode') {
+      this.setState({
+        theme: 'dark-theme',
+        themeText: 'light mode'
+      });
+    } else {
+      this.setState({
+        theme: 'light-theme',
+        themeText: 'dark mode'
+      });
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className={this.state.theme}>
         <nav id={'navbar'}>
-          <p className='logo'>Logo</p>
+          <p className='logo'>Mint Condition</p>
           <form>
             <label id='search-message'>
               Search Product Ids:
@@ -107,17 +126,18 @@ class App extends React.Component {
             // event.preventDefault();
             this.searchProductID(this.state.search);
           }} viewBox={[0, 0, 24, 21]} />
+          {this.state.theme === 'light-theme' ? <BsFillLightbulbFill class={'lightbulb dark-theme'} onClick={this.handleThemeChange}>{this.state.themeText}</BsFillLightbulbFill> : <BsFillLightbulbOffFill class={'lightbulb'} onClick={this.handleThemeChange}>{this.state.themeText}</BsFillLightbulbOffFill>}
         </nav>
         {/* for code-splitting, fallback attribute is needed */}
         <Suspense fallback={<div>loading</div>}>
           {this.state.product && this.state.productStyles.length > 1 ?
-            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
+            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}theme={this.state.theme}></OverviewWithInteractions> :
             <div className='overview-skeleton'>loading</div>}
           {this.state.product && this.state.productStyles.length > 1 ?
-            <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
+            <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme} /> :
             <div className="QA-container">loading</div>}
           {this.state.product_id && this.state.product.name ?
-            <ReviewsWithIntercations product_id={this.state.product_id} product_name={this.state.product.name}></ReviewsWithIntercations> :
+            <ReviewsWithIntercations product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme}></ReviewsWithIntercations> :
             <div className='reviews'>loading reviews</div>
           }
         </Suspense>

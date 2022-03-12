@@ -59,7 +59,7 @@ var ImageContainer = (props) => {
   // I would like to eventually rename image-container to image-gallery and image-block to image-container
   return (
     <div className ='image-container'>
-      <div id='image-modal-frame' style={{width: `${width}px`}}>
+      <div id='image-modal-frame' style={{width: `${width}px`}, props.theme === 'dark-theme' ? {background: '#121212' } : {background: 'white' } }>
         <ImageNavigator
           setSelectedPhoto={setSelectedPhoto}
           selectedPhoto={selectedPhoto}

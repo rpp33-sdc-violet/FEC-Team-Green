@@ -49,7 +49,7 @@ class ReviewList extends React.Component {
     })
       .then((res) => {
         //console.log('axios get reviews', res);
-        this.setState({reviews: res.data.results, displayReviews: res.data.results});
+        this.setState({ reviews: res.data.results, displayReviews: res.data.results });
 
       })
       .catch((err) => {
@@ -65,7 +65,7 @@ class ReviewList extends React.Component {
       }
     })
       .then((res) => {
-        this.setState({metaData: res.data});
+        this.setState({ metaData: res.data });
         this.ratingBreakdown(res.data);
       }).catch((err) => {
         console.log('failed to get meta data', err.message);
@@ -106,19 +106,19 @@ class ReviewList extends React.Component {
 
     let characteristics = metaData.characteristics;
     //console.log('charac', characteristics);
-    this.setState({ratingBreakdown: breakdown, recAvg: recommendavg, charac: characteristics});
+    this.setState({ ratingBreakdown: breakdown, recAvg: recommendavg, charac: characteristics });
   }
 
   loadReviews() {
     if (this.state.displayCount <= this.state.reviews.length) {
-      this.setState({displayCount: this.state.displayCount + 2});
+      this.setState({ displayCount: this.state.displayCount + 2 });
     } else {
-      this.setState({buttonVisible: false});
+      this.setState({ buttonVisible: false });
     }
   }
 
   sortReviews(option) {
-    this.setState({sort: option});
+    this.setState({ sort: option });
     this.getReviews(option);
   }
 
@@ -132,7 +132,7 @@ class ReviewList extends React.Component {
     tempfiltersOn[index] = !this.state.filtersOn[index];
     console.log('tempfilterOn', tempfiltersOn);
 
-    this.setState({filtersOn: tempfiltersOn}, () => {
+    this.setState({ filtersOn: tempfiltersOn }, () => {
       let tempFilters = this.state.filters;
       if (this.state.filtersOn[index]) {
         let tempFilters = this.state.filters.push(rating);
@@ -141,7 +141,7 @@ class ReviewList extends React.Component {
         let tempFilters = this.state.filters.splice(index, 1);
       }
       //console.log('tempFilters', tempFilters);
-      this.setState({filters: tempFilters}, () => {
+      this.setState({ filters: tempFilters }, () => {
         this.filterHelper(this.state.filters);
       });
     });
@@ -162,12 +162,12 @@ class ReviewList extends React.Component {
         }
       });
     }
-    this.setState({displayReviews: tempReviews});
+    this.setState({ displayReviews: tempReviews });
   }
 
   removeAllFilters(event) {
     event.preventDefault();
-    this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
+    this.setState({ filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false] } );
   }
 
 
@@ -179,9 +179,24 @@ class ReviewList extends React.Component {
       currentReviews = this.state.displayReviews.slice(0, this.state.displayCount);
     }
 
+    // *****TRIAL: DARK MODE*****
     let moreReviewButton = null;
-    if (this.state.buttonVisible && this.state.displayReviews.length > 2) {
-      moreReviewButton = <MoreReview onClick = {this.loadReviews}>MORE REVIEWS</MoreReview>;
+    if (this.state.buttonVisible && this.state.displayReviews.length > 2 && this.props.theme === 'light-theme') {
+      moreReviewButton = <MoreReview onClick={this.loadReviews}>MORE REVIEWS</MoreReview>;
+    }
+    if (this.state.buttonVisible && this.state.displayReviews.length > 2 && this.props.theme === 'dark-theme') {
+      moreReviewButton = <MoreReviewDark onClick={this.loadReviews}>MORE REVIEWS</MoreReviewDark>;
+    }
+
+    let backgroundColor = null;
+    let color = null;
+    if (this.props.theme === 'light-theme') {
+      backgroundColor = '#fff';
+      color = '#222';
+    }
+    if (this.props.theme === 'dark-theme') {
+      backgroundColor = '#121212';
+      color = '#7ACC7A';
     }
 
     let removeFilter = null;
@@ -216,15 +231,15 @@ class ReviewList extends React.Component {
               <RatingHeader>RATINGS & REVIEWS</RatingHeader>
               {displayFilters}
               {removeFilter}
-              <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
-              <ProductBreakdown charac = {this.state.charac}/>
+              <Ratings metaData={this.state.metaData} ratingBreakdown={this.state.ratingBreakdown} filters={this.filterReviews} recAvg={this.state.recAvg} charc={this.state.chrac} />
+              <ProductBreakdown charac={this.state.charac} />
             </RatingWrapper>
 
             <Wrapper>
               <ReviewWrapper>
                 <SelectWrapper>
                   {this.state.displayReviews.length} reviews, sorted by
-                  <Select onChange = {() => { this.sortReviews(event.target.value); }}>
+                  <Select onChange = {() => { this.sortReviews(event.target.value); }} backgroundColor={backgroundColor} color={color}>
                     <option value="relevane">relevance</option>
                     <option value="newest">newest</option>
                     <option value="helpful">helpful</option>
@@ -233,7 +248,7 @@ class ReviewList extends React.Component {
                 <div>
                   {currentReviews.map((review) => {
                     return (
-                      <IndividualReview review = {review} key = {review.review_id} />
+                      <IndividualReview review={review} key={review.review_id} theme={this.props.theme} />
                     );
                   })}
                 </div>
@@ -241,7 +256,7 @@ class ReviewList extends React.Component {
               <Button>
                 <BWrapper>
                   {moreReviewButton}
-                  <AddNewReview productId = {this.state.productId} product_name={this.props.product_name} charac = {this.state.charac}> </AddNewReview>
+                  <AddNewReview productId={this.state.productId} product_name={this.props.product_name} charac={this.state.charac} theme={this.props.theme}> </AddNewReview>
                 </BWrapper>
               </Button>
             </Wrapper>
@@ -328,7 +343,6 @@ const Filter = styled.div`
 const SelectWrapper = styled.div`
   font-weight: bold;
   font-size: 18px;
-  color: #404040;
   padding-top: 55px;
 `;
 
@@ -336,9 +350,22 @@ const Select = styled.select`
   border: none;
   text-decoration: underline;
   font-size: 18px;
-  color: #404040;
   font-weight: bold;
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
 `;
+
+// *****TRIAL: DARK MODE*****
+const MoreReviewDark = styled.button`
+  background: #121212;
+  border: 1px solid #7ACC7A;
+  font-weight: bold;
+  margin-right: 20px;
+  color: #7ACC7A;
+  padding-top: 15px;
+  padding-bottom: 15px;
+`;
+//for commit
 
 export default ReviewList;
 

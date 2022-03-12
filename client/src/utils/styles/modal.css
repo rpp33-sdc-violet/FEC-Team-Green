@@ -1,4 +1,4 @@
-.modal {
+.modal-light-theme {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,10 +7,34 @@
   background: rgba(0, 0, 0, 0.6);
   overflow: scroll;
 }
+.modal-dark-theme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(150, 150, 150, 0.6);
+  overflow: scroll;
+}
 
-.modal-main {
+.modal-main-light-theme {
   position: absolute;
-  background: white;
+  background: #fff;
+  color: #222;
+  width: 80%;
+  height: 550px;
+  max-height: 100%;
+  top: 300px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  overflow: scroll;
+  text-align: left;
+}
+.modal-main-dark-theme {
+  position: absolute;
+  background: #121212;
+  color: #eee;
   width: 80%;
   height: 550px;
   max-height: 100%;

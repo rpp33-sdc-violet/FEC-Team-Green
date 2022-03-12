@@ -23,7 +23,7 @@ const SelectSizeDropdown = (props) => {
 
   return (
 
-    <select className ='select-size'id='ss'
+    <select className ={`select-size ${props.theme}`}id='ss'
       onChange={(e)=> {
         if (props.sizeAndQuantity.quantity === '-' ) {
           props.setSizeAndQuantity({...props.sizeAndQuantity, size: e.target.value, quantity: 1, skuId: props.sizes[e.target.value].skuId });

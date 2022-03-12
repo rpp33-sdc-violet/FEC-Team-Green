@@ -34,16 +34,16 @@ const Overview = (props) => {
   //onClick={props.interactions}
   return (
     < div className='overview-wrapper' onClick={props.interactions} >
-      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle}></ImageContainer> :
+      { selectedStyle.photos ? <ImageContainer selectedStyle={selectedStyle} theme={props.theme}></ImageContainer> :
         <div> loading </div>
       }
       {/* <div>{selectedStyle}</div> */}
       <div className='rightPanel'>
         <ProductInformationContainer product={props.product} sale_price={selectedStyle.sale_price} original_price ={selectedStyle.original_price}></ProductInformationContainer>
 
-        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle} ></StyleSelectorContainer>
+        <StyleSelectorContainer productStyles={props.productStyles} setSelectedStyle={setSelectedStyle} selectedStyle={selectedStyle}theme={props.theme} ></StyleSelectorContainer>
 
-        <SelectProductContainer selectedStyle={selectedStyle}/>
+        <SelectProductContainer selectedStyle={selectedStyle} theme={props.theme}/>
       </div>
       <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
       <ProductFeatureList features={props.product.features}></ProductFeatureList>
