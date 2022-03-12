@@ -57,11 +57,11 @@ const AddToBagButton = (props) => {
           console.log('error', error);
         });
     }
-
+    //style={document.querySelector('#ss').querySelector('option')[0]}
   };
 
   return (
-    <button className ={`select-bag ${props.theme}`} id='select-bag' onClick={onClick}>
+    <button className ={`select-bag ${props.theme}`} id='select-bag' onClick={onClick} >
       Add To Bag
     </button>
   );

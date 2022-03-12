@@ -36,7 +36,7 @@ var ImageContainer = (props) => {
   useEffect(()=> {
 
     if ( props.selectedStyle.photos && (selectedPhoto === 'loading' || currentStyleId !== props.selectedStyle['style_id'] )) {
-      console.log('selected', selectedPhoto, selectedPhoto.index);
+      // console.log('selected', selectedPhoto, selectedPhoto.index);
       var selected = props.selectedStyle.photos[selectedPhoto.index ? selectedPhoto.index : 0];
       selected ? selected.index = 0 : selected = props.selectedStyle.photos[0];
       selected.index = 0;

@@ -11,7 +11,7 @@ const StyleSelectorContainer = (props) => {
 
 
   //if data has been passed to component, render it here
-  if (props.productStyles && props.productStyles.length > 1) {
+  if (props.productStyles && props.productStyles.length > 0) {
     return (
       <div id={`style-panel ${props.theme}`}>
         <div id='style-tag'> STYLE {'>'}  {props.selectedStyle.name}</div>
@@ -29,9 +29,7 @@ const StyleSelectorContainer = (props) => {
       <div className={`style-selector panel ${props.theme}`}>
         {/* //maybe put 8 empty circles */}
         <h5 className='style-tag ghost'>...loading</h5>
-        <div>
-          StyleSelectorContainer
-        </div>
+
       </div>
     );
   }

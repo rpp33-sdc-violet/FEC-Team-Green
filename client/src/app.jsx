@@ -130,7 +130,7 @@ class App extends React.Component {
         </nav>
         {/* for code-splitting, fallback attribute is needed */}
         <Suspense fallback={<div>loading</div>}>
-          {this.state.product && this.state.productStyles.length > 0 ?
+          {this.state.product && this.state.productStyles ?
             <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
             <div className='overview-skeleton'>loading</div>}
           {this.state.product && this.state.productStyles.length > 0 ?
