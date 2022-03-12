@@ -23,7 +23,9 @@ html { scroll-behavior: smooth; }
   font-size: .7em;
   /* display: none; */
 }
-
+#icon-tag{
+  font-size: .4em;
+}
 /* #feature-list { */
   /* display: flex; */
   /* flex-wrap: wrap; */
