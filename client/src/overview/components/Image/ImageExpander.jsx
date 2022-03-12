@@ -13,6 +13,9 @@ var ImageExpander = (props) => {
   var leftArrow = $('.leftArrow').css('display');
 
 
+
+
+
   var onModalClick = (e) => {
 
     var container = $('#main-image-modal');
@@ -39,7 +42,7 @@ var ImageExpander = (props) => {
           let rect = e.target.getBoundingClientRect();
           let xPos = e.clientX;
           let yPos = e.clientY;
-          console.log('rect', rect);
+          // console .log('rect', rect);
           let xPercent = xPos / (container.innerWidth() / 80);
           let yPercent = yPos / ((container.innerWidth() * ratio) / 190);
           container.css('backgroundSize', 250 + '%');
@@ -69,19 +72,20 @@ var ImageExpander = (props) => {
   var onImageClick = (e) => {
     setIsClicked(!isClicked);
     var imageModal = $('#image-modal-frame');
-    var wrapperWidth = $('.overview-wrapper').width();
-    var wrapperHeight = $('.overview-wrapper').height();
+    // var wrapperWidth = $('.overview-wrapper').width();
 
-    imageModal.css('width', `${wrapperWidth + 50}px`);
-    imageModal.css('height', `${wrapperHeight + 50}px`);
+    var wrapperHeight = $('.overview-wrapper').height();
+    imageModal.css('width', `${props.width}px`);
+    imageModal.css('height', `${props.height}px`);
     var image = $('#main-image-modal');
     image.css('width', 'auto');
-    image.css('height', `${$('.overview-wrapper').height()}px`);
+    image.css('height', `${wrapperHeight - 50}px`);
     imageModal.toggle();
   };
   return (
 
-    props.selectedPhoto ? props.modal ? <div style={{backgroundImage: `url(${props.selectedPhoto.url})`}} id='main-image-modal' alt='gallery image modal' onClick={onModalClick} ></div> : <img id = 'main-image' alt='main gallery image' src={props.selectedPhoto.url ? props.selectedPhoto.url : 'https://img.icons8.com/ios-glyphs/30/000000/image.png'} onClick={onImageClick} ></img>
+    props.selectedPhoto ? props.modal ? <div style={{backgroundImage: `url(${props.selectedPhoto.url})`}} id='main-image-modal' alt='gallery image modal' onClick={onModalClick} ></div> : <img id = 'main-image' alt='main gallery image' src={props.selectedPhoto.url ? props.selectedPhoto.url : 'https://img.icons8.com/ios-glyphs/30/000000/image.png'} onClick={
+      onImageClick} ></img>
       : <div className ='image-container'>
         ...loading
       </div>
