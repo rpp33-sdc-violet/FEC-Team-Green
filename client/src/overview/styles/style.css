@@ -91,7 +91,7 @@ html { scroll-behavior: smooth; }
 .category {
   margin-top: 10px;
   text-transform: uppercase;
-  color: black;
+  /* color: black; */
   font-size: 1em;
 
   /* margin: 0; */
@@ -138,6 +138,7 @@ ul {
   background-color: #7ACC7A;
   color: black;
 }
+
 .select-product {
   display: flex;
   position: relative;
@@ -365,7 +366,8 @@ height: 535px;
   .img-thumbnail{
     box-sizing: border-box;
   /* border: 3px solid #ddd; */
-  border: 3px solid #7ACC7A;
+  /* border: 3px solid #7ACC7A; */
+  border: 3px solid black;
   border-radius: 4px;
   padding: 5px;
   height: 70px;

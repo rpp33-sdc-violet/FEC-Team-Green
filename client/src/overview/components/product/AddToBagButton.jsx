@@ -60,8 +60,10 @@ const AddToBagButton = (props) => {
     //style={document.querySelector('#ss').querySelector('option')[0]}
   };
 
+
   return (
-    <button className ={`select-bag ${props.theme}`} id='select-bag' onClick={onClick} >
+
+    <button className ={`select-bag ${props.theme} ${props.inStock ? '' : 'hidden'}`} id='select-bag' onClick={onClick} style ={{display: props.inStock ? 'block' : 'none'}} >
       Add To Bag
     </button>
   );

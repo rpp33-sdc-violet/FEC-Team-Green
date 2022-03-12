@@ -45,7 +45,10 @@ const Overview = (props) => {
 
         <SelectProductContainer selectedStyle={selectedStyle} theme={props.theme}/>
       </div>
-      <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
+      <ProductDescription
+        description={props.product.description}
+        slogan={props.product.slogan}
+        theme={props.theme}></ProductDescription>
       <ProductFeatureList features={props.product.features}></ProductFeatureList>
     </div >
 

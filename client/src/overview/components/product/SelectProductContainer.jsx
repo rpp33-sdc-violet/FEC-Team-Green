@@ -9,6 +9,7 @@ import AddToBagButton from './AddToBagButton.jsx';
 const SelectProductContainer = (props) => {
 
   const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-', 'skuId': ''});
+  const [inStock, setInStock] = useState(true);
 
   var sizes = {};
   if (props.selectedStyle) {
@@ -22,11 +23,24 @@ const SelectProductContainer = (props) => {
     //maybe this should be a high order function?
     <div className={'select-product panel '}>
       <span id='select-message'> Please select a size</span>
-      <SelectSizeDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity} theme={props.theme}/>
-      <SelectQuantityDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}theme={props.theme}/>
-
-      <AddToBagButton sizeAndQuantity={sizeAndQuantity}theme={props.theme}/>
-      <SelectOutfitButton theme={props.theme} />
+      <SelectSizeDropdown
+        sizes={sizes}
+        sizeAndQuantity={sizeAndQuantity}
+        setSizeAndQuantity={setSizeAndQuantity}
+        theme={props.theme}
+        inStock={inStock}
+        setInStock={setInStock}/>
+      <SelectQuantityDropdown
+        sizes={sizes}
+        sizeAndQuantity={sizeAndQuantity}
+        setSizeAndQuantity={setSizeAndQuantity}
+        theme={props.theme}/>
+      <AddToBagButton
+        sizeAndQuantity={sizeAndQuantity}
+        theme={props.theme}
+        inStock={inStock}/>
+      <SelectOutfitButton
+        theme={props.theme} />
     </div>
 
   );
