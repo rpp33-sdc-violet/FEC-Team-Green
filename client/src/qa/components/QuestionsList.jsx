@@ -12,7 +12,7 @@ const QuestionsList = (props) => {
   
   // render: maps to IndividualQuestion
   return (
-    <div className="questions-list" role="questions-list">
+    <div className="questions-list">
       {questions}
     </div>
   );

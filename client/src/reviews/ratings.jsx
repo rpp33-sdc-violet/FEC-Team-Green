@@ -16,8 +16,10 @@ const Ratings = (props) => {
   return (
     <div>
       <Summary>
-        <span>{averageRounded}</span>
-        <StarRating rating = {averageRounded}/>
+        <Average>{averageRounded}</Average>
+        <StarWrapper>
+          <StarRating rating = {averageRounded}/>
+        </StarWrapper>
       </Summary>
       <Rec>{recAvg}% of reviews recommend this product</Rec>
       <RatingBar stars = {5} percent = {props.ratingBreakdown[4]} filters = {props.filters}/>
@@ -38,9 +40,24 @@ export default Ratings;
 
 
 const Summary = styled.div`
- font-size: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 100px 100px;
 `;
 
 const Rec = styled.div`
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #404040;
+`;
 
+const Average = styled.span`
+  font-size: 50px;
+  font-weight: bold;
+  color: #404040;
+`;
+
+const StarWrapper = styled.span`
+  padding-top: 7px
 `;
