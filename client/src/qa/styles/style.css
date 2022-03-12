@@ -35,10 +35,10 @@
   #question-search-dark-theme {
     width: 100%;
     padding: 10px 35px 10px 15px;
-    border: 1px solid #eee;
+    border: 1px solid #7ACC7A;
     outline: none;
     background: #121212;
-    color: #eee;
+    color: #7ACC7A;
   }
   #question-search::placeholder {
     font-weight: bold;
@@ -129,7 +129,7 @@
       padding-top: 5px;
       padding-bottom: 5px;
       margin-left: 30px;
-      color: #eee;
+      color: #7ACC7A;
     }
 
 .QA-buttons {
@@ -146,8 +146,8 @@
   #moreQuestions-button-dark-theme, #addQuestion-button-dark-theme {
     margin-right: 20px;
     background: #121212;
-    border: 1px solid #eee;
+    border: 1px solid #7ACC7A;
     font-weight: bold;
-    color: #eee;
+    color: #7ACC7A;
   }
 
