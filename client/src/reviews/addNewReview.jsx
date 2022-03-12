@@ -311,7 +311,7 @@ class AddNewReview extends React.Component {
 }
 
 const NewReviewWrapper = styled.div`
-  z-index: 20;
+  z-index: 12;
   color: #404040;
   font-size: 16px;
   font-weight: normal;

@@ -89,7 +89,7 @@ class IndividualReview extends React.Component {
         <PhotoDisplay>
           {review.photos.map((photo)=> {
             return (
-              <ReviewPhoto url={photo.url} key = {photo.id}/>
+              <ReviewPhoto url={photo.url} key = {photo.id} theme={this.props.theme}/>
             );
           })}
         </PhotoDisplay>

@@ -237,7 +237,7 @@ class ReviewList extends React.Component {
                 <div>
                   {currentReviews.map((review) => {
                     return (
-                      <IndividualReview review={review} key={review.review_id} />
+                      <IndividualReview review={review} key={review.review_id} theme={this.props.theme} />
                     );
                   })}
                 </div>
