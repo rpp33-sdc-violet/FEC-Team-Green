@@ -36,7 +36,9 @@ var ImageContainer = (props) => {
   useEffect(()=> {
 
     if ( props.selectedStyle.photos && (selectedPhoto === 'loading' || currentStyleId !== props.selectedStyle['style_id'] )) {
+      console.log('selected', selectedPhoto, selectedPhoto.index);
       var selected = props.selectedStyle.photos[selectedPhoto.index ? selectedPhoto.index : 0];
+      selected ? selected.index = 0 : selected = props.selectedStyle.photos[0];
       selected.index = 0;
       setSelectedPhoto(
         selected);
@@ -59,7 +61,7 @@ var ImageContainer = (props) => {
   // I would like to eventually rename image-container to image-gallery and image-block to image-container
   return (
     <div className ='image-container'>
-      <div id='image-modal-frame' style={{width: `${width}px`}}>
+      <div id='image-modal-frame' style={{width: `${width}px`}, props.theme === 'dark-theme' ? {background: '#121212' } : {background: 'white' } }>
         <ImageNavigator
           setSelectedPhoto={setSelectedPhoto}
           selectedPhoto={selectedPhoto}
