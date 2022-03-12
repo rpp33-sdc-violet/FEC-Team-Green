@@ -13,25 +13,25 @@ const AddAnswerDashboard = (props) => {
   const [canUpload, setCanUpload] = useState(true);
   const [photoErrorMsg, setPhotoErrorMsg] = useState('');
   const [postErrorMsg, setPostErrorMsg] = useState('');
-  
+
   useEffect(() => {
     if (photos.length >= 5) {
       setCanUpload(false);
     }
   });
-  
+
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
-    
+
     // to create readable "multipart/form-data" streams
     let data = new FormData();
     data.append('photo', file);
     // console.log('SEE FORM DATA', data.get('photo'));
-    
+
     axios.post('/photos', data, {
       headers: {
-        'content-type': 'multipart/form-data' 
+        'content-type': 'multipart/form-data'
       }
     })
       .then((response) => {
@@ -85,7 +85,7 @@ const AddAnswerDashboard = (props) => {
       }
     }
 
-    // if there are errors, create errorText and update errorMsg 
+    // if there are errors, create errorText and update errorMsg
     if (errors.length > 0) {
       let errorText = '';
 
@@ -107,7 +107,7 @@ const AddAnswerDashboard = (props) => {
 
       setErrorMsg(errorText);
     } else {
-      // submission form has been validated succesfully! 
+      // submission form has been validated succesfully!
       const bodyParams = {
         body: answer,
         name: nickname,

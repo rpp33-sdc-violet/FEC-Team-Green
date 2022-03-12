@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import reviewSample from './exampleData.js';
 import IndividualReview from './individualReview.jsx';
 import AddNewReview from './addNewReview.jsx';
 import Ratings from './ratings.jsx';
@@ -166,7 +165,8 @@ class ReviewList extends React.Component {
     this.setState({displayReviews: tempReviews});
   }
 
-  removeAllFilters() {
+  removeAllFilters(event) {
+    event.preventDefault();
     this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
   }
 
@@ -189,32 +189,31 @@ class ReviewList extends React.Component {
     let currentFilters = this.state.filters;
     //console.log('currentFitlers', currentFilters);
     if (this.state.filters.length >= 1) {
-      displayFilters = <div>Current Filters:
+      displayFilters = <Filter>Current Filters:
         {currentFilters.map((filter) => {
           return (
-            ` ${filter}`
+            ` ${filter} `
           );
         })}
-         stars</div>;
-      removeFilter = <a href='#'onClick = {() => {
-        this.removeAllFilters();
-      }}>Remove all filters</a>;
+         stars</Filter>;
+      removeFilter = <a href='#'onClick = {this.removeAllFilters}>Remove all filters</a>;
     }
 
     //if no reviews submitted, list collapse, 'submit new review' button will appear near the top
     if (this.state.reviews.length === 0) {
       return (
-        <div>
-          <h3>Review List</h3>
+        <NoReview>
+          <div>RATINGS & REVIEWS</div>
+          <br></br>
           <AddNewReview productId = {this.state.productId}/>
-        </div>
+        </NoReview>
       );
     } else {
       return (
-        <div>
+        <ReviewsContainer onClick={this.props.interactions}>
           <RatingandReviews>
             <RatingWrapper>
-              <h3>RATINGS and REVIEWS</h3>
+              <RatingHeader>RATINGS & REVIEWS</RatingHeader>
               {displayFilters}
               {removeFilter}
               <Ratings metaData = {this.state.metaData} ratingBreakdown = {this.state.ratingBreakdown} filters = {this.filterReviews} recAvg = {this.state.recAvg} charc = {this.state.chrac}/>
@@ -223,13 +222,14 @@ class ReviewList extends React.Component {
 
             <Wrapper>
               <ReviewWrapper>
-                <div>
-                  <select onChange = {() => { this.sortReviews(event.target.value); }}>
-                    <option value="relevane">relevant</option>
+                <SelectWrapper>
+                  {this.state.displayReviews.length} reviews, sorted by
+                  <Select onChange = {() => { this.sortReviews(event.target.value); }}>
+                    <option value="relevane">relevance</option>
                     <option value="newest">newest</option>
                     <option value="helpful">helpful</option>
-                  </select>
-                </div>
+                  </Select>
+                </SelectWrapper>
                 <div>
                   {currentReviews.map((review) => {
                     return (
@@ -246,18 +246,32 @@ class ReviewList extends React.Component {
               </Button>
             </Wrapper>
           </RatingandReviews>
-        </div>
+        </ReviewsContainer>
       );
     }
 
   }
 }
+const ReviewsContainer = styled.div`
+`;
+
+const NoReview = styled.div`
+  display: grid;
+  font-size: 16px;
+  font-weight: 100;
+  max-height: 540px;
+  margin: 80px 60px 80px;
+  color: #404040;
+  position: relative;
+  z-index: 21;
+`;
 
 const RatingandReviews = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px auto;
   justifyContent: 'center';
   margin: 40px 60px 40px;
-  alightItems: 'center'
+  alightItems: 'center';
 `;
 
 const RatingWrapper = styled.div`
@@ -284,8 +298,8 @@ const Button = styled.div`
 
 const BWrapper = styled.div`
   display: grid;
-  grid-template-columns: 250px 180px;
   margin-top: 10px;
+  grid-template-columns: 180px 250px;
 `;
 
 const MoreReview = styled.button`
@@ -293,8 +307,38 @@ const MoreReview = styled.button`
   border: 1px solid #404040;
   font-weight: bold;
   margin-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `;
-//for commit
+
+const RatingHeader = styled.div`
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+`;
+
+const Filter = styled.div`
+  font-size: 16px;
+  color: #404040;
+  margin-bottom: 10px;
+`;
+
+const SelectWrapper = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  color: #404040;
+  padding-top: 55px;
+`;
+
+const Select = styled.select`
+  border: none;
+  text-decoration: underline;
+  font-size: 18px;
+  color: #404040;
+  font-weight: bold;
+`;
 
 export default ReviewList;
 

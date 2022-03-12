@@ -23,7 +23,6 @@ const ProductBreakdown = (props) => {
 
   return (
     <div>
-      <h3>Product Breakdown</h3>
       {characteristics.map((characteristic) => {
         return (
           <CharacBar key ={characteristic.id} name = {characteristic.name} value = {characteristic.value} info = {info[characteristic.name]}/>
