@@ -114,6 +114,7 @@ class AddNewReview extends React.Component {
   }
 
   render() {
+    // *****TRIAL: DARK MODE***** 
     let addReviewButton = null;
     if (this.props.theme === 'light-theme') {
       addReviewButton = <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >;
@@ -165,7 +166,7 @@ class AddNewReview extends React.Component {
 
     return (
       <div>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+        <Modal show={this.state.show} handleClose={this.hideModal} theme={this.props.theme}>
           <form>
             <h1>Write Your Review </h1>
             <h3>About the {this.props.product_name}</h3>
