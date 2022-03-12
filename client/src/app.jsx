@@ -4,7 +4,7 @@ import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
 
-// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info. 
+// using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info.
 const Overview = React.lazy(() => import('./overview/overview.jsx'));
 const QA = React.lazy(() => import('./qa/QA.jsx'));
 const ReviewList = React.lazy(() => import('./reviews/reviewList.jsx'));
@@ -24,6 +24,7 @@ import withParamsAndNavigate from './utils/withParamsAndNavigate.js';
 import withInteractions from './utils/withInteractions.jsx';
 // CHANGE REQUEST - container component with HOC and QA widget
 const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
+const ReviewsWithIntercations = withInteractions(ReviewList, 'Reviews');
 const OverviewWithInteractions = withInteractions(Overview, 'Overview');
 
 class App extends React.Component {
@@ -129,7 +130,10 @@ class App extends React.Component {
           {this.state.product && this.state.productStyles.length > 1 ?
             <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme} /> :
             <div className="QA-container">loading</div>}
-          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme}></ReviewList>
+          {this.state.product_id && this.state.product.name ?
+            <ReviewsWithIntercations product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme}></ReviewsWithIntercations> :
+            <div className='reviews'>loading reviews</div>
+          }
         </Suspense>
       </div>
     );
