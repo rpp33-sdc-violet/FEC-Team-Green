@@ -8,7 +8,7 @@
     "buttons"; */
   max-height: 540px;
   margin: 80px 60px 80px;
-  color: #404040;
+  /* color: #404040; */
   z-index: 11;
   position: relative;
 }
@@ -26,15 +26,23 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
-  #question-search {
+  #question-search-light-theme {
     width: 100%;
     padding: 10px 35px 10px 15px;
     border: 1px solid #404040;
     outline: none;
   }
+  #question-search-dark-theme {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid #eee;
+    outline: none;
+    background: #121212;
+    color: #eee;
+  }
   #question-search::placeholder {
     font-weight: bold;
-    color: #404040;
+    /* color: #404040; */
   }
   #QA-search-icon {
     background: transparent;
@@ -43,6 +51,7 @@
     margin-left: -33px;
     margin-top: 18px;
     transform: scale(1.2);
+    color: #39FF14;
   }
 
 .questions-list {
@@ -105,7 +114,7 @@
           height: 550px;
            max-height: 100%;
         }
-    .moreAnswers-button {
+    #moreAnswers-button-light-theme {
       background: none;
       border: none;
       font-weight: bold;
@@ -113,16 +122,32 @@
       padding-bottom: 5px;
       margin-left: 30px;
     }
+    #moreAnswers-button-dark-theme {
+      background: none;
+      border: none;
+      font-weight: bold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: 30px;
+      color: #eee;
+    }
 
 .QA-buttons {
   display: grid;
   grid-template-columns: 250px 180px;
   margin-top: 10px;
 }
-  #moreQuestions-button, #addQuestion-button {
+  #moreQuestions-button-light-theme, #addQuestion-button-light-theme {
     margin-right: 20px;
     background: none;
     border: 1px solid #404040;
     font-weight: bold;
+  }
+  #moreQuestions-button-dark-theme, #addQuestion-button-dark-theme {
+    margin-right: 20px;
+    background: #121212;
+    border: 1px solid #eee;
+    font-weight: bold;
+    color: #eee;
   }
 

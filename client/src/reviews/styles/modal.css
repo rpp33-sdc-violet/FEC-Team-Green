@@ -1,0 +1,57 @@
+.modal-light-theme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-dark-theme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(150, 150, 150, 0.6);
+}
+
+.modal-main-light-theme {
+  position:fixed;
+  background: #fff;
+  color: #222;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  overflow: scroll;
+}
+.modal-main-dark-theme {
+  position:fixed;
+  background: #121212;
+  color: #eee;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  overflow: scroll;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-button-close {
+  padding: 10px;
+  margin: 8px;
+  float: right;
+}
+
+

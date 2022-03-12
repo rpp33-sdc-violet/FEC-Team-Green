@@ -107,11 +107,11 @@ const IndividualQuestion = (props) => {
     <div className="question">
       <div className="question-row">
         <p className="question-text">Q:&nbsp;&nbsp;{props.question.question_body}</p>
-        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} /></aside>
+        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} theme={props.theme} /></aside>
       </div>
       <AnswersList answers={answers.slice(0, countA)} />
       <div className="moreAnswers-option">
-        {moreAnsButtonVisible ? <button className="moreAnswers-button" onClick={handleMoreAnsClick}>{moreAnsButtonText}</button> : null}
+        {moreAnsButtonVisible ? <button id={`moreAnswers-button-${props.theme}`} onClick={handleMoreAnsClick}>{moreAnsButtonText}</button> : null}
       </div>
     </div>
   );

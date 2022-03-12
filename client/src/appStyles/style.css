@@ -6,6 +6,17 @@
   font-family: 'proxima-nova', sans-serif;
 
 }
+
+.light-theme {
+  background: #fff;
+  color: #222;
+}
+
+.dark-theme {
+  background: #121212;
+  color: #eee;
+}
+
 #app {
   margin-left: auto;
   margin-right: auto;

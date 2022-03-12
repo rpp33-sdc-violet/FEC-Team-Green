@@ -21,7 +21,7 @@ const Search = (props) => {
 
   return (
     <form role="search" className="search">
-      <input type="search" id="question-search" name="q"
+      <input type="search" id={`question-search-${props.theme}`} name="q"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         aria-label="Search questions" onChange={handleChange} onKeyDown={handleKeyDown}>
       </input>
