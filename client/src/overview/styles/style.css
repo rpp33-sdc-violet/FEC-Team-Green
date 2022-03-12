@@ -21,7 +21,7 @@ html { scroll-behavior: smooth; }
   top: 48px;
   text-decoration: underline;
   font-size: .7em;
-  /* display: none; */
+  display: none;
 }
 #icon-tag{
   font-size: .4em;
