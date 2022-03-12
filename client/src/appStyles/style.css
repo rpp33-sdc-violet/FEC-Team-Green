@@ -14,7 +14,8 @@
 
 .dark-theme {
   background: #121212;
-  color: #eee;
+  /* color: #eee; */
+  color: #7ACC7A
 }
 
 #app {
