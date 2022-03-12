@@ -17,8 +17,8 @@ html { scroll-behavior: smooth; }
 }
 #read-reviews{
   position: absolute;
-  right: 123px;
-  top: 61px;
+  right: 441px;
+  top: 48px;
   text-decoration: underline;
   font-size: .7em;
   /* display: none; */
