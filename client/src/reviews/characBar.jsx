@@ -33,7 +33,7 @@ const CBar = styled.div`
 
 const Name = styled.span`
   font-size: 16px;
-  color: #404040;
+  
 `;
 const Label = styled.div`
   width: 0;
@@ -68,7 +68,7 @@ const Values = styled.div`
   display: grid;
   width: 100%;
   font-size: 15px;
-  color: #404040;
+  
 `;
 
 

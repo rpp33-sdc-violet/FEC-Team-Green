@@ -89,7 +89,7 @@ class IndividualReview extends React.Component {
         <PhotoDisplay>
           {review.photos.map((photo)=> {
             return (
-              <ReviewPhoto url={photo.url} key = {photo.id}/>
+              <ReviewPhoto url={photo.url} key = {photo.id} theme={this.props.theme}/>
             );
           })}
         </PhotoDisplay>
@@ -118,7 +118,6 @@ const Review = styled.div`
   display: grid;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #404040;
   border-bottom: 1.2px solid #404040;
   z-index: 15;
 `;

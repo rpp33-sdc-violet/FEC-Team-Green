@@ -311,7 +311,7 @@ class AddNewReview extends React.Component {
 }
 
 const NewReviewWrapper = styled.div`
-  z-index: 20;
+  z-index: 12;
   color: #404040;
   font-size: 16px;
   font-weight: normal;
@@ -379,10 +379,10 @@ const AddReview = styled.button`
 
 const AddReviewDark = styled.button`
   background: #121212;
-  border: 1px solid #eee;
+  border: 1px solid #7ACC7A;
   font-weight: bold;
   margin-right: 20px;
-  color: #eee;
+  color: #7ACC7A;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 15px;
