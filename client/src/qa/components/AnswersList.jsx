@@ -6,7 +6,8 @@ const AnswersList = (props) => {
   const answers = props.answers.map((answer) =>
     <IndividualAnswer
       key={answer.answer_id}
-      answer={answer} />
+      answer={answer}
+      theme={props.theme} />
   );
 
   // render: maps to IndividualAnswer

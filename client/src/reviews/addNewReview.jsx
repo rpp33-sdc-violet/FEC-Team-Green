@@ -156,6 +156,14 @@ class AddNewReview extends React.Component {
   }
 
   render() {
+    // *****TRIAL: DARK MODE*****
+    let addReviewButton = null;
+    if (this.props.theme === 'light-theme') {
+      addReviewButton = <AddReview onClick = {this.showModal}>ADD A REVIEW+</AddReview >;
+    }
+    if (this.props.theme === 'dark-theme') {
+      addReviewButton = <AddReviewDark onClick = {this.showModal}>ADD A REVIEW+</AddReviewDark >;
+    }
 
     let starText = ['1 star - "Poor"', '2 stars - "Fair', ' 3 stars - "Average"', '4 stars - "Good"', '5 stars - "Great"'];
 
@@ -200,7 +208,7 @@ class AddNewReview extends React.Component {
 
     return (
       <NewReviewWrapper>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+        <Modal show={this.state.show} handleClose={this.hideModal} theme={this.props.theme}>
           <form>
             <h1>Write Your Review </h1>
             <h3>About the {this.props.product_name}</h3>
@@ -295,7 +303,7 @@ class AddNewReview extends React.Component {
 
         </Modal>
 
-        <AddReview onClick = {this.showModal}>ADD A REVIEW +</AddReview >
+        {addReviewButton}
 
       </NewReviewWrapper>
     );
@@ -303,7 +311,7 @@ class AddNewReview extends React.Component {
 }
 
 const NewReviewWrapper = styled.div`
-  z-index: 20;
+  z-index: 12;
   color: #404040;
   font-size: 16px;
   font-weight: normal;
@@ -368,6 +376,18 @@ const AddReview = styled.button`
   padding-left: 15px;
   padding-right: 15px
 `;
+
+const AddReviewDark = styled.button`
+  background: #121212;
+  border: 1px solid #7ACC7A;
+  font-weight: bold;
+  margin-right: 20px;
+  color: #7ACC7A;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px
+`; 
 
 
 export default AddNewReview;

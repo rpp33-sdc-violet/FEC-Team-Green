@@ -61,7 +61,7 @@ const IndividualAnswer = (props) => {
   return (
     <div className="answer">
       <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>
-      <AnswerPhotosList photos={props.answer.photos} answerer_name={props.answer.answerer_name} />
+      <AnswerPhotosList photos={props.answer.photos} answerer_name={props.answer.answerer_name} theme={props.theme} />
       <footer className="answerData-helpfulA-reportLink">by {props.answer.answerer_name}, {formatDate(props.answer.date)}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful? <a href="/" onClick={handleHelpfulClick}>Yes</a> ({helpfulCountA})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a></footer>
     </div>
   );

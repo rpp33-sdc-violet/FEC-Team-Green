@@ -7,7 +7,8 @@ const QuestionsList = (props) => {
     <IndividualQuestion
       key={question.question_id}
       question={question}
-      product_name={props.product_name}/>
+      product_name={props.product_name}
+      theme={props.theme}/>
   );
   
   // render: maps to IndividualQuestion
