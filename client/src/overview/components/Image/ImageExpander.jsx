@@ -41,10 +41,13 @@ var ImageExpander = (props) => {
         $('#main-image-modal').mousemove(function(e) {
           let rect = e.target.getBoundingClientRect();
           let xPos = e.clientX;
-          let yPos = e.clientY;
-          // console .log('rect', rect);
+          let yPos = e.clientY - 70;
+          console .log('xPos', xPos);
+          console .log('yPos', yPos);
           let xPercent = xPos / (container.innerWidth() / 80);
           let yPercent = yPos / ((container.innerWidth() * ratio) / 190);
+          console .log('yPos', yPercent);
+
           container.css('backgroundSize', 250 + '%');
           yPercent > 105 ? yPercent = 105 : '';
           $('#main-image-modal').css('backgroundPosition', xPercent + '% ' + yPercent + '%');
