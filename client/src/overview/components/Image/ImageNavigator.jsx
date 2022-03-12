@@ -95,12 +95,12 @@ var ImageNavigator = function (props) {
           var nextPhoto = props.selectedPhoto.index - 1;
           props.setSelectedPhoto(props.photos[nextPhoto]);
 
-          while (isScrolledIntoView() > 0) {
-            startScroll('down');
-          } stopScroll();
-          while (isScrolledIntoView() < 0) {
-            startScroll('up');
-          } stopScroll();
+          // while (isScrolledIntoView() > 0) {
+          //   startScroll('down');
+          // } stopScroll();
+          // while (isScrolledIntoView() < 0) {
+          //   startScroll('up');
+          // } stopScroll();
 
         // console.log(isScrolledIntoView());
         }}></MdOutlineKeyboardArrowLeft>

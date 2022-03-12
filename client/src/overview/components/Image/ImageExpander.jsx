@@ -9,8 +9,8 @@ var ImageExpander = (props) => {
   //this component displays the main gallery image
   var scaled = false;
   //set the arrow status here so that it carries over when I zoom in or out.
-  var rightArrow = $('.rightArrow').css('display');
-  var leftArrow = $('.leftArrow').css('display');
+  var rightArrow = $('#rightArrow').css('display');
+  var leftArrow = $('#leftArrow').css('display');
 
 
 
@@ -19,12 +19,12 @@ var ImageExpander = (props) => {
   var onModalClick = (e) => {
 
     var container = $('#main-image-modal');
-    console.log('modal', e);
+    // console.log('modal', e);
 
     if (!scaled) {
       //-make arrows disappear when zoomed in then rest arrow status
-      rightArrow = $('.rightArrow').css('display');
-      leftArrow = $('.leftArrow').css('display');
+      rightArrow = $('#rightArrow').css('display');
+      leftArrow = $('#leftArrow').css('display');
       $('#rightExpanded').css('display', 'none');
       $('#leftExpanded').css('display', 'none');
       $('#miniCarousel').hide();
