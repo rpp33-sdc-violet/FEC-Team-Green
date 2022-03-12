@@ -167,7 +167,7 @@ class ReviewList extends React.Component {
 
   removeAllFilters(event) {
     event.preventDefault();
-    this.setState({filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false]} );
+    this.setState({ filters: [], displayReviews: this.state.reviews, filtersOn: [false, false, false, false, false] } );
   }
 
 
@@ -179,7 +179,7 @@ class ReviewList extends React.Component {
       currentReviews = this.state.displayReviews.slice(0, this.state.displayCount);
     }
 
-    // *****TRIAL: DARK MODE***** 
+    // *****TRIAL: DARK MODE*****
     let moreReviewButton = null;
     if (this.state.buttonVisible && this.state.displayReviews.length > 2 && this.props.theme === 'light-theme') {
       moreReviewButton = <MoreReview onClick={this.loadReviews}>MORE REVIEWS</MoreReview>;
@@ -344,7 +344,7 @@ const Select = styled.select`
   font-weight: bold;
 `;
 
-// *****TRIAL: DARK MODE***** 
+// *****TRIAL: DARK MODE*****
 const MoreReviewDark = styled.button`
   background: #121212;
   border: 1px solid #eee;

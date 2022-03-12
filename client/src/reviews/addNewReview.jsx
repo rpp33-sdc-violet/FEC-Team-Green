@@ -156,7 +156,7 @@ class AddNewReview extends React.Component {
   }
 
   render() {
-    // *****TRIAL: DARK MODE***** 
+    // *****TRIAL: DARK MODE*****
     let addReviewButton = null;
     if (this.props.theme === 'light-theme') {
       addReviewButton = <AddReview onClick = {this.showModal}>ADD A REVIEW+</AddReview >;
@@ -303,7 +303,7 @@ class AddNewReview extends React.Component {
 
         </Modal>
 
-        {addReviewButton} 
+        {addReviewButton}
 
       </NewReviewWrapper>
     );
