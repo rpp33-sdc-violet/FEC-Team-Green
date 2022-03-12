@@ -125,7 +125,7 @@ class App extends React.Component {
         {/* for code-splitting, fallback attribute is needed */}
         <Suspense fallback={<div>loading</div>}>
           {this.state.product && this.state.productStyles.length > 1 ?
-            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
+            <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}theme={this.state.theme}></OverviewWithInteractions> :
             <div className='overview-skeleton'>loading</div>}
           {this.state.product && this.state.productStyles.length > 1 ?
             <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme} /> :
