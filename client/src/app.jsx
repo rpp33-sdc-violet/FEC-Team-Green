@@ -114,7 +114,7 @@ class App extends React.Component {
     return (
       <div className={this.state.theme}>
         <nav id={'navbar'}>
-          <p className='logo'>Logo</p>
+          <p className='logo'>Mint Condition</p>
           <form>
             <input value={this.state.search} onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
           </form>
