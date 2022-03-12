@@ -114,6 +114,13 @@ class AddNewReview extends React.Component {
   }
 
   render() {
+    let addReviewButton = null;
+    if (this.props.theme === 'light-theme') {
+      addReviewButton = <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >;
+    }
+    if (this.props.theme === 'dark-theme') {
+      addReviewButton = <AddReviewDark onClick = {this.showModal}>ADD A REVIEW</AddReviewDark >;
+    }
 
     let starText = ['1 star - "Poor"', '2 stars - "Fair', ' 3 stars - "Average"', '4 stars - "Good"', '5 stars - "Great"'];
 
@@ -225,7 +232,7 @@ class AddNewReview extends React.Component {
 
         </Modal>
 
-        <AddReview onClick = {this.showModal}>ADD A REVIEW</AddReview >
+        {addReviewButton} 
 
       </div>
     );
@@ -239,6 +246,14 @@ const AddReview = styled.button`
   font-weight: bold;
   margin-right: 20px;
 `;
+
+const AddReviewDark = styled.button`
+  background: #121212;
+  border: 1px solid #eee;
+  font-weight: bold;
+  margin-right: 20px;
+  color: #eee;
+`; 
 
 
 export default AddNewReview;

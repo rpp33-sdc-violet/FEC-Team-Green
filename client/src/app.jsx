@@ -129,7 +129,7 @@ class App extends React.Component {
           {this.state.product && this.state.productStyles.length > 1 ?
             <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme} /> :
             <div className="QA-container">loading</div>}
-          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme}></ReviewList>
         </Suspense>
       </div>
     );
