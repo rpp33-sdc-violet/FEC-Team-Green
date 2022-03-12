@@ -383,6 +383,10 @@ const AddReviewDark = styled.button`
   font-weight: bold;
   margin-right: 20px;
   color: #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px
 `; 
 
 

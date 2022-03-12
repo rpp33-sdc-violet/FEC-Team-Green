@@ -351,6 +351,8 @@ const MoreReviewDark = styled.button`
   font-weight: bold;
   margin-right: 20px;
   color: #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `;
 //for commit
 
