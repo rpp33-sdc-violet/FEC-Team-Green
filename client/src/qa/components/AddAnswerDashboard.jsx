@@ -129,7 +129,7 @@ const AddAnswerDashboard = (props) => {
 
   return (
     <>
-      <Modal show={show} handleClose={hideModal}>
+      <Modal show={show} handleClose={hideModal} theme={props.theme}>
         <h1>Submit Your Answer</h1>
         <h2>{props.product_name}: <span className="modal-subtitle">{props.question_body}</span></h2>
         {errorMsg === '' || <p className="modal-error-msg">*You must enter the following: {errorMsg}</p>}
