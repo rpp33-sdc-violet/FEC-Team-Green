@@ -12,7 +12,7 @@ const SelectOutfitButton = (props) => {
 
 
   return (
-    <button className ='select-outfit'>
+    <button className ={`select-outfit ${props.theme}`}>
       <AiOutlineStar> </AiOutlineStar>
     </button>
   );

@@ -40,7 +40,7 @@ const AddToBagButton = (props) => {
   };
 
   return (
-    <button className ='select-bag' id='select-bag' onClick={onClick}>
+    <button className ={`select-bag ${props.theme}`} id='select-bag' onClick={onClick}>
       Add To Bag
     </button>
   );
