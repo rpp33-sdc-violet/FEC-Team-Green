@@ -20,7 +20,7 @@ const SelectSizeDropdown = (props) => {
   //display OUT OF STOCK if no stock available
   // console.log('props skuID', props);
   options.length > 0 ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
-
+  options[0].props.children === 'OUT OF STOCK' ? props.setInStock(false) : props.setInStock(true);
   return (
 
     <select className ={`select-size ${props.theme}`}id='ss'

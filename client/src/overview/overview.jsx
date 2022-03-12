@@ -27,7 +27,7 @@ const Overview = (props) => {
   //
   useEffect(() => {
   //set up style as first style in data or as an empty style object
-    setSelectedStyle((props.productStyles !== undefined ? props.productStyles[0] : {skus: {}, size: 0}) );
+    setSelectedStyle((props.productStyles !== undefined && props.productStyles.length > 0 ? props.productStyles[0] : {skus: {}, size: 0}) );
 
   }, [props.productStyles]);
 
@@ -45,7 +45,10 @@ const Overview = (props) => {
 
         <SelectProductContainer selectedStyle={selectedStyle} theme={props.theme}/>
       </div>
-      <ProductDescription description={props.product.description} slogan={props.product.slogan}></ProductDescription>
+      <ProductDescription
+        description={props.product.description}
+        slogan={props.product.slogan}
+        theme={props.theme}></ProductDescription>
       <ProductFeatureList features={props.product.features}></ProductFeatureList>
     </div >
 
