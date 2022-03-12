@@ -81,12 +81,12 @@ const QA = (props) => {
     <div onClick={props.interactions} className="QA-container">
       <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
       {/* <Suspense fallback={<h2>Loading...</h2>}> */}
-        <Search userSearch={userSearch} theme={props.theme} />
-        <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} theme={props.theme} />
-        <div className="QA-buttons">
-          {moreQButtonVisible ? <button id={`moreQuestions-button-${props.theme}`} onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-          <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} theme={props.theme} />
-        </div>
+      <Search userSearch={userSearch} theme={props.theme} />
+      <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} theme={props.theme} />
+      <div className="QA-buttons">
+        {moreQButtonVisible ? <button id={`moreQuestions-button-${props.theme}`} onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} theme={props.theme} />
+      </div>
       {/* </Suspense> */}
     </div>
   );
