@@ -125,6 +125,7 @@ html { scroll-behavior: smooth; }
   float: left;
   margin: 5px;
 }
+
 ul {
   list-style-type: none;
   padding-inline-start: 5px;
@@ -151,10 +152,11 @@ ul {
   margin: 0;
   display: inline;
   position: absolute;
-  top: -12px;
-  left: 10px;
+  top: -16px;
+  left: 14px;
   display: none;
-  color: red
+  color: red;
+  font-size: .8em;
 }
 .select-bag {
   height: 50px;
