@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import $ from 'jquery';
 
 var scroll = function() {
   $('#answer-letter')[0].scrollIntoView();

@@ -33,7 +33,11 @@
   border-bottom: 2px solid #7ACC7A;
   /* border: 0; */
 }
-
+#search-message{
+  color: #787878;
+ margin-right: 10px;
+ padding-right: 10px;
+}
 #navbar .logo {
   display: inline-block;
   color: #39FF14;;

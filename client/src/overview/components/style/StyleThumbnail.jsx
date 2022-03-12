@@ -11,23 +11,21 @@ const StyleThumbnail = (props) => {
   var onClick = () => {
     props.setSelectedStyle(props.style);
   };
-  var showText = () => {
-    $(`#${props.id}.hoverText`).show();
-  };
-  var hideText = () => {
-    $(`#${props.id}.hoverText`).hide();
-  };
+
 
   return (
+
     <li>
-      <img className ='style-thumbnail' id={`id${props.id}`} src={props.style.photos[0].thumbnail_url} onClick={onClick} title={props.style.name} alt={`style thumbnail ${props.style.name}`}>
+      <img className ='style-thumbnail' id={`id${props.id}`} src={ props.style.photos[0].thumbnail_url ? props.style.photos[0].thumbnail_url : 'https://img.icons8.com/ios-glyphs/30/000000/image.png'} onClick={onClick} title={props.style.name} alt={`style thumbnail ${props.style.name}` } onError={({currentTarget}) => {
+        currentTarget.onerror = null; currentTarget.src = 'https://img.icons8.com/ios-glyphs/30/000000/image.png';
+      }}>
       </img>
 
     </li>
 
   );
 };
-
+// 'https://img.icons8.com/ios-glyphs/30/000000/image.png' className ='style-thumbnail'
 export default StyleThumbnail;
 
 //displays thespecific thumbnail image
