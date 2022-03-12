@@ -49,11 +49,10 @@ html { scroll-behavior: smooth; }
 }
 #description, #slogan{
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 60px;
   overflow-wrap: normal;
   width: 70%;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 30px;
 }
 #slogan {
   font-weight: bold;
@@ -77,6 +76,7 @@ html { scroll-behavior: smooth; }
 .price{
   margin-top: 10px;
   margin-bottom: 1px;
+
 }
 .price-sale{
   color: red;
@@ -91,7 +91,8 @@ html { scroll-behavior: smooth; }
 .category {
   margin-top: 10px;
   text-transform: uppercase;
-  color: gray;
+  color: black;
+  font-size: 1em;
 
   /* margin: 0; */
 }
@@ -169,11 +170,10 @@ ul {
 }
 #main-image {
   width: 100%;
-  max-height: 600px;
   height: auto;
   max-height: 700px;
-  max-width: 97%;
   cursor: pointer;
+  object-fit: contain
 }
 
 #main-image-modal {
@@ -215,16 +215,20 @@ ul {
   z-index: 1;
   position: relative;
 }
-.rightArrow, .leftArrow {
+#rightArrow, #leftArrow {
   height: 60px;
   width: auto;
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
   position: absolute;
+  top: 50%;
 }
-.rightArrow {
-  right: 10px;
+#rightArrow {
+  right: 60px;
+  opacity: 1;
+
 }
-.leftArrow {
+
+#leftArrow {
   left: 70px;
 }
 .image-block {
@@ -232,8 +236,16 @@ ul {
   display: flex;
   justify-content: center;
   align-items:center;
+  /* height: 700px;
+  width: 825px; */
+  min-width:  300px;
+  object-fit: contain;
+
+
+
 }
 #image-modal-frame {
+  height: 800px;
   box-sizing: content-box;
   display: none;
   width: 1200px;
@@ -244,13 +256,13 @@ ul {
   /* box-shadow: rgb(0 0 0 / 25%) 0px 6px 8px 2px; */
   /* border: 1px solid rgb(148, 148, 148); */
   padding-left: 54px;
-  padding-right: 54px;
+  padding-top: 30px;
   z-index: 4;
   top: -20px;
   left: 1px;
   max-width: 1120px;
   max-height: 900px;
-  height: 800px;
+
 
 }
 #expander-btn  {
@@ -350,6 +362,25 @@ height: 535px;
 }
 .upArrow {
 opacity: 0}
+
+#upArrowMainGallery, #downArrowMainGallery  {
+  height: 7px;
+  width: auto;
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+  justify-content: left;
+  padding: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
+  width: 15px;
+
+}
+ .invisible {
+  opacity: 0;
+}
+.visible{
+  opacity: 1;
+}
+
 
 
 .rightPanel {

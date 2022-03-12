@@ -25,7 +25,7 @@ const SelectProductContainer = (props) => {
       <SelectSizeDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
       <SelectQuantityDropdown sizes={sizes} sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity}/>
 
-      <AddToBagButton sizeAndQuantity={sizeAndQuantity}/>
+      <AddToBagButton sizeAndQuantity={sizeAndQuantity} setSizeAndQuantity={setSizeAndQuantity} />
       <SelectOutfitButton />
     </div>
 

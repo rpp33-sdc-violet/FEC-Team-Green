@@ -97,7 +97,11 @@ class App extends React.Component {
         <nav id={'navbar'}>
           <p className='logo'>Logo</p>
           <form>
-            <input value={this.state.search} onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
+            <label id='search-message'>
+              Search Product Ids:
+              <input value={this.state.search}
+                onChange={this.handleChange} onKeyDown={this.handleKeyDown}></input>
+            </label>
           </form>
           <BiSearchAlt2 className={'searchIcon'} onClick={(event) => {
             // event.preventDefault();

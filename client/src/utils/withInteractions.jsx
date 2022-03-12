@@ -14,7 +14,7 @@ const withInteractions = (WrappedComponent, widget) => {
       const justSelectors = split2[1];
       const selectorsAndText = `Selectors: ${justSelectors}, Text: ${event.target.innerText}`;
 
-      console.log('selectorsAndText', selectorsAndText);
+      // console.log('selectorsAndText', selectorsAndText);
       // Time
       const currentDateAndTime = new Date().toString();
 
@@ -27,10 +27,10 @@ const withInteractions = (WrappedComponent, widget) => {
       axios.post('/api/interactions', bodyParams)
         .then((response) => {
           // ***** We can remove this console.log once we've all incorporated the HOC into our widgets *****
-          console.log('SUCCESS sending click tracker interaction to API: ', response);
+          // console.log('SUCCESS sending click tracker interaction to API: ', response);
         })
         .catch((error) => {
-          console.log('ERROR sending click tracker interaction to API', error);
+          // console.log('ERROR sending click tracker interaction to API', error);
         });
     };
 
