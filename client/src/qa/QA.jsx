@@ -54,7 +54,7 @@ const QA = (props) => {
     setCountQ(countQ + 2);
   };
 
-  // userSearch: send as props to Search component 
+  // userSearch: send as props to Search component
   const userSearch = (query) => {
     // query length is 3 or more:
     if (query.length >= 3) {

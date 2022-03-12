@@ -13,25 +13,25 @@ const AddAnswerDashboard = (props) => {
   const [canUpload, setCanUpload] = useState(true);
   const [photoErrorMsg, setPhotoErrorMsg] = useState('');
   const [postErrorMsg, setPostErrorMsg] = useState('');
-  
+
   useEffect(() => {
     if (photos.length >= 5) {
       setCanUpload(false);
     }
   });
-  
+
   const handlePhotoUpload = function (event) {
     // get just the file info
     const file = event.target.files[0];
-    
+
     // to create readable "multipart/form-data" streams
     let data = new FormData();
     data.append('photo', file);
     // console.log('SEE FORM DATA', data.get('photo'));
-    
+
     axios.post('/photos', data, {
       headers: {
-        'content-type': 'multipart/form-data' 
+        'content-type': 'multipart/form-data'
       }
     })
       .then((response) => {
@@ -85,7 +85,7 @@ const AddAnswerDashboard = (props) => {
       }
     }
 
-    // if there are errors, create errorText and update errorMsg 
+    // if there are errors, create errorText and update errorMsg
     if (errors.length > 0) {
       let errorText = '';
 
@@ -107,7 +107,7 @@ const AddAnswerDashboard = (props) => {
 
       setErrorMsg(errorText);
     } else {
-      // submission form has been validated succesfully! 
+      // submission form has been validated succesfully!
       const bodyParams = {
         body: answer,
         name: nickname,
@@ -137,22 +137,26 @@ const AddAnswerDashboard = (props) => {
         <form className="answer-form" onSubmit={handleSubmit}>
           <label>
             Your Answer*
+            <br></br>
             <textarea maxLength="1000" value={answer} onChange={(e) => setAnswer(e.target.value)} />
           </label>
           <label>
             What is your nickname?*
+            <br></br>
             <input type="text" maxLength="60" placeholder="Example: jack543!"
               value={nickname} onChange={(e) => setNickname(e.target.value)} />
             <p className="form-extra-info">For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
             Your email*
+            <br></br>
             <input type="text" maxLength="60" placeholder="Example: jack@email.com"
               value={email} onChange={(e) => setEmail(e.target.value)} />
             <p className="form-extra-info">For authentication reasons, you will not be emailed</p>
           </label>
           <label>
             Upload your photos
+            <br></br>
             {!canUpload || <input type="file" id="img" name="img" accept="image/*" onChange={handlePhotoUpload} onClick={(e) => e.stopPropagation()} />}
             {photoErrorMsg === '' || <p className="modal-error-msg">*You must enter the following: {photoErrorMsg}</p>}
             <div className="add-answer-uploads-container">

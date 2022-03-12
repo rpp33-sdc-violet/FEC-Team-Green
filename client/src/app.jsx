@@ -24,6 +24,7 @@ import withParamsAndNavigate from './utils/withParamsAndNavigate.js';
 import withInteractions from './utils/withInteractions.jsx';
 // CHANGE REQUEST - container component with HOC and QA widget
 const QAwithInteractions = withInteractions(QA, 'Questions & Answers');
+const ReviewsWithIntercations = withInteractions(ReviewList, 'Reviews');
 const OverviewWithInteractions = withInteractions(Overview, 'Overview');
 
 class App extends React.Component {
@@ -115,7 +116,10 @@ class App extends React.Component {
           {this.state.product && this.state.productStyles.length > 1 ?
             <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
             <div className="QA-container">loading</div>}
-          <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
+          {this.state.product_id && this.state.product.name ?
+            <ReviewsWithIntercations product_id={this.state.product_id} product_name={this.state.product.name}></ReviewsWithIntercations> :
+            <div className='reviews'>loading reviews</div>
+          }
         </Suspense>
       </div>
     );

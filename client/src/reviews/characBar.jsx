@@ -7,7 +7,7 @@ const CharacBar = (props) => {
   return (
     <CBar>
       <Name>{props.name}</Name>
-      <Label value={(parseInt(props.value)) / 5 * 100}></Label>
+      <Label value={(parseInt(props.value)) / 5 * 100 - 5}></Label>
       <Barwrapper>
         <Bar></Bar>
         <Bar></Bar>
@@ -28,11 +28,12 @@ export default CharacBar;
 
 
 const CBar = styled.div`
-
+  margin-top: 20px;
 `;
 
 const Name = styled.span`
-
+  font-size: 16px;
+  color: #404040;
 `;
 const Label = styled.div`
   width: 0;
@@ -66,6 +67,8 @@ const Bar = styled.div`
 const Values = styled.div`
   display: grid;
   width: 100%;
+  font-size: 15px;
+  color: #404040;
 `;
 
 

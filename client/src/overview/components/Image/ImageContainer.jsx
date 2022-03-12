@@ -12,6 +12,8 @@ var ImageContainer = (props) => {
   const [selectedPhoto, setSelectedPhoto] = useState('loading');
   const [currentStyleId, setCurrentStyleId] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   var expandImage = () => {
 
@@ -41,14 +43,43 @@ var ImageContainer = (props) => {
       setCurrentStyleId( props.selectedStyle.style_id);
     }
   });
+  useEffect(() => {
+    /* Inside of a "useEffect" hook add an event listener that updates
+       the "width" state variable when the window size changes */
+    window.addEventListener('resize', () =>{
+      setWidth(window.innerWidth);
+      // setHeight(document.querySelector('.overview-wrapper').offsetHeight);
+      return () => window.removeEventListener('resize', handleWindowResize);
+    });
 
+    /* passing an empty array as the dependencies of the effect will cause this
+       effect to only run when the component mounts, and not each time it updates.
+       We only want the listener to be added once */
+  });
   // I would like to eventually rename image-container to image-gallery and image-block to image-container
   return (
     <div className ='image-container'>
-      <div id='image-modal-frame'>
-        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='right' id='rightExpanded'></ImageNavigator>
-        <ImageExpander selectedPhoto={selectedPhoto} modal={true}/>
-        <ImageNavigator setSelectedPhoto={setSelectedPhoto} selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos} direction='left' id='leftExpanded'></ImageNavigator>
+      <div id='image-modal-frame' style={{width: `${width}px`}}>
+        <ImageNavigator
+          setSelectedPhoto={setSelectedPhoto}
+          selectedPhoto={selectedPhoto}
+          photos={props.selectedStyle.photos}
+          direction='right'
+          id='rightExpanded'></ImageNavigator>
+        <ImageExpander
+          selectedPhoto={selectedPhoto}
+          modal={true}
+          width={width}
+          setWidth={setWidth}
+          height={height}
+          setHeight={setHeight}
+        />
+        <ImageNavigator
+          setSelectedPhoto={setSelectedPhoto}
+          selectedPhoto={selectedPhoto}
+          photos={props.selectedStyle.photos}
+          direction='left'
+          id='leftExpanded'></ImageNavigator>
         <AiOutlineExpand id='expander-btn' onClick={expandImage}></AiOutlineExpand>
         <ImageThumbnailList
           id='miniCarousel'
@@ -61,7 +92,12 @@ var ImageContainer = (props) => {
 
       </div>
       <div className ='image-block' style={selectedPhoto.url ? {'color': 'red'} : {'width': '700px', 'height': '800px'} }>
-        <ImageExpander selectedPhoto={selectedPhoto}/>
+        <ImageExpander selectedPhoto={selectedPhoto}
+          width={width}
+          setWidth={setWidth}
+          height={height}
+          setHeight={setHeight}
+        />
         <ImageThumbnailList id='mainCarousel'
           alternateClass={''}
           selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos}
