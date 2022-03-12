@@ -1,6 +1,6 @@
 .overview-wrapper {
   display: grid;
-  background-color: white;
+  /* background-color: white; */
   grid-template-columns: 3fr 1.25fr;
   grid-template-rows: 1.75fr 1.25fr;
   /* border: 1px solid black; */

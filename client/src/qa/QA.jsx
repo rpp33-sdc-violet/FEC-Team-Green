@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import AddAQuestionDashboard from './components/AddAQuestionDashboard.jsx';
 import QuestionsList from './components/QuestionsList.jsx';
@@ -38,7 +38,7 @@ const QA = (props) => {
     };
     // invoke the recursive inner function
     getAllQuestions();
-  }, [props.product_id]); // <-- if the current value of the dependency and the value on previous render are not the same, effect is invoked
+  }, [props.product_id]); // the empty array stops the effect from running more than once
 
   // isMoreQButtonVisible - checks countQ with allQues length, if countQ less than length -> true, else, false
   useEffect(() => {
@@ -80,12 +80,14 @@ const QA = (props) => {
     // CHANGE REQUEST: onClick listener to entire QA widget container
     <div onClick={props.interactions} className="QA-container">
       <h1 className="QA-header">QUESTIONS & ANSWERS</h1>
-      <Search userSearch={userSearch} />
-      <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} />
-      <div className="QA-buttons">
-        {moreQButtonVisible ? <button id="moreQuestions-button" onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
-        <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} />
-      </div>
+      {/* <Suspense fallback={<h2>Loading...</h2>}> */}
+        <Search userSearch={userSearch} theme={props.theme} />
+        <QuestionsList questions={filteredQues.slice(0, countQ)} product_name={props.product_name} theme={props.theme} />
+        <div className="QA-buttons">
+          {moreQButtonVisible ? <button id={`moreQuestions-button-${props.theme}`} onClick={handleMoreQButtonClick}>MORE ANSWERED QUESTIONS</button> : null}
+          <AddAQuestionDashboard product_id={props.product_id} product_name={props.product_name} theme={props.theme} />
+        </div>
+      {/* </Suspense> */}
     </div>
   );
 };

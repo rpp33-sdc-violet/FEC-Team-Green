@@ -34,10 +34,13 @@ class App extends React.Component {
       productStyles: [],
       search: '',
       // eslint-disable-next-line camelcase
-      product_id: 64622
+      product_id: 64622,
+      theme: 'light-theme',
+      themeText: 'dark mode'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleThemeChange = this.handleThemeChange.bind(this);
   }
 
   getProductData(productId) {
@@ -90,9 +93,23 @@ class App extends React.Component {
     }
   }
 
+  handleThemeChange() {
+    if (this.state.themeText === 'dark mode') {
+      this.setState({
+        theme: 'dark-theme',
+        themeText: 'light mode'
+      });
+    } else {
+      this.setState({
+        theme: 'light-theme',
+        themeText: 'dark mode'
+      });
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className={this.state.theme}>
         <nav id={'navbar'}>
           <p className='logo'>Logo</p>
           <form>
@@ -102,6 +119,7 @@ class App extends React.Component {
             // event.preventDefault();
             this.searchProductID(this.state.search);
           }} viewBox={[0, 0, 24, 21]} />
+          <button onClick={this.handleThemeChange}>{this.state.themeText}</button>
         </nav>
         {/* for code-splitting, fallback attribute is needed */}
         <Suspense fallback={<div>loading</div>}>
@@ -109,7 +127,7 @@ class App extends React.Component {
             <OverviewWithInteractions product={this.state.product} productStyles={this.state.productStyles}></OverviewWithInteractions> :
             <div className='overview-skeleton'>loading</div>}
           {this.state.product && this.state.productStyles.length > 1 ?
-            <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} /> :
+            <QAwithInteractions product_id={this.state.product_id} product_name={this.state.product.name} theme={this.state.theme} /> :
             <div className="QA-container">loading</div>}
           <ReviewList product_id={this.state.product_id} product_name={this.state.product.name}></ReviewList>
         </Suspense>
