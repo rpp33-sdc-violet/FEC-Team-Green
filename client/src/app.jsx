@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './appStyles/style.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import RelatedProducts from './relatedProducts/RelatedProducts.jsx';
+import {BsFillLightbulbOffFill} from 'react-icons/bs';
+import {BsFillLightbulbFill} from 'react-icons/bs';
 
 // using React.lazy for code-splitting/optimization. See https://reactjs.org/docs/code-splitting.html for more info.
 const Overview = React.lazy(() => import('./overview/overview.jsx'));
@@ -120,7 +122,7 @@ class App extends React.Component {
             // event.preventDefault();
             this.searchProductID(this.state.search);
           }} viewBox={[0, 0, 24, 21]} />
-          <button onClick={this.handleThemeChange}>{this.state.themeText}</button>
+          {this.state.theme === 'light-theme' ? <BsFillLightbulbFill class={'lightbulb dark-theme'} onClick={this.handleThemeChange}>{this.state.themeText}</BsFillLightbulbFill> : <BsFillLightbulbOffFill class={'lightbulb'} onClick={this.handleThemeChange}>{this.state.themeText}</BsFillLightbulbOffFill>}
         </nav>
         {/* for code-splitting, fallback attribute is needed */}
         <Suspense fallback={<div>loading</div>}>
