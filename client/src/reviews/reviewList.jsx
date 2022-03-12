@@ -220,7 +220,7 @@ class ReviewList extends React.Component {
         <NoReview>
           <div>RATINGS & REVIEWS</div>
           <br></br>
-          <AddNewReview productId = {this.state.productId}/>
+          <AddNewReview productId = {this.state.productId} theme={this.props.theme}/>
         </NoReview>
       );
     } else {
