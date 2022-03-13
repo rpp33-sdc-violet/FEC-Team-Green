@@ -60,7 +60,7 @@ const IndividualAnswer = (props) => {
 
   const sellerCheck = (username) => {
     if (username === 'Seller') {
-      return <strong>{username}</strong>
+      return <strong>{username}</strong>;
     } else {
       return username;
     }
