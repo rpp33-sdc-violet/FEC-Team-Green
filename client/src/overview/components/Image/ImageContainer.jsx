@@ -17,17 +17,15 @@ var ImageContainer = (props) => {
 
   var expandImage = () => {
 
-
     var imageModal = $('#image-modal-frame');
-
-    var wrapperWidth = $('.overview-wrapper').width();
+    // var wrapperWidth = $('.overview-wrapper').width();
     var wrapperHeight = $('.overview-wrapper').height();
-    // console.log('img width', wrapperWidth);
-
-    imageModal.css('width', `${wrapperWidth * .95}px`);
-    imageModal.css('height', `${wrapperHeight * .95}px`);
+    imageModal.css('width', `${width}px`);
+    imageModal.css('height', `${props.height}px`);
+    var image = $('#main-image-modal');
+    image.css('width', 'auto');
+    image.css('height', `${wrapperHeight - 50}px`);
     imageModal.toggle();
-
 
 
 
@@ -58,7 +56,8 @@ var ImageContainer = (props) => {
        effect to only run when the component mounts, and not each time it updates.
        We only want the listener to be added once */
   });
-  // I would like to eventually rename image-container to image-gallery and image-block to image-container
+  //  this component has 2 parts.  it probably should have been broken into to components
+  //
   return (
     <div className ='image-container'>
       <div id='image-modal-frame' style={{width: `${width}px`}, props.theme === 'dark-theme' ? {background: '#121212' } : {background: 'white' } }>
@@ -74,8 +73,7 @@ var ImageContainer = (props) => {
           width={width}
           setWidth={setWidth}
           height={height}
-          setHeight={setHeight}
-        />
+          setHeight={setHeight}/>
         <ImageNavigator
           setSelectedPhoto={setSelectedPhoto}
           selectedPhoto={selectedPhoto}
@@ -91,15 +89,13 @@ var ImageContainer = (props) => {
           setSelectedPhoto={setSelectedPhoto}
           scrollTop ={scrollTop}
           setScrollTop={setScrollTop}/>
-
       </div>
       <div className ='image-block' style={selectedPhoto.url ? {'color': 'red'} : {'width': '700px', 'height': '800px'} }>
         <ImageExpander selectedPhoto={selectedPhoto}
           width={width}
           setWidth={setWidth}
           height={height}
-          setHeight={setHeight}
-        />
+          setHeight={setHeight}/>
         <ImageThumbnailList id='mainCarousel'
           alternateClass={''}
           selectedPhoto={selectedPhoto} photos={props.selectedStyle.photos}
@@ -120,7 +116,6 @@ var ImageContainer = (props) => {
           id='expander-btn'
           onClick={expandImage}>
         </AiOutlineExpand>
-
       </div>
     </div>
 
