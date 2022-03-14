@@ -10,10 +10,10 @@ const SelectOutfitButton = (props) => {
   //
 
 
-
+  //disabled ={props.inStock ? false : true}
   return (
 
-    <button className ={`select-outfit ${props.theme}`} disabled ={props.inStock ? false : true}>
+    <button className ={`select-outfit ${props.theme}`} aria-label='add to outfit carousel' >
       <AiOutlineStar> </AiOutlineStar>
     </button>
 
