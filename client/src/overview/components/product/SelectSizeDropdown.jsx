@@ -3,26 +3,30 @@ import React, {useState} from 'react';
 //this is the container for my size selector
 const SelectSizeDropdown = (props) => {
 
+
+
   var options = [];
   // if any sizes are available, search through them and find the sizes with quantities above 0
   if (props.sizes) {
     var len = Object.keys(props.sizes).length;
     for (var skuKey of Object.keys(props.sizes) ) {
-
       if (props.sizes[skuKey] && props.sizes[skuKey].quantity > 0) {
         options.push(<option key={skuKey} >{skuKey}</option>);
-
       }
     }
 
   }
 
   //display OUT OF STOCK if no stock available
-  // console.log('props skuID', props);
-  options.length > 0 ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
-  options[0].props.children === 'OUT OF STOCK' ? props.setInStock(false) : props.setInStock(true);
-  return (
 
+  props.inStock ? options.unshift(<option key={0}>{'Select Size'}</option>) : options.unshift(<option key={0}>{'OUT OF STOCK'}</option>);
+
+
+  // options[0].props.children === 'OUT OF STOCK' ? props.setInStock(false) : props.setInStock(true);
+
+
+
+  return (
     <select className ={`select-size ${props.theme}`}id='ss'
       onChange={(e)=> {
         if (props.sizeAndQuantity.quantity === '-' ) {

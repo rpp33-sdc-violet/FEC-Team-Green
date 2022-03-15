@@ -5,12 +5,14 @@ import $ from 'jquery';
 var ImageExpander = (props) => {
 
   const [isClicked, setIsClicked] = useState(false);
-
+  const [rightArrow, setRightArrow] = useState(false);
+  const [leftArrow, setLeftArrow] = useState(false);
+  const [cursor, setCursor] = useState('pointer');
   //this component displays the main gallery image
   var scaled = false;
   //set the arrow status here so that it carries over when I zoom in or out.
-  var rightArrow = $('#rightArrow').css('display');
-  var leftArrow = $('#leftArrow').css('display');
+  var rightArrow1 = $('#rightArrow1').css('display');
+  var leftArrow1 = $('#leftArrow1').css('display');
 
 
 
@@ -23,11 +25,12 @@ var ImageExpander = (props) => {
 
     if (!scaled) {
       //-make arrows disappear when zoomed in then rest arrow status
-      rightArrow = $('#rightArrow').css('display');
-      leftArrow = $('#leftArrow').css('display');
+      rightArrow1 = $('#rightArrow1').css('display');
+      leftArrow1 = $('#leftArrow1').css('display');
       $('#rightExpanded').css('display', 'none');
       $('#leftExpanded').css('display', 'none');
       $('#miniCarousel').hide();
+      
       $('#main-image-modal').css('cursor', 'zoom-out');
 
       var image = new Image();
@@ -64,8 +67,8 @@ var ImageExpander = (props) => {
       $('#main-image-modal').css('cursor', 'zoom-in');
       $('#main-image-modal').css('backgroundPosition', 'center');
       $('#main-image-modal').css('backgroundSize', 'contain');
-      $('#rightExpanded').css('display', rightArrow);
-      $('#leftExpanded').css('display', leftArrow);
+      $('#rightExpanded').css('display', rightArrow1);
+      $('#leftExpanded').css('display', leftArrow1);
       $('#miniCarousel').show();
     }
 

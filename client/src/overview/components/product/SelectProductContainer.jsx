@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SelectSizeDropdown from './SelectSizeDropdown.jsx';
 import SelectQuantityDropdown from './SelectQuantityDropdown.jsx';
 import SelectOutfitButton from './SelectOutfitButton.jsx';
@@ -9,15 +9,26 @@ import AddToBagButton from './AddToBagButton.jsx';
 const SelectProductContainer = (props) => {
 
   const [sizeAndQuantity, setSizeAndQuantity] = useState({'size': 'Select Size', 'quantity': '-', 'skuId': ''});
-  const [inStock, setInStock] = useState(true);
+  const [inStock, setInStock] = useState(false);
 
   var sizes = {};
   if (props.selectedStyle) {
 
     Object.keys(props.selectedStyle.skus).forEach(skuKey => {
-      sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+      // console.log(skuKey, 'skuKey', props.selectedStyle.skus[skuKey].quantity);
+
+      if (props.selectedStyle.skus[skuKey].quantity > 0 ) {
+        sizes[props.selectedStyle.skus[skuKey].size] = {'quantity': props.selectedStyle.skus[skuKey].quantity, 'skuId': skuKey};
+      }
     });
   }
+  useEffect(()=> {
+
+    if (Object.keys(sizes).length > 0) {
+      setInStock(true);
+    }
+  }, [props.selectedStyle]);
+
 
   return (
     //maybe this should be a high order function?
@@ -34,7 +45,8 @@ const SelectProductContainer = (props) => {
         sizes={sizes}
         sizeAndQuantity={sizeAndQuantity}
         setSizeAndQuantity={setSizeAndQuantity}
-        theme={props.theme}/>
+        theme={props.theme}
+        inStock={inStock}/>
       <AddToBagButton
         sizeAndQuantity={sizeAndQuantity}
         theme={props.theme}
