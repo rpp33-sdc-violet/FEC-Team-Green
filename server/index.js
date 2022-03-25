@@ -11,7 +11,7 @@ const uploadFileToS3 = require('./s3.js');
 const { unlink } = require('fs/promises');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 const path = require('path');
 var shrinkRay = require('shrink-ray-current');
@@ -61,6 +61,20 @@ app.all('*', function (req, res, next) {
     next();
   }
 });
+
+app.get('/getQuestions', (req, res) => {
+  const { productId, count, page } = req.query;
+  axios.get(`http://localhost:3000/qa/questions/${productId}?count=${count}&page=${page}`)
+    .then((response) => {
+      res.send(response.data);
+      res.end();
+    })
+    .catch((err) => {
+      console.log('localhost api err: ', err);
+      res.sendStatus(500);
+    });
+});
+
 
 // FOR HELPFUL ANSWERS
 app.all('*', function (req, res, next) {

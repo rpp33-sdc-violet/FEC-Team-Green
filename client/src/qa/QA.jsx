@@ -20,7 +20,14 @@ const QA = (props) => {
     let questions = [];
     // inner function that keeps calling until length of data is less than the count
     const getAllQuestions = () => {
-      axios.get(`/api/qa/questions?product_id=${props.product_id}&count=${count}&page=${page}`)
+      const req = {
+        params: {
+          productId: props.product_id,
+          count: 20,
+          page: 1
+        }
+      };
+      axios.get('/getQuestions', req)
         .then((response) => {
           questions = questions.concat(response.data.results);
           if (response.data.results.length === count) { // there are still more questions
