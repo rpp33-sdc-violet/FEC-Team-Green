@@ -20,9 +20,16 @@ const IndividualQuestion = (props) => {
     let page = 1;
     let answers = [];
     let cancel = false;
+    let req = {
+      params: {
+        endpoint: `${props.question.question_id}/answers`,
+        count: count,
+        page: page
+      }
+    };
     // inner function that keeps calling until length of data is less than the count
     const getAllAnswers = () => {
-      axios.get(`/api/qa/questions/${props.question.question_id}/answers?count=${count}&page=${page}`)
+      axios.get('/getQA', req)
         .then((response) => {
           if (cancel) {
             return;
@@ -49,6 +56,7 @@ const IndividualQuestion = (props) => {
           }
         })
         .catch((error) => {
+          console.log('error in get all answers', err);
           alert('ERROR IN getAllAnswers', error);
         });
     };
@@ -69,7 +77,7 @@ const IndividualQuestion = (props) => {
     }
   });
 
-  // handleMoreAnsClick - changes countA and button text 
+  // handleMoreAnsClick - changes countA and button text
   const handleMoreAnsClick = (event) => {
     event.preventDefault();
     if (moreAnsButtonText === 'LOAD MORE ANSWERS') {
@@ -86,7 +94,7 @@ const IndividualQuestion = (props) => {
     }
   };
 
-  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true 
+  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     if (!isHelpfulClickedQ) {

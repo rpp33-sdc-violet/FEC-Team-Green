@@ -12,7 +12,7 @@ const IndividualAnswer = (props) => {
   const [isReportClicked, setIsReportClicked] = useState(false);
 
   // methods
-  // handleHelpfulClick - request to "mark answer as helpful" endpoint 
+  // handleHelpfulClick - request to "mark answer as helpful" endpoint
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     if (!isHelpfulClickedA) {
@@ -65,7 +65,7 @@ const IndividualAnswer = (props) => {
       return username;
     }
   };
-  
+
   return (
     <div className="answer">
       <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>

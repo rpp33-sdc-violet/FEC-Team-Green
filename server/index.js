@@ -62,19 +62,30 @@ app.all('*', function (req, res, next) {
   }
 });
 
-app.get('/getQuestions', (req, res) => {
-  const { productId, count, page } = req.query;
-  axios.get(`http://localhost:3000/qa/questions/${productId}?count=${count}&page=${page}`)
+// CHANGE API FOR QUESTIONS & ANSWERS
+app.get('/getQA', (req, res) => {
+  const { endpoint, count, page } = req.query;
+  axios.get(`http://localhost:3000/qa/questions/${endpoint}?count=${count}&page=${page}`)
     .then((response) => {
+      console.log(response.data);
       res.send(response.data);
       res.end();
     })
     .catch((err) => {
-      console.log('localhost api err: ', err);
+      console.log('get @qa api error: ', err);
       res.sendStatus(500);
     });
 });
-
+app.post('/addQuestions', (req, res) => {
+  const bodyParams = req.body;
+  console.log('bodyParams', bodyParams);
+  axios.post(`http://localhost:3000/qa/questions/${bodyParams.product_id}`, bodyParams)
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => {
+      console.log('post question @qa api error: ', err);
+      res.sendStatus(500);
+    });
+});
 
 // FOR HELPFUL ANSWERS
 app.all('*', function (req, res, next) {

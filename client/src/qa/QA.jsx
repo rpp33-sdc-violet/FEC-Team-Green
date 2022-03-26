@@ -22,12 +22,12 @@ const QA = (props) => {
     const getAllQuestions = () => {
       const req = {
         params: {
-          productId: props.product_id,
-          count: 20,
-          page: 1
+          endpoint: `${props.product_id}`,
+          count: count,
+          page: page
         }
       };
-      axios.get('/getQuestions', req)
+      axios.get('/getQA', req)
         .then((response) => {
           questions = questions.concat(response.data.results);
           if (response.data.results.length === count) { // there are still more questions

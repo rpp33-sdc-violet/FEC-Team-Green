@@ -53,7 +53,7 @@ const AddAQuestionDashboard = (props) => {
       }
     }
 
-    // if there are errors, create errorText and update errorMsg 
+    // if there are errors, create errorText and update errorMsg
     if (errors.length > 0) {
       let errorText = '';
 
@@ -75,8 +75,8 @@ const AddAQuestionDashboard = (props) => {
 
       setErrorMsg(errorText);
     } else {
-      console.log(typeof props.product_id, props.product_id);
-      // submission form has been validated succesfully! 
+      // console.log(typeof props.product_id, props.product_id);
+      // submission form has been validated succesfully!
       const bodyParams = {
         body: question,
         name: nickname,
@@ -84,7 +84,8 @@ const AddAQuestionDashboard = (props) => {
         // eslint-disable-next-line camelcase
         product_id: Number(props.product_id)
       };
-      axios.post('/api/qa/questions', bodyParams)
+      console.log('bodyparams@addquestion', bodyParams);
+      axios.post('/addQuestion', bodyParams)
         .then((response) => {
           setShow(false);
         })
