@@ -82,10 +82,10 @@ const AddAQuestionDashboard = (props) => {
         name: nickname,
         email: email,
         // eslint-disable-next-line camelcase
-        product_id: Number(props.product_id)
+        endpoint: `${Number(props.product_id)}`
       };
       console.log('bodyparams@addquestion', bodyParams);
-      axios.post('/addQuestion', bodyParams)
+      axios.post('/addQA', bodyParams)
         .then((response) => {
           setShow(false);
         })

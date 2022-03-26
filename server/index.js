@@ -62,31 +62,6 @@ app.all('*', function (req, res, next) {
   }
 });
 
-// CHANGE API FOR QUESTIONS & ANSWERS
-app.get('/getQA', (req, res) => {
-  const { endpoint, count, page } = req.query;
-  axios.get(`http://localhost:3000/qa/questions/${endpoint}?count=${count}&page=${page}`)
-    .then((response) => {
-      console.log(response.data);
-      res.send(response.data);
-      res.end();
-    })
-    .catch((err) => {
-      console.log('get @qa api error: ', err);
-      res.sendStatus(500);
-    });
-});
-app.post('/addQuestions', (req, res) => {
-  const bodyParams = req.body;
-  console.log('bodyParams', bodyParams);
-  axios.post(`http://localhost:3000/qa/questions/${bodyParams.product_id}`, bodyParams)
-    .then(() => { res.sendStatus(201); })
-    .catch((err) => {
-      console.log('post question @qa api error: ', err);
-      res.sendStatus(500);
-    });
-});
-
 // FOR HELPFUL ANSWERS
 app.all('*', function (req, res, next) {
   if (req.url.includes('answers') && req.url.includes('helpful')) {
@@ -103,6 +78,39 @@ app.all('*', function (req, res, next) {
   } else {
     next();
   }
+});
+// CHANGE API FOR QUESTIONS & ANSWERS
+app.get('/getQA', (req, res) => {
+  const { endpoint, count, page } = req.query;
+  axios.get(`http://localhost:3000/qa/questions/${endpoint}?count=${count}&page=${page}`)
+    .then((response) => {
+      res.send(response.data);
+      res.end();
+    })
+    .catch((err) => {
+      console.log('get @qa api error: ', err);
+      res.sendStatus(500);
+    });
+});
+app.post('/addQA', (req, res) => {
+  const bodyParams = req.body;
+
+  axios.post(`http://localhost:3000/qa/questions/${bodyParams.endpoint}`, bodyParams)
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => {
+      console.log('post question @qa api error: ', err);
+      res.sendStatus(500);
+    });
+});
+app.put('/putQA', (req, res) => {
+  console.log('req.body', req.body);
+  axios.put(`http://localhost:3000/qa/${req.body.endpoint}`)
+    .then(() => { res.sendStatus(204); })
+    .catch((err) => {
+      console.log('put question @qa api error: ', err);
+      res.sendStatus(500);
+    });
+
 });
 
 // const config = require('../client/src/config/github.js'); <-- REPLACED WITH DOTENV CONFIG
