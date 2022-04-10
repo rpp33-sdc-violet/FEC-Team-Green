@@ -22,8 +22,9 @@ class IndividualReview extends React.Component {
   helpfulRating(event) {
     event.preventDefault();
     if (this.state.helpfulRating === false) {
-      let path = `/api/reviews/${this.props.review.review_id}/helpful`;
+      let path = `/violet-reviews/reviews/${this.props.review.review_id}/helpful`;
       axios.put(path).then(() => {
+        console.log('JO - WORKED');
         this.props.review.helpfulness++;//no need to make another get request for now
         this.setState({helpfulRating: true});
       });

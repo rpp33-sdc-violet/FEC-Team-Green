@@ -58,7 +58,7 @@ class ReviewList extends React.Component {
   }
 
   getMetaData() {
-    axios.get('/api/reviews/meta', {
+    axios.get('/violet-reviews/reviews/meta', {
       params: {
         // eslint-disable-next-line camelcase
         product_id: this.state.productId
