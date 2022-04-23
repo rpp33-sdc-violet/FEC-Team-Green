@@ -132,7 +132,7 @@ app.use('/api/*', createProxyMiddleware(options));
 // THEN: see line 143..
 /************************************************/
 const optionsReviews = {
-  target: 'http://localhost:8080', //target host
+  target: 'http://54.82.107.102:8080', //target host
   pathRewrite: {
     '^/violet-reviews/': '/'
   },
