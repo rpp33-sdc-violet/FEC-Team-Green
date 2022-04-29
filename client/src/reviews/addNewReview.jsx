@@ -141,7 +141,7 @@ class AddNewReview extends React.Component {
         characteristics: this.state.postCharac
       };
       console.log('reviewParam', reviewParam);
-      axios.post('/api/reviews', reviewParam)
+      axios.post('/violet-reviews/reviews', reviewParam)
         .then((res) => {
           alert('Successfully submitted your review');
           this.hideModal();

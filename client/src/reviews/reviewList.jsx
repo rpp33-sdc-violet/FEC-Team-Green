@@ -35,7 +35,7 @@ class ReviewList extends React.Component {
   }
 
   getReviews(currentOption) {
-    axios.get('/api/reviews', {
+    axios.get('/violet-reviews/reviews', {
       params: {
         // eslint-disable-next-line camelcase
         product_id: this.state.productId,
@@ -48,7 +48,7 @@ class ReviewList extends React.Component {
       }
     })
       .then((res) => {
-        //console.log('axios get reviews', res);
+        console.log('axios get reviews', res.data.results);
         this.setState({ reviews: res.data.results, displayReviews: res.data.results });
 
       })
@@ -58,7 +58,7 @@ class ReviewList extends React.Component {
   }
 
   getMetaData() {
-    axios.get('/api/reviews/meta', {
+    axios.get('/violet-reviews/reviews/meta', {
       params: {
         // eslint-disable-next-line camelcase
         product_id: this.state.productId

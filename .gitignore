@@ -16,3 +16,5 @@ coverage
 
 
 copy_pasta.sh
+
+*.DS_Store

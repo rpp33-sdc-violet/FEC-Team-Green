@@ -21,6 +21,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
+/************************************************/
+// EXAMPLE 1 - To Connect Your Backend Server
+// Instead of /test endpoint, change this 
+// to your needed endpoint i.e. /qa/questions...
+/************************************************/
+app.get('/test', (req, res) => {
+  axios.get('http://localhost:8080/test')
+    .then((response) => {
+      console.log('TEST RESPONSE DATA HERE:', response.data);
+      res.send(response.data);
+    })
+    .catch((error) => {
+      console.log('TEST ERROR HERE:', error);
+      res.send(error);
+    });
+});
+
 // PHOTO UPLOAD TO S3 BUCKET
 app.post('/photos', upload.single('photo'), (req, res) => {
   uploadFileToS3(req.file, (error, url) => {
@@ -113,6 +130,9 @@ app.put('/putQA', (req, res) => {
 
 });
 
+/************************************************/
+// Keep this until our services are complete
+/************************************************/
 // const config = require('../client/src/config/github.js'); <-- REPLACED WITH DOTENV CONFIG
 require('dotenv').config({path: './server/.env'}); // <-- retrieve Github API Key in our .env file
 const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
@@ -135,7 +155,30 @@ const options = {
 // use proxy middleware and created '/api' endpoint that communicates with our real API
 app.use('/api/*', createProxyMiddleware(options));
 
+/************************************************/
+// EXAMPLE 2 - To Connect Your Backend Server
+// Once you've completed backend routes,
+// go into client/src/<your service/widget>
+// find all the components using axios
+// change the first part of endpoint /api/
+// to your pathRewrite - i.e. /violet-reviews/
+// THEN: see line 143..
+/************************************************/
+const optionsReviews = {
+  target: 'http://54.175.127.65:8080', //target host
+  pathRewrite: {
+    '^/violet-reviews/': '/'
+  },
+  logLevel: 'error', //control the amount of logging of http-proxy-middleware
+  onProxyReq: fixRequestBody, // used to fix proxied POST requests when bodyParser is applied before this middleware
+};
 
+/************************************************/
+// EXAMPLE 2 - To Connect Your Backend Server
+// create app.use() that accepts your pathRewrite
+// i.e. see below...
+/************************************************/
+app.use('/violet-reviews/*', createProxyMiddleware(optionsReviews));
 
 app.get('*', (req, res) => {
   // res.send('data');
