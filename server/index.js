@@ -11,7 +11,7 @@ const uploadFileToS3 = require('./s3.js');
 const { unlink } = require('fs/promises');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 const path = require('path');
 var shrinkRay = require('shrink-ray-current');
@@ -78,6 +78,39 @@ app.all('*', function (req, res, next) {
   } else {
     next();
   }
+});
+// CHANGE API FOR QUESTIONS & ANSWERS
+app.get('/getQA', (req, res) => {
+  const { endpoint, count, page } = req.query;
+  axios.get(`http://34.228.27.2:5050/qa/questions/${endpoint}?count=${count}&page=${page}`)
+    .then((response) => {
+      res.send(response.data);
+      res.end();
+    })
+    .catch((err) => {
+      console.log('get @qa api error: ', err);
+      res.sendStatus(500);
+    });
+});
+app.post('/addQA', (req, res) => {
+  const bodyParams = req.body;
+
+  axios.post(`http://34.228.27.2:5050/qa/questions/${bodyParams.endpoint}`, bodyParams)
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => {
+      console.log('post question @qa api error: ', err);
+      res.sendStatus(500);
+    });
+});
+app.put('/putQA', (req, res) => {
+  console.log('req.body', req.body);
+  axios.put(`http://34.228.27.2:5050/qa/${req.body.endpoint}`)
+    .then(() => { res.sendStatus(204); })
+    .catch((err) => {
+      console.log('put question @qa api error: ', err);
+      res.sendStatus(500);
+    });
+
 });
 
 // const config = require('../client/src/config/github.js'); <-- REPLACED WITH DOTENV CONFIG
