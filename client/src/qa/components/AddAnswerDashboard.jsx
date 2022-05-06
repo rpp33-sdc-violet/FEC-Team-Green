@@ -112,12 +112,13 @@ const AddAnswerDashboard = (props) => {
         body: answer,
         name: nickname,
         email: email,
-        photos: photos
+        photos: photos,
+        endpoint: `${props.question_id}/answers`
       };
 
       console.log('bodyParams', bodyParams);
       console.log('questionId', props.question_id);
-      axios.post(`/api/qa/questions/${props.question_id}/answers`, bodyParams)
+      axios.post('/addQA', bodyParams)
         .then((response) => {
           setShow(false);
         })

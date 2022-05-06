@@ -12,11 +12,16 @@ const IndividualAnswer = (props) => {
   const [isReportClicked, setIsReportClicked] = useState(false);
 
   // methods
-  // handleHelpfulClick - request to "mark answer as helpful" endpoint 
+  // handleHelpfulClick - request to "mark answer as helpful" endpoint
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     if (!isHelpfulClickedA) {
-      axios.put(`/api/qa/answers/${props.answer.answer_id}/helpful`)
+      let req = {
+        params: {
+          endpoint: `answers/${props.answer.answer_id}/helpful`
+        }
+      };
+      axios.put('/putQA', req)
         .then((response) => {
           setHelpfulCountA(helpfulCountA + 1);
           setIsHelpfulClickedA(true);
@@ -33,7 +38,10 @@ const IndividualAnswer = (props) => {
   const handleReportClick = (event) => {
     event.preventDefault();
     if (!isReportClicked) {
-      axios.put(`api/qa/answers/${props.answer.answer_id}/report`)
+      let req = {
+        endpoint: `answers/${props.answer.answer_id}/report`
+      };
+      axios.put('/putQA', req)
         .then((response) => {
           setIsReportClicked(true);
           setReportText('Reported');
@@ -65,7 +73,7 @@ const IndividualAnswer = (props) => {
       return username;
     }
   };
-  
+
   return (
     <div className="answer">
       <p className="answer-text"><span id="answer-letter">A:&nbsp;&nbsp;</span>{props.answer.body}</p>

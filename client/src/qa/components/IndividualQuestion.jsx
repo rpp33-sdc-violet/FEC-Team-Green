@@ -13,6 +13,8 @@ const IndividualQuestion = (props) => {
   const [isHelpfulClickedQ, setIsHelpfulClickedQ] = useState(false);
   const [helpfulCountQ, setHelpfulCountQ] = useState(props.question.question_helpfulness);
   const [moreAnsButtonText, setMoreAnsButtonText] = useState('LOAD MORE ANSWERS');
+  const [reportText, setReportText] = useState('Report');
+  const [isReportClicked, setIsReportClicked] = useState(false);
 
   // getAllAnswers/useEffect
   useEffect(() => {
@@ -20,9 +22,16 @@ const IndividualQuestion = (props) => {
     let page = 1;
     let answers = [];
     let cancel = false;
+    let req = {
+      params: {
+        endpoint: `${props.question.question_id}/answers`,
+        count: count,
+        page: page
+      }
+    };
     // inner function that keeps calling until length of data is less than the count
     const getAllAnswers = () => {
-      axios.get(`/api/qa/questions/${props.question.question_id}/answers?count=${count}&page=${page}`)
+      axios.get('/getQA', req)
         .then((response) => {
           if (cancel) {
             return;
@@ -49,6 +58,7 @@ const IndividualQuestion = (props) => {
           }
         })
         .catch((error) => {
+          console.log('error in get all answers', err);
           alert('ERROR IN getAllAnswers', error);
         });
     };
@@ -69,7 +79,7 @@ const IndividualQuestion = (props) => {
     }
   });
 
-  // handleMoreAnsClick - changes countA and button text 
+  // handleMoreAnsClick - changes countA and button text
   const handleMoreAnsClick = (event) => {
     event.preventDefault();
     if (moreAnsButtonText === 'LOAD MORE ANSWERS') {
@@ -86,11 +96,16 @@ const IndividualQuestion = (props) => {
     }
   };
 
-  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true 
+  // handleHelpfulClick - if isHelpfulClicked is false: request to "mark question as helpful" endpoint, isHelpfulClicked to true
   const handleHelpfulClick = (event) => {
     event.preventDefault();
     if (!isHelpfulClickedQ) {
-      axios.put(`/api/qa/questions/${props.question.question_id}/helpful`)
+      let req = {
+        params: {
+          endpoint: `questions/${props.question.question_id}/helpful`
+        }
+      };
+      axios.put('/putQA', req)
         .then((response) => {
           setHelpfulCountQ(helpfulCountQ + 1);
           setIsHelpfulClickedQ(true);
@@ -102,12 +117,30 @@ const IndividualQuestion = (props) => {
       alert('Question: Helpful Link Already Clicked');
     }
   };
+  const handleReportClick = (event) => {
+    event.preventDefault();
+    if (!isReportClicked) {
+      let req = {
+        endpoint: `questions/${props.question.question_id}/report`
 
+      };
+      axios.put('/putQA', req)
+        .then((response) => {
+          setIsReportClicked(true);
+          setReportText('Reported');
+        })
+        .catch((error) => {
+          alert('Question Already Reported');
+        });
+    } else {
+      alert('Answer Already Reported');
+    }
+  };
   return (
     <div className="question">
       <div className="question-row">
         <p className="question-text">Q:&nbsp;&nbsp;{props.question.question_body}</p>
-        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} theme={props.theme} /></aside>
+        <aside className="helpfulQ-addAnswerLink">Helpful? <a href='/' onClick={handleHelpfulClick}>Yes</a> ({helpfulCountQ})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/" onClick={handleReportClick}>{reportText}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<AddAnswerDashboard product_name={props.product_name} question_id={props.question.question_id} question_body={props.question.question_body} theme={props.theme} /></aside>
       </div>
       <AnswersList answers={answers.slice(0, countA)} theme={props.theme} />
       <div className="moreAnswers-option">
