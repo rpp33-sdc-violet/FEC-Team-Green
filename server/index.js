@@ -23,7 +23,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 /************************************************/
 // EXAMPLE 1 - To Connect Your Backend Server
-// Instead of /test endpoint, change this 
+// Instead of /test endpoint, change this
 // to your needed endpoint i.e. /qa/questions...
 /************************************************/
 app.get('/test', (req, res) => {
@@ -137,23 +137,23 @@ app.put('/putQA', (req, res) => {
 require('dotenv').config({path: './env'}); // <-- retrieve Github API Key in our .env file
 const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
 // when you send a request to the '/api/**' endpoint, it automatically re-routed to the API server(done by pathRewrite)
-const options = {
-  target: 'http://localhost:8080/', //target host
-  changeOrigin: 'true', //needed for virtual hosted sites
-  headers: {
-    'Authorization': GITHUB_API_KEY
-  },
-  pathRewrite: {
-    '^/api/': '/'
-  },
-  logLevel: 'error', //control the amount of logging of http-proxy-middleware
-  onProxyReq: fixRequestBody, // used to fix proxied POST requests when bodyParser is applied before this middleware
-};
+// const options = {
+//   target: 'http://localhost:8080/', //target host
+//   changeOrigin: 'true', //needed for virtual hosted sites
+//   headers: {
+//     'Authorization': GITHUB_API_KEY
+//   },
+//   pathRewrite: {
+//     '^/api/': '/'
+//   },
+//   logLevel: 'error', //control the amount of logging of http-proxy-middleware
+//   onProxyReq: fixRequestBody, // used to fix proxied POST requests when bodyParser is applied before this middleware
+// };
 
-//when the base of the requested path matches path specified in app.use
-//middleware function excuted, create the proxy and mount it in web server
-// use proxy middleware and created '/api' endpoint that communicates with our real API
-app.use('/api/*', createProxyMiddleware(options));
+// //when the base of the requested path matches path specified in app.use
+// //middleware function excuted, create the proxy and mount it in web server
+// // use proxy middleware and created '/api' endpoint that communicates with our real API
+// app.use('/api/*', createProxyMiddleware(options));
 
 /************************************************/
 // EXAMPLE 2 - To Connect Your Backend Server
@@ -180,6 +180,24 @@ const optionsReviews = {
 /************************************************/
 app.use('/violet-reviews/*', createProxyMiddleware(optionsReviews));
 
+// PRODUCT API
+const optionsProducts = {
+  target: 'http://ec2-52-221-191-226.ap-southeast-1.compute.amazonaws.com', //target host
+  changeOrigin: 'true', //needed for virtual hosted sites
+  headers: {
+    'Authorization': GITHUB_API_KEY
+  },
+  pathRewrite: {
+    '^/api/products/': '/products/'
+  },
+  logLevel: 'error', //control the amount of logging of http-proxy-middleware
+  onProxyReq: fixRequestBody,
+};
+
+app.use('/api/products/*', createProxyMiddleware(optionsProducts));
+
+
+// OTHER
 app.get('*', (req, res) => {
   // res.send('data');
   res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
